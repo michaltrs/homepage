@@ -1,0 +1,10 @@
+---
+title: "Padající listí, reparátek jistí..."
+pubDate: 2007-11-13T14:37:00.000Z
+updated: 2007-11-19T15:05:13.773Z
+link: "http://blog.michaltrs.net/2007/11/padajc-list-repartek-jist.html"
+category: "blog"
+isMilestone: false
+---
+
+<a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.michaltrs.net/blog/uploaded_images/cesnet-logo-200-709568.gif"><img style="margin: 0pt 10px 10px 0pt; float: left; cursor: pointer;" src="http://www.michaltrs.net/blog/uploaded_images/cesnet-logo-200-709564.gif" alt="" border="0" /></a>Je to skoro 6 let co jsem tuto oblíbenou frázi slyšel naposled. Slyší-li tuto frázi "Úžlabiňák" jistě si vzpomene na učitele Fukiho a velice oblíbený předmět technologie.<br />Čas strávený na CVUT FEL se blíží ke konci, ale aby byl zdárný, je čas začít rychle něco dělat s diplomkou. Mohl sem si vzít něco "normálního", sfouknout to za 14 dní a teď se jednou rukou dloubat v nose a druhou v pozadí a nervovat spolužáky tím že už mám hotovo. No ale to bych nebyl já. V dobré víře jsem si nechal zapsat vlastní téma "Zpracování Packet over SONET na FPGA" od <a href="http://www.cesnet.cz/">CESNET</a>u (projekt <a href="http://www.liberouter.org/">Liberouter</a>). První problém je v tom, že se jedná o diplomku implementovanou v HW, což je věc poměrně náročná a zdlouhavá.<br />Druhý problém se mi stal před týdnem, když jsem zjistil že už nejsem v CESNETim CAAS a tudíž nemám přístup k SVN Liberouteru.  Samozřejmě že si za to můžu sám. Před posledním seminářem jsem se zmínil o tom, že spokojeně pracuji a na projekt nemám tolik času kolik by bylo potřeba a proto chci po napsání diplomové práce skončit. Jen mě překvapilo, jak rychle to najednou šlo. Prostě když skončit, tak hned. Ještě si vzpomínám jak jsem před 3 lety na projekt přišel, tak trvalo minimálně půl roku než se vyřešilo stipendium a podobné formality jako přístupová hesla. Ale jakmile jsem se zapletl s komercí, tak pro vědu nejsem dobrý a musím ven. To že nejsem vědecký vím už dlouho... no co se dá dělat...
