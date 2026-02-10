@@ -6,8 +6,9 @@ const vault = defineCollection({
     title: z.string(),
     pubDate: z.date(),
     description: z.string().optional(),
-    link: z.string().url().optional(),
+    link: z.string().optional(),
     category: z.enum(['news', 'blog', 'cnk', 'cvut', 'zleb']).default('news'),
+
     isMilestone: z.boolean().default(false),
   }),
 });
