@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('vault');
+const sortedEntries = allEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Group by year
+const groupedEntries = sortedEntries.reduce((acc, entry) => {
+  const year = entry.data.pubDate.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(entry);
+  return acc;
+}, {} as Record<number, typeof sortedEntries>);
+
+const years = Object.keys(groupedEntries).map(Number).sort((a, b) => b - a);
+---
+
+<Layout title="The Vault | Michal Trs Architektura vzpomínek">
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <header class="mb-16 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-charcoal mb-4 font-outfit">The Vault</h1>
+      <p class="text-xl text-charcoal/60">Digitální historie, archivy a vzpomínky z let 2006–2013.</p>
+    </header>
+
+    <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+      {years.map(year => (
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          {/* Year Marker */}
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+            <span class="text-[10px] font-bold">{year}</span>
+          </div>
+          
+          {/* Content Wrapper */}
+          <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded border border-slate-200 shadow bg-white">
+            <div class="space-y-4">
+              {groupedEntries[year].map(entry => (
+                <div class="border-b last:border-0 border-slate-100 pb-4 last:pb-0">
+                  <div class="flex items-center justify-between space-x-2 mb-1">
+                    <div class="font-bold text-slate-900">{entry.data.title}</div>
+                    <time class="font-mono text-xs text-joy-yellow bg-joy-yellow/10 px-2 py-0.5 rounded">
+                      {entry.data.pubDate.toLocaleDateString('cs-CZ')}
+                    </time>
+                  </div>
+                  <div class="text-slate-500 text-sm line-clamp-2" set:html={entry.data.description}></div>
+                  {entry.data.isMilestone && (
+                    <span class="inline-block mt-2 text-[10px] uppercase tracking-wider font-bold text-sky-blue">Milník</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-20 text-center">
+      <a href="/" class="text-charcoal/40 hover:text-charcoal transition-colors">← Zpět na hlavní cestu</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+</style>
