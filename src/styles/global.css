@@ -1,1 +1,27 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --color-joy-yellow: #FFD700;
+  --color-sky-blue: #00BFFF;
+  --color-charcoal: #333333;
+  --color-soft-bg: #FAFAFA;
+  
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-soft-bg text-charcoal font-sans antialiased selection:bg-sky-blue/30;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-sky-blue text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-md;
+  }
+}
+

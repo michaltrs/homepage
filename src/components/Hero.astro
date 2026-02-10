@@ -1,0 +1,49 @@
+---
+---
+<section class="relative min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
+  <!-- Subtle Joy Accents (Soft Blobs) -->
+  <div class="absolute top-1/4 -left-20 w-64 h-64 bg-joy-yellow/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-sky-blue/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+
+  <div class="max-w-4xl w-full text-center z-10">
+    <h2 class="text-sky-blue font-bold tracking-widest uppercase text-sm mb-6 animate-fade-in">
+      Vítejte na palubě
+    </h2>
+    
+    <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal leading-tight mb-8 font-outfit">
+      Co jsou <span class="text-joy-yellow">3 věci</span> které ti dnes udělali radost?
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-charcoal/70 max-w-2xl mx-auto mb-12 font-medium">
+      Filozofie osobní zodpovědnosti za vlastní radost. 
+      Vítejte ve světě Michala Trse.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#professional" class="btn-primary flex items-center justify-center gap-2 group">
+        Profesní cesta <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+      <a href="#personal" class="px-6 py-3 border-2 border-charcoal/10 rounded-full font-semibold hover:bg-charcoal/5 transition-colors">
+        Osobní radosti
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+</style>
