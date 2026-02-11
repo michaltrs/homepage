@@ -2,28 +2,57 @@
 ---
 <section class="relative min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
   <!-- Subtle Joy Accents (Soft Blobs) -->
-  <div class="absolute top-1/4 -left-20 w-64 h-64 bg-joy-yellow/10 rounded-full blur-3xl animate-pulse"></div>
-  <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-sky-blue/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+  <div class="absolute top-1/4 -left-20 w-64 h-64 bg-joy-yellow/5 rounded-full blur-3xl animate-blob"></div>
+  <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-sky-blue/5 rounded-full blur-3xl animate-blob" style="animation-delay: 2s;"></div>
 
-  <div class="max-w-4xl w-full text-center z-10">
-    <h2 class="text-sky-blue font-bold tracking-widest uppercase text-sm mb-6 animate-fade-in">
+  <div class="max-w-3xl w-full z-10">
+    <h2 class="text-sky-blue font-bold tracking-widest uppercase text-sm mb-6 animate-fade-in text-center">
       Vítejte na palubě
     </h2>
-    
-    <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal leading-tight mb-8 font-outfit">
-      Co jsou <span class="text-joy-yellow">3 věci</span> které ti dnes udělali radost?
+
+    <h1 class="text-4xl md:text-6xl font-extrabold text-charcoal leading-tight mb-10 font-outfit text-center">
+      Co jsou <span class="text-joy-yellow">3 věci</span> které ti dnes udělaly radost?
     </h1>
-    
-    <p class="text-lg md:text-xl text-charcoal/60 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    </p>
+
+    <div class="prose-section text-charcoal/70 text-base md:text-lg leading-relaxed space-y-5 mb-12">
+      <p>
+        Každý den se kolem nás děje spousta věcí. Některé dobré, některé špatné.
+        Nemůžeme ovlivnit, co se stane&nbsp;– ale můžeme ovlivnit, čemu věnujeme pozornost.
+      </p>
+      <p>
+        Média nás denně zásobují negativními zprávami. Ne proto, že by se nedělo nic
+        dobrého, ale proto, že na špatné zprávy náš mozek reaguje mnohem silněji.
+        Tak fungujeme. Negativita nás přitahuje, protože nás kdysi chránila před nebezpečím.
+        Jenže dnes nás spíš stahuje dolů.
+      </p>
+      <p>
+        Před časem jsem viděl Lightning talk
+        <a href="https://www.tedxprague.cz/michal-srajer" target="_blank" rel="noopener" class="text-sky-blue hover:underline font-medium">Michala&nbsp;Šrajera</a>,
+        člověka, který se tématem štěstí zabývá dlouhodobě. Jedna myšlenka mi zůstala&nbsp;–
+        a&nbsp;změnila mi každodenní rutinu. Začal jsem si s&nbsp;dětmi každý večer říkat
+        tři věci, které nám ten den udělaly radost.
+      </p>
+      <p>
+        Nic velkého. Dobré jídlo. Zábavná chvilka ve škole. Hezké počasí cestou domů.
+        Pointa není v&nbsp;tom, že by se děly zázraky. Pointa je v&nbsp;tom, že se mozek naučí
+        radostné okamžiky vnímat. Všímat si jich. A&nbsp;zjistíte, že se dějí každý den&nbsp;–
+        jen je běžně přehlížíme.
+      </p>
+      <p>
+        <strong>Zkuste to taky.</strong> Řekněte si ty tři věci večer v&nbsp;hlavě. Řekněte je
+        dětem, partnerovi, kamarádovi. Napište si je do poznámek. Použijte appku.
+        Na formě nezáleží&nbsp;– důležité je začít.
+      </p>
+      <p class="text-charcoal font-bold text-lg md:text-xl">
+        Štěstí není náhoda. Štěstí je rozhodnutí.
+      </p>
+    </div>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-
       <a href="#professional" class="btn-primary flex items-center justify-center gap-2 group">
         Profesní cesta <span class="group-hover:translate-x-1 transition-transform">→</span>
       </a>
-      <a href="#personal" class="px-6 py-3 border-2 border-charcoal/10 rounded-full font-semibold hover:bg-charcoal/5 transition-colors">
+      <a href="#personal" class="px-6 py-3 border-2 border-charcoal/10 rounded-full font-semibold hover:bg-charcoal/5 transition-colors text-center">
         Osobní radosti
       </a>
     </div>
@@ -42,6 +71,13 @@
   }
   .animate-fade-in {
     animation: fade-in 1s ease-out forwards;
+  }
+  @keyframes blob {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+  }
+  .animate-blob {
+    animation: blob 8s ease-in-out infinite;
   }
   .font-outfit {
     font-family: 'Outfit', sans-serif;

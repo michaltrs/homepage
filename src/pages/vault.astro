@@ -52,8 +52,8 @@ const categoryNodeMap = {
             data-filter={cat.id}
             class={`filter-btn px-4 py-2 rounded-full text-sm font-bold border-2 transition-all 
               ${cat.id === 'all' 
-                ? 'active bg-charcoal text-white border-charcoal' 
-                : 'bg-transparent text-charcoal/40 border-charcoal/10 hover:border-charcoal/30'}`}
+                ? 'active bg-charcoal text-white border-charcoal'
+                : 'bg-transparent text-charcoal/70 border-charcoal/20 hover:border-charcoal/40'}`}
           >
             {cat.label}
           </button>
@@ -112,10 +112,10 @@ const categoryNodeMap = {
       const btnFilter = btn.getAttribute('data-filter');
       if (btnFilter === filter) {
         btn.classList.add('active', 'bg-charcoal', 'text-white', 'border-charcoal');
-        btn.classList.remove('text-charcoal/40', 'border-charcoal/10');
+        btn.classList.remove('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
       } else {
         btn.classList.remove('active', 'bg-charcoal', 'text-white', 'border-charcoal');
-        btn.classList.add('text-charcoal/40', 'border-charcoal/10');
+        btn.classList.add('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
       }
     });
 

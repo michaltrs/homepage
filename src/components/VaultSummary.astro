@@ -1,30 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
-import VaultCard from './VaultCard.astro';
 
 const allEntries = await getCollection('vault');
-const milestones = allEntries
-  .filter(entry => entry.data.isMilestone)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
 
-const categoryNodeMap = {
-  cnk: 'bg-joy-yellow',
-  'cvut-fel': 'bg-sky-blue',
-  'spse-v-uzlabine': 'bg-orange-500',
-  blog: 'bg-slate-400',
-  news: 'bg-slate-300',
-};
-
-const entriesWithSlugs = milestones.map(entry => ({
-  ...entry,
-  slug: `${entry.data.pubDate.getFullYear()}-${slugify(entry.data.title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-'))}`
+const timelinePoints = [
+  { id: 'spse-v-uzlabine', label: 'SPŠE V Úžlabině', period: '1999–2002', color: 'bg-orange-500', textColor: 'text-orange-500' },
+  { id: 'cnk', label: 'Cesty na kole', period: '2001–2009', color: 'bg-joy-yellow', textColor: 'text-joy-yellow' },
+  { id: 'cvut-fel', label: 'ČVUT FEL', period: '2002–2008', color: 'bg-sky-blue', textColor: 'text-sky-blue' },
+  { id: 'blog', label: 'Blog', period: '2008–2013', color: 'bg-slate-400', textColor: 'text-slate-500' },
+].map(point => ({
+  ...point,
+  count: allEntries.filter(e => e.data.category === point.id).length,
 }));
-
-// Quick slugify for local use
-function slugify(text) {
-  return text.toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-');
-}
 ---
 
 <section id="history-summary" class="py-24 px-6 bg-soft-bg/50 border-t border-charcoal/5">
@@ -37,41 +24,37 @@ function slugify(text) {
         Střípky z historie
       </h3>
       <p class="text-lg text-charcoal/60 max-w-2xl mx-auto font-medium">
-        Cesta od prvních kódů a cyklo-expedic k vedení globálních engineering týmů. 
+        Cesta od prvních kódů a cyklo-expedic k vedení globálních engineering týmů.
         Protože každá přítomnost má své základy v minulosti.
       </p>
     </div>
 
-    <div class="relative max-w-4xl mx-auto">
-      <!-- Shortened Timeline Line -->
-      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2"></div>
+    <!-- Horizontal Mini Timeline -->
+    <div class="relative max-w-4xl mx-auto mb-16">
+      <!-- Timeline line -->
+      <div class="absolute top-6 left-0 right-0 h-0.5 bg-charcoal/10 hidden md:block"></div>
 
-      <div class="space-y-12">
-        {entriesWithSlugs.map((entry, idx) => {
-          const nodeClass = categoryNodeMap[entry.data.category] || categoryNodeMap.news;
-          return (
-            <div class={`relative flex items-center gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-              <div class="w-full md:w-[calc(50%-2rem)]">
-                <a href={`/vault#${entry.slug}`} class="block transition-transform hover:scale-[1.02] active:scale-95">
-                  <VaultCard entry={entry} />
-                </a>
-              </div>
-
-              <!-- Node -->
-              <div class={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full border-2 border-white shadow -translate-x-1/2 z-10 ${nodeClass}`}></div>
-              
-              <div class="hidden md:block w-full md:w-[calc(50%-2rem)]"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+        {timelinePoints.map((point) => (
+          <a href={`/vault?category=${point.id}`} class="group relative flex flex-col items-center text-center">
+            <!-- Node -->
+            <div class={`w-12 h-12 rounded-full ${point.color} flex items-center justify-center text-white font-bold text-sm mb-4 shadow-md group-hover:scale-110 transition-transform z-10`}>
+              {point.count}
             </div>
-          );
-        })}
+            <!-- Period -->
+            <span class="text-xs font-bold text-charcoal/40 mb-1">{point.period}</span>
+            <!-- Label -->
+            <span class={`text-sm font-bold ${point.textColor} group-hover:underline`}>{point.label}</span>
+          </a>
+        ))}
       </div>
+    </div>
 
-      <div class="mt-16 text-center z-20 relative">
-        <a href="/vault" class="inline-flex items-center gap-3 px-8 py-4 bg-charcoal text-white rounded-full font-bold hover:bg-sky-blue transition-all group shadow-xl hover:shadow-sky-blue/20">
-          Prozkoumat celý archiv (The Vault)
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
+    <div class="text-center z-20 relative">
+      <a href="/vault" class="inline-flex items-center gap-3 px-8 py-4 bg-charcoal text-white rounded-full font-bold hover:bg-sky-blue transition-all group shadow-xl hover:shadow-sky-blue/20">
+        Prozkoumat celý archiv (The Vault)
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>

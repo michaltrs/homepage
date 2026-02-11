@@ -8,7 +8,7 @@ isMilestone: false
 description: "Fotky z Maroka a pivo český... dovolte mi vás pozvat na promítání fotek z Maroka , kde jsme byli minulý rok na podzim jezdit na kole. Jeli jsme z města Fes přes vysoký Atlas do města Marrakech. Po..."
 ---
 
-Fotky z Maroka a pivo český... dovolte mi vás pozvat na promítání fotek z <a href="#">Maroka</a>, kde jsme byli minulý rok na podzim jezdit na kole. Jeli jsme z města Fes přes vysoký Atlas do města Marrakech. Po cestě jsme si odskocili autem do pouště a pěsky na nejvyšši horu severní Afriky.<br />
+Fotky z Maroka a pivo český... dovolte mi vás pozvat na promítání fotek z <a href="/archive/cnk/2009-maroko/">Maroka</a>, kde jsme byli minulý rok na podzim jezdit na kole. Jeli jsme z města Fes přes vysoký Atlas do města Marrakech. Po cestě jsme si odskocili autem do pouště a pěsky na nejvyšši horu severní Afriky.<br />
 <br />
 tento čtvrtek v kavárně Krasny Ztráty od 7 večer, Náprstkova 10, Praha 1<br />
 <br />
