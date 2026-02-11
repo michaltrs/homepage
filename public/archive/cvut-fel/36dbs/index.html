@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=windows-1250"
+ http-equiv="content-type">
+  <title>DBS - semestrální práce - Michal Trs</title>
+</head>
+<body>
+<div style="text-align: center;">
+<h3>Semestrální práce z předmětu databázové systémy:</h3>
+</div>
+<h1 style="text-align: center;">ZOOLOGICKÁ ZAHRADA</h1>
+Vypracoval: <a style="font-weight: bold; color: rgb(0, 0, 0);"
+ href="mailto:%22trsm1@fel.cvut.cz%22">Michal Trs</a><br>
+Cvičení: <b>čtvrtek 14:30</b><br>
+Poslední aktualizace: <b>29.12.2004</b><br>
+Zde předkládanou práci jsem vytvořil samostatně s využitím těchto
+informačních zdrojů: <br>
+www.zoopraha.cz, http://service.felk.cvut.cz/courses/36DBS/, skriptum Databázové systémy - Pokorný, Halaška<br>
+<br>
+<ol>
+  <li>
+    <h3>Popis aplikace:</h3>
+Zoologická zahrada se skládá z několika PAVILÓNŮ. V každém pavilónu může být několik VÝBĚHŮ. Do každého výběhu
+může být umístěno určité maximum zvířat. Výběh je jednoznačně
+identifikován svým číslem a pavilonem kde je umístěn. Dále budeme vést 
+evidenci ZVÍŘAT, zvíře bude jednoznačně identifikováno svým jménem a datem narození. U každého zvířete budeme dále evidovat tyto vlastnosti: věk, původ, druh potravy, frekvence krmení, datum poslední zdravotní prohlídky a periodu úklidu
+kotců. Každé zvíře musí být přiděleno do jednoho kotce. Dále budeme
+vést evidenci ZAMĚSTNANCŮ, všechny zaměstnanci: veterinář, ošetřovatel,
+pokladní, údržbář jsou jednoznačně identifikováni svým rodným číslem.
+Každý veterinář a ošetřovatel má přiřazeno několik zvířat o která se
+stará. Pokladní prodává vstupenky návštěvníkům zoologické zahrady.
+Každá vstupenka má svoji cenu a je určena druhem. Údržbář má na
+starosti několik pavilónu. Také si budeme vést evidenci DODAVATELSKÝCH
+FIREM, zboží od dodavatele si může objednat libovolný zaměstnanec.
+Ředitel zoologické zahrady rozhoduje o přijímání nových zaměstnanců, o
+výstavbě nových pavilónů a umisťování zvířat do kotců.<br>
+    <br>
+  </li>
+  <li>
+    <h3>Uživatelské role a pracovní scénáře</h3>
+	
+
+	<b>(a) Návštěvník internetových stránek</b> - "Může procházet zoo" - tj. Vidí pavilony, jednotlivé výběhy a zvířata v nich umístěná.<br>
+	<b>(b) Zaměstnanec (Pokladní / Údržbář / Veterinář / Ošetřovatel)</b> - mají práva jako (a) a navíc mohou objednávat zboží u Dodavatele.Dále POKLADNÍ prodává lístky, VETERINAR a OSETROVATEL mohou měnit atributy zviřete a přidávat nová zvířata. UDRZBAR má pouze práva jako (a).<br>
+	<b>(c) Ředitel</b> - přijímá nové Zaměstnance, rozhoduje o výstavbě nových Pavilonů a kotců, nakupuje nová zvířata.
+	<br><br>
+	<table border="1">
+<tr>
+       <th>Pracovní postup</th>
+       <th>Počítačově podporováno</th>
+</tr>
+<tr>
+       <td>Nákup / Narození nováho zvířete</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Úmrtí / Prodej zvířete</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Úklid pavilonu</td>
+       <td>NE</td>
+</tr>
+<tr>
+       <td>Prodej vstupenek</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Přidání nových typů vstupenek</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Zdravotní prohlídka zvířete</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Krmení zvířat</td>
+       <td>NE</td>
+</tr>
+<tr>
+       <td>Úklid kotce</td>
+       <td>NE</td>
+</tr>
+<tr>
+       <td>Výstavba nového kotce / pavilonu</td>
+       <td>ANO</td>
+</tr>
+<tr>
+       <td>Objednání zboží u dodavatele</td>
+       <td>ANO</td>
+</tr>
+</table><br><br>
+  </li>
+  <li>
+    <h3>Datová analýza E-R schéma</h3>
+	<img src="erschema.png" alt="er.png - 10kb" border="0"><br>
+	<a href="erschema.xml" target="_blank">ER schéma ve formátu XML</a><br>
+	<br>
+  </li>
+  <li>
+    <h3>Klientská část úlohy</h3>
+	<a href="erschema.sql" target="_blank">Skrip pro vytvoření databáze</a><br>	
+	<a href="data.sql" target="_blank">Skrip pro naplnění databáze testovacími daty</a><br>
+	<a href="forms.zip" target="_blank">Zde</a> je implementace 3 formulářů (single-record, 				multi-record, master-detail) a menu aplikace.<br>
+	<a href="dotazy.html" target="_blank">Stránka s 10 dotazy nad databází</a><br>	
+
+<h3>Ukázky formulářů</h3>	
+	<h4>Menu aplikace</h4>
+	<img src="menu.JPG" alt="menu" border="0"><br><br><br>
+	<h4>Formulář master-detail-detail</h4>
+	<img src="form1.JPG" alt="form1" border="0"><br><br><br>
+	<h4>Formulář single-record</h4>
+	<img src="form2.JPG" alt="form2" border="0"><br><br><br>
+	<h4>Formulář multi-record</h4>
+	<img src="form3.JPG" alt="form3" border="0"><br><br><br>
+	
+	
+	
+	
+  </li>
+</ol>
+<br>
+<br>
+<br>
+</body>
+</html>

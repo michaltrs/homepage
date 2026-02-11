@@ -1,0 +1,3 @@
+﻿V obvodu FPGA navrhnete jednotku pro převod protokolu OC-48 PoS (Packet Over Sonet) na protokol FrameLink vyvinuty v rámci projektu Liberouter. Jednotku implementujte v FPGA Virtex-II Pro od firmy Xilinx osazeném na kartě SFP Pro, vyvinuté v rámci téhož projektu. Proveďte analýzu a návrh řešeni s ohledem na danou architekturu. Výsledky analýzy zdůvodněte a použijte při implementaci.
+
+Pro příjem paketu využijte vestavěné sériové přijímače/vysílače Rocket-IO obsažené v obvodech Virtex-II Pro. Dále při realizaci můžete využít již vyvinuté jednotky v rámci projektu Liberouter, případně dostupná IP makra. Pro otestování jednotky navrhnete jednoduchou síťovou aplikaci. Pro vlastní odzkoušení s reálnými daty můžete použít síťový analyzátor/generátor paketu Spirent.

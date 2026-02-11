@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36PAA - ulohy (Michal Trs)</title>
+</head>
+<body>
+   <h1>36PAA - Batoh 1</h1>
+
+   <div id="main">
+      <h2>Zadání</h2>
+      <ul>
+         <li>Naprogramujte řešení 0/1 problému batohu hrubou silou. Na zkušebních datech pozorujte závislost výpočetního času na n.</li>
+         <li>Naprogramujte řešení 0/1 problému batohu heuristikou podle poměru cena/váha. Pozorujte
+         <ul>
+            <li>závislost výpočetního času na n. Grafy jsou vítány (i pro exaktní metodu).</li>
+            <li>průměrné zhoršení proti exaktní metodě</li>
+            <li>maximální relativní chybu. Absolutní chyba nic neříká!</li>
+         </ul></li>
+      </ul>
+
+      <h2>Definice problému</h2>
+      <ul>
+         <li>Je dáno:
+         <ul>
+            <li>celé číslo n (počet věcí)</li>
+            <li>celé číslo M (kapacita batohu)</li>
+            <li>konečná množina V={v1, v2, ... ,vn } (hmotnosti věcí)</li>
+            <li>konečná množina C={c1, c2, ... ,cn } (ceny věcí)</li>
+         </ul></li>
+
+         <li>Zkonstruujte množinu X={x1, x2, ... ,xn }, kde každé xi je 0 nebo 1, tak, aby
+         <ul>
+            <li><b>platilo:</b> v1x1+v2x2 + ... + vnxn <= M (batoh nebyl přetížen).</li>
+            <li><b>výraz</b> c1x1+c2x2 + ... + cnxn nabýval maximální hodnoty pro všechny takové množiny (cena věcí v batohu byla maximální).</li>
+         </ul></li>
+      </ul>
+
+      <h2>Implementace</h2>
+      Úlohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Data načítá ze standardního vstup a výsledky vypisuje na stdandardní výstup. Řešení jsem rozdělil do 4 tříd.
+      <ul>
+         <li><a href="source/Batoh.cs">Batoh.cs</a> - Virtuální třída, má implementované metody pro načítání ze standardního vstupu, výpis na standardní výstup a virtuální metodu Compute().</li>
+         <li><a href="source/BruteForce.cs">BruteForce.cs</a> - Řešení hrubou silou, implementováno rekurzivně.</li>
+         <li><a href="source/GreedyProof.cs">GreedyProof.cs</a> - Jednoduchá heuristika, nejprve vypočte poměr cena/váha a nastaví pomocné pole s indexy, které představují pořadí ve kterém budou prvky do batohu přidávány (od nejlepšího poměru).</li>
+         <li><a href="source/Program.cs">Program.cs</a> - Načte vstupní data a volá metodu Compute() a měří čas.</li>
+      </ul>
+
+      <h3>Parametry programu</h3>
+      <ul>
+         <li><b>-g</b> jednoduchá heuristika (GreedyProof), jinak hrubá síla (BruteForce).</li>
+         <li><b>-t:<i>count</i></b> Pro měření času, každou instanci opakuje <i>count</i>-krát.</li>
+      </ul>
+
+
+      <h2>Naměřené hodnoty a výsledky</h2>
+      <p>Měřil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance při napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+
+      <h3>Tabulka výsledků měření</h3>
+      <p>Protože rozlišení čítače (Environment.TickCount) je 16 ms, je nutné instance spočítat vícekrát a výsledný čas získat vydělením počtem opakování. Pro měření časové složitosti hrubé síly jsem experimentálně nastavoval počet opakovaní od 100 000 (pro n = 4) do 1 (pro n = 30). Pro měření heuristiky jsem nastavil 100 000 opakování pro každou instanci problému.</p>
+      <table>
+         <tr><th>n</th><th>hrubá síla [ms]</th><th>heuristika [ms]</th><th>ID<sub>max. chyby</sub></th><th>prum. zhoršení</th><th>max. chyba</th></tr>
+         <tr><td>4</td><td>0,0075</td><td>0,0071</td><td>9037</td><td>2,17%</td><td>36,36%</td></tr>
+         <tr><td>10</td><td>0,044</td><td>0,015</td><td>9080</td><td>1,73%</td><td>11,48%</td></tr>
+         <tr><td>15</td><td>1,229</td><td>0,021</td><td>9126</td><td>1,32%</td><td>8,54%</td></tr>
+         <tr><td>20</td><td>36,865</td><td>0,027</td><td>9165</td><td>1,14%</td><td>8,43%</td></tr>
+         <tr><td>22</td><td>136,736</td><td>0,030</td><td>9237</td><td>1,05%</td><td>7,23%</td></tr>
+         <tr><td>25</td><td>1140,04</td><td>0,034</td><td>9283</td><td>0,96%</td><td>3,68%</td></tr>
+         <tr><td>27</td><td>4803,9</td><td>0,036</td><td>9338</td><td>0,90%</td><td>10,60%</td></tr>
+         <tr><td>30</td><td>38723,1</td><td>0,041</td><td>9380</td><td>0,85%</td><td>5,51%</td></tr>
+      </table>
+
+      <h3>Graf: Časová závislost</h3>
+      <p><img src="grafy/slozitost.png" alt="časová složitost"/></p>
+      
+      <h3>Graf: Závislost průměrné chyby na velikosti instance</h3>
+      <p><img src="grafy/pr_chyba.png" alt="Závislost průměrné chyby na velikosti instance"/></p>
+      
+      <h3>Graf: Závislost maximální chyby na velikosti instance</h3>
+      <p><img src="grafy/max_chyba.png" alt="Závislost maximální chyby na velikosti instance"/></p>
+
+
+      <h2>Závěr</h2>
+      <p>
+         Řešení hrubou silou dává sice nejlepší možné řešení, ale daní za prohledání celého stavového prostoru je neúnosná (exponenciální) časová složitost. Překvapující jsou poměrně dobré výsledky jednoduché heuristiky. Časová závislost je lineární (obsahuje velkou multiplikativní konstantu, takže pro malá n se neprojeví složitost řazení n.log(n)) a dosahuje průměrné chyby v nejhorším případě 2,17% pro zadané instance. Z grafu je dobře patrné, že průměrná relativní chyba s velikostí instance klesá.
+      </p>
+
+   </div>
+
+</body>
+</html>

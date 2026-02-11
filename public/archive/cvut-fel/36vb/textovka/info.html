@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="cs">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1250">
+	<title>Dokumentace k TXT game</title>
+</head>
+
+<body>
+<center><h1>TXT game</h1></center><hr size="2" width="90%">
+
+<h2>Popis aplikace</h2>
+
+Jedná se o textovou RPG hru. Její příběh je zasazen do blíže nespecifikovaného světa skřetů, trpaslíků a jiných potvor. Historické období není určeno, proto se ve hře můžete setkat s nečekanými věcmi.<br> Soubojový systém, jak jsem zjistil, je v podstatě převzat z Dračího doupěte. Postava má charakterizující vlastnosti: SÍLA, ODOLNOST, ÚTOK a OBRANA. Útočné číslo se počítá SÍLA + 0..ÚTOK, přičemž když padne 0 je kritický neúspěch, to znamená že váš / potvory útok se v tomto kole ruší. Obrané číslo se počítá jako ODOLNOST + 0..OBRANA. Když je útočné číslo větší než obrané číslo, tak vaše postava/potvora přijde o životy odpovídající rozdílu útočného a obraného čísla. Všechny vlastnosti vašeho hrdiny můžete zlepšit / zhoršit pomocí různých mečů, štítů, brnění a lektvarů.
+<br><br>
+Na této mapě se odehrává příběh:<br>
+<img src="DokData/mapa.png" width="638" height="528" alt="" border="0">
+
+ 
+<h2>Popis instalace</h2> 
+
+Stačí rozbalit zip archív včetně podadresářů do vámi vybraného adresáře 
+
+
+<h2>Návod ke spuštění a ovládání</h2> 
+
+<h3>Spuštění</h3>
+V příkazovém řádku MS-DOS spustit soubor <b>TXTgame.exe</b> z adresáře, kam jste hru rozbalili.<br>
+V prostředí Windows poklepání na ikonku <b>TXTgame</b>
+
+<h3>Ovládání</h3>
+ 
+ Ovládání hry připomíná příkazový řádek MS-DOS,
+ u příkazů a parametrů se nerozlišují malá a VELKÁ písmena. 
+ <h4>Seznam všech příkazů:</h4>
+
+<table border="1">
+<tr><th>Popis činnosti</th><th>Příkaz</th><th>Parametr</th><th>Kde se musí daná věc na kterou je příkaz použit nacházet</th></tr>
+
+<tr>
+       <td>chůze do další lokace</td>
+       <td>jdi, bez, g</td>
+	   <td>jméno dveři</td>
+	   <td>další místnost</td>
+</tr>
+<tr>
+       <td>zvednuti predmetu do invetare</td>
+       <td>seber, zvedni, t</td>
+	   <td>jméno předmětu</td>
+	   <td>místnost</td>
+</tr>
+<tr>
+       <td>zahozeni predmetu na zem</td>
+       <td>zahod, poloz, p</td>
+	   <td>jméno předmětu</td>
+	   <td>prava ruka, leva ruka, telo, inventar</td>
+</tr>
+<tr>
+       <td>prohlednuti predmetu</td>
+       <td>zkoumat, ukaz, e</td>
+	   <td>jméno předmětu</td>
+	   <td>mistnost</td>
+</tr>
+<tr>
+       <td>utok na potvoru</td>
+       <td>zabij, utok, a</td>
+	   <td>jméno potvory</td>
+	   <td>mistnost</td>
+</tr>
+<tr>
+       <td>zkoumani lokace</td>
+       <td>koukam, l</td>
+	   <td>-----</td>
+	   <td>současná místnost</td>
+</tr>
+<tr>
+       <td>ukazani vlastnosti postavy</td>
+       <td>char, c</td>
+	   <td>-----</td>
+	   <td>-----</td>
+</tr>
+<tr>
+       <td>ukazani inventare</td>
+       <td>inv, i</td>
+	   <td>-----</td>
+	   <td>-----</td>
+</tr>
+<tr>
+       <td>uchopeni predmetu z inventare</td>
+       <td>leva, prava, telo</td>
+	   <td>jméno předmětu</td>
+	   <td>inventář</td>
+</tr>
+<tr>
+       <td>pouziti predmetu z inventare</td>
+       <td>pouzij, use, u</td>
+	   <td>jméno předmětu</td>
+	   <td>inventář</td>
+</tr>
+<tr>
+       <td>konec hry</td>
+       <td>konec</td>
+	   <td>-----</td>
+	   <td>-----</td>
+</tr>
+</table>
+
+<br>
+ 
+ Příklad: JDI veznice, ZABIJ skret, INV, CHAR<br>
+ Poznámka: Je jedno, jestli použijete příkaz JDI nebo G, mají úplně stejnou funkci. To platí u všech ostatních příkazů.<br>
+ 
+                    
+<h2>Popis řešení</h2>
+<h4>Popis hrubého řešení programu</h4>
+Procedura LoadWorld pomocí dalších procedur a funkcí načte xml soubor a vytvoří z něj datovou strukturu.
+Tata datová struktura je tvořena lineárním seznamem místností, který je ještě navíc provázán dalšími ukazateli, které představují jednotlivé dveře do dalších místností. Každá místnost obsahuje další 2 lineární seznamy: seznam potvor a seznam předmětů. Každá potvora může obsahovat další předměty.
+Datová struktura tohoto světa vypadá takto:
+<img src="DokData/datastr.png" width="800" height="600" border="0">
+
+<br><br> 
+Hráč je reprezentován záznamem, ve kterém je definována jeho síla,obrana, to co má na sobě, dále ukazatel na inventář, což je seznam itemů a ukazatel na aktuální místnost. <br>
+Vlastní hra funguje tak, že v cyklu se nejprve volá procedura <b>CheckAtckCr</b>, která zjistí jestli na vaši postavu útočí první postova v místnosti. Pokud ano tato procedura zavolá proceduru <b>souboj</b>. Jako další volá proceduru <b>CtiVstup</b>, která vám pokládá otázku: <i>"Co chces delat?"</i> a vrací hodnotu příkazu a parametru. Příkaz a parametr jsou poslány do další procedury <b>DoAction</b>, která si v převodní tabulce z unity MeziTab zjistí, jaká konstanta odpovídá příkazu. Tato konstanta je selektor větvení, který určuje, jaká procedura se zavolá. Pokud žádná procedura neodpovídá konstantě, což znamená, že příkaz je chybný, vypíše se chybová hláška. Vědšině těmto procedurám se posílá parametr (string), vědšinou jméno potvory nebo předmětu. Tento cyklus končí pokud životy vaší postavy (curLive) jsou menší než 0, nebo proměná run je false. Proměná run se změní na false v případě, že zabitá potvora, sebraný předmět nebo místnost do která jste přišli má proměnou endg = true.  <br>
+
+Celý program je rozdělen do 5 unit a hlavního programu. V unitě <b>datastr</b> jsou naimlementovány 3 lineární seznamy, procedury a funkce pro práci s nimi a zásobník. Zásobník se používá pouze v proceduře LoadWorld pro ukládání ukazatelů na poslední místnost/potvoru/předmět. <br><br><br>
+Výpis typů, proměných, laviček procedur a funkcí v unitě <b>DataStr</b>:<br>
+
+<h4>Zásobník</h4>
+
+<b>procedure Init (var Zasobnik: UkPolozka);</b><br>
+inicializace zásobníku, nastavení vrcholu a dna na nil<br><br>
+<b>function Empty (Zasobnik: UkPolozka): boolean;</b><br>
+pokud je zásobník prázdný vrací true<br><br>
+<b>function Push (t: zTyp; m: UkRoom; c:UkCreature; i:UkItem; var Vrchol: UkPolozka):boolean;</b><br>
+přidání do zásobíku<br>
+Protože jsem v Pascalu nepřišel na způsob jak přetypovat typovaný ukazatel, musí se do parametru t zadat o který ukazatel se jedná, ten pak přiřadit správnému parametru a zbylé nastavit na nil (není nutné). <br><br>
+<b>function Pop (var Vrchol: UkPolozka):pointer;</b><br>
+odebere prvek ze zásobníku, s prvkem se již dál nepracuje, proto je ukazatel netypový
+<br><br>
+<h4>Práce s místnostmi</h4>
+<b>procedure rLoadDoors(s: string; var dl: tDoorList);</b><br>
+Naplní pole Doors v aktuální místnosti jménami místností kam se dá jít<br><br>
+<b>function rNew (at: AttList; n: byte; p: pTab): UkRoom;</b><br>
+Vytvoří záznam odpovídající nové místnosti a vrátí na ní ukazatel, parametry které nebyly v XML souboru zadány nastaví na počáteční hodnotu<br><br>
+<b>procedure rAdd ( nova: UkRoom; var world: UkRoom);</b><br>
+Přidá (novou) místnost na začátek lineárního seznamu kam ukazuje proměná world<br><br>
+<b>function rSearch (jmeno: string; svet: UkRoom): UkRoom;</b><br>
+Vrátí adresu odpovídající jménu místnosti v parametru jmeno<br><br>
+<b>procedure rInitDoors(var svet: UkRoom);</b><br>
+volá se po načtení celého světa, pro každé dveře ve všech místnostech zavolá prceduru rSearch a výslednou adresu uloží do pole dveří Doors ke jménu dveří<br><br> 
+<b>function rSearchDoor(d: string; m: UkRoom): UkRoom;</b><br>
+podle jmena d najde odpovídající adresu místnosti, funkce navenek je stejná jako u rSearch, ale prohledává pouze konkrétní místnost, Rychlé!!!<br><br>
+
+<h4>Práce s předměty</h4>
+
+<b>function iNew(Atrib: AttList;n: byte; p:pTab): UkItem;</b><br>
+Pomocí Atrib listu z funkce gettag a prevodní tabulky vytvoří záznam předmět a vrátí na něj ukazetel<br>
+<br><b>function iSearch (jmeno: string; predmet: UkItem): UkItem;</b><br>
+ Najde adresu předmětu odpovídajíci jménu v seznamu na který ukazuje předmět<br>
+<br><b>procedure iAdd (novy: UkItem; var kam: UkItem);</b><br>
+Přidá novy na začátek seznamu kam ukazuje kam<br>
+<br><b>procedure iAddToEnd (novy: UkItem; var iList: UkItem);</b><br>
+Vhodné pro přidávání celého seznamu k jinému. POMALÉ!!!<br>
+<br><b>function iRemove (predmet: UkItem; var ItemList: UkItem): UkItem;</b><br>
+Odebere předmět z itemlistu a vrátí jeho adresu<br>
+<br><b>procedure iMove (var i, odkud, kam: UkItem);</b><br>
+přesune předmět mezi dvěmi seznami<br><br>
+<h4>Práce s potvorami</h4>
+<br><b>function cNew(Atrib: AttList;n: byte; p:pTab): UkCreature;</b><br>
+ viz iNew<br>
+<br><b>procedure cAdd (nova: UkCreature; var kam: UkCreature);</b><br>
+viz iAdd<br>
+<br><b>function cRemove (potvora: UkCreature; var cList: UkCreature): UkCreature;</b><br>
+vir iRemove<br>
+<br><b>function cSearch (jmeno: string; potvora: UkCreature): UkCreature;</b><br>
+viz i Search<br>
+<br><br><br><br>
+V unitě <b>MeziTab</b> jsou dvě převodní tabulky sloužící pro převod řetězce na číselnou konstantu. Jsou zde deklarovány 2 sady konstant. Jedna sada slouží při vytváření datové struktury ze souboru, ve funkcích rNew, iNew, cNew. Druhá sada slouží jako dekodér příkazů z příkazového řádku. Kařdá tabulka se musí zvlášt inicializovat. K tomu slouží procedure InitTabVstup(var T: pTab); a procedure InitTabPar(var T: pTab);<br>
+Převod je realizován funkcí function Preved(T: pTab; k: string): byte;<br><br><br>
+
+Unita <b>barvy</b> se mela starat o vsechny vystupy na obrazovku. Jsou v ni pouze procedury na změnu barvy, aby se v programu nemuselo vypisovat např.: textcolor(yellow) s procedury s parametrem string. Tyto procedury obsahují pouze změnu barvy a standartní proceduru write/writeln<br><br><br>
+
+Unita <b>infoFile</b> obsahuje pouze informativní text s popisem ovládání<br><br><br>
+
+Unita <b>Parser</b> - obsahuje tyto funkce:<br><br>
+<b>function openFile (var f: text; name: string): boolean;</b><br>
+funkce na otevření textového souboru f se jménem name, vrací true pokud otevření proběhlo úspěšně<br><br>
+<b>function UpString(s: string): string;</b><br>
+Velice využívaná funkce. Převede každý znak z řetězce string na velké písmeno a znak opět vrátí do řetězce. Např.: aHoj --) AHOJ<br><br>
+<b>function getTag(var f:text;var name: string;var fl: byte;var n: byte;var att: Attlist;var count:string):boolean;</b><br>
+Vlastní funkce na parsrování XML souboru. Načte vždy jeden tag a vrátí true pokud načtení proběhlo v pořádku. Používá další funkce, ale ty pro výsledné řešení nemají další význam. V proměných jsou tyto data:<br><b>name</b> - jmeno tagu<br><b>fl</b> - STARTTAG/ENDTAG/SINGLETAG<br><b>n</b> - pocet atributů<br><b>att</b> - pole od 1 do MAXATT záznamů 2 řetězců: name a value<br><b>count </b>- text před tagem<br><br><br>
+
+Vlastní program obsahuje funkci <b>Loadworld(f:text):UkRoom</b> Která vytvoří celou datovou strukturu místností / potvor / předmětů. Dále procedury pro vytvoření hlavní (Vaší) postavy a prácí s ní (přidávání / ubírání věcí do / z inventáře, používání předmětů,...). Dále jsou zde procedury rVypis, iVypis, cVypis pro vypisovani vlastnosti. Důležitá je procedura souboj. Je to kompletní soubojový systém s výpisem průběhu a následným přendáním vypadlých předmětů. Po skončení hry se volají procedury CloseWorld, která uvolňuje pamět místností / potvor / předmětů a procedura freeHero, ktera uvolni dynamicky alokovane promene u hrdiny (inventář). Procedury tvořící celé komunikační rozhraní s hráčem jsou <b>CtiVstup(var typ, hod: string);</b> a <b>DoAction (t,hod: string);</b> volané v tomto pořadí. Pro inicializaci celé hry je nutné zavolat proceduru <b>initGame</b> na kterou navazuje procedura <b>menu</b>.<br><br><br>
+
+
+<div align="right">Pro případné další otázky pište na <a href=mailto:mtrs@seznam.cz>email</a></div>
+
+</body>
+</html>

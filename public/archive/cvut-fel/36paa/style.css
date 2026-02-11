@@ -1,0 +1,53 @@
+body {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	padding-bottom: 2%;
+}
+
+p {
+	padding: 10px;
+}
+
+#main {
+	position: absolute;
+	padding: 0 10px 0 20px;
+}
+
+a {
+	text-decoration: none;
+	font-size: small;
+	font-weight: bold;
+}
+
+ul {
+	position: relative;
+	left: -10px;
+}
+
+img {
+	border: none;
+}
+
+table {
+	border:solid 1px;
+	padding: 1%;
+	margin: 1%;
+	font-size: 80%;
+}
+
+td {
+	border:solid 1px;
+	text-align: right;
+	padding-right: 10px;
+	padding-left: 20px;
+}
+
+th {
+	border:solid 1px;
+	text-align: right;
+	padding-right: 10px;
+	padding-left: 20px;
+}

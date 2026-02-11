@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36PAA - ulohy (Michal Trs)</title>
+</head>
+<body>
+   <h1>36PAA - Problém vážené splnitelnosti booleovské formule - simulované ochlazování</h1>
+
+   <div id="main">
+      <h2>Zadání</h2>
+      <p>
+         Je dána booleovská formule <span
+         style="font-style: italic;">F</span> proměnných <span
+         style="font-style: italic;">X</span>=(<span style="font-style: italic;">x</span><sub>1</sub>,
+
+         <span style="font-style: italic;">x</span><sub>2</sub>, ... , <span
+         style="font-style: italic;">x<sub>n</sub></span>) v
+         konjunktivní normální formě (tj. součin součtů).
+         Dále jsou dány celočíselné kladné
+         váhy <span style="font-style: italic;">W</span>=(<span
+         style="font-style: italic;">w</span><sub>1</sub>, <span
+         style="font-style: italic;">w</span><sub>2</sub>, ... , <span
+         style="font-style: italic;">w<sub>n</sub></span>).&nbsp; Najděte
+         ohodnocení <span style="font-style: italic;">Y</span>=(<span
+         style="font-style: italic;">y</span><sub>1</sub>, <span
+         style="font-style: italic;">y</span><sub>2</sub>, ... , <span
+         style="font-style: italic;">y<sub>n</sub></span>) proměnných <span
+         style="font-style: italic;">x</span><sub>1</sub>, <span
+         style="font-style: italic;">x</span><sub>2</sub>, ... , <span
+         style="font-style: italic;">x<sub>n </sub></span>tak, aby <span
+         style="font-style: italic;">F</span>(<span style="font-style: italic;">Y</span>)=1
+         a součet vah proměnných, které jsou ohodnoceny
+         jedničkou,&nbsp; byl maximální. <br>
+
+         <br>
+         <b>Je přípustné se omezit na formule, v nichž má
+         každá formule právě 3 literály (problém 3
+         SAT).</b> Takto
+         omezený problém je stejně těžký, ale možná
+         se lépe programuje a lépe se posuzuje obtížnost
+         instance (viz Selmanova prezentace v odkazech).
+      </p>
+
+      
+      <h2>Popis algoritmu</h2>
+         <p>
+         Z pokročilých iterativních metod jsem si vybral algoritmus simulované ochlazování.
+         Je popsán "vývojovými diagramy" na následujících obrázcích.
+         </p>
+
+         <table><tr>
+            <td><img src="algoritmus/simanel.png"/></td>
+            <td><img src="algoritmus/try.png"/></td>
+         </tr></table>
+         
+         <p>
+         Pokusím se algoritmus popsat slovně. Jedná se o 2 vnořené cykly. Na začátku je nastaveno
+         nějaké řešení a počáteční teplota, která se ve venkovním cyklu postupně snižuje.
+         Teplotou je dána ochota algoritmu přijmout horší řešení. Tím se může algoritmus vymanit
+         z lokálního minima. Ve vnitřním cyklu se hledá nové řešení. To je popsáno na obrázku jako
+         funkce "try". Náhodně vygenerujeme nové řešení (oproti úloze "Batoh" přijímáme i řešení, kdy
+         je formule nesplněná). Pokud je lepší než doposud nalezené, toto řešení přijmeme.
+         Pokud je horší tak jej přijmeme s určitou pravděpodobností, která je dána
+         aktuální teplotou a velikostí zhoršení ceny. Algoritmus končí pokud se teplota sníží na úroveň
+         teploty tuhnutí. Pro správnou funkci algoritmu je velice důležité nastavit parametry
+         (počáteční teplota, teplota tuhnutí, rychlost tuhnutí, velikost equilibria).
+         </p>
+         
+
+      <h2>Implementace</h2>
+         
+         
+         <h3>Formát vstupního souboru</h3>
+         <p>
+            Formát vstupního souboru jsem převzal od Martina Prchlíka. Oproti DIMACS CNF formátu obsahuje
+            váhy proměnných a nejlepší řešení dodané BruteForcem. Popis formátu (řádků):
+            <ul>
+               <li><b>1.</b> - prázdný řádek</li>
+               <li><b>2.</b> - správné řešení</li>
+               <li><b>3.</b> - počet_proměnných počet_klausulí počet_proměnných_v_klausuli</li>
+               <li><b>4 - n.</b> - jednotlivé klausule (číslo je index proměnné, číslováno od 1, pokud je číslo záporné znamená negovanou proměnnou</li>
+               <li><b>n+1</b> - váhy proměnných</li>
+            </ul>
+         <p>
+         
+         
+         <h3>Zdrojové kódy (C#)</h3>
+            <ul>
+               <li><a href="source/MPFormatInputReader.cs">MPFormatInputReader.cs</a> - Reader vstupního formátu, vrací třídu SAT</li>
+               <li><a href="source/Program.cs">Program.cs</a> - obalující kód pro experimenty, měření času a chyb</li>
+               <li><a href="source/SAT.cs">SAT.cs</a> - třída reprezentující data formule, váhy, metody pro vyhodnocení splnitelnosti a ohodnocení stavu</li>
+               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Algoritmus simulované ochlazování, v constructoru očekává třídu SAT a parametry simulovaného ochlazování</li>
+            </ul>
+            
+            
+         <h3>Ohodnocovací funkce <i>getGrant</i></h3>
+         <p>
+            Návrh této funkce je velice důležitý pro správnou funkci celého algoritmu. Jsou na ní kladeny tyto požadavky:
+            <ul>
+               <li>Zvýhodňovat proměnné s větší váhou</li>
+               <li>Znevýhodňovat nesplněné klausule</li>
+            </ul>
+            Implementoval jsem ji tak, že sečte váhy proměnných nastavených na <i>true</i> a od nich odečte maximální váhu proměnné pro každou nesplněnou klausuli.
+            Z toho vyplívá, že pokud je formule splněná vrací součet vah proměnných.
+         </p>
+               
+
+      <h2>Naměřené hodnoty a výsledky</h2>
+         <p>
+            Aby bylo možné správně nastavit parametry algoritmu je nutné experimentovat.
+            Při experimentech jsem sledoval graf průchodu stavovým prostorem, časovou náročnost a relativní chybu.
+            Pro výpočet relativní chyby jsem použil hodnoty ze vstupního souboru.
+            Z důvodu časové náročnosti mám k dispozici data pro 20 proměnných a 50, 75 a 90 klausulí.
+            Experimenty jsou shrnuty v následujících tabulkách a grafech.<br/><br/>
+            Pro přehlednost jsem použil tyto zkratky:<br/><br/>
+            <code>
+               T0 = počáteční teplota<br/>
+               Tf = teplota tuhnutí<br/>
+               dT = změna teploty<br/>
+               equ = equilibrium<br/>
+               NF = řešení nenalezeno<br/>
+               time = čas v ms<br/>
+               Avg (AvgErr) = průměrná relativní chyba výsledku z <b>k</b> měření<br/>
+               Best (BestErr) = nejnižší relativní chyba vybraná z <b>k</b> měření
+            </code>
+         </p>
+
+         <p>Pokud není uvedeno jinak, jsou nastaveny toto hodnoty: T0_k = 0.1,Tf = 1,dT = 0.9, equ_k = 1.
+         Algoritmus byl na každé instanci spuštěn 5x a výsledná relativní chyba a čas je průměr z výsledků algoritmu. Takto bylo postupováno pro každou instanci (50 instancí pro každou velikost problému).</p>
+         <p>
+            Teplota tuhnutí (Tf) a rychlost změny (dT) jsou zadány absolutně. Naproti tomu počáteční teplota (T0) a velikost equilibria (equ) jsou vztaženy k velikosti instance (měníme pouze multiplikativní konstantu) takto:<br/><br/>
+            <code>
+               T0 = T0_k * var_count * maxW;<br/>
+               equ = equ_k * var_count;<br/><br/>
+            </code>
+            kde <code>var_count</code> je počet proměnných a <code>maxW</code> je maximální váha proměnné.
+            
+            
+         </p>
+         <p>Měřil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance při napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+
+
+      <h3>Nastavení rychlosti ochlazování</h3>
+      <p>
+      Při tomto experimentu jsem měnil dT od 0.5 do 0.995
+      </p>
+      
+      <h4>Tabulka č.1</h4>
+      <table>
+         <tr><th rowspan="2">dT</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
+         <tr><td>0,995</td><td>0,00%</td><td>223,7</td><td>1,70%</td><td>0,20%</td><td>0,00%</td><td>275,9</td><td>2,90%</td><td>0,20%</td><td>0,80%</td><td>316,2</td><td>1,90%</td><td>0,80%</td></tr>
+         <tr><td>0,945</td><td>0,00%</td><td>17,3</td><td>4,40%</td><td>0,60%</td><td>0,40%</td><td>25,7</td><td>4,20%</td><td>1,80%</td><td>4,80%</td><td>27,7</td><td>1,50%</td><td>0,50%</td></tr>
+         <tr><td>0,898</td><td>0,00%</td><td>9,5</td><td>4,20%</td><td>0,70%</td><td>2,40%</td><td>13,6</td><td>4,20%</td><td>1,70%</td><td>5,20%</td><td>14,9</td><td>1,30%</td><td>2,10%</td></tr>
+         <tr><td>0,853</td><td>0,00%</td><td>6,3</td><td>6,50%</td><td>1,40%</td><td>1,60%</td><td>8,7</td><td>4,40%</td><td>3,70%</td><td>7,20%</td><td>10,1</td><td>1,30%</td><td>0,90%</td></tr>
+         <tr><td>0,81</td><td>0,00%</td><td>4,6</td><td>6,60%</td><td>2,70%</td><td>3,20%</td><td>6,4</td><td>3,80%</td><td>4,00%</td><td>9,60%</td><td>7,5</td><td>0,90%</td><td>0,70%</td></tr>
+         <tr><td>0,77</td><td>0,00%</td><td>4</td><td>7,20%</td><td>3,90%</td><td>5,20%</td><td>5,2</td><td>3,30%</td><td>4,30%</td><td>10,00%</td><td>6,2</td><td>0,50%</td><td>0,80%</td></tr>
+         <tr><td>0,731</td><td>0,00%</td><td>3,1</td><td>6,90%</td><td>4,30%</td><td>5,60%</td><td>4,4</td><td>3,60%</td><td>6,00%</td><td>11,60%</td><td>4,8</td><td>0,60%</td><td>3,50%</td></tr>
+         <tr><td>0,695</td><td>0,40%</td><td>2,9</td><td>5,50%</td><td>4,70%</td><td>6,80%</td><td>3,8</td><td>2,80%</td><td>4,70%</td><td>12,00%</td><td>4,1</td><td>0,70%</td><td>3,00%</td></tr>
+         <tr><td>0,66</td><td>0,00%</td><td>2,4</td><td>7,70%</td><td>5,00%</td><td>4,80%</td><td>3,3</td><td>3,50%</td><td>7,40%</td><td>13,20%</td><td>3,8</td><td>1,60%</td><td>6,20%</td></tr>
+         <tr><td>0,627</td><td>0,40%</td><td>2,3</td><td>9,00%</td><td>4,00%</td><td>6,80%</td><td>2,8</td><td>3,40%</td><td>5,90%</td><td>13,20%</td><td>3,4</td><td>0,90%</td><td>3,30%</td></tr>
+         <tr><td>0,596</td><td>0,80%</td><td>2</td><td>5,30%</td><td>4,30%</td><td>8,00%</td><td>3</td><td>3,30%</td><td>4,70%</td><td>14,40%</td><td>3,2</td><td>0,10%</td><td>0,60%</td></tr>
+         <tr><td>0,566</td><td>2,80%</td><td>1,9</td><td>5,90%</td><td>3,30%</td><td>9,20%</td><td>2,8</td><td>2,90%</td><td>6,90%</td><td>12,00%</td><td>2,8</td><td>0,90%</td><td>2,30%</td></tr>
+         <tr><td>0,538</td><td>2,00%</td><td>1,6</td><td>8,90%</td><td>8,00%</td><td>10,80%</td><td>2,3</td><td>2,70%</td><td>6,10%</td><td>12,80%</td><td>2,4</td><td>0,50%</td><td>2,20%</td></tr>
+         <tr><td>0,511</td><td>1,60%</td><td>1,5</td><td>10,10%</td><td>10,60%</td><td>10,80%</td><td>1,9</td><td>2,30%</td><td>9,00%</td><td>12,40%</td><td>2,4</td><td>1,00%</td><td>3,00%</td></tr>
+      </table>
+      
+      <h4>Grafy č.1</h4>
+      <table>
+         <tr>
+            <td><a href="grafy/Err-dt.html">relativní chyba</a></td>
+            <td><a href="grafy/nf-dt.html"># nenalezených stavů</a></td>
+            <td><a href="grafy/t-dt.html">časové složitost</a></td>
+            <td><a href="grafy/pruchod-dt.html">průchod stavovým prostorem</a></td>
+         </tr>
+         <tr>
+            <td><a href="grafy/Err-dt.html"><img src="grafy/small/Err-dt.png"></a></td>
+            <td><a href="grafy/nf-dt.html"><img src="grafy/small/nf-dt.png"></a></td>
+            <td><a href="grafy/t-dt.html"><img src="grafy/small/t-dt.png"></a></td>
+            <td><a href="grafy/pruchod-dt.html"><img src="grafy/small/pruchod_dt090.png"></a></td>
+         </tr>
+      </table>
+
+      
+      <h3>Nastavení velikosti equilibria</h3>
+
+      Při tomto experimentu jsem měnil equ_k od 1 do 10. Pouze připomenu, že velikost
+      equilibria je vztažená k velikosti instance a to takto: <code>equ = equ_k * var_count</code>.
+
+      <h4>Tabulka č.2</h4>
+      <table>
+         <tr><th rowspan="2">equ_k</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
+         <tr><td>1</td><td>0,00%</td><td>10,9</td><td>4,60%</td><td>0,50%</td><td>1,20%</td><td>13,1</td><td>3,30%</td><td>1,70%</td><td>6,00%</td><td>15,2</td><td>1,50%</td><td>0,90%</td></tr>
+         <tr><td>2</td><td>0,00%</td><td>19,5</td><td>3,40%</td><td>0,20%</td><td>0,00%</td><td>26,2</td><td>4,50%</td><td>3,00%</td><td>2,40%</td><td>30,1</td><td>2,00%</td><td>2,10%</td></tr>
+         <tr><td>3</td><td>0,00%</td><td>28,9</td><td>2,90%</td><td>0,20%</td><td>0,00%</td><td>39,2</td><td>4,50%</td><td>1,30%</td><td>2,40%</td><td>45</td><td>2,30%</td><td>1,40%</td></tr>
+         <tr><td>4</td><td>0,00%</td><td>38,8</td><td>3,10%</td><td>0,40%</td><td>0,00%</td><td>52,3</td><td>3,90%</td><td>1,10%</td><td>2,80%</td><td>60</td><td>1,80%</td><td>0,50%</td></tr>
+         <tr><td>5</td><td>0,00%</td><td>47,8</td><td>2,80%</td><td>0,30%</td><td>0,40%</td><td>65,1</td><td>3,40%</td><td>0,70%</td><td>3,20%</td><td>76,9</td><td>1,90%</td><td>1,10%</td></tr>
+         <tr><td>6</td><td>0,00%</td><td>57,4</td><td>2,00%</td><td>0,10%</td><td>0,00%</td><td>79,8</td><td>3,30%</td><td>1,10%</td><td>0,80%</td><td>90,6</td><td>1,80%</td><td>1,30%</td></tr>
+         <tr><td>7</td><td>0,00%</td><td>68,9</td><td>2,30%</td><td>0,20%</td><td>0,40%</td><td>93,1</td><td>3,60%</td><td>0,20%</td><td>1,20%</td><td>105,4</td><td>2,30%</td><td>0,80%</td></tr>
+         <tr><td>8</td><td>0,00%</td><td>77,5</td><td>2,40%</td><td>0,40%</td><td>0,00%</td><td>104,8</td><td>3,50%</td><td>1,20%</td><td>1,20%</td><td>122,3</td><td>2,30%</td><td>0,70%</td></tr>
+         <tr><td>9</td><td>0,00%</td><td>85,7</td><td>2,20%</td><td>0,30%</td><td>0,00%</td><td>119,6</td><td>3,50%</td><td>0,70%</td><td>2,80%</td><td>139,4</td><td>1,90%</td><td>0,50%</td></tr>
+         <tr><td>10</td><td>0,00%</td><td>97,9</td><td>2,00%</td><td>0,20%</td><td>0,40%</td><td>132,6</td><td>3,40%</td><td>0,80%</td><td>2,40%</td><td>157,5</td><td>2,00%</td><td>0,50%</td></tr>
+      </table>
+      
+      <h4>Grafy č.2</h4>
+      <table>
+         <tr>
+            <td><a href="grafy/Err-equ.html">relativní chyba</a></td>
+            <td><a href="grafy/nf-equ.html"># nenalezených stavů</a></td>
+            <td><a href="grafy/pruchod-equ.html">průchod stavovým prostorem</a></td>
+         </tr>
+         <tr>
+            <td><a href="grafy/Err-equ.html"><img src="grafy/small/Err-equ.png"></a></td>
+            <td><a href="grafy/nf-equ.html"><img src="grafy/small/nf-equ.png"></a></td>
+            <td><a href="grafy/pruchod-equ.html"><img src="grafy/small/pruchod_equ2.png"></a></td>
+         </tr>
+      </table>
+
+
+      <h3>Nastavení teploty tuhnutí</h3>
+
+      Při tomto experimentu jsem měnil Tf od 1 do 10.
+       
+      <h4>Tabulka č.3</h4>
+      <table>
+         <tr><th rowspan="2">Tf</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
+         <tr><td>1</td><td>0,00%</td><td>10,5</td><td>4,50%</td><td>0,90%</td><td>1,20%</td><td>13,6</td><td>4,00%</td><td>1,30%</td><td>5,20%</td><td>15,8</td><td>1,50%</td><td>1,20%</td></tr>
+         <tr><td>2</td><td>0,00%</td><td>8,6</td><td>5,60%</td><td>1,00%</td><td>1,60%</td><td>13</td><td>3,30%</td><td>2,30%</td><td>5,20%</td><td>13,3</td><td>1,80%</td><td>1,70%</td></tr>
+         <tr><td>3</td><td>0,00%</td><td>7,7</td><td>5,50%</td><td>1,00%</td><td>1,20%</td><td>11,9</td><td>3,20%</td><td>2,30%</td><td>6,00%</td><td>12,6</td><td>1,20%</td><td>1,40%</td></tr>
+         <tr><td>4</td><td>0,00%</td><td>7</td><td>5,00%</td><td>0,90%</td><td>1,20%</td><td>10,4</td><td>3,50%</td><td>0,70%</td><td>6,00%</td><td>11,7</td><td>1,40%</td><td>1,20%</td></tr>
+         <tr><td>5</td><td>0,00%</td><td>7,2</td><td>4,00%</td><td>0,50%</td><td>1,60%</td><td>9,8</td><td>5,00%</td><td>2,30%</td><td>5,20%</td><td>11,3</td><td>1,20%</td><td>0,40%</td></tr>
+         <tr><td>6</td><td>0,00%</td><td>6,5</td><td>4,60%</td><td>1,00%</td><td>2,00%</td><td>8,9</td><td>4,00%</td><td>1,90%</td><td>6,00%</td><td>10,3</td><td>1,70%</td><td>3,70%</td></tr>
+         <tr><td>7</td><td>0,40%</td><td>6</td><td>5,40%</td><td>2,40%</td><td>3,20%</td><td>9,4</td><td>3,30%</td><td>0,70%</td><td>5,60%</td><td>9,7</td><td>1,30%</td><td>1,00%</td></tr>
+         <tr><td>8</td><td>0,00%</td><td>5,6</td><td>7,10%</td><td>1,40%</td><td>2,00%</td><td>8,2</td><td>4,70%</td><td>2,30%</td><td>5,20%</td><td>9,4</td><td>1,30%</td><td>1,50%</td></tr>
+         <tr><td>9</td><td>0,00%</td><td>5,8</td><td>6,30%</td><td>1,90%</td><td>1,20%</td><td>8,5</td><td>4,70%</td><td>2,90%</td><td>5,60%</td><td>9,3</td><td>1,30%</td><td>1,20%</td></tr>
+         <tr><td>10</td><td>0,40%</td><td>5,6</td><td>6,60%</td><td>1,40%</td><td>2,00%</td><td>8,4</td><td>3,80%</td><td>1,50%</td><td>5,60%</td><td>9,2</td><td>1,40%</td><td>3,20%</td></tr>
+      </table>
+      
+      <h4>Graf č.3: Závislost relativní chyby na teplotě tuhnutí</h4>
+      <p><img src="grafy/Err-tf.png"/></p>
+
+
+      <h3>Nastavení počáteční teploty</h3>
+      
+      Při tomto experimentu jsem měnil T0 od 0,1 do 1. Pouze připomenu, že velikost
+      počáteční teploty je vztažena k velikosti instance a to takto: <code>T0 = T0_k * var_count * maxW</code>.
+
+      <h4>Tabulka č.4</h4>
+      <table>
+         <tr><th rowspan="2">T0_k</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
+         <tr><td>0,1</td><td>0,00%</td><td>9,9</td><td>4,90%</td><td>1,00%</td><td>1,20%</td><td>13</td><td>4,40%</td><td>2,00%</td><td>4,40%</td><td>15,1</td><td>1,30%</td><td>0,80%</td></tr>
+         <tr><td>0,2</td><td>0,00%</td><td>11</td><td>4,80%</td><td>0,40%</td><td>0,40%</td><td>15,1</td><td>3,60%</td><td>1,30%</td><td>5,60%</td><td>17</td><td>1,10%</td><td>2,80%</td></tr>
+         <tr><td>0,3</td><td>0,00%</td><td>11,3</td><td>5,40%</td><td>0,60%</td><td>0,80%</td><td>15,9</td><td>4,10%</td><td>1,80%</td><td>4,00%</td><td>18,1</td><td>1,50%</td><td>1,70%</td></tr>
+         <tr><td>0,4</td><td>0,00%</td><td>11,8</td><td>4,90%</td><td>1,00%</td><td>1,20%</td><td>16,4</td><td>3,70%</td><td>0,40%</td><td>6,40%</td><td>19,3</td><td>1,50%</td><td>1,00%</td></tr>
+         <tr><td>0,5</td><td>0,00%</td><td>11,9</td><td>5,00%</td><td>1,20%</td><td>2,80%</td><td>16,3</td><td>3,90%</td><td>1,70%</td><td>6,00%</td><td>19,5</td><td>1,40%</td><td>1,00%</td></tr>
+         <tr><td>0,6</td><td>0,00%</td><td>12,3</td><td>5,40%</td><td>0,60%</td><td>1,60%</td><td>17,6</td><td>4,70%</td><td>1,10%</td><td>5,60%</td><td>20,4</td><td>1,40%</td><td>0,90%</td></tr>
+         <tr><td>0,7</td><td>0,00%</td><td>12,6</td><td>5,00%</td><td>0,80%</td><td>2,00%</td><td>17,9</td><td>4,00%</td><td>2,20%</td><td>4,40%</td><td>21,4</td><td>1,50%</td><td>0,70%</td></tr>
+         <tr><td>0,8</td><td>0,00%</td><td>12,9</td><td>5,40%</td><td>0,80%</td><td>0,80%</td><td>17,3</td><td>4,70%</td><td>2,60%</td><td>5,20%</td><td>20,7</td><td>1,10%</td><td>1,00%</td></tr>
+         <tr><td>0,9</td><td>0,00%</td><td>12,9</td><td>5,00%</td><td>0,40%</td><td>1,20%</td><td>18,1</td><td>4,10%</td><td>1,30%</td><td>5,20%</td><td>21,1</td><td>1,80%</td><td>0,70%</td></tr>
+         <tr><td>1</td><td>0,00%</td><td>13,6</td><td>5,00%</td><td>0,40%</td><td>1,20%</td><td>18,5</td><td>3,90%</td><td>2,60%</td><td>5,20%</td><td>21,1</td><td>1,50%</td><td>1,80%</td></tr>
+      </table>
+
+      <h4>Grafy č.4</h4>
+      <table>
+         <tr>
+            <td><a href="grafy/Err-t0.html">relativní chyba</a></td>
+            <td><a href="grafy/nf-t0.html"># nenalezených stavů</a></td>
+            <td><a href="grafy/pruchod-t0.html">průchod stavovým prostorem</a></td>
+         </tr>
+         <tr>
+            <td><a href="grafy/Err-t0.html"><img src="grafy/small/Err-t0.png"></a></td>
+            <td><a href="grafy/nf-t0.html"><img src="grafy/small/nf-t0.png"></a></td>
+            <td><a href="grafy/pruchod-t0.html"><img src="grafy/small/pruchod_t0-05.png"></a></td>
+         </tr>
+      </table>
+
+
+      <h3>Sledování počtu nalezených řešení a relativní chyby na počtu spuštění algoritmu</h3>
+
+      Jelikož algoritmus simulované ochlazování je randomizovaný, dává při každém spuštění jiné výsledky.
+      Pokud chceme zlepšit výsledky, spustíme algoritmus vícekrát a z výsledků vybereme to nejlepší.
+      
+      <h4>Graf č.5: Závislost relativní chyby na počtu spuštění algoritmu</h4>
+      <p><img src="grafy/Err-repeat.png"/></p>
+      
+      <h4>Graf č.6: Závislost # nenalezených řešení na počtu spuštění algoritmu</h4>
+      <p><img src="grafy/nf-repeat.png"/></p>
+
+
+      <h2>Závěr</h2>
+         Algoritmus simulované ochlazování je poměrně snadný na implementaci.
+         Jako nejdůležitější krok vidím ve správném navrhnutí ohodnocovací funkce, tak aby algoritmus nutila ke správnému řešení.<br/> Vztažení parametrů k počtu proměnných a maximální váze se ukázalo správné. Pro instance, které byly k dispozici (20/50, 20/75, 20/91 - počet proměnných / počet klausulí), se ukázalo toto nastavení jako optimální:
+<ul>
+   <li>Počáteční teplota T0 = 0,1 * var_count * maxW;</li>
+   <li>Teplota tuhnutí Tf = 1</li>
+   <li>Rychlost ochlazování dT = 0,9</li>
+   <li>Velikost equilibria equ = 1 * var_count;</li>
+</ul>
+
+   Pro tyto hodnoty se nepodařilo nalézt řešení maximálně ve 14% případů a chyba oproti nejlepšímu řešení dodaného ze vstupu byla 2%. K těmto výsledkům velkou měrou přispívá opakování výpočtu každé instance 5x.<br/>
+         
+         U tohoto algoritmu (stejně jako u dynamického programování) dopředu známe počet iterací cyklu, tudíž můžeme odhadnout časovou náročnost. Proto u některých měření chybí časová závislost (chápavý čtenář ji z popisu algoritmu snadno odvodí).
+         
+         
+         Dále z provedených experimentů můžeme udělat tyto závěry:
+         <ul>
+         <li>Čím blíže dT k 1 tím menší relativní chyba, ale větší časová náročnost.</li>
+         <li>Počáteční teplotu je vhodné volit jako funkci velikosti instance.</li>
+         <li>Teplotu tuhnutí je nejlepší "vykoukat" z grafů pro závislost ceny na počtu prozkoumaných stavů. Pokud se cena nemění, mělo by dojít k zamrazení. To můžeme přímo ošetřit v programu a nemusíme tento parametr nastavovat.</li>
+         <li>Velikost equilibria, čím větší tím menší relativní chyba, ale větší časová náročnost.</li>
+         <li>Zvýšení počtu opakování výpočtu jedné instance zvyšuje procento nalezených řešení a snižuje chybu výsledku. Časovou náročnost lineárně zvyšuje.</li>
+         <li>Pro větší počet klausulí je obtížnější nalézt řešení</li>
+         </ul>
+
+
+   </div>
+
+
+</body>
+</html>

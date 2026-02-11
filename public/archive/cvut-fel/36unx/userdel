@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Semestralni prace z predmetu 36UNX = Operacni system UNIX
+# Michal Trs
+# Zadani c.8  
+# userdel
+
+# Error codes
+# 0 - success
+# 1 - can't update password file
+# 2 - bad command syntax
+# 6 - specified user doesn't exist
+# 8 - user currently logged in
+# 10 - can't update group file
+# 12 - can't remove home directory
+
+
+
+# nastaveni promenych
+
+del=0;
+#ROOT="/cygdrive/c/skola/6.semestr/36unx/semestralka";
+
+
+# nacist parametr
+while getopts r volba
+  do
+    case $volba in
+	    r)   del=1;;
+	    \?)  exit 2;;
+    esac
+  done
+
+shift `expr $OPTIND - 1`
+
+
+# ulozit username + kontrola zda existuje
+username=$1;
+if ! grep ^$username: "$ROOT/etc/passwd" 1>/dev/null; then
+  echo "specified user doesn't exist";
+  exit 6;
+fi
+
+
+# kontrola zda neni user zalogovan....
+if  who | grep "^${username}" >/dev/null; then
+  echo "user currently logged in";
+  exit 8;
+fi
+
+
+# pokud je zadan parametr -r smazat home
+if [ $del -ne 0 ]; then 
+  if ! rm -r `grep ^$username: "$ROOT/etc/passwd" | cut -d: -f6` 2>/dev/null; then
+    echo "can't remove home directory";
+    exit 12;
+  fi
+fi
+
+# najit a odebrat ze souboru /etc/passwd a /etc/shadow uzivatele
+
+if cp "$ROOT/etc/passwd" "$ROOT/etc/passwd-" 2>/dev/null; then 
+  sed /^"$username:"/d "$ROOT/etc/passwd-" > "$ROOT/etc/passwd";
+else
+  echo "can't update password file"; 
+  exit 1;
+fi
+
+if cp "$ROOT/etc/shadow" "$ROOT/etc/shadow-" 2>/dev/null; then
+  sed /^"$username:"/d "$ROOT/etc/shadow-" > "$ROOT/etc/shadow";
+fi
+
+if cp "$ROOT/etc/group" "$ROOT/etc/group-" 2>/dev/null; then
+  sed -e "s/:${username}$/:/" \
+      -e "s/:${username},/:/" \
+      -e "s/,${username}$//" \
+      -e "s/,${username},/,/g" "$ROOT/etc/group-" > "$ROOT/etc/group";  
+else  
+  echo "can't update group file"; 
+  exit 10;
+fi

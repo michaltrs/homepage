@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Website short description." />
+<meta name="keywords" content="website main keywords" />
+	<title>BlueNET - 36AMI projekt</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+<div id="header"><h1>BlueNET</h1></div>
+<div id="sub_header">36AMI projekt, CVUT FEL</div>
+<div id="main_content_top"></div>
+<div id="main_content">
+<div class="content">
+
+
+<!-- CONTENT -->
+<h2>Implementace</h2>
+<p>
+   <img src="images/bt_layers.png" alt="Bluetooth vrsvy" align="left"/>
+   Vyšli jsme z jednoduchého příkladu rs232d, který je distribuován s NutOS. Jedná
+   se o most mezi telnetem a sériovým portem. Při pohledu na Bluetooth modul a
+   signály RX, TX láká představa, že všechna data co do Bluetooth modulu pošlu
+   vyletí vzduchem. Tato představa je však zcela milná. Musíme být schopni navazovat spojení,
+   zvolit zabezpečení, nastavit jméno, zviditelnit se, ... . Proto je zde nutno
+   implementovat Bluetooth stack který je podobný OSI modelu.
+</p>
+<p>
+   Použili jsme Bluetooth stack z projektu BlueMP3, ze kterého jsme použili a portovaly vrstvy
+   HCI a L2CAP.
+</p>
+
+<h3>HCI</h3>
+<p>
+   HCI (Host Controller Interface) je nejnižší softwarová vrstva. Vrstva pracuje s různými
+   druhy paketů. Směrem dolů komunikuje s Bluetooth modulem přes uart, který je již v NutOS
+   implementován. Stačí pouze nastavit správnou rychlost (115 200 kb/s). Pak stačí zavolat funkci
+   <code>hci_init()</code>. V ní je realizováno počáteční nastavení modulu
+   (reset, zabezpečení [pin], nastavení jména, zviditelnění se, ...).
+   Vyšší vrstvě je předána callback funkce <code>bool_t hci_event_callback(hci_event_t *event)</code>.
+</p>
+
+<h3>L2CAP</h3>
+<p>
+   L2CAP (Logical Link Control and Adaptation Protocol) je obdobou UDP. Umožňuje vyšším protokolům
+   (RFCOMM, SDP, vlastním) používat Bluetooth komunikaci nezávisle na sobě prostřednictvím portů.
+   Stejně jako u UDP není garantováno 100% doručení.
+   Vyšším vrstvám (programátorovy) poskytuje funkce pro příjem a odesílání paketů.
+</p>
+<ul>
+   <li><code>void l2cap_receive(hci_l2con_t *l2con, u08_t *buffer, u16_t len)</code></li>
+   <li><code>u08_t l2cap_receive_u08(hci_l2con_t *l2con)</code></li>
+   <li><code>void l2cap_send(hci_l2con_t *l2con, void *buffer, u16_t len)</code></li>
+</ul>
+
+
+<h3>Aplikační vrstva</h3>
+<p>
+   Možné řešení je implementovat standardní vrstvy SDP a RFCOMM a pak používat virtuální sériový port.
+   My však řekli ne. Zvolili jsme vlastní PSM port APP_PSM 0x1023 (definováno v hci_callback.h) a používáme
+   přímo l2cap funkce send a receive.
+</p>
+<p>
+   V samotném programu (souboru bt2tcp.c) jsou 2 vlákna. Hlavní které nastaví uart, Ethernet,
+   inicializuje Bluetooth modul, čeká na TCP spojení a realizuje vlastní přenos dat z TCP do L2CAP funkcí
+   <code>void eth2bt()</code>. Druhé vlákno realizuje přenos dat z L2CAP vrstvy do TCP voláním funkce
+   <code>void bt2eth()</code>. Tato funkce volá <code>hci_process(HCI_PROCESS_IDLE)</code>, která přes již
+   zmíněnou callback funkci kopíruje data do otevřeného TCP streamu.
+</p>
+
+<h2>Ladění</h2>
+<p>
+   Pro jednoduší ladění při vývoji a experimentech jsou použity debug makra / funkce (soubory debug.h a debug.c)
+   která vypisují informace na připojený telnet terminál. Snadným zakomentováním <code>#define DEBUG</code>
+   v souboru debug.h vypneme ladící výpisy. Musíme si uvědomit, že režije ladících výpisů je poměrně velká
+   a to způsobuje chyby (procesor nestíhá) při Bluetooth komunikaci. A proto pro korektní běh testovací aplikace
+   BlueNET je nutné vypnout ladící výpisy.
+   vypnuty.
+</p>
+
+<h2>Testovací aplikace</h2>
+<p>
+   Pro otestování jsme stvořili (upravili) Linuxovou utilitku, která demonstruje obousměrné spojení s BlueNET.
+   Pro zkompilování a běh je vyžadována BlueZ knihovna. Spouští se s 2 parametry <code>l2send bdaddr file</code>,
+   kde <code>bdaddr</code> je "MAC" adresa Bluetooth modulu a <code>file</code> je soubor, který na vyžádání
+   poskytuje. Rozeznává 2 (respektive 3) příkazy.
+</p>
+<ul>
+   <li>file - pošle soubor zadaný jako parametr</li>
+   <li>exit - odpoví 'sayonara' a odpojí se od Bluetooth</li>
+   <li>'cokoli jiného' - odpoví 'Unknown command' a očekává další příkaz</li>
+</ul>
+<p>
+   Tyto příkazy očekává od L2CAP vrstvy (tj. od BlueNET firmare). Nejlepší způsob je připojit se k modulu pomocí
+   telnet klienta putty na adresu 192.168.1.100:23.
+</p>
+<p>
+   <a href="video/telnet.avi">Videozáznam</a> telnet komunikace demonstrující použití.
+</p>
+<!-- CONTENT END -->
+
+
+<!-- MENU -->
+</div>
+<div class="menu">
+<div class="menu_title">Menu</div>
+<ul>
+<li><a href="index.html" class="menu_link">Cíle projektu</a></li>
+<li><a href="pozadavky.html" class="menu_link">Požadavky</a></li>
+<li><a href="download.html" class="menu_link">Stáhnout</a></li>
+<li><a href="howto.html" class="menu_link">Jak postupovat</a></li>
+<li><a href="prog.html" class="menu_link">Implementace</a></li>
+<li><a href="autori.html" class="menu_link">Autoři</a></li>
+</ul>
+</div>
+<!-- MENU END -->
+
+
+<!-- FOOTER -->
+<div id="clear"></div>
+</div>
+<div id="main_content_bottom"></div>
+<div id="footer"><strong>Copyright &copy; 2007</strong> | <a href="http://www.feld.cvut.cz">CVUT FEL</a> | <b>Design by</b> <a href="http://www.pikanai.com">Pikanai.com</a></div>
+</div>
+<!-- FOOTER END -->
+
+</body>
+</html>

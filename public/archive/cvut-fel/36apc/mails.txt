@@ -1,0 +1,107 @@
+Dobry den,
+tak jsme zas zadreli a udelali program jak jste pozadoval.
+Funkce je nasledujici.
+Data prijimana ze serioveho portu (COM_RX_*) jsou po 4B ukladana do SRAM
+(GPS_TX_*). Pokud prijde znak 'q' dosud neulozeny blok necelych 4B je zahozen
+a data ze SRAM ((SRAM_RX_*)) jsou posilana na COM (COM_TX_*).
+
+Po dohode s kolegou od SRAM by mela SRAM fungovat takto:
+Pomoci generic nastavit velikost prenaseneho bloku dat (v tomto pripade 4).
+CPU simuluje GPS modul a tlaci data z COM do SRAM. SRAM od CPU (SRAM_TX_*)
+prijima pouze prikaz poslani vsech dosud ulozenych dat ("A5"). Po prijeti
+tohoto prikazu zacne tlacit data na SRAM_RX_*. Kazdy 4B blok dat je nasledovan
+bud hodnotou 0 = budou nasledovat dalsi data, nebo hodnotou A5 = konec prenosu
+
+
+         GPS_TX_*  |---------|     COM_RX_*      |---------|
+      <------------|  CPU    |<------------------|  COM    |
+      |            |         |                   |         |
+      |            |         |------------------>|         |
+      |            |---------|     COM_TX_*      |---------|
+      ·               ^   |
+  |---------|SRAM_RX_*|   |
+  |  SRAM   |---------+   |
+  |         |             |
+  |         |<------------+
+  |---------|    SRAM_TX_*
+
+
+Nedelali jsme HW simulaci jak jste pozadoval, protoze nekomunikujeme primo s
+vnejsim svetem, ale se sbernicema. Proto jsme udelali testbench. Prijme z COM
+5B = {1,2,A,B,C} a 'q'. Prvni 4B posle na GPS_TX_* (tj. do SRAM). Po prijeti
+'q' z COM, posle prikaz "A5" do SRAM_TX_* a ta vysype 4B a "A5". 4B CPU
+prubezne odesila zpet na COM.
+
+S pozdravem
+Michal Trs a Milos Hrdy
+
+
+
+
+
+Dobry vecer,
+tak jsme zas zadreli na CPU. Dobre zpravy jsou:
+1) misto jedne BlockRam 1Kx18 jsme to ohnuli na 5 x BlockRam 1Kx4. Posledni 2b z
+posledni BlockRam jsou nezapojene, ale to nevadi.
+
+2) napsali jsme automaticky konvertor, ktery z vystupu assemberu kcpsm3
+vygeneruje .vhd soubor s 5ti BlockRam a naplni je spravnym obsahem
+(odsimulovano v ModelSimu). Konvertor je v adresari "roms", je napsany pro bash
+a gawk (odzkouseno v Cygwinu). Jako argument se zadava jmeno souboru se
+zdrojovym kodem pro assembler bez pripony. Priklad spusteni : $>roms/_make.sh
+APP_ROM
+
+3) Prepinani pameti se da simulovat v pohode v ModelSimu, je nutne akorat
+prelozit APP_ROM a SPED_ROM (posilame je jiz prelozene).
+
+4) Problem nebyl jen v pameti programu, ale jeste v samotnem kcpsm3. Pouzival
+DistMem 64x1, ktera ve Spartanu2E take neni. Ohli jsme kod kcpsm3, tak ze jsme
+zapojili 2x DistMem 32x1 a multiplexujem vystup a signal WE pomoci nejvyssiho
+bitu adresy.
+
+Spatna zprava je:
+
+1)
+ Speed Grade: -6
+   Minimum period: 21.379ns (Maximum Frequency: 46.775MHz)
+   Minimum input arrival time before clock: 9.553ns
+   Maximum output required time after clock: 6.514ns
+   Maximum combinational path delay: No path found
+
+2) Dodrzeli jsme casovy harmonogram, ale museli jsme drit prescas vyhrazeny
+rozvrharem x2.
+
+s pozdravem
+Michal Trs a Milos Hrdy
+
+
+Cituji z emailu od Martin Danek <danek@fel.cvut.cz>:
+
+> > Dobry den,
+> >
+> > jak jsem rikal na cviceni, podivejte se, jake BRAM jsou ve Spartan2. Pak
+> > si najdete soubor ROM_form.vhd a prepiste v nem na prislusnem radku typ
+> > generovane BRAM (pozor na syntaxi, at si to nerozbijete).
+> >
+> > Napiste, jak jste pochodili.
+> >
+> >    M. Danek
+> >
+> >
+> > Michal Trs wrote:
+> >
+>> > >Dobry den,
+>> > >narazili jsme na problem pri mapovani ROM pameti prgramu do Spartana 2E.
+>> > >Problem je v tom z kompilatoru PicoAssembleru vypadne VHDL komponenta ve
+>> > >ktere je instancovana RAMB16_S18 ktera v Spartanu 2E neni. Zkouseli jsme
+>> > >CPU s pametma namapovat do Spartana 3E a to jde bez problemu.
+>> > >
+>> > >Predem dekujem za radu jak dal pokracovat.
+>> > >
+>> > >Michal Trs a Milos Hrdy
+>> > >
+>> > >
+> >
+> >
+
+

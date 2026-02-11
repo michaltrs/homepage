@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Sběrnice</title>
+  </head>
+  
+  <style>
+   body {
+   	font-family: trebuchet ms, verdana, arial, tahoma;
+   	font-size: 90%;
+   	color: #555;
+   	background-color: white;
+   }
+
+   h1 { 
+   	font-size: 180%;
+   	text-align: center;
+   }
+
+   h2 { 
+   	font-size: 150%;
+   	border-bottom: solid;
+   	border-width: 1px;
+   	border-color: Gray;
+   	width: 80%;
+   }
+   
+   h3 { 
+   	font-size: 120%;
+   	border-bottom: solid;
+   	border-width: 1px;
+   	border-color: Gray;
+   	width: 60%;
+   }
+  
+   .ohr {
+      border: 1px dashed black;
+   }
+  
+   .ohr th {
+      padding: 0px 5px 0px 5px;
+      border: 1px solid black;
+   }
+   
+   .ohr td {
+      padding: 0px 5px 0px 5px;
+      border: 1px solid black;
+   }
+   
+   .bgr { background-color: #E7B865;  }
+   
+   .bgg { background-color: #A7FF5F;  }
+   
+   .bgb { background-color: #99BAFF;  }
+  
+  </style>
+  
+  <body>
+  <h1>Sběrnice</h1>
+  
+  <h2>Zadání</h2>
+  <p>
+   Pozorujte realizaci a zjistěte dynamické vlastnosti (stat. časová analýza) realizace sběrnice různé délky na architektuře Xilinx Viretx.
+  </p>
+  
+  <h2>Náš tým</h2>
+  <ul>
+   <li>Tomáš Dedek</li>
+   <li>Miloš Hrdý</li>
+   <li>Michal Trs</li>
+  </ul>
+  
+  
+  <h2>Postup řešení</h2>
+  <p>
+   Pro měření na sběrnici uvnitř FPGA jsme napsali jednoduchý design a použili <b>Xilinx PACE</b> pro přiřazení pinů k signálum.
+   Poté jsme spustily Place & Route. Výsledné zpoždění na sběrnici je nejlépe vidět z "Asynchronous Delay Report".
+  </p>
+  
+  <h3>Testované Obvody</h3>
+  <ul>
+   <li>Virtex xcv600 - 6bg432</li>
+   <li>Virtex2 xc2v3000 - bf957</li>
+   <li>Virtex4 xc4vlx80 - ff1148</li>
+   <li>Spartan2 xc2s150 - fg456</li>
+  </ul>
+  
+  
+  <h2>Testovací design</h2>
+  <ul>
+    <b>library</b> IEEE;<br>
+    <b>use</b> IEEE.STD_LOGIC_1164.<b>all</b>;<br><br>
+    <b>entity</b> sbernice <b>is</b>
+    <ul>
+      <b>port</b>(
+      <ul>
+        INPUT: <b>in</b> <span id="type">std_logic_vector</span>(1 <b>downto</b> 0);<br>
+        OUTPUT: <b>out</b> <span id="type">std_logic_vector</span>(1 <b>downto</b> 0)
+      </ul>
+      );
+      
+    </ul>
+    <b>end</b> sbernice;<br><br>
+    
+    <b>architecture</b> Behavioral <b>of</b>sbernice<b> is</b><br>
+    <b>begin</b>
+    <ul>
+      OUTPUT <= INPUT;      
+    </ul>
+    <b>end</b> Behavioral;
+  </ul>
+  
+  
+  <h2>Rozložení pinů na pouzdru FPGA</h2>
+  <table>
+   <tr>
+      <td><a href="img/Virtex1-pin.png"><img src="img/prev/Virtex1-pin.jpg"></a></td>
+      <td><a href="img/Virtex2-pin.png"><img src="img/prev/Virtex2-pin.jpg"></a></td>
+      <td><a href="img/Virtex4-pin.png"><img src="img/prev/Virtex4-pin.jpg"></a></td>
+      <td><a href="img/Spartan2-pin.png"><img src="img/prev/Spartan2-pin.jpg"></a></td>
+   </tr>   
+   <tr>
+      <td>Virtex xcv600 - 6bg432</td>
+      <td>Virtex2 xc2v3000 - bf957</td>
+      <td>Virtex4 xc4vlx80 - ff1148</td>
+      <td>Spartan2 xc2s150 - fg456</td>
+   </tr>
+  <table>
+  
+  
+  <h2>Ukázka architektury FPGA</h2>
+  <table>
+   <tr>
+      <td><a href="img/Virtex1-arch.png"><img src="img/prev/Virtex1-arch.jpg"></a></td>
+      <td><a href="img/Virtex2-arch.png"><img src="img/prev/Virtex2-arch.jpg"></a></td>
+      <td><a href="img/Spartan2-arch.png"><img src="img/prev/Spartan2-arch.jpg"></a></td>
+   </tr>   
+   <tr>
+      <td>Virtex xcv600 - 6bg432</td>
+      <td>Virtex2 xc2v3000 - bf957</td>
+      <td>Spartan2 xc2s150 - fg456</td>
+   </tr>
+  <table>
+  
+  
+  <h2>Odhad zpoždění po syntéze (Synthesis report - Default path analysis)</h2>
+  <table class="ohr">
+     <tr>
+      <th>Virtex xcv600 - 6bg432</th>
+      <th>Virtex2 xc2v3000 - bf957</th>
+      <th>Virtex4 xc4vlx80 - ff1148</th>
+      <th>Spartan2 xc2s150 - fg456</th>
+     <tr>
+     <tr>
+      <td>6.590 ns</td>
+      <td>4.779 ns</td>
+      <td>4.932 ns</td>
+      <td>6.479 ns</td>
+     </tr>
+  </table>
+  
+  <h2>Zpoždění implemetovaného designu (place & route -Asynchronous delay report)</h2>
+  
+  <h3>Virtex xcv600 - 6bg432</h3>      
+    <table class="ohr">
+       <tr><th>input 0</th><th>input 1</th><th>output 0</th><th>output 1</th><th>path delay 0 [ns]</th><th>path delay 1 [ns]</th></tr>
+       <tr class="bgr"><td>B18</td><td>C18</td><td>D18</td><td>B17</td><td>0.695</td><td>0.695</td></tr>
+       <tr class="bgg"><td>B18</td><td>D18</td><td>C18</td><td>B17</td><td>1.060</td><td>1.179</td></tr>
+       <tr class="bgb"><td>G30</td><td>H30</td><td>H3</td><td>H2</td><td>3.283</td><td>3.306</td></tr>
+       <tr><td>M3</td><td>N3</td><td>B8</td><td>B9</td><td>3,045</td><td>4,500</td></tr>
+       <tr><td>M3</td><td>N3</td><td>C27</td><td>C28</td><td>4.919</td><td>5.951</td></tr>
+       <tr><td>M3</td><td>N3</td><td>M31</td><td>N31</td><td>3.524</td><td>3.306</td></tr>
+       <tr><td>D3</td><td>C2</td><td>AH30</td><td>AJ30</td><td>7.663</td><td>7.670</td></tr>      
+    </table>
+  
+  <h3>Virtex2 xc2v3000 - bf957</h3>
+     <table class="ohr">
+       <tr><th>input 0</th><th>input 1</th><th>output 0</th><th>output 1</th><th>path delay 0 [ns]</th><th>path delay 1 [ns]</th></tr>
+       <tr class="bgr"><td>C11</td><td>B9</td><td>C10</td><td>B7</td><td>1.068</td><td>0.825</td></tr>
+       <tr class="bgg"><td>C11</td><td>C10</td><td>B9</td><td>B7</td><td>0.587</td><td>0.568</td></tr>
+       <tr class="bgb"><td>G27</td><td>H27</td><td>D1</td><td>E1</td><td>4.411</td><td>4.091</td></tr>
+       <tr><td>A9</td><td>A10</td><td>A11</td><td>A12</td><td>1.431</td><td>1.390</td></tr>
+       <tr><td>A9</td><td>A10</td><td>M26</td><td>M27</td><td>4.963</td><td>4.696</td></tr>
+       <tr><td>AF16</td><td>AG16</td><td>AF17</td><td>AG17</td><td>1.218</td><td>1.218</td></tr>
+       <tr><td>AK3</td><td>AK4</td><td>A27</td><td>A28</td><td>6.473</td><td>5.985</td></tr>
+     </table>
+
+  <h3>Virtex4 xc4vlx80 - ff1148</h3>
+     <table class="ohr">
+       <tr><th>input 0</th><th>input 1</th><th>output 0</th><th>output 1</th><th>path delay 0 [ns]</th><th>path delay 1 [ns]</th></tr>
+       <tr><td>A5</td><td>A6</td><td>B5</td><td>B6</td><td>1.314</td><td>1.314</td></tr>
+       <tr><td>A5</td><td>A6</td><td>J34</td><td>H34</td><td>6.989</td><td>6.611</td></tr>
+       <tr><td>AP4</td><td>AJ1</td><td>D34</td><td>A31</td><td>7.095</td><td>6.660</td></tr>
+     </table>
+  
+  <h3>Spartan2 xc2s150 - fg456</h3>
+      <table class="ohr">
+         <tr><th>input 0</th><th>input 1</th><th>output 0</th><th>output 1</th><th>path delay 0 [ns]</th><th>path delay 1 [ns]</th></tr>
+         <tr class="bgr"><td>A3</td><td>A4</td><td>B4</td><td>E6</td><td>0.550</td><td>0.524</td></tr>
+         <tr class="bgg"><td>C16</td><td>D15</td><td>A17</td><td>E15</td><td>0.882</td><td>0.941</td></tr>
+         <tr class="bgb"><td>G4</td><td>G3</td><td>F22</td><td>G19</td><td>1.794</td><td>1.794</td></tr>
+         <tr><td>T1</td><td>U1</td><td>C22</td><td>D22</td><td>4.130</td><td>4.062</td></tr> 
+      </table>
+  
+  
+  <h2>Ukázky naroutovaných designů</h2>
+  <table>
+   <tr>
+      <td><a href="img/Virtex1-tech2.png"><img src="img/prev/Virtex1-tech2.jpg"></a></td>
+      <td><a href="img/Virtex2-tech2.png"><img src="img/prev/Virtex2-tech2.jpg"></a></td>
+      <td><a href="img/Virtex4-tech.png"><img src="img/prev/Virtex4-tech.jpg"></a></td>
+      <td><a href="img/Spartan2-tech2.png"><img src="img/prev/Spartan2-tech2.jpg"></a></td>
+   </tr>   
+   <tr>
+      <td>Virtex xcv600 - 6bg432</td>
+      <td>Virtex2 xc2v3000 - bf957</td>
+      <td>Virtex4 xc4vlx80 - ff1148</td>
+      <td>Spartan2 xc2s150 - fg456</td>
+   </tr>
+  <table>
+  
+  
+  <h2>Graf - doba zpoždění signálu na vzdálenosti</h2>
+  <img src="img/graf.png"/>
+  
+  <h2>Souhrn měření</h2>
+  <table class="ohr">
+     <tr>
+      <th>Device</th>
+      <th>Virtex xcv600 - 6bg432</th>
+      <th>Virtex2 xc2v3000 - bf957</th>
+      <th>Virtex4 xc4vlx80 - ff1148</th>
+      <th>Spartan2 xc2s150 - fg456</th>
+     </tr>
+     <tr>
+      <th>Default path analysis [ns]</th>
+      <td>6.590</td>
+      <td>4.779</td>
+      <td>4.932</td>
+      <td>6.479</td>
+     </tr>
+     <tr>
+      <th>Asynchronous delay report [ns]</th>
+      <td>7.670</td>
+      <td>6.473</td>
+      <td>7.095</td>
+      <td>4.130</td>
+     </tr>
+  </table>
+  
+  </body>
+</html>

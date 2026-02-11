@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36PAA - ulohy (Michal Trs)</title>
+</head>
+<body>
+   <h1>36PAA - Experimentální hodnocení algoritmů pro řešení problému batohu</h1>
+
+   <div id="main">
+      <h2>Zadání</h2>
+      <ul>
+         <li>Prozkoumejte citlivost metod řešení problému batohu na parametry instancí generovaných generátorem náhodných instancí. Máte-li podezření na další závislosti, modifikujte zdrojový tvar generátoru.</li>
+         <li>Na základě zjištění navrhněte a proveďte experimentální vyhodnocení kvality řešení a výpočetní náročnosti.</li>
+         <li>Pokud možno, prezentujte algoritmy jako body v ploše, jejíž souřadnice jsou výše uvedená kritéria.</li>
+      </ul>
+      
+      
+      <h2>Postup experimentu</h2>
+      <p>
+         Nejprve jsem sjednotil úlohy <a href="../batoh1">Batoh 1</a> a <a href="../batoh2">Batoh 2</a> do jediného <a href="source/Batoh-experiment.zip">projektu</a>. Přidal jsem druhý výstup do kterého se ukládají průměrné hodnoty počtu operací v případě exaktních metod a relativních chyb v případě heuristik. <br/>Pro generování instancí jsem použil <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">Webový generátor instancí problému batohu</a>. V předešlých úlohách jsme porovnávali výpočetní náročnost algoritmů v závislosti na velikosti instance. Proto jsem se soustředil na získání závislosti výpočetní náročnosti a chyby v závislosti na poměrné kapacitě batohu a granularitě vkládaných věcí. Pro experimenty jsem použil toto nastavení (pokud není uvedeno jinak):<br/>
+         <tt>Velikost instance: 20, Počet instancí: 50, Maximální váha věci: 100, Maximální cena věci: 250</tt>
+      </p>
+
+
+      <h2>Naměřené hodnoty a výsledky</h2>
+      <p>V tabulce a grafech jsou zobrazeny průměrné hodnoty.</p>
+      
+      <h3>Tabulka: Závislost výpočetní náročnosti na kapacitě batohu (pro velikost instance = 15)</h3>
+
+      <table>
+         <tr><th>poměr sumární váhy ke kapacitě batohu / algoritmus</th><th>BF</th><th>B&B</th><th>Dynamické prog.</th><th>GP</th></tr>
+            <tr><td>0,1</td><td>345,5</td><td>304,2</td><td>1137</td><td>15</td></tr>
+            <tr><td>0,2</td><td>1817,4</td><td>1131,3</td><td>2238</td><td>15</td></tr>
+            <tr><td>0,3</td><td>5932,9</td><td>2566,1</td><td>3606</td><td>15</td></tr>
+            <tr><td>0,4</td><td>14287,2</td><td>3322,5</td><td>4387,5</td><td>15</td></tr>
+            <tr><td>0,5</td><td>21961,7</td><td>3187,8</td><td>5793</td><td>15</td></tr>
+            <tr><td>0,6</td><td>28282,3</td><td>2664,5</td><td>7099,5</td><td>15</td></tr>
+            <tr><td>0,7</td><td>31672,4</td><td>1178,9</td><td>8038,5</td><td>15</td></tr>
+            <tr><td>0,8</td><td>32642,6</td><td>539,7</td><td>9402</td><td>15</td></tr>
+            <tr><td>0,9</td><td>32760,5</td><td>285,5</td><td>10243,5</td><td>15</td></tr>
+      </table>
+      
+      <p>Dle mého názoru nemá praktický význam zde uvádět veškeré naměřené hodnoty. Daleko lepší vypovídající hodnotu mají grafy, které následují. <br/>Za zmínku pouze stojí porovnání výpočetní složitosti Hrubé síly (BF) s ostatními algoritmy.</p>
+
+
+
+
+      <h3>Graf 1: Závislost výpočetní náročnosti na kapacitě batohu (pro velikost instance = 15)</h3>
+      Nastavení generátoru: <tt>Velikost instance: 15, Počet instancí: 10, Maximální váha věci: 100, Maximální cena věci: 100</tt>
+      <p><img src="grafy/slozitost-pomer_vah.png" alt="Závislost výpočetní náročnosti na kapacitě batohu"/></p>
+      
+      <h3>Graf 2: Závislost výpočetní náročnosti na kapacitě batohu (pro velikost instance = 20)</h3>
+      <p><img src="grafy/slozitost-pomer_vah-20.png" alt="Závislost výpočetní náročnosti na kapacitě batohu"/></p>
+      
+      <h3>Graf 3: Závislost výpočetní náročnosti na granulritě instance (převaha malých věcí)</h3>
+      <p>Charakter granularity nastaven na "Více malých věcí".</p>
+      <p><img src="grafy/slozitost-granularita-maly.png" alt="Závislost výpočetní náročnosti na granulritě instance (převaha malých věcí)"/></p>
+      
+      <h3>Graf 4: Závislost výpočetní náročnosti na granulritě instance (převaha velkých věcí)</h3>
+      <p>Charakter granularity nastaven na "Více velkých věcí".</p>
+      <p><img src="grafy/slozitost-granularita-velky.png" alt="Závislost výpočetní náročnosti na granulritě instance (převaha velkých věcí)"/></p>
+      
+      <h3>Graf 5: Závislost relativní chyby na kapacitě batohu (pro velikost instance = 15)</h3>
+      <tt>Velikost instance: 15, Počet instancí: 10, Maximální váha věci: 100, Maximální cena věci: 100</tt>
+      <p><img src="grafy/chyba-pomer_vah.png" alt="Závislost relativní chyby na kapacitě batohu (pro velikost instance = 15)"/></p>
+      
+      <h3>Graf 6: Závislost relativní chyby na kapacitě batohu (pro velikost instance = 20)</h3>
+      <p><img src="grafy/chyba-pomer_vah-20.png" alt="Závislost relativní chyby na kapacitě batohu (pro velikost instance = 20)"/></p>
+      
+      <h3>Graf 7: Závislost relativní chyby na granularitě instance</h3>
+      <p><img src="grafy/chyba-granularita.png" alt=""/></p>
+      
+      
+      
+
+
+      <h2>Závěr</h2>
+      <p>
+         Z grafu 1 a 2 je dobře patrné, že algoritmus větví a hranic (B&B) dosahuje nejhorší výpočetní náročnosti pokud je poměr sumární váhy ke kapacitě batohu roven 0,3 až 0,5.
+         Dále je patrná lineární závislost výpočetní náročnosti dynamického programovaní. Ta je vypočtena jako rozměr pole, tj. kapacita x počet věcí. Počet věcí je konstantní, ale mění se kapacita batohu, címž je ovlivněno měření. Pokud by generátor zachoval kapacitu konstantní, byla by i závislost konstantní.<br/>
+         Chyba heuristiky se zmenšuje s rostoucím poměrem sumární váhy ke kapacitě batohu. Naproti tomu o závislosti chyby heuristiky na granularitě nemůžeme z provedeného experimentu nic usoudit, hodnoty jsou téměř náhodné.
+      </p>
+
+   </div>
+
+
+</body>
+</html>

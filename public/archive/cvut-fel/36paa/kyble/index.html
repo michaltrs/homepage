@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36PAA - ulohy (Michal Trs)</title>
+</head>
+<body>
+   <h1>36PAA - Problém kýblů</h1>
+
+   <div id="main">
+      <h2>Zadání</h2>
+      <p>
+         Navrhněte a implementujte heuristiku řešící zobecněný problém dvou kýblů.
+         Heuristiku otestujte na všech následujících příkladech a srovnejte
+         s prohledáváním stavového prostoru do šířky (BFS).
+         Volitelně srovnejte i s prohledáváním do hloubky (DFS).
+         Zvolenou heuristiku popište ve zprávě.
+      </p>
+
+      <h2>Definice problému</h2>
+      <p>
+         K dispozici jsou dva kýble (předem daných obecně rozdílných objemů), vodovodní kohoutek a kanál. Na počátku jsou oba kýble prázdné. Vaším úkolem je docílit toho, aby v jednom kýblu byla voda o předem stanoveném objemu, přičemž můžete pouze naplnit plný kýbl z kohoutku, vylít celý kýbl do kanálu a přelít jeden kýbl do druhého tak, aby druhý kýbl nepřetekl.
+         Problém lze zobecnit tím, že připustíme užití většího počtu kýblů, aby na počátku řešení byla v kýblech nějaká voda, a že předepíšeme koncový objem vody v každém kýblu.
+      </p>
+
+      <h2>Implementace</h2>
+      <p>
+         Úlohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Vstupní
+         data jsou součástí kódu a výsledky jsou vypisovány na standardní
+         výstup. Základem řešení je mírně modifikovaný BFS algoritmus. Místo
+         fronty CLOSE jsem použil mapu do které ukládám veškeré stavy. Klíčem do
+         mapy je Hash, který je roven obsahu všech kýblů (pro 1 kýbl stačí 6b,
+         máme 5 kýblů, tj. stačí 30b, tj. int). Výhodou tohoto řešení (inspirace
+         od Augiho) je jeho rychlost a bezkonfliktnost. V případě heuristiky
+         jsem nahradil frontu OPEN prioritní frontou. Priorita je rovna součtu
+         absolutních hodnot rozdílu současného a koncového stavu přes všechny
+         kýble. Tj. čím menší číslo, tím větší přednost.
+      </p>
+      
+      <h3>BFS</h3>
+      <ul>
+         <li><a href="source/BFS/BFS.cs">BFS.cs</a> - V metodě compute je implementován vlastní výpočet. While cykl dokud není fronta OPEN prázdná vybírá z ní stavy a expanduj je (plní, vylévá a přelévá kýble). Každý nově objevený stav je vložen do mapy STATES. Nově expandovaný stav je vložen do OPEN pouze pokud není nalezeno řešení, nebo expandovaný stav může zlepšit řešení.</li>
+         <li><a href="source/BFS/Input.cs">Input.cs</a> - Obsahuje pouze zadání (tj.: kapacity, počáteční a koncový stav), použita jako parametr konstruktoru třídy BFS.</li>
+         <li><a href="source/BFS/Program.cs">Program.cs</a> - Zavolá BFS pro každou instanci a vypíše výsledek.</li>
+         <li><a href="source/BFS/State.cs">State.cs</a> - Reprezentuje stav stavového prostoru, uchovává aktuální stav kýblů, ukazatel na předešlý stav a délku cesty.</li>
+      </ul>
+      
+      <h3>Heuristika</h3>
+      <ul>
+         <li><a href="source/Heuristika/Heuristic.cs">Heuristic.cs</a> - Základ je stejný jako u BFS. Navíc je pro každý nový stav vypočtena Priorita (minimální cesta vedoucí k cíli - součet absolutních hodnot rozdílu současného a koncového stavu) a stav je vložen do prioritní fronty.</li>
+         <li><a href="source/Heuristika/Input.cs">Input.cs</a> - viz. Input z BFS.</li>
+         <li><a href="source/Heuristika/Program.cs">Program.cs</a> - viz Program z BFS.</li>
+         <li><a href="source/Heuristika/PQ.cs">PQ.cs</a> - Prioritní fronta. Implementována jako pole Front, kde rozměr pole je dán maximální hodnotou priority. Je to jednoduché řešení a v tomto případě postačující.</li>
+         <li><a href="source/Heuristika/State.cs">State.cs</a> - viz. State z BFS + přidána metoda Priority().</li>
+      </ul>
+
+      <h2>Naměřené hodnoty a výsledky</h2>
+      <p>Měřil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance při napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+
+      <h3>Tabulka výsledků měření</h3>
+
+      <table>
+         <tr><th rowspan="2">Instance</th><th colspan="2">BFS</th><th colspan="3">Heuristika</th></tr>
+         <tr><th>Počet operací</th><th>Navštívené stavy</th><th>Počet operací</th><th>Navštívené stavy</th><th>Generované stavy</th></tr>
+         <tr><td>1.1</td><td>10</td><td>8991</td><td>20</td><td>80</td><td>732</td></tr>
+         <tr><td>1.2</td><td>8</td><td>7988</td><td>17</td><td>544</td><td>1724</tr>
+         <tr><td>1.3</td><td>8</td><td>7895</td><td>8</td><td>12</td><td>121</tr>
+         <tr><td>1.4</td><td>3</td><td>155</td><td>4</td><td>5</td><td>121</tr>
+         <tr><td>2.1</td><td>16</td><td>49349</td><td>34</td><td>7050</td><td>25496</tr>
+         <tr><td>2.2</td><td>12</td><td>41668</td><td>40</td><td>9550</td><td>28547</tr>
+         <tr><td>2.3</td><td>11</td><td>35749</td><td>28</td><td>5745</td><td>20263</tr>
+         <tr><td>2.4</td><td>5</td><td>871</td><td>12</td><td>448</td><td>1975</tr>
+         <tr><td>2.5</td><td>7</td><td>6323</td><td>19</td><td>766</td><td>2762</tr>
+         <tr><td>3.1</td><td>14</td><td>59199</td><td>36</td><td>1367</td><td>4349</tr>
+         <tr><td>3.2</td><td>12</td><td>58771</td><td>24</td><td>370</td><td>3755</tr>
+         <tr><td>3.3</td><td>10</td><td>40907</td><td>32</td><td>300</td><td>2290</tr>
+         <tr><td>3.4</td><td>5</td><td>1460</td><td>12</td><td>39</td><td>359</tr>
+         <tr><td>3.5</td><td>7</td><td>9154</td><td>10</td><td>31</td><td>327</tr>
+         <tr><td>3.6</td><td>9</td><td>27772</td><td>26</td><td>1197</td><td>8178</tr>
+      </table>
+      
+      <h3>Výpisy programu:</h3>
+      <ul>
+         <li><a href="BFS.txt">BFS.txt</a></li>
+         <li><a href="heuristika.txt">heuristika.txt</a></li>
+      </ul>
+
+      <h3>Graf: Délka cesty k řešení (počet manipulací s kýbly)</h3>
+      <p><img src="grafy/path.png" alt="délka cesty k řešení"/></p>
+
+      <h3>Graf: Počet stavů stavového prostoru</h3>
+      <p><img src="grafy/states.png" alt="počet stavů"/></p>
+      
+      <h3>Graf: Heuristika - srovnání počtu generovaných a navštívených stavů</h3>
+      <p><img src="grafy/heuristika-states.png" alt="heuristika - počet stavů"/></p>
+
+
+      <h2>Závěr</h2>
+      <p>
+         Zadané instance jsou přijatelně rychle řešitelné pomocí BFS s ořezáváním neperspektivních stavů.
+         Heuristika založená na minimalizaci vzdálenosti k výsledku dává velice dobré výsledky. V průměru
+         bylo vygenerováno 102,5x méně stavů, přičemž cesta se průměrně prodloužila 2,3x. Maximálně se
+         cesta prodloužila 3,3x a v nejlepším případě bylo vygenerováno 650x méně stavů.
+      </p>
+
+
+   </div>
+
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36PAA - ulohy (Michal Trs)</title>
+</head>
+<body>
+   <h1>36PAA - Batoh řešený metodou simulované ochlazování (pokročilá iterativní metoda)</h1>
+
+   <div id="main">
+      <h2>Zadání</h2>
+         <ul>
+            <li>Zvolte si heuristiku, kterou budete řešit problém vážené splnitelnosti booleovské formule (simulované ochlazování, simulovaná evoluce, tabu prohledávání)</li>
+            <li>Tuto heuristiku použijte pro řešení problému batohu. Můžete použít dostupné instance problému (<a href="http://service.felk.cvut.cz/courses/36PAA/knapsolv.html">zde</a>), anebo si vygenerujte své instance pomocí <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">generátoru</a>. Používejte instance s větším počtem věcí (>30).</li>
+            <li>Hlavním cílem domácí práce je seznámit se s danou heuristikou, zejména se způsobem, jakým se nastavují její parametry (rozvrh ochlazování, selekční tlak, tabu lhůta...) a modifikace (zjištění počáteční teploty, mechanismus selekce, tabu atributy...). Není-li Vám cokoli jasné, prosíme ptejte se na cvičeních.</li>
+            <li>Problém batohu není příliš obtížný, většinou budete mít k dispozici globální maxima (exaktní řešení) z předchozích prací, například z dynamického programování.</li>
+         </ul>
+
+      <h2>Implementace</h2>
+         <p>
+         Z pokročilých iterativních metod jsem si vybral algoritmus simulované ochlazování. Je popsán "vývojovými diagramy" na následujících obrázcích.
+         </p>
+
+         <table><tr>
+            <td><img src="algoritmus/simanel.png"/></td>
+            <td><img src="algoritmus/try.png"/></td>
+         </tr></table>
+         
+         Pokusím se algoritmus popsat slovně. Jedná se o 2 vnořené cykly. Na začátku je nastaveno nějaké řešení a počáteční teplota, která se ve venkovním cyklu postupně snižuje. Teplotou je dána ochota algoritmu přijmout horší řešení. Tím se může algoritmus vymanit z lokálního minima. Ve vnitřním cyklu se hledá nové řešení. To je popsáno na obrázku jako funkce "try". Náhodně vygenerujeme nové přípustné řešení. Pokud je lepší než doposud nalezené, toto řešení přijmeme. Pokud je horší tak jej přijmeme s určitou pravděpodobností, která je dána aktuální teplotou a velikostí zhoršení ceny. Algoritmus končí pokud se teplota sníží na úroveň teploty tuhnutí. Pro správnou funkci algoritmu je velice důležité nastavit parametry (počáteční teplota, teplota tuhnutí, rychlost tuhnutí, velikost equilibria).
+         
+         <h3>Zdrojové kódy</h3>
+            <ul>
+               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Implementace algoritmu simulovaného ochlazování</li>
+               <li><a href="source/Batoh-SimAnneal.zip">Batoh-SimAnneal.zip</a></li> - Kód z minulých úloh použit pro testování (Greedy Proof, Dynamické programování)
+            </ul>
+               
+
+      <h2>Naměřené hodnoty a výsledky</h2>
+         <p>
+            Aby bylo možné správně nastavit parametry algoritmu je nutné experimentovat. Při experimentech jsem sledoval časovou náročnost a relativní chybu. Pro výpočet globálního maxima (pro výpočet relativní chyby) jsem použil dříve implementované <a href="../batoh2/">dynamické programování</a>. Algoritmus jsem srovnával s Greedy Proof (metodou nejrychlejšího vzestupu). Experimenty jsou shrnuty v následujících tabulkách a grafech.<br/>
+            Pro přehlednost jsem použil tyto zkratky:
+         </p>
+         <p><code>
+            SA = Simulated Annealing = simulované ochlazování<br/>
+            GP = Greedy Proof = metoda nejrychlejšího vzestupu<br/>
+            triv = použito triviální řešení pro inicializaci SA<br/>
+            init GP = použito GA pro inicializaci SA<br/>
+            T0 = počáteční teplota<br/>
+            Tf = teplota tuhnutí<br/>
+            dT = změna teploty<br/>
+            equ = equilibrium<br/>
+         </code></p>
+         
+         <p>Pokud není uvedeno jinak, experimentoval jsem na instancích o velikosti n = 40. SA bylo na každé instanci spuštěno 20x a výsledná relativní chyba a čas je průměr z výsledů algoritmu.</p>
+         <p>Měřil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance při napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+
+
+
+         
+      <h3>Nastavení změny teploty</h3>
+      
+      Při tomto experimentu jsem nastavil T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, equ = n a měnil dT v rozmezí 0,8 - 0,999.
+      
+      <table>
+         <tr><th rowspan="2">dT</th><th colspan="3">relativní chyba</th><th colspan="3">čas</th></tr>
+         <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
+         <tr><td>0,999</td><td rowspan="8">0,15%</td><td>0,12%</td><td>0,02%</td><td rowspan="8">0,0625</td><td>278,731</td><td>642,995</td></tr>
+         <tr><td>0,995</td><td>0,42%</td><td>0,07%</td><td>58,154</td><td>128,795</td></tr>
+         <tr><td>0,99</td><td>0,64%</td><td>0,09%</td><td>27,17</td><td>66,054</td></tr>
+         <tr><td>0,98</td><td>1,14%</td><td>0,12%</td><td>13,159</td><td>32,717</td></tr>
+         <tr><td>0,975</td><td>1,29%</td><td>0,13%</td><td>10,525</td><td>24,725</td></tr>
+         <tr><td>0,95</td><td>2,01%</td><td>0,14%</td><td>5,358</td><td>12,509</td></tr>
+         <tr><td>0,9</td><td>3,26%</td><td>0,14%</td><td>2,644</td><td>6,039</td></tr>
+         <tr><td>0,8</td><td>5,50%</td><td>0,15%</td><td>1,271</td><td>2,944</td></tr>
+      </table>
+
+      <h4>Graf: Závislost relativní chyby na změně rychlosti ochlazování</h4>
+      <p><img src="grafy/err_dt.png"/></p>
+      
+      <h4>Graf: Závislost časové složitosti na změně rychlosti ochlazování</h4>
+      <p><img src="grafy/cas_dt.png"/></p>
+
+      
+      <h3>Nastavení velikosti equilibria</h3>
+
+      Nastavení: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, dT = 0,9 a 0,98, měnil jsem equ v intervalu n / 5 až n * 5
+
+      <table>
+         <tr><th rowspan="3">equ</th><th colspan="5">relativní chyba</th><th colspan="5">čas</th></tr>
+         <tr><th rowspan="2">GP</th><th colspan="2">SA triv</th><th colspan="2">SA init GP</th><th rowspan="2">GP</th><th colspan="2">SA triv</th><th colspan="2">SA init GP</th></tr>
+         <tr><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th></tr>
+         <tr><td>200</td><td rowspan="9">0,15%</td><td>0,34%</td><td>1,16%</td><td>0,07%</td><td>0,12%</td><td rowspan="9">0,0625</td><td>65,663</td><td>13,23</td><td>153,191</td><td>30,184</td></tr>
+         <tr><td>160</td><td>0,39%</td><td>1,31%</td><td>0,07%</td><td>0,13%</td><td>54,198</td><td>10,345</td><td>123,097</td><td>23,945</td></tr>
+         <tr><td>120</td><td>0,52%</td><td>1,53%</td><td>0,09%</td><td>0,13%</td><td>39,346</td><td>7,922</td><td>92,753</td><td>17,866</td></tr>
+         <tr><td>80</td><td>0,72%</td><td>2,06%</td><td>0,10%</td><td>0,14%</td><td>26,067</td><td>5,438</td><td>61,899</td><td>11,907</td></tr>
+         <tr><td>40</td><td>1,13%</td><td>3,20%</td><td>0,12%</td><td>0,15%</td><td>13,149</td><td>2,664</td><td>30,694</td><td>5,988</td></tr>
+         <tr><td>20</td><td>1,76%</td><td>5,85%</td><td>0,13%</td><td>0,14%</td><td>6,84</td><td>1,332</td><td>15,35</td><td>3,074</td></tr>
+         <tr><td>13</td><td>2,26%</td><td>8,18%</td><td>0,14%</td><td>0,15%</td><td>4,376</td><td>0,981</td><td>10,385</td><td>2,013</td></tr>
+         <tr><td>10</td><td>2,83%</td><td>10,06%</td><td>0,14%</td><td>0,15%</td><td>3,435</td><td>0,701</td><td>7,771</td><td>1,652</td></tr>
+         <tr><td>8</td><td>3,45%</td><td>12,09%</td><td>0,15%</td><td>0,15%</td><td>2,724</td><td>0,581</td><td>6,239</td><td>1,312</td></tr>
+      </table>
+      
+      <h4>Graf: Závislost relativní chyby na velikosti equilibria</h4>
+      <p><img src="grafy/err_equ.png"/></p>
+
+      <h4>Graf: Závislost časové složitosti na velikosti equilibria</h4>
+      <p><img src="grafy/cas_equ.png"/></p>
+
+
+      <h3>Nastavení teploty tuhnutí</h3>
+
+      Nastavení: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), dT = 0,98, equ = n, měnil jsem Tf v intervalu 1 až 10.
+
+      <table>
+         <tr><th rowspan="2">Tf</th><th colspan="3">relativní chyba</th><th colspan="3">čas</th></tr>
+         <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
+         <tr><td>1</td><td rowspan="6">0,15%</td><td>0,94%</td><td>0,12%</td><td rowspan="6">0,0625</td><td>27,539</td><td>30,604</td></tr>
+         <tr><td>2</td><td>0,94%</td><td>0,12%</td><td>23,254</td><td>25,857</td></tr>
+         <tr><td>3</td><td>0,99%</td><td>0,12%</td><td>20,659</td><td>22,893</td></tr>
+         <tr><td>5</td><td>0,96%</td><td>0,12%</td><td>17,325</td><td>18,837</td></tr>
+         <tr><td>7</td><td>0,99%</td><td>0,12%</td><td>15,433</td><td>17,745</td></tr>
+         <tr><td>10</td><td>1,08%</td><td>0,13%</td><td>13,229</td><td>14,521</td></tr>
+      </table>
+
+      <h4>Graf: Závislost relativní chyby na teplotě tuhnutí</h4>
+      <p><img src="grafy/err_tf.png"/></p>
+
+      <h4>Graf: Závislost časové složitosti na teplotě tuhnutí</h4>
+      <p><img src="grafy/cas_tf.png"/></p>
+
+
+      <h3>Nastavení počáteční teploty</h3>
+      
+      Nastavení: Tf = 1, dT = 0,98, equ = n, měnil jsem T0 v intervalu 35 až 200
+      
+      <table>
+         <tr><th rowspan="2">T0</th><th colspan="3">relativní chyba</th><th colspan="3">čas</th></tr>
+         <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
+         <tr><td>200</td><td rowspan="10">0,15%</td><td>0,98%</td><td>0,12%</td><td rowspan="10">0,0625</td><td>32,928</td><td>34,81</td></tr>
+         <tr><td>150</td><td>0,95%</td><td>0,12%</td><td>32,247</td><td>32,547</td></tr>
+         <tr><td>100</td><td>0,92%</td><td>0,12%</td><td>28,632</td><td>32,676</td></tr>
+         <tr><td>80</td><td>1,01%</td><td>0,12%</td><td>28,491</td><td>34,389</td></tr>
+         <tr><td>60</td><td>1,11%</td><td>0,12%</td><td>25,667</td><td>32,868</td></tr>
+         <tr><td>50</td><td>1,23%</td><td>0,12%</td><td>24,735</td><td>30,273</td></tr>
+         <tr><td>45</td><td>1,37%</td><td>0,12%</td><td>23,764</td><td>30,454</td></tr>
+         <tr><td>40</td><td>1,71%</td><td>0,12%</td><td>23,153</td><td>28,821</td></tr>
+         <tr><td>37</td><td>1,98%</td><td>0,12%</td><td>22,693</td><td>27,059</td></tr>
+         <tr><td>35</td><td>2,25%</td><td>0,12%</td><td>22,381</td><td>27,239</td></tr>
+      </table>
+
+      <h4>Graf: Závislost relativní chyby na počáteční teplotě</h4>
+      <p><img src="grafy/err_t0.png"/></p>
+
+      <h4>Graf: Závislost časové složitosti na počáteční teplotě</h4>
+      <p><img src="grafy/cas_t0.png"/></p>
+
+
+      <h3>Závislost relativní chyby na velikosti instance</h3>
+      Jen tak pro zajímavost, srovnání průměrné relativní chyby pro různě velké instance.
+      Nastavení parametrů: dT = 0,98, Tf = 5, equ = n, T0 = 67,31
+      
+      <h4>Graf: Závislost relativní chyby na velikosti instance</h4>
+      <p><img src="grafy/err_n.png"/></p>
+
+      
+      <h2>Ukázky průchodu algoritmu stavovým prostorem</h2>
+      Na následujících grafech je zobrazena velikost ceny v závislosti na prozkoumaných stavech pro různé parametry. Pro zvětšení klikněte na prosím na graf.
+      
+
+      <table>
+         <tr>
+            <td>init GP, dT = 0,8, Tf = 5, equ = n, T0 = 67,31</td>
+            <td>triv, dT = 0,8, Tf = 5, equ = n, T0 = 67,31</td>
+         </tr>
+         <tr>
+            <td><a href="grafy/gp_080_5_n.png"><img src="grafy/small/gp_080_5_n.png"/></a></td>
+            <td><a href="grafy/sam_080_5_n.png"><img src="grafy/small/sam_080_5_n.png"/></a></td>
+            
+         </tr>
+         <tr>
+            <td>init GP, dT = 0,9, Tf = 5, equ = n, T0 = 67,31</td>
+               <td>triv, dT = 0,9, Tf = 5, equ = n, T0 = 67,31</td>
+         </tr>
+         <tr>
+            <td><a href="grafy/gp_090_5_n.png"><img src="grafy/small/gp_090_5_n.png"/></a></td>
+            <td><a href="grafy/sam_090_5_n.png"><img src="grafy/small/sam_090_5_n.png"/></a></td>
+         </tr>
+         <tr>
+            <td>init GP, dT = 0,98, Tf = 5, equ = n, T0 = 67,31</td>
+            <td>triv, dT = 0,98, Tf = 5, equ = n, T0 = 67,31</td>
+         </tr>
+         <tr>
+            <td><a href="grafy/gp_098_5_n.png"><img src="grafy/small/gp_098_5_n.png"/></a></td>
+            <td><a href="grafy/sam_098_5_n.png"><img src="grafy/small/sam_098_5_n.png"/></a></td>
+         </tr>
+         <tr>
+            <td>init GP, dT = 0,98, Tf = 5, equ = n / 5, T0 = 67,31</td>
+            <td>init GP, dT = 0,98, Tf = 5, equ = 5 * n, T0 = 67,31</td>
+         </tr>
+         <tr>
+            <td><a href="grafy/gp_098_5_n5.png"><img src="grafy/small/gp_098_5_n5.png"/></a></td>
+            <td><a href="grafy/gp_098_5_5n.png"><img src="grafy/small/gp_098_5_5n.png"/></a></td>
+         </tr>
+      </table>
+      
+
+
+      <h2>Závěr</h2>
+         Algoritmus simulované ochlazování je poměrně snadný na implementaci. Z experimentů můžeme říct, že je časově náročnější než hladový algoritmus a při inicializaci triviální konfiguraci dává průměrně horší výsledky. Pokud inicializujeme SA hodnotou získanou GP algoritmem, v průměru vždy dojde ke zlepšení relativní chyby. Protože algoritmus si pomatuje nejlepší řešení, nemůže nikdy vyjít horší výsledek než u GP.<br/>
+         U tohoto algoritmu (stejně jako u dynamického programování) dopředu známe počet iterací cyklu, tudíž můžeme odhadnout časovou náročnost. Proto je na první pohled trochu divné, řádově rozdílný čas při inicializaci triviálním řešením a řešením dodaným GP algoritmem. Skrytá časová závislost je v generování nového stavu. Ten generujeme tak, že změníme bit na náhodné pozici v současné konfiguraci, ale výsledná konfigurace musí být přípustným řešením. Proto pokud vyjdeme z triviální konfigurace je velká pravděpodobnost, že nový stav vygenerujeme na 1. pokus. U již nalezeného řešení např. algoritmem GP opakujeme generování poměrně dlouho, než dostaneme přípustnou konfiguraci.<br/>
+         Dále z provedených experimentů můžeme udělat tyto závěry:
+         <ul>
+         <li>Čím blíže dT k 1 tím menší relativní chyba, ale větší časová náročnost.</li>
+         <li>Počáteční teplotu je vhodné volit jako funkci velikosti instance. V experimentu dává nejlepší výsledky n * 2. Na dostuduj jsem našel tento vztah: M * suma(ceny) / (N * suma(váhy)), který dává podobné výsledky.</li>
+         <li>Teplotu tuhnutí je nejlepší "vykoukat" z grafů pro závislost ceny na počtu prozkoumaných stavů. Pokud se cena nemění, mělo by dojít k zamrazení. To můžeme přímo ošetřit v programu a nemusíme tento parametr nastavovat.</li>
+         <li>Velikost equilibria, čím větší tím menší relativní chyba, ale větší časová náročnost.</li>
+         </ul>
+
+
+   </div>
+
+
+</body>
+</html>

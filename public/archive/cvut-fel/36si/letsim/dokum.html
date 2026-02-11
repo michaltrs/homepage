@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+		<title>Letsim - Letecký simulátor</title>
+		<link rel="Stylesheet" type="text/css" media="all" href="style.css">
+	</head>
+	<body>
+		<a name="zacatek"></a>
+		<h2 class="cap">Dokumentace projektu</h2>
+		<p align="center" style='text-align:center'><a href="files/celkova.ppt" class="menu">Stáhnout prezentaci celého projektu<!--</a>-->
+			| <a href="#na" class="menu">Návrh architektury</a> | <a href="#rd" class="menu">Reprezentace 
+				dat</a> | <a href="#rd" class="menu">Plán realizace</a> | <a href="#up" class="menu">
+				Uživatelské prostředí</a>
+			<hr width="100%">
+		</p>
+		<h3><a name="na"></a>Návrh architektury</h3>
+		<img src="images/arch.png" alt="architektura">
+		<ul>
+			<li>
+				<h4>LETSIM Server</h4>
+				Aplikace instalovaná na linuxovém serveru. Komunikuje s databází a mapovými 
+				podklady, které zapouzdřuje a dále je poskytuje stanicím. Port na kterém bude 
+				aplikace komunikovat s Klienty a Managerem se nastavuje při instalaci. 
+				Nastavení je možné nadále měni přímo pomocí konfiguračních souborů nebo pomocí 
+				aplikace LETSIM Manager.
+				<br>
+			</li>
+			<li>
+				<h4>LETSIM Manager</h4>
+				Aplikace sloužící pro veškerou správu systému (stanic, serveru, vzájemné 
+				komunikace, ...). Aplikaci je možno instalovat jak na disk vybrané stanice 
+				(pokud je pro instruktora vyhrazena), nebo (doporučeno) na síťový disk a poté 
+				je dostupná ze všech stanic. Aplikace poskytuje různé úrovně zabezpečení pro 
+				ochranu přístupu. Autorizace je možná pomocí uživatelského jména a hesla, nebo 
+				pomocí čipové karty. Aplikace komunikuje se serverem a stanicemi na jiném 
+				portu, než po kterém probíhá předávání dat mezi stanicemi a serverem.
+				<br>
+			</li>
+			<li>
+				<h4>LETSIM Client</h4>
+				Software pro vlastní zobrazování 3D simulace letu a zobrazování výsledků. 
+				Mapové podklady jsou primárně nahrávány ze serveru (diskových polích), ale pro 
+				plynulejší chod aplikace a ušetření přenosového pásma jsou data ukládány do 
+				vyrovnávací paměti ve stanicích.
+				<br>
+			</li>
+		</ul>
+		<p><a href="#zacatek">Zpět na začátek</a></p>
+		<h3><a name="rd"></a>Reprezentace dat</h3>
+		Datový model, je už navržen ve 3. normální formě a u vztahu byla provedena 
+		dekompozice na nové entity. Takže každé entitě v Datovém modelu odpovídá právě 
+		jedna tabulka, jejíž prvky (i s datovými typy) jsou uvedeny v entitách. Z toho 
+		důvodu zde nebudu znova tabulky uvádět, ale uvedu zde pouze SQL skript pro 
+		generování těchto tabulek.<br>
+		<br>
+		<table border="0">
+			<tr>
+				<td class="SQL">Create table Osoba (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Rodne_cislo VarChar2(10) Not Null,</td>
+				<td class="SQLC">/* Rodne cislo osoby, pripadne cislo pasu, pro cizince */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Jmeno VarChar2(45) Not Null,</td>
+				<td class="SQLC">/* Jmeno osoby */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Prijmeni VarChar2(45) Not Null,</td>
+				<td class="SQLC">/* Prijmeni osoby */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Osoba Primary Key (Rodne_cislo)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Letadlo (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;ID Integer Not Null,</td>
+				<td class="SQLC">/* ID letadla */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Nazev VarChar2(45) Not Null,</td>
+				<td class="SQLC">/* Nazev letadla */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Adresar VarChar2(255) Not Null,</td>
+				<td class="SQLC">/* Adresar ve kterem se letadlo nachazi */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Model VarChar2(255) Not Null,</td>
+				<td class="SQLC">/* Nazev sboru ve kterem je model letadla */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Datum_vlozeni Date Not Null,</td>
+				<td class="SQLC">/* Datum kdy bylo letadlo vlozeno*/</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Letadlo Primary Key (ID)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Mapa (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;ID Integer Not Null,</td>
+				<td class="SQLC">/* ID mapy */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Nazev VarChar2(45) Not Null,</td>
+				<td class="SQLC">/* Nazev mapy */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Adresar VarChar2(255) Not Null,</td>
+				<td class="SQLC">/* Adresar ve kterem se mapa nachazi */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Model VarChar2(255) Not Null,</td>
+				<td class="SQLC">/* Nazev souboru ve kterem je model mapy */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Datum_vlozeni Date Not Null,</td>
+				<td class="SQLC">/* Datum kdy byla mapa vlozena */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Mapa Primary Key (ID)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Opravneni_k_instuktazi (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Osoba_Rodne_cislo VarChar2(10) Not Null,</td>
+				<td class="SQLC">/* Drzitel opravneni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Letadlo_ID Integer Not Null,</td>
+				<td class="SQLC">/* Latadlo na ktere se opravneni vztahuje */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Datum Date Not Null,</td>
+				<td class="SQLC">/* Datum vystaveni opravneni */</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Opravneni_k_instuktazi 
+					Primary Key (Osoba_Rodne_cislo,Letadlo_ID)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Opravneni_k_pilotazi (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Osoba_Rodne_cislo VarChar2(10) Not Null,</td>
+				<td class="SQLC">/* Drzitel opravneni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Letadlo_ID Integer Not Null,</td>
+				<td class="SQLC">/* Latadlo na ktere se opravneni vztahuje */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Datum Date Not Null,</td>
+				<td class="SQLC">/* Datum vystaveni opravneni */</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Opravneni_k_pilotazi 
+					Primary Key (Osoba_Rodne_cislo,Letadlo_ID)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Protokol_z_cvicneho_letu (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;ID Integer Not Null,</td>
+				<td class="SQLC">/* ID protokolu */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Mapa_ID Integer Not Null,</td>
+				<td class="SQLC">/* ID mapy na ktere cviceni probihalo */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Opravneni_k_instuktazi_Osoba_Rodne_cislo 
+					VarChar2(10) Not Null,</td>
+				<td class="SQLC">/* ID instruktora cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Opravneni_k_instuktazi_Letadlo_ID Integer Not 
+					Null,</td>
+				<td class="SQLC">/* ID letadla ne kterem probihalo cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Text_zpravy VarChar2(1000) Null,</td>
+				<td class="SQLC">/* Protokol o cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Datum Date Not Null,</td>
+				<td class="SQLC">/* Datum cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Tema_cvicneho_letu VarChar2(45) Not Null,</td>
+				<td class="SQLC">/* Tema cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Constraint PK_Protokol_z_cvicneho_letu Primary 
+					Key (ID)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="SQL">Create table Opravneni_k_pilotazi_has_Protokol_z_cvicneho_letu (</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Opravneni_k_pilotazi_Osoba_Rodne_cislo 
+					VarChar2(10) Not Null,</td>
+				<td class="SQLC">
+					/* ID osoby, ktera se ucastnila cviceni */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Opravneni_k_pilotazi_Letadlo_ID Integer Not Null,</td>
+				<td class="SQLC">/* ID letadla na kterem nacvik probihal */</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;Protokol_z_cvicneho_letu_ID Integer Not Null,</td>
+				<td class="SQLC">/* ID protokolu z cviceni */</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint 
+					PK_POpravneni_k_pilotazi_has_Protokol_z_cvicneho_letu Primary Key (</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Opravneni_k_pilotazi_Osoba_Rodne_cislo,Opravneni_k_pilotazi_Letadlo_ID,Protokol_z_cvicneho_letu_ID</td>
+			</tr>
+			<tr>
+				<td class="SQL">&nbsp;&nbsp;&nbsp;)</td>
+			</tr>
+			<tr>
+				<td class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">Alter table Opravneni_k_instuktazi add (</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint 
+					FK_Opravneni_k_instuktazi_1 Foreign Key (Osoba_Rodne_cislo) References 
+					Osoba(Rodne_cislo),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint 
+					FK_Opravneni_k_instuktazi_2 Foreign Key (Letadlo_ID) References Letadlo(ID)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">Alter table Opravneni_k_pilotazi add (</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_Opravneni_k_pilotazi_1 
+					Foreign Key (Osoba_Rodne_cislo) References Osoba(Rodne_cislo),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_Opravneni_k_pilotazi_2 
+					Foreign Key (Letadlo_ID) References Letadlo(ID)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">Alter table Protokol_z_cvicneho_letu add (</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_Pzcl_1 Foreign Key 
+					(Mapa_ID) References Mapa(ID),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_Pzcl_2 Foreign Key 
+					(Opravneni_k_instuktazi_Osoba_Rodne_cislo) References 
+					Opravneni_k_instuktazi(Osoba_Rodne_cislo),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_Pzcl_3 Foreign Key 
+					(Opravneni_k_instuktazi_Letadlo_ID) References 
+					Opravneni_k_instuktazi(Letadlo_ID)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">);</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">Alter table 
+					Opravneni_k_pilotazi_has_Protokol_z_cvicneho_letu add (</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_OkphasPzcvl_1 Foreign 
+					Key (Opravneni_k_pilotazi_Osoba_Rodne_cislo) References 
+					Opravneni_k_pilotazi(Osoba_Rodne_cislo),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_OkphasPzcvl_2 Foreign 
+					Key (Opravneni_k_pilotazi_Letadlo_ID) References 
+					Opravneni_k_pilotazi(Letadlo_ID),</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">&nbsp;&nbsp;&nbsp;Constraint FK_OkphasPzcvl_3 Foreign 
+					Key (Protokol_z_cvicneho_letu_ID) References Protokol_z_cvicneho_letu(ID)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="SQL">);</td>
+			</tr>
+		</table>
+		SQL skript pro generování tabulek <a href="files/sql.sql">zde</a>
+		<p><a href="#zacatek">Zpět na začátek</a></p>
+		<h3><a name="rd"></a>Plán realizace</h3>
+		<p>Pro zvětšení klikněte na obrázek.<br>
+			<a href="images/cast2.png"><img border="0" src="images/cast2_resize.png" alt="plán realizace"></a><br>
+			<br>
+			<a href="files/letsim.mpp">Soubor MS Project</a> ke stažení
+		</p>
+		<p>
+			Realizace bude probíhat ve třech hlavních větvích paralelně. Přesný časový 
+			harmonogram viz. obrázek výše.<br>
+			<ul>
+				<li>
+					První část týmu (především grafici) bude hlavně zpracovávat dodané mapové 
+					podklady, připravovat podklady pro tvorbu GUI, modelovat kokpity letadel a 
+					modelovat exteriéry letadel. K modelování objektů a vytváření a úpravě textur 
+					budou použity programy 3D studio max a PhotoShop.
+				</li>
+				<li>
+					Druhá část týmu (programátoři) se bude zabývat tvorbou assemblies pro síťovou 
+					komunikaci. To obnáší:
+					<ul>
+						<li>
+							Aplikace, která poběží na serveru s operačním systémem Linux. Aplikace bude 
+							naprogramována v jednom z jazyků platformy .NET (s největší pravděpodobností 
+							C#). Běh na OS Linux zajistí CLR implementace <a href="http://www.mono-project.com" target="_blank">
+								Mono</a>. Komunikace s databází FireBird bude probíhat přes ADO.NET. 
+							Implementace v prostředí .NET Framework zajistí, že v případě změny procesoru 
+							nebo operačního systému nebude třeba aplikaci upravovat a dojde k automatické 
+							optimalizaci.
+						</li>
+						<li>
+							Assembly pro komunikaci, které bude použita v aplikacích, které poběží na 
+							klientských stanicích s operačním systémem Windows XP. Assembly bude opět 
+							vytvořena na platformě .NET.
+						</li>
+					</ul>
+				</li>
+				<li>
+					Třetí část týmu bude realizovat aplikace pro klientské stanice, tedy program 
+					pro instruktory a program pro vlastní simulaci pro piloty.<br>
+					3D grafický engine bude implementován na platformě .NET s využitím rozhraní 
+					Managed DirectX.<br>
+					Po dokončení modulů pro komunikaci dojde ke sloučení druhé a třetí části týmu, 
+					kdy druhá část týmu bude spolupracovat se třetí částí týmu na integraci 
+					komunikačních assemblies do klientských aplikací.
+				</li>
+			</ul>
+		</p>
+		<p><a href="#zacatek">Zpět na začátek</a></p>
+		<h3><a name="up"></a>Uživatelské prostředí</h3>
+		<p><b>Přihlašovací okno do aplikace LETSIM Manager</b>
+			<ul>
+				<li>
+					Přihlašovací okno<br>
+					<img src="images/GUI/ServerLogIn.png" alt="LogIn">
+				</li>
+			</ul>
+		</p>
+		<p><b>Aplikace LETSIM Manager - Administrator (může být i instruktor)</b>
+			<ul>
+				<li>
+					Hlavni okno programu na serveru<br>
+					<img src="images/GUI/ServerHlavni.png" alt="Hlavni">
+				</li>
+				<li>
+					Okno pro editaci map<br>
+					<img src="images/GUI/ServerMapy.png" alt="Mapy">
+				</li>
+				<li>
+					Okno pro editaci letadel<br>
+					<img src="images/GUI/ServerLetadla.png" alt="Letadla">
+				</li>
+			</ul>
+		</p>
+		<p><b>Aplikace LETSIM Manager - prostredi pro instruktora</b>
+			<ul>
+				<li>
+					Hlavni okno programu instruktora<br>
+					<img src="images/GUI/InstruktorHlavni.png" alt="Hlavni">
+				</li>
+				<li>
+					Okno pro správu simulací<br>
+					<img src="images/GUI/InstruktorSimulace.png" alt="Simulace">
+				</li>
+				<li>
+					Okno pro správu pilotů<br>
+					<img src="images/GUI/InstruktorPiloti.png" alt="Piloti">
+				</li>
+			</ul>
+		</p>
+		<p><b>clientská část aplikace - pro piloty</b>
+			<ul>
+				<li>
+					Přihlašovací okno<br>
+					<img src="images/GUI/ClientLogIn.png" alt="LogIn">
+				</li>
+			</ul>
+		</p>
+		<p><b>Prostředí pro pilota</b>
+			<ul>
+				<li>
+					Hlavni okno programu pilota<br>
+					<img src="images/GUI/PilotHlavni.png" alt="Hlavni">
+				</li>
+				<li>
+					Okno pro výběr simulace<br>
+					<img src="images/GUI/PilotSimulace.png" alt="Simulace">
+				</li>
+				<li>
+					Okno pro prohlížení záznamů<br>
+					<img src="images/GUI/PilotZaznamy.png" alt="Záznamy">
+				</li>
+				<li>
+					Samotná simulace (ilustrativní obrázek)<br>
+					<img src="images/GUI/kokpit.jpg" alt="Kokpit">
+				</li>
+			</ul>
+		</p>
+		<p><a href="#zacatek">Zpět na začátek</a></p>
+	</body>

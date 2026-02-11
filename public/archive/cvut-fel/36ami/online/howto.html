@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Website short description." />
+<meta name="keywords" content="website main keywords" />
+	<title>BlueNET - 36AMI projekt</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+<div id="header"><h1>BlueNET</h1></div>
+<div id="sub_header">36AMI projekt, CVUT FEL</div>
+<div id="main_content_top"></div>
+<div id="main_content">
+<div class="content">
+
+
+<!-- CONTENT -->
+<h2>Jak postupovat</h2>
+<p>
+   Krátký popis jak postupovat při kompilaci zdrojových souborů a oživení
+   přípravku na platformě Windows.
+</p>
+
+<ol>
+   <li>Nainstalovat WinAVR</li>
+   <li>Nainstalovat AVR Studio 4, nebo jiný program, který umožní naprogramovat Charon 2 modul.</li>
+   <li>Nainstalovat NutOS</li>
+   <li>Konfigurace a Build NutOS
+   <ul>
+      <li>
+         Než začneme se samotnou konfigurací je nutné v adresáři
+         s nainstalovaným NutOS vyhledat všechny soubory (zpravidla několik Makefile)
+         obsahující '-Os' a zaměnit tento řetězec za '-O2'. Tím odstraníme
+         nekompatibilitu WinAVR 4.11 a NutOS 4.2.1. '-Os' totiž způsobuje
+         nadměrné vyoptimalizování a linkování poté končí chybou.
+      </li>
+      <li>
+         Nyní spustíme konfigurátor nutconf.exe. Vybereme konfiguraci charon2.
+         V menu Edit -> Setting se nastavují návaznosti na překladač a programátor.
+         Nastavujte pouze relativní cesty, předejdete tím problémům při make.
+         Doporučení jak jednotlivé záložky nastavit:
+         <ul>
+            <li>1.záložka - repository nut/conf/repository.nut neměnit</li>
+            <li>2.záložka - source dir: nut, platform: avr-gcc, build dir: nutbld, install dir: nutbld/lib</li>
+            <li>3.záložka - Nastavit cesty k WinAVR
+                  (např. takto:
+                  c:\skola\10.semestr\36AMI\ethernut-4.2.1\nut\tools\win32;
+                  c:\tools\WinAVR\bin\;c:\tools\WinAVR\utils\bin\;).
+                  Nezapomeňte za poslední cestu dát také ';'.</li>
+            <li>4.záložka - aplication dir: nutapp</li>
+         </ul>
+      </li>
+      <li>
+         Nyní si vytvoříme vlasní Build systému pro naší platformu. Libovolně můžeme vytvořit ukázkové aplikace.
+         <ul>
+            <li>Build -> Build NutOS</li>
+            <li>Build -> Sample directory</li>
+         </ul>
+      </li>
+   </ul>
+   </li>
+   <li>Teď je ten pravý okamžik nahrát BlueNET (bt2tcp) do adresáře nutapp a pomocí příkazu 'make' jej přeložit.</li>
+   <li>Spustíme AVR Studio a binárku 'bt2tcp.hex' nahrajeme do mikra.</li>
+   <li>
+      Po zapnutí napájení 'Přípravek' přijímá TCP spojení na adrese 192.168.1.100:23.
+      Doporučujeme použít přímé propojení kříženým kabelem a terminál putty.
+      Po úspěšném navázání TCP spojení je inicializována Bluetooth část.
+   </li>
+</ol>
+
+<h2>Poznámky k programování přípravku</h2>
+<p>
+   Pokud pro programování používáte AVR Studio a programátor STK-500 SPI, budete ještě potřebovat
+   desku Charon 2 Development Kit nebo upravit "bastl" desku z HWlabu. Programátor STK-500 vyžaduje
+   napájení od SPI, které není na HWlab desce zapojeno. Tím se poněkud komplikuje nahrávání firmwaru.
+   Charon 2 modul je potřeba zasadit do Charon 2 Development Kit, tam jej naprogramovat, poté jej
+   vyjmout a vložit zpět do HWlab desky s Bluetooth modulem.
+</p>
+
+<img src="images/ch2_db.jpg" alt="Charon 2 db"/>
+
+<h2>Zapojení HWlab desky</h2>
+<p>
+   Deska obsahuje 2 páry jumperů. První blíže k Charon 2 modulu přepíná RX a TX RS232 signály jdoucí do modulu.
+   Pro připojení Bluetooth modulu musejí být zapojeny blíže k patici s BT modulem. V opačném
+   případě jsou připojeny na COM9 konektor, což se může hodit pro debugování. Druhý pár jumperů by měl přepínat
+   signály RTS a CTS, ty ale nejsou na BT patici připojeny a tudíž nemají vliv.
+</p>
+
+<img src="images/hwlab_board_jumpers.jpg" alt="Zapojení jumperů na HWlab desce"/>
+
+<!-- CONTENT END -->
+
+
+<!-- MENU -->
+</div>
+<div class="menu">
+<div class="menu_title">Menu</div>
+<ul>
+<li><a href="index.html" class="menu_link">Cíle projektu</a></li>
+<li><a href="pozadavky.html" class="menu_link">Požadavky</a></li>
+<li><a href="download.html" class="menu_link">Stáhnout</a></li>
+<li><a href="howto.html" class="menu_link">Jak postupovat</a></li>
+<li><a href="prog.html" class="menu_link">Implementace</a></li>
+<li><a href="autori.html" class="menu_link">Autoři</a></li>
+</ul>
+</div>
+<!-- MENU END -->
+
+
+<!-- FOOTER -->
+<div id="clear"></div>
+</div>
+<div id="main_content_bottom"></div>
+<div id="footer"><strong>Copyright &copy; 2007</strong> | <a href="http://www.feld.cvut.cz">CVUT FEL</a> | <b>Design by</b> <a href="http://www.pikanai.com">Pikanai.com</a></div>
+</div>
+<!-- FOOTER END -->
+
+
+</body>
+</html>

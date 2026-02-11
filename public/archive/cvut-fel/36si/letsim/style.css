@@ -1,0 +1,78 @@
+body	{	font-family: Arial;
+		font-size: 12px; 
+		color: black; 
+}
+
+p 	{  	
+}
+
+a 	{	text-decoration: none; 
+		color: blue; 
+} 
+
+a:hover {  	color: red; 
+} 
+
+a.zpet 	{ 	color: red;
+}
+
+a.menu	{	font-size: 14px
+
+}
+
+h1 	{  	font-family: Arial; 	
+		text-decoration: none; 
+		color: red; 
+}
+
+h2 	{  	font-family: Arial; 	
+		text-decoration: none; 
+		color: red; 
+}
+
+h2.cap	{	text-align: center;
+}
+
+h3 	{  	font-family: Arial; 	
+		text-decoration: none; 
+		color: red; 
+}
+
+h4  {	margin-bottom: 4px;
+}
+
+img 	{  	border: 0;  
+}
+
+td	{	text-align: center;
+		font-size: 12px; 
+}
+
+td.tl	{	text-align: left;
+		font-weight: bold;		
+
+}
+
+span.tab_nadpis
+	{	color: red;
+		font-family: Arial; 	
+		text-decoration: none; 
+		font-weight: bold;
+		font-size: 16px;
+}
+
+table,img {	margin-left: 25px;
+
+}
+td.SQL 
+{
+	font-family:Courier New;
+	text-align:left;
+}
+
+td.SQLC
+{
+	font-family:Courier New;
+	text-align:left;
+	color: #008000;
+}

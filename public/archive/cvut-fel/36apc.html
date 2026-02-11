@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatizace projektování číslicových systémů - 36APC | ČVUT FEL | Archiv Michal Trs</title>
+    <link rel="stylesheet" href="/archive/style.css">
+</head>
+<body>
+    <div class="nav"><a href="/vault">&larr; Zpět do The Vault</a></div>
+    <div class="header">
+        <h1>Automatizace projektování číslicových systémů - 36APC</h1>
+        <p><i>ČVUT FEL — studijní materiály a semestrální práce</i></p>
+    </div>
+    Spíš než o automatizaci, je předmět o práci v týmu na HW projektu. Začátkem semestru se dělá pár příkladů ve VHDL a dohodne se projekt na kterém pak každý dělá určitou část.
+Pracovali jsme na CPU, který řídí datové přenosy. Více na stránkách <a href="http://cs.felk.cvut.cz/~danek/APC/">Martina Daňka</a> (cvičící - vedoucí projektu).
+
+<h3>Semestrální práce - CPU s využitím PicoBlaze (kcpsm3)</h3>
+<a href="/archive/cvut-fel/36apc/system-arch.gif"><img src="/archive/cvut-fel/36apc/system-arch-small.gif" alt="system arch" style="float:right; margin-left:15px; max-width:250px"></a>
+
+Cílem bylo navrhnout zařízení, které bude číst, zpracovávat, zobrazovat a přenášet do počítače data z GPS modulu.
+S Milošem Hrdým jsme dělali na CPU. Vyšli jsme z PicoBlaze kcpsm3, ke kterému jsme dopsali adresní dekodér. Poté jsme celý CPU portovali na Xilinx Spartan 2E včetně assembleru.
+   
+    <ul>
+<li><a href="/archive/cvut-fel/36apc/cpu.zip">CPU</a> — (procesor připravený pro integraci do projektu)</li>
+   <li><a href="/archive/cvut-fel/36apc/hwtest-sram-com.zip">CPU</a> — s programem pro zápis a čtení dat ze SRAM přes COM port</li>
+   <li><a href="/archive/cvut-fel/36apc/APC-BT-Nav-Project-Closure-Report_st1_w.pdf">Report</a> — moje závěrečné hodnocení</li>
+   <li><a href="/archive/cvut-fel/36apc/mails.txt">Dokumentace :-)</a> — emialy ze kterých se dá vyčíst jak to funguje...</li>
+
+    </ul>
+    <div class="footer">&copy; Michal Trs | Archivováno z michaltrs.net/cvut_fel/ | <a href="/vault">The Vault</a></div>
+</body>
+</html>

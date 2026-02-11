@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+   <meta name="generator" content="PSPad editor, www.pspad.com">
+   <link rel="stylesheet" type="text/css" href="../style.css">
+   <title>36SPA - Cell: Neural gas</title>
+</head>
+<body>
+   <h1>Cell: Neural gas - Cell C language implementation</h1>
+
+
+   <div id="main">
+   
+      <img src="CellBE.jpg" alt="Cell/B.E." id="cellimg" ¨width="300" height="225" />
+      
+      Implementation of Neuronal gas algorithm running on Cell Broadband engine.
+
+   <h2>Implementation note</h2>
+    The whole algorithm is implemented for Synergistic Processing Unit (SPU).<br />
+    The part for POWER Processing Unit (PPU) contains one usable function. This function starts the algorithm computation on SPU. So the only parameter of this function is structure NeuralGas_InputData that specify algorithm parameters. The result of this function is speid_t that describes the running program on SPU.  
+
+
+    <h2>Implementation main idea</h2>
+    We implemented some functions that enable easy SPU processing of arrays that are located in main memory. These functions move sections of main memory to local memory of SPU using DMA transfers. Then user defined function is called for each element section of local copy of processing array. The user defined function retrieves number of elements that are curently located in local memory. The user defined functions can change content of array elements - then moving of cached data back to main memory (using DMA) is needed.<br />
+    Headers of this supporting functions (detail description of this function in code documentation):<br />
+    <i>void ReadInputs(InternalData_SPU* internal, void (handler(InternalData_SPU*, int)));</i><br />
+    <i>void ReadAndWriteNeurons(InternalData_SPU* internal, int overlap, void (handler(InternalData_SPU*, int)));</i><br /><br />
+    
+    The biggest difference between PC (PPU) and SPU implementation is that instead of for-cycles (it is the core of Neural Gas algorithm) in PPU implementation, in SPU implementation there are functions described above and for-cycles are in this functions. The second big difference is that we used SIMD instructions for all vector-based operations.<br />
+    
+    
+
+   <h2>Source code</h2>
+      <h4>Common header file</h4>
+      <ul>
+         <li><a href="source/NeuralGas_Shared.h">NeuralGas_Shared.h</a></li>
+      </ul>
+      
+      <h4>PPU source files</h4>
+      <ul>
+         <li><a href="source/ppu/NeuralGas.c">NeuralGas.c</a></li>
+         <li><a href="source/ppu/NeuralGas.h">NeuralGas.h</a></li>
+         <li><a href="source/ppu/ppu.c">ppu.c</a></li>
+      </ul>
+
+      <h4>SPU source files</h4>
+      <ul>
+         <li><a href="source/spu/NeuralGas_SPU.c">NeuralGas_SPU.c</a></li>
+         <li><a href="source/spu/NeuralGas_SPU.h">NeuralGas_SPU.h</a></li>
+         <li><a href="source/spu/spu.c">spu.c</a></li>
+      </ul>
+      
+   <h2>Eclipse 3.2 project</h2>
+      <ul>
+         <li><a href="Eclipse-NeuralGas.zip">Eclipse-NeuralGas.zip</a></li>
+      </ul>
+
+   
+   
+   <h2>References & Links</h2>
+   <ul>
+      <li><a href="http://www-128.ibm.com/developerworks/power/cell/">[1] Cell Broadband Engine resource center</a></li>
+   </ul>
+
+   </div>
+
+</body>
+</html>

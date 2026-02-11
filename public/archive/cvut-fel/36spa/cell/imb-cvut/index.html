@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+  <title>IBM CVUT Students research projects 2007</title>
+</head>
+
+<body>
+<div id="global">
+  <div id="header">
+    <a href="http://www.ibm.cz" target="_blank">
+      <img alt="" src="img/ibm-logo.gif" />
+    </a>
+    <span id="header_name">
+      IBM CVUT Students research projects
+    </span>
+      <a href="http://www.cvut.cz" target="_blank">
+      <img alt="" src="img/cvut3.jpg" />
+    </a>
+    <br/>
+  </div>
+  <div id="main">
+    <!-- DOPLNTE JMENO PROJEKTU -->
+    <h2 class="centered">Implementation of neural gas on Cell Broadband Engine</h2>
+    <div id="project_members">
+    <h3>Authors:</h3>
+    <ul>
+      <!-- DOPLNTE JMENA AUTORU -->
+      <li><a href="mailto:augusm1@fel.cvut.cz">Michal Augustýn</a></li>
+      <li><a href="mailto:trsm1@fel.cvut.cz">Michal Trs</a></li>
+    </ul>
+    <h3>Materials:</h3>
+    <ul>
+      <!-- DOPLNTE ODKAZ NA PREZNETACNI .PPT SOUBOR -->
+      <li><a href="presentation/Cell_neural_gas.ppt">Presentation</a></li>
+      
+      <!-- DOPLNTE ODKAZ NA SOUBOR S OBRAZEK/VIDEO, POKUD JE JEN JEDNO A JE PRIMO PRISTUPNE (*.avi, *.jpg, ...)
+           JINAK NECHTE ODKAZ NA ADRESAR -->
+	   <li><a href="presentation/">Visual materials</a></li>
+
+      <!-- DOPLNTE ODKAZ NA SOUBOR S DOKUMENTACI, POKUD JE JEN JEDEN A JE PRIMO PRISTUPNY (*.pdf, *.html, ...)
+           JINAK NECHTE ODKAZ NA ADRESAR -->
+	   <li><a href="doc/">Documentation</a></li>
+
+      <li><a href="bin/">Implementation</a></li>
+      <li><a href="src/">Sources</a></li>
+      <li><a href="private/">Other Private Materials</a></li>
+    </ul>    
+    </div>
+    <div id="project_body">
+    <!-- DOPLNTE KRATKY TEXT POPISUJICI PROJEKT -->
+    <p>
+      Neural gas is a one of method for competitive learning.
+      This algorithm can be used for example in Machine vision. Main task of this school project
+      is to implement this algorithm in C language and to optimize it for Cell Broadband engine.
+   </p>
+   
+   <h3>Algorithm description</h3>
+   <p>
+      In general, input of this algorithm is large set of points in space that describe any area of space.
+      The output of this algorithm is significantly smaller set of point in space that describe the same
+      area of space as input points.
+   </p>
+   <p>
+      At the start of algorithm, set of new points (neurons) is generated. The positions of neurons are
+      generated randomly but its in the same space as input points. So we have to find minimal and maximal
+      values of input points in all dimensions before neurons positions generation.
+      The algorithm then works iteratively - in each iteration we compute distance between each neuron
+      and each input point. According to this distances we move all neurons.
+   </p>
+       
+   <table align="center">
+   <tr>
+      <td><img alt="Image" src="presentation/start.jpg" /></td>
+      <td><img alt="Image" src="presentation/stop.jpg" /></td>
+	</tr>
+   <tr>
+      <td>Initial cover</td>
+      <td>Final cover (~after 28000 iterations)</td>
+   </tr>
+	<table>
+
+    <h2>Implementation main idea</h2>
+    <p>
+       We implemented some functions that enable easy SPU processing of arrays that are located in main memory. These functions move sections of main memory to local memory of SPU using DMA transfers. Then user defined function is called for each element section of local copy of processing array. The user defined function retrieves number of elements that are curently located in local memory. The user defined functions can change content of array elements - then moving of cached data back to main memory (using DMA) is needed.<br />
+       Headers of this supporting functions (detail description of this function in code documentation):
+    </p>
+    <i>void ReadInputs(InternalData_SPU* internal, void (handler(InternalData_SPU*, int)));</i><br />
+    <i>void ReadAndWriteNeurons(InternalData_SPU* internal, int overlap, void (handler(InternalData_SPU*, int)));</i><br /><br />
+
+   <p>
+    The biggest difference between PC (PPU) and SPU implementation is that instead of for-cycles (it is the core of Neural Gas algorithm) in PPU implementation, in SPU implementation there are functions described above and for-cycles are in this functions. The second big difference is that we used SIMD instructions for all vector-based operations.<br />
+   </p>
+
+
+    </div>
+
+    
+  </div>
+  <div id="footer">
+    <p>2007(C) IBM CVUT Student research projects</p>
+  </div>
+</div>
+</body>
+</html>

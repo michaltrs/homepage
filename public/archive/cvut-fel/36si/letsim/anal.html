@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+  <title>Letsim - Letecký simulátor</title>
+  <link rel=Stylesheet type="text/css" media=all href=style.css>
+</head>
+
+<body>
+
+<a name=zacatek></a>
+<h2 class="cap">Analytická studie</h2>
+
+<p align=center style='text-align:center'>
+  <a href="files/analickastudie.ppt" class="menu">Stáhnout prezentaci</a> |
+  <a href="#datm" class="menu">Datový model</a> | 
+  <a href="#pdm" class="menu">Popis datového modelu</a> | 
+  <a href="#fm" class="menu">Funkční model</a> | 
+  <a href="#scen" class="menu">Scénáře použití</a> | 
+  <a href="#dynm" class="menu">Dynamický model</a> |
+  <a href="#up" class="menu">Uživatelská příručka</a> | 
+  <a href="#at" class="menu">Akceptační test</a>
+
+  <hr width="100%">
+</p>
+
+
+<h3><a name="datm"></a>Datový model</h3>
+<img alt="Datový model" border="0" width="1138" height="749" src="images/datmodel.png"><br>
+Datový model ve formátu XML je ke stažení <a href="files/datmodel.xml">zde</a>.
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+
+
+<h3><a name="pdm"></a>Popis datového modelu</h3>
+<p>Tento projekt není projekt typu "informační systém", jak požadavky na zpracování analytické části dokumentace v tomto předmětu evidentně předpokládají. Proto nemá většího smyslu vytvářet nesmyslný datový model pro tento projekt. Pro demonstaci toho, že danou problematiku ovládáme je zde uveden tento datový model.</p>
+<p>Tento datový model slouží k evidenci osob. Každá z těchto osob může získat oprávnění k pilotáží a k instruktáži (vždy od jednoto typu opravnění k pilotáži, resp. instruktáži, maximálně jedno - vyjádřeno relacemi typu 1:1 a 1:N). Dále je zde evidence uskutečněných cvičných letů formu zprávy. Cvičného letu se účastní právě jeden instruktor a libovolný počet pilotů. Tím, že se každý pilot může zúčastnit libovolného počtu cvičných letů a každého cvičného letu se může zúčastnit libovolný počet pilotů, vzniká vztah typu N:M, jehož dekompozicí vznikla tabulka "Opravneni k pilotazi_has_Protokol z cvicneho letu".</p>
+<p>Datový model byl vytvořen v programu <i>DB Designer 4</i> firmy <a href="http://www.fabforce.net" target="_blank">fabFORCE</a>.</p>
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+
+
+<h3><a name="fm"></a>Funkční model</h3>
+
+<img src="images/vysv.png" alt="DFD notace"><br><br><br>
+<img src="images/admin.png" alt="DFD Administratora"><br><br><br>
+<img src="images/instruktor.png" alt="DFD Intruktora"><br><br><br>
+<img src="images/pilot.png" alt="DFD Pilota"><br>
+
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+<h3><a name="scen"></a>Scénaře použití</h3>
+<p>Vzhledem ke specifikčnosti celého projektu, se dá scénař použití přirovnat k dynamickému
+modelu jednotlivých uživatelů. </p>
+
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+<h3><a name="dynm"></a>Dynamický model</h3>
+<p>Administrator:<br>
+	<img src="images/admin.gif" alt="Stavový diagram pro Administrátora">
+</p>
+<p>Instruktor:<br>
+	<img src="images/instruktor.gif" alt="Stavový diagram pro Instruktora">
+</p>
+<p>Pilot:<br>
+	<img src="images/pilot.gif" alt="Stavový diagram pro Pilota">
+</p>
+Ve formatu Microsoft Word 2003 ke stažení <a href="files/dynmodel.doc">zde</a>.
+
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+
+
+<h3><a name="up"></a>Uživatelská příručka</h3>
+<img src="images/userguide.png" alt="uzivatelska prirucka" border="1"><br><br>
+Uživatelská příručka ve formátu PDF ke stažení <a href="files/userguide.pdf">zde</a>.<br>
+Dokument je ve verzi 0.1 a bude doplněn po návrhu grafického prostředí.
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+
+
+<h3><a name="at"></a>Akceptační test</h3>
+<p><b>Administrátor</b></p>
+    <ul>
+      <li>přihlášení </li><ul><li>otestovat, zda-li je administrátor korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, kde má přístup</li></ul>
+            <li>přidání map </li><ul><li>otestovat, jsou-li mapy nahrány do databáze správně, jsou-li správně zobrazovány, ukončení přidávání</li></ul>
+            <li>odebrání map </li><ul><li>otestovat, jsou-li korektně odebrány z databáze, jestli při odebírání map,nezůstávají přebytečná data v databázi, ukončení odebírání</li></ul>
+            <li>editace map</li><ul><li>otestovat, zda-li je editovaná mapa správně nahrána z databáze, je-li uložena správně do databáze a je-li správně zobrazena, ukončení editace</li></ul>
+            <li>přídání letadel </li><ul><li>otestovat, jsou-li letadla nahrány do databáze správně, jsou-li správně zobrazovány, ukončení přidávání</li></ul>
+            <li>odebrání letadel </li><ul><li>otestovat, jsou-li korektně odebrány z databáze. jestli při odebírání letadel , nezůstávají přebytečná data v databázi, ukončení odebírání</li></ul>
+           <li>editace letadla </li><ul><li>otestovat, zda-li je editovaná letadla správně nahrána z databáze, jsou-li uložena správně do databáze a jsou-li správně zobrazena, ukončení editace</li></ul>
+           <li>odhlášení</li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+        </ul>
+
+&nbsp
+<p><b>Instruktor</b></p>
+            <ul>
+               <li>přihlášení </li><ul><li>otestovat, zda-li je instruktor korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, ke kterým má mít přístup</li></ul>
+        	   <li>přídání simulace </li><ul><li>otestovat, jsou-li všechna data simulace správně nahrána do databáze, je-li správně zobrazována, ukončení přidávání</li></ul>
+         	   <li>odebírání simulace </li><ul><li>otestovat, jsou-li všechna data správně odebrány z databáze, nezůstávají-li přebytečná data v databázi při odebírání, ukončení odebírání</li></ul>
+	   <li>editace simulace </li><ul><li>otestovat, zda-li je editovaná simulace správně nahrána z databáze, je-li uložena správně do databáze a je-li správně zobrazena</li></ul>
+               <li>přidělování pilotů </li><ul><li>otestovat, zda-li je pilot korektně přiřazen k simulaci, není-li přiřazen k více simulacím v jednu dobu, přeřazování pilotů k jiné simulaci</li></ul>
+              <li>přídělování úkolů </li><ul><li>otestovat, jestli jsou úkoly správně přiřazeny pilotům a k simulaci, zda-li se dá přiřadit úkol k více simulacím, více ukolů k jedné simulaci, přeřazování úkolů</li></ul>
+               <li>simulace poruch </li><ul><li>otestovat, zda-li jsou poruchy správně implementovány, správně  zobrazovány, správně uloženy, správně odebrány</li></ul>
+                <li>přídávání pilotů </li><ul><li>otestovat, jsou-li všechna data o pilotovi správně nahrána do databáze </li></ul>
+                <li>editace pilotů </li><ul><li>otestovat, zda-li je editovaný pilot správně nahrán z databáze, je-li uložen správně do databáze a je-li správně zobrazen</li></ul>
+               <li>statistiky</li><ul><li>otestovat, zda-li jsou zobrazeny správné statistiky k pilotovi vzhledem k výběru simulace</li></ul>
+                <li>odhlášení </li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+            </ul>
+
+&nbsp
+<p><b>Pilot</b></p>
+   <ul>
+    <li>přihlášení :</li><ul><li>otestovat, zda-li je pilot korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, ke kterým má mít přístup</li></ul>
+    <li>výběr simulace </li><ul><li>otestovat, jsou-li pilotovi zobrazeny správné simulace (kde je přiřazen), má-li do všech simulací přístup, správnost načtení vybrané simulace</li></ul>
+    <li>průběh simulace </li><ul><li>otestovat správnost simulace (reakce letadla na ovládání, komunikace pilotů, správnost zobrazení dat, správnost integračnosti dat), ukončení simulace</li></ul>
+    <li>statistiky</li><ul><li>otestovat, zda-li má pilot přístup pouze ke svým statistikám, jsou-li správně zobrazeny, ukončení prohlížení</li></ul>
+    <li>odhlášení</li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+   </ul>
+
+
+<p><a href="#zacatek">Zpět na začátek</a></p>
+
+
+</body>
+</html>

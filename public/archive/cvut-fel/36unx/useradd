@@ -1,0 +1,261 @@
+#!/bin/bash
+
+# Semestralni prace z predmetu 36UNX = Operacni system UNIX
+# Michal Trs
+# Zadani c.8  
+# useradd
+
+#c comment for password
+#d home dir
+#e expire date format YYYY-MM-DD
+#f inactive time
+#g group (default 1)
+#G group seznam dalsich skupin oddelenych carkou
+ 
+# CHYBOVE KODY
+# 0 - OK
+# 1 - login name wasn't insert
+# 2 - unknown parametr
+# 3 - run without any arguments
+# 4 - not existing directory
+# 5 - bad format
+# 6 - user/uid already exist
+# 7 - group not exist
+# 8 - invalid interpret
+
+# zadano bez parametru => vypsani helpu 
+if  [[ $# == 0 ]]; then
+  echo \
+'use: useradd [-u uid [-o]] [-g group [-G group members,...] 
+             [-d home_dir] [-s shell] [-c comment] [-m [-k skel]]
+             [-f inactive] [-e expire] [-p password] login
+  useradd -D [-g group] [-b home_dir] [-s shell]
+             [-f inactive] [-e expire]'
+  exit 3;
+fi;
+
+# nastaveni promenych
+#ROOT="/cygdrive/c/skola/6.semestr/36unx/semestralka";
+#ROOT="/home/misak/tmp";
+
+#default skel
+group=100;
+home='/home/temp';
+inactive=-1;
+expire='';
+shell='';
+skel='/etc/skel';
+
+# pokud soubor jiz existuje => nactu z nej hodnoty
+if [ -e $ROOT/etc/default/useradd ]; then
+  S=$SHELL # promenna prostredi
+  source $ROOT/etc/default/useradd;
+  home=$HOME;
+  expire=$EXPIRE;
+  inactive=$INACTIVE;
+  group=$GROUP;
+  shell=$SHELL;
+  [[ $SHELL == '' ]] && SHELL=$S;
+fi;
+
+
+if [[ $1 = "-D" ]]; then
+  # UPDATE DEFAULT
+ 
+  if [[ $# == 1 ]]; then 
+    # PRINT DEFAULT
+
+      echo "GROUP=$group";
+      echo "HOME=$home";
+      echo "INACTIVE=$inactive";
+      echo "EXPIRE=$expire"
+      echo "SHELL=$shell"
+      echo "SKEL=$skel"
+
+    exit 0;
+  
+  else  
+    # UPDATE DEFAULT
+    shift;
+    
+    while getopts b:e:f:g:s: volba 
+    do
+      case $volba in
+	      b)  home=$OPTARG;;
+	      e)  expire=$OPTARG;
+	          if ! echo $expire | grep -e "^$" \
+		   -e "[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}" >/dev/null; then 
+		    echo "Bad format of expire date. expected YYYY-MM-DD";
+                    exit 5;
+ 		  fi;;
+	      f)  inactive=$OPTARG;;
+	      g)  group=$OPTARG;;
+	      s)  shell=$OPTARG;
+	          [ -r $shell ] || { echo "Invalid inerpret"; exit 8; };;
+	      \?) exit 2 ;;
+      esac
+    done
+    
+    # existuje skupina?
+      grep -e ":$group:" -e "^$group:" "$ROOT/etc/group"  >/dev/null \
+        || { echo "group doesn't exist"; exit 7; };
+
+    # zapsani do souboru
+    { echo '# useradd defaults file';
+      echo "GROUP=$group";
+      echo "HOME=$home";
+      echo "INACTIVE=$inactive";
+      echo "EXPIRE=$expire";
+      echo "SHELL=$shell";
+      echo "SKEL=$skel"
+    } > $ROOT/etc/default/useradd;      
+  fi;
+  
+else
+  # NEW USER
+  
+  allowcreate=0;
+  copymode=0;
+  
+  while getopts c:d:e:f:g:G:mk:op:s:u: volba
+  do
+    case $volba in
+	    c)  coment=$OPTARG;;
+      	    d)  homedir=$OPTARG;;
+	    e)  expire=$OPTARG;;
+	    f)	inactive=$OPTARG;;
+	    g)  group=$OPTARG;;
+	    G)  groupadd=$OPTARG;;
+	    m)  ((copymode++));;
+	    k)  skel=$OPTARG; 
+          [ -d $ROOT$skel ] || { echo "Not valid skeleton directory"; exit 4; } ;
+          ((copymode+=2));;
+	    o)  allowcreate=1;;
+	    p)  password=$OPTARG;;
+	    s)  shell=$OPTARG;
+	        [ -r $shell ] || { echo "Invalid inerpret"; exit 8; };;
+	    u)  uid=$OPTARG;;
+	    \?) exit 2;;
+    esac
+  done
+  
+  # nahrani login name
+  shift `expr $OPTIND - 1`
+  if [[ $# == 0 ]]; then 
+    echo "error: login name expected";
+    exit 1;
+  else
+    login=$1;
+  fi;
+  
+  # OSETRENI VSTUPU pridani uzivatele
+  
+  # pouziti parametru -k bez -m
+  if [[ $copymode == 2 ]]; then
+    echo "Error: Using parametr -k without parametr -m";
+    exit 2;
+  fi;
+  
+  # spravne zadane datum vyprseni platnosti
+  if [[ $expire != '' ]]; then
+    if echo $expire | grep "[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}" >/dev/null; then
+      y=${expire:0:4} 
+      m=${expire:5:2} 
+      d=${expire:7:2}
+     (( expire = (y-1970) * 365 + m * 30 + d ));
+    else
+      echo "Bad format of expire date. expected YYYY-MM-DD";
+      exit 5;
+    fi;
+  fi;
+
+  # existuje skupina? + if slovne => prevod na GID  
+  if grep "^$group:" "$ROOT/etc/group" >/dev/null; then
+    group=`grep "^$group:" "$ROOT/etc/group" | cut -d: -f3`;
+  elif ! grep ":$group:" "$ROOT/etc/group" >/dev/null; then
+    echo "group doesn't exist"; 
+    exit 7;
+  fi;
+  
+  # existuje uzivatel?
+  if grep "^$login:" "$ROOT/etc/passwd" 1>/dev/null; then
+    echo "username already exist";
+    exit 6;
+  fi;
+   
+  [ -z $shell ] && shell=$SHELL;
+  
+  # nastaveni UID
+  if [[ $uid != '' ]]; then
+    if [[ $allowcreate == 0 ]]; then
+      # pokud UID existuje => konec
+      cut -d: -f3 $ROOT/etc/passwd | grep "^$uid$" >/dev/null && { echo "UID already exist"; exit 6; };
+    fi;
+  else
+    # najdu 1.volne uid nad 1000
+    uid=1000;
+    while cat $ROOT/etc/passwd | cut -d: -f3 | grep "^$uid$" >/dev/null; 
+    do
+      ((uid++));
+    done;
+  fi;
+
+ # MODIFIKACE SOUBORU v etc
+
+
+  # priprava a zapis do passwd
+  
+  if [[ -z $homedir ]]; then
+    home="$home/$login";
+  else
+    home=$homedir;
+  fi;
+  
+  pswline="$login:x:$uid:$group:$coment:$home:$shell"; 
+  #echo $pswline
+  cp "$ROOT/etc/passwd" "$ROOT/etc/passwd-" 2>/dev/null
+  { cat "$ROOT/etc/passwd-" 2>/dev/null; echo $pswline; } > "$ROOT/etc/passwd";
+
+  # kopiruj skeleton
+  if [[ $copymode > 0 ]]; then
+    [ -d "$home" ] || mkdir "$home";
+    cp -f -R "$ROOT$skel/"* "$ROOT$skel/".[!.]* "$home" 2>/dev/null;
+    echo "prikazy vyuzivajici /etc/passwd a /etc/group"
+    echo 'chown -R "$login" "$home"';
+    echo 'chgrp -R "$group" "$home"';
+  fi;
+
+  # priprava a zapis shadow
+  
+  days=`date +"%s"`
+  days=`expr $days / 86400`;
+    
+  shdline="$login:$password:$days:0:99999::$inactive:$expire:"
+  #echo $shdline 
+  
+  cp "$ROOT/etc/shadow" "$ROOT/etc/shadow-" 2>/dev/null
+  { cat "$ROOT/etc/shadow-" 2>/dev/null; 
+    echo $shdline; } > "$ROOT/etc/shadow";
+  
+  # priprava a zapis do group
+  
+  if [ -n $groupadd ]; then
+    cp "$ROOT/etc/group" "$ROOT/etc/group-";
+    cp "$ROOT/etc/group" /tmp/$$_src;
+    cp "$ROOT/etc/group" /tmp/$$_dst;
+  fi;
+
+  IFS=','; 
+  for grp in $groupadd; do
+    cat /tmp/$$_src | sed -e 's/^\(.*:'${grp}':.*[^:]\)$/\1,/' \
+                          -e 's/^\(.*:'${grp}':.*\)$/\1'${login}'/' \
+                          -e 's/^\('${grp}':.*[^:]\)$/\1,/' \
+                          -e 's/^\('${grp}':.*\)$/\1'${login}'/' > /tmp/$$_dst;
+    cp -f /tmp/$$_dst /tmp/$$_src;
+  done;
+    
+    cat /tmp/$$_dst > "$ROOT/etc/group";
+    rm -f /tmp/$$* 
+fi;
+
+  exit 0;
