@@ -2,9 +2,10 @@
 title: "Nord Shore lávky"
 pubDate: 2010-09-29T22:44:00.004Z
 updated: 2010-10-05T08:12:16.037Z
-link: "http://blog.michaltrs.net/2010/09/nord-shore-lavky.html"
+link: "/archive/blog/nord-shore-lavky.html"
 category: "blog"
 isMilestone: false
+description: "Díky Avastu jsem na 10 dní v Kanadě ve Vancouveru, kde se koná konference Virus bulletin . Vancouver je nádherné město, centrum je placaté, moderní, na břehu oceánu a je obklopeno nádhernou přírodou..."
 ---
 
 <object width="470" height="289"><param name="movie" value="http://www.youtube.com/v/oHmpwmESe4c?fs=1&amp;hl=en_GB"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/oHmpwmESe4c?fs=1&amp;hl=en_GB" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="470" height="289"></embed></object><br />

@@ -1,67 +1,94 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import VaultCard from '../components/VaultCard.astro';
 
 const allEntries = await getCollection('vault');
 const sortedEntries = allEntries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Group by year
-const groupedEntries = sortedEntries.reduce((acc, entry) => {
-  const year = entry.data.pubDate.getFullYear();
-  if (!acc[year]) acc[year] = [];
-  acc[year].push(entry);
-  return acc;
-}, {} as Record<number, typeof sortedEntries>);
+// Helper for slugs
+const slugify = (text: string) => 
+  text.toString().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+    .replace(/\s+/g, '-') 
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
 
-const years = Object.keys(groupedEntries).map(Number).sort((a, b) => b - a);
+const entriesWithSlugs = sortedEntries.map(entry => ({
+  ...entry,
+  slug: `${entry.data.pubDate.getFullYear()}-${slugify(entry.data.title)}`
+}));
+
+// Categories for filtering
+const categories = [
+  { id: 'all', label: 'Vše', color: 'bg-charcoal' },
+  { id: 'cnk', label: 'Cesty na kole', color: 'bg-joy-yellow' },
+  { id: 'cvut-fel', label: 'ČVUT FEL', color: 'bg-sky-blue' },
+  { id: 'spse-v-uzlabine', label: 'SPŠE Úžlabina', color: 'bg-orange-500' },
+  { id: 'blog', label: 'Blog', color: 'bg-slate-400' },
+];
+
+const categoryNodeMap = {
+  cnk: 'bg-joy-yellow',
+  'cvut-fel': 'bg-sky-blue',
+  'spse-v-uzlabine': 'bg-orange-500',
+  blog: 'bg-slate-400',
+  news: 'bg-slate-300',
+};
 ---
 
 <Layout title="The Vault | Michal Trs Architektura vzpomínek">
   <main class="max-w-4xl mx-auto px-6 py-20">
     <header class="mb-16 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold text-charcoal mb-4 font-outfit">The Vault</h1>
-      <p class="text-xl text-charcoal/60">Digitální historie, archivy a vzpomínky z let 2006–2013.</p>
+      <p class="text-xl text-charcoal/60 mb-10">Digitální historie, archivy a vzpomínky z let 2006–2013.</p>
+      
+      <!-- Filter Bar -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10" id="filter-bar">
+        {categories.map(cat => (
+          <button 
+            data-filter={cat.id}
+            class={`filter-btn px-4 py-2 rounded-full text-sm font-bold border-2 transition-all 
+              ${cat.id === 'all' 
+                ? 'active bg-charcoal text-white border-charcoal' 
+                : 'bg-transparent text-charcoal/40 border-charcoal/10 hover:border-charcoal/30'}`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
     </header>
 
-    <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-      {years.map(year => (
-        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-          {/* Year Marker */}
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-            <span class="text-[10px] font-bold">{year}</span>
-          </div>
-          
-          {/* Content Wrapper */}
-          <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded border border-slate-200 shadow bg-white">
-            <div class="space-y-4">
-              {groupedEntries[year].map(entry => (
-                <div class="border-b last:border-0 border-slate-100 pb-4 last:pb-0">
-                  <div class="flex items-center justify-between space-x-2 mb-1">
-                    <div class="font-bold text-slate-900">{entry.data.title}</div>
-                    <time class="font-mono text-xs text-joy-yellow bg-joy-yellow/10 px-2 py-0.5 rounded">
-                      {entry.data.pubDate.toLocaleDateString('cs-CZ')}
-                    </time>
-                  </div>
-                  <div class="text-slate-500 text-sm line-clamp-2" set:html={entry.data.description}></div>
-                  
-                  {entry.data.link && (
-                    <div class="mt-3">
-                      <a href={entry.data.link} target="_blank" class="text-xs font-bold text-sky-blue hover:underline inline-flex items-center gap-1">
-                        Prohlédnout archiv 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M10 14 21 3"/></svg>
-                      </a>
-                    </div>
-                  )}
+    <div class="relative min-h-[400px]">
+      <!-- Central Timeline Line -->
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-100 -translate-x-1/2 z-0"></div>
 
-                  {entry.data.isMilestone && (
-                    <span class="inline-block mt-2 text-[10px] uppercase tracking-wider font-bold text-sky-blue">Milník</span>
-                  )}
-                </div>
-              ))}
+      <div class="space-y-16 relative z-10" id="timeline-container">
+        {entriesWithSlugs.map((entry, idx) => {
+          const nodeClass = categoryNodeMap[entry.data.category] || categoryNodeMap.news;
+          return (
+            <div 
+              class="timeline-entry relative flex items-center gap-8 md:even:flex-row md:odd:flex-row-reverse" 
+              data-category={entry.data.category}
+              id={entry.slug}
+            >
+              {/* Content Card */}
+              <div class="w-full md:w-[calc(50%-2rem)] transition-all duration-500">
+                <VaultCard entry={entry} />
+              </div>
+
+              {/* Node on Timeline */}
+              <div class={`absolute left-4 md:left-1/2 w-6 h-6 rounded-full border-4 border-white shadow -translate-x-1/2 z-20 transition-transform hover:scale-125 ${nodeClass}`}>
+              </div>
+              
+              {/* Empty side for spacing */}
+              <div class="hidden md:block w-full md:w-[calc(50%-2rem)]"></div>
             </div>
-          </div>
-        </div>
-      ))}
+          );
+        })}
+      </div>
     </div>
 
     <div class="mt-20 text-center flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -75,8 +102,101 @@ const years = Object.keys(groupedEntries).map(Number).sort((a, b) => b - a);
   </main>
 </Layout>
 
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const entries = document.querySelectorAll('.timeline-entry');
+
+  function applyFilter(filter: string) {
+    // Update button states
+    buttons.forEach(btn => {
+      const btnFilter = btn.getAttribute('data-filter');
+      if (btnFilter === filter) {
+        btn.classList.add('active', 'bg-charcoal', 'text-white', 'border-charcoal');
+        btn.classList.remove('text-charcoal/40', 'border-charcoal/10');
+      } else {
+        btn.classList.remove('active', 'bg-charcoal', 'text-white', 'border-charcoal');
+        btn.classList.add('text-charcoal/40', 'border-charcoal/10');
+      }
+    });
+
+    // Filter entries
+    entries.forEach(entry => {
+      const entryCat = entry.getAttribute('data-category');
+      const htmlEntry = entry as HTMLElement;
+      
+      if (filter === 'all' || entryCat === filter) {
+        htmlEntry.style.display = 'flex';
+        // Force reflow for transform animation
+        htmlEntry.offsetHeight; 
+        htmlEntry.style.opacity = '1';
+        htmlEntry.style.transform = 'translateY(0)';
+      } else {
+        htmlEntry.style.opacity = '0';
+        htmlEntry.style.transform = 'translateY(20px)';
+        // Hide after transition
+        setTimeout(() => {
+          if (htmlEntry.style.opacity === '0') {
+            htmlEntry.style.display = 'none';
+          }
+        }, 300);
+      }
+    });
+  }
+
+  function handleDeepLink() {
+    const hash = decodeURIComponent(window.location.hash.substring(1));
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+
+    if (hash) {
+      console.log('Handling deep link for hash:', hash);
+      const target = document.getElementById(hash);
+      if (target) {
+        const category = target.getAttribute('data-category');
+        if (category) applyFilter(category);
+        
+        setTimeout(() => {
+          console.log('Scrolling to:', hash);
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const card = target.querySelector('.timeline-card');
+          if (card) {
+            card.classList.add('highlight-card');
+            setTimeout(() => card.classList.remove('highlight-card'), 3000);
+          }
+        }, 500);
+      }
+    } else if (categoryParam) {
+      applyFilter(categoryParam);
+    }
+  }
+
+  function init() {
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        if (filter) applyFilter(filter);
+      });
+    });
+
+    handleDeepLink();
+  }
+
+  // Initial call and handles view transitions
+  init();
+  document.addEventListener('astro:after-swap', init);
+</script>
+
 <style>
-  .font-outfit {
-    font-family: 'Outfit', sans-serif;
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  .timeline-entry {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .highlight-card {
+    animation: pulse-highlight 2s ease-out;
+  }
+  @keyframes pulse-highlight {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+    30% { transform: scale(1.02); box-shadow: 0 0 0 20px rgba(14, 165, 233, 0); }
+    100% { transform: scale(1); }
   }
 </style>

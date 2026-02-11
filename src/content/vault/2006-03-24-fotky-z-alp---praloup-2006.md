@@ -2,7 +2,7 @@
 title: "Fotky z Alp - Praloup 2006"
 pubDate: 2006-03-24T23:00:00.000Z
 description: "Fotky ze zimní dovolené naší bandy..."
-link: "http://www.michaltrs.net/fotky/slozky.php?cat=SNB_zima"
+link: ""
 category: "news"
 isMilestone: false
 ---

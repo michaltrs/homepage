@@ -1,0 +1,76 @@
+---
+interface Props {
+  entry: {
+    data: {
+      title: string;
+      pubDate: Date;
+      description?: string;
+      link?: string;
+      category: string;
+      isMilestone: boolean;
+    };
+  };
+  showHighlight?: boolean;
+  isSummary?: boolean;
+}
+
+const { entry, showHighlight = false } = Astro.props;
+
+const categoryMap = {
+  cnk: { label: 'Kolo', class: 'bg-joy-yellow text-charcoal', borderClass: 'border-joy-yellow/20' },
+  'cvut-fel': { label: 'ČVUT FEL', class: 'bg-sky-blue text-white', borderClass: 'border-sky-blue/20' },
+  'spse-v-uzlabine': { label: 'SPŠE Úžlabina', class: 'bg-orange-500 text-white', borderClass: 'border-orange-500/20' },
+  blog: { label: 'Blog', class: 'bg-slate-400 text-white', borderClass: 'border-slate-100' },
+  news: { label: 'Novinky', class: 'bg-slate-300 text-charcoal', borderClass: 'border-slate-100' },
+};
+
+const cat = categoryMap[entry.data.category] || categoryMap.news;
+
+// Prevent "zacyklení" - don't show the link if it's just an internal anchor to the Vault
+const isSelfLink = entry.data.link?.includes('#') && !entry.data.link?.startsWith('http');
+---
+
+<div class={`p-6 rounded-3xl border-2 bg-white shadow-sm hover:shadow-xl transition-all duration-500 timeline-card ${cat.borderClass} ${entry.data.isMilestone ? 'scale-105' : ''} ${showHighlight ? 'highlight-card' : ''}`}>
+  <div class="flex items-center justify-between mb-4">
+    <span class={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-md ${cat.class}`}>
+      {cat.label}
+    </span>
+    <time class="font-mono text-xs text-charcoal/40 font-bold">
+      {entry.data.pubDate.toLocaleDateString('cs-CZ', { year: 'numeric', month: 'short' })}
+    </time>
+  </div>
+  
+  <h3 class={`text-xl md:text-2xl font-black mb-3 font-outfit ${entry.data.isMilestone ? 'text-charcoal' : 'text-charcoal/80'}`}>
+    {entry.data.title}
+  </h3>
+  
+  <div class="text-charcoal/60 text-sm leading-relaxed mb-4 line-clamp-3" set:html={entry.data.description}></div>
+  
+  {entry.data.link && !isSelfLink && (
+    <a href={entry.data.link} class="text-xs font-bold text-sky-blue hover:underline inline-flex items-center gap-1 mb-3">
+      Prohlédnout archiv 
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M10 14 21 3"/></svg>
+    </a>
+  )}
+
+  {entry.data.isMilestone && (
+    <div class="flex items-center gap-2 text-[10px] font-black text-sky-blue uppercase tracking-tighter">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      Klíčový milník
+    </div>
+  )}
+</div>
+
+<style>
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  
+  .highlight-card {
+    animation: pulse-highlight 2s ease-out;
+  }
+  
+  @keyframes pulse-highlight {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+    30% { transform: scale(1.02); box-shadow: 0 0 0 20px rgba(14, 165, 233, 0); }
+    100% { transform: scale(1); }
+  }
+</style>

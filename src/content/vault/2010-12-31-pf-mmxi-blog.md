@@ -2,12 +2,13 @@
 title: "PF MMXI"
 pubDate: 2010-12-31T16:12:00.000Z
 updated: 2010-12-31T16:12:26.034Z
-link: "http://blog.michaltrs.net/2010/12/pf-mmxi.html"
+link: "/archive/blog/pf-mmxi.html"
 category: "blog"
 isMilestone: false
+description: "Do nového roku vám se Zuzkou přejeme ať je pro Vás tak úspěšný jako byl ten stávající pro nás. Samozřejmě ještě k tomu mnoho zdraví, úspěchů a člověka, s kterým se můžete z toho všeho radovat. A co..."
 ---
 
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAUV37rl8R-DDILRjUgjvRtICDkOLC9a2VgGKcgNhp5o5rDQAO5Jj6MYKKbHlN6SPpBVAqZUy4BVB_T5mgEi3YoSZC8zNRFhHyn0JdDEWTpimfmTRpDZFOlYOER004q79B-m4lCEdrqYwZ/s1600/MZlogo.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" height="200" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAUV37rl8R-DDILRjUgjvRtICDkOLC9a2VgGKcgNhp5o5rDQAO5Jj6MYKKbHlN6SPpBVAqZUy4BVB_T5mgEi3YoSZC8zNRFhHyn0JdDEWTpimfmTRpDZFOlYOER004q79B-m4lCEdrqYwZ/s200/MZlogo.png" width="192" /></a>Do nového roku vám se Zuzkou přejeme ať je pro Vás tak úspěšný jako byl ten stávající pro nás. Samozřejmě ještě k tomu mnoho zdraví, úspěchů a člověka, s kterým se můžete z toho všeho radovat.<br />
+<a href="/assets/migrated/media-32a70e72.jpg" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" height="200" src="/assets/migrated/media-7c2d1c06.jpg" width="192" /></a>Do nového roku vám se Zuzkou přejeme ať je pro Vás tak úspěšný jako byl ten stávající pro nás. Samozřejmě ještě k tomu mnoho zdraví, úspěchů a člověka, s kterým se můžete z toho všeho radovat.<br />
 <br />
 <b>A co se nám letos povedlo:</b><br />
 <ul><li>svatba, nejlepší den našeho života</li>

@@ -2,9 +2,10 @@
 title: "Avast! antivirus animation"
 pubDate: 2008-04-26T21:26:00.003Z
 updated: 2010-09-15T21:21:39.335Z
-link: "http://blog.michaltrs.net/2008/04/avast-antivirus-animation.html"
+link: "/archive/blog/avast-antivirus-animation.html"
 category: "blog"
 isMilestone: false
+description: "Svět počítačů je v dnešní době plný různých breberek. Podívejte se na animaci od Alana Beckera, která ukazuje život jednoho takového \"šmejda\" a to jak s nim Avast! zatočí :-) Kdyby šla nějaká hláška..."
 ---
 
 Svět počítačů je v dnešní době plný různých breberek. Podívejte se na animaci od Alana Beckera, která ukazuje život jednoho takového "šmejda" a to jak s nim <a href="http://www.avast.com">Avast!</a> zatočí :-)<br />

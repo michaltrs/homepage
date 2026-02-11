@@ -2,7 +2,7 @@
 title: "Fotky z kolaudace Vaškova nového bytu"
 pubDate: 2007-01-01T14:25:00.000Z
 description: "Jako mezihru mezi svátky Vašek uspořádal kolaudaci svého bytu. Párty stála za to, no koukněte na fotky."
-link: "http://www.michaltrs.net/fotky/slozky.php?cat=Narozeniny_oslavy"
+link: ""
 category: "news"
 isMilestone: false
 ---
