@@ -10,4 +10,4 @@ description: "Pořád to vypadalo, že dovolená je někde v nedohlednu ... a ne
 
 Pořád to vypadalo, že dovolená je někde v nedohlednu ... a nejednou zítra 10:20 odlet. Přiznám se, že balení jsem letos celkem podcenil. Ještě nemám na kole přidělaný nosič, druhý košík na lahev a kdo ví co ještě. Hlavně že už mám krabici, odvoz na letiště a moji Zuzi ... bez ní bych se asi picnul. <br />
 <br />
-<img style="float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;" src="/assets/migrated/placeholder.jpg" border="0" alt="" />K cestě samotné jsem již pár plánovaných "vrcholů" popsal, dnes se chci krátce zmínit o posledním. Je jím rakouská <a href="http://www.grossglockner.at/">Grossglockner Hochalpenstraße</a> vedoucí do nadmořské výšky přes 2500 m.n.m. Na naší cestě to bude poslední Alpský průsmyk.
+K cestě samotné jsem již pár plánovaných "vrcholů" popsal, dnes se chci krátce zmínit o posledním. Je jím rakouská <a href="http://www.grossglockner.at/">Grossglockner Hochalpenstraße</a> vedoucí do nadmořské výšky přes 2500 m.n.m. Na naší cestě to bude poslední Alpský průsmyk.

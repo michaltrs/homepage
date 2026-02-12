@@ -8,4 +8,4 @@ isMilestone: false
 description: "Včera mi kamarád Zed poslal odkaz na ruskou stránku fishki.net se spoustou fotek \"foto vybavení\" a fotografů v akci. Věřím, že Vás určitě některé fotky zaujmou. U mě zvítězila \"nadupaná fotobrašna\"..."
 ---
 
-Včera mi kamarád Zed poslal odkaz na ruskou stránku <a href="http://fishki.net/comment.php?id=18351">fishki.net</a> se spoustou fotek "foto vybavení" a fotografů v akci. Věřím, že Vás určitě některé fotky zaujmou. U mě zvítězila "nadupaná fotobrašna". Díky Zede<br /><br /><img style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;" src="/assets/migrated/placeholder.jpg" border="0" alt="" />
+Včera mi kamarád Zed poslal odkaz na ruskou stránku <a href="http://fishki.net/comment.php?id=18351">fishki.net</a> se spoustou fotek "foto vybavení" a fotografů v akci. Věřím, že Vás určitě některé fotky zaujmou. U mě zvítězila "nadupaná fotobrašna". Díky Zede<br /><br />
