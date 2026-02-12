@@ -38,6 +38,12 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Vault entry opraven: 2009-maroko link
 - Konvence cest: `/archive/cnk/{rok}-{nazev}/` (např. 2009-maroko, 2006-pyreneje, 2007-turecko, 2008-dolomiti, vrcholy)
 
+### P2 — Formátování archive stránek
+- [ ] Lepší zarovnání obrázků v textu (float, marginy, responzivita)
+- [ ] Rozhodnout velikost obrázků — miniatury vs. plná velikost, max-width
+- [ ] Sjednotit styling napříč všemi kategoriemi (blog, cnk, cvut-fel, spse-v-uzlabine)
+- [ ] Vylepšit `public/archive/style.css` — typografie, spacing, mobilní zobrazení
+
 ### P3 — Cleanup
 - [ ] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [ ] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
