@@ -47,6 +47,19 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Blogger table wrappers nahrazeny za `<figure>` s `<figcaption>`
 - [x] Migrační skript: scripts/fix-blog-styles.py (238 souborů zpracováno)
 
+### P2b — Odstranění layout tabulek z CNK archivu ✓
+- [x] Kompletní odstranění layout tabulek ze 2001-svycarsko (5 tabulek + 5 img align)
+- [x] Kompletní odstranění layout tabulek ze 2003-viden (30+ tabulek vč. vnořené foto mřížky)
+- [x] `<table class="stred">` galerie → `<div class="gallery">` (flex wrap)
+- [x] `<table width="..." align="...">` thumbnaily → `<div class="img-left/right">`
+- [x] `<table align="center">` → `<div class="gallery">`
+- [x] Stats tabulky (vzdálenost + profil) → `<div class="info">`
+- [x] Text+mapa tabulky → unwrap s `<div class="img-right">` pro mapy
+- [x] Standalone `<img align="...">` → CSS class, `<div align="right">` → inline style
+- [x] Ponechány datové tabulky `<table class="tab">` a bike specs `<table class="stred">`
+- [x] Přidán `.gallery` CSS do style.css (flex layout, responsive)
+- [x] Rozšířen skript scripts/fix-blog-styles.py — 33 layout tabulek odstraněno
+
 ### P2 — Hero stránka — opravy obsahu
 - [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
 - [ ] Pod první sekcí jsou jen 2 tlačítka — přidat i odkaz na Vault

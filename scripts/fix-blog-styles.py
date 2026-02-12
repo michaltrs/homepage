@@ -16,7 +16,8 @@ ARCHIVE = os.path.join(os.path.dirname(__file__), '..', 'public', 'archive')
 IMAGE_EXTS = re.compile(r'\.(jpe?g|png|gif|webp|svg|bmp)$', re.IGNORECASE)
 LIGHTBOX_SCRIPT = '<script src="/archive/lightbox.js"></script>'
 
-stats = {'files': 0, 'images_cleaned': 0, 'lightbox_links': 0, 'scripts_added': 0}
+stats = {'files': 0, 'images_cleaned': 0, 'lightbox_links': 0, 'scripts_added': 0,
+         'tables_removed': 0}
 
 
 def is_image_href(href):
@@ -272,7 +273,7 @@ def process_blog(html, filepath):
 
 
 def process_cnk(html, filepath):
-    """Process a CNK HTML file — minimal changes."""
+    """Process a CNK HTML file — clean images, remove layout tables."""
     def clean_cnk_img(match):
         tag = match.group(0)
         original = tag
@@ -298,6 +299,206 @@ def process_cnk(html, filepath):
         return tag
 
     html = re.sub(r'<a\b[^>]*href="[^"]*"[^>]*>', add_cnk_lightbox, html)
+
+    # --- P2b: Remove layout tables ---
+
+    def extract_images(fragment):
+        """Extract all <a><img></a> and standalone <img> from HTML."""
+        return re.findall(
+            r'(<a\b[^>]*>(?:(?!</a>).)*?<img\b[^>]*>(?:(?!</a>).)*?</a>|<img\b[^>]*/?>)',
+            fragment, re.DOTALL
+        )
+
+    def clean_img_align(html_str):
+        """Remove align attributes from HTML string."""
+        return re.sub(r'\s*align="[^"]*"', '', html_str)
+
+    def is_image_only_cell(cell_content):
+        """Check if cell content is just image links with minimal text."""
+        s = cell_content
+        # Only strip <a> tags that wrap images, not text-only links
+        s = re.sub(r'<a\b[^>]*>(?:(?!</a>).)*?<img\b[^>]*>(?:(?!</a>).)*?</a>',
+                    '', s, flags=re.DOTALL)
+        s = re.sub(r'<img\b[^>]*/?\s*>', '', s)
+        s = re.sub(r'<div\b[^>]*>.*?</div>', '', s, flags=re.DOTALL)
+        s = re.sub(r'<br\s*/?>', '', s)
+        s = re.sub(r'&nbsp;', '', s)
+        s = s.strip()
+        return len(s) < 20
+
+    # 1. <table align="right"> photo grid → gallery (nested in 2003-viden)
+    def convert_align_right_grid(m):
+        imgs = extract_images(m.group(0))
+        if not imgs:
+            return m.group(0)
+        cleaned = [clean_img_align(img) for img in imgs]
+        stats['tables_removed'] += 1
+        return '<div class="gallery">\n' + '\n'.join(cleaned) + '\n</div>'
+
+    html = re.sub(
+        r'<table\s+align="right"\s*>\s*<tr\b.*?</table>',
+        convert_align_right_grid,
+        html, flags=re.DOTALL
+    )
+
+    # 2. <table class="stred"> galleries → <div class="gallery">
+    #    Skip if table has significant text (data table like bike specs)
+    def convert_stred_gallery(m):
+        table_html = m.group(0)
+        # Check for significant text content (= data table, not gallery)
+        text_check = re.sub(
+            r'<a\b[^>]*>(?:(?!</a>).)*?<img\b[^>]*>(?:(?!</a>).)*?</a>',
+            '', table_html, flags=re.DOTALL)
+        text_check = re.sub(r'<img\b[^>]*/?\s*>', '', text_check)
+        text_check = re.sub(r'<[^>]+>', '', text_check)
+        text_check = text_check.strip()
+        if len(text_check) > 50:
+            return m.group(0)
+        imgs = extract_images(table_html)
+        if not imgs:
+            return m.group(0)
+        cleaned = [clean_img_align(img) for img in imgs]
+        stats['tables_removed'] += 1
+        return '<div class="gallery">\n' + '\n'.join(cleaned) + '\n</div>'
+
+    html = re.sub(
+        r'<table\s+class="stred"\s*>.*?</table>',
+        convert_stred_gallery,
+        html, flags=re.DOTALL
+    )
+
+    # 3. <table width="..." align="left/right"> thumbnails → float div
+    def convert_float_table(m):
+        align = m.group(1)
+        imgs = extract_images(m.group(0))
+        if not imgs:
+            return m.group(0)
+        cleaned = [clean_img_align(img) for img in imgs]
+        cls = 'img-left' if align == 'left' else 'img-right'
+        stats['tables_removed'] += 1
+        return '<div class="' + cls + '">\n' + '\n'.join(cleaned) + '\n</div>'
+
+    html = re.sub(
+        r'<table\s+width="\d+"\s+align="(left|right)"[^>]*>.*?</table>',
+        convert_float_table,
+        html, flags=re.DOTALL
+    )
+
+    # 4. <table align="center"> → gallery
+    def convert_center_gallery(m):
+        imgs = extract_images(m.group(0))
+        if not imgs:
+            return m.group(0)
+        cleaned = [clean_img_align(img) for img in imgs]
+        stats['tables_removed'] += 1
+        return '<div class="gallery">\n' + '\n'.join(cleaned) + '\n</div>'
+
+    html = re.sub(
+        r'<table\s+align="center"\s*>.*?</table>',
+        convert_center_gallery,
+        html, flags=re.DOTALL
+    )
+
+    # 5. Stats tables with "Ujetá vzdálenost:" → info divs
+    def convert_stats_table(m):
+        content = m.group(0)
+        result = []
+        dist_match = re.search(
+            r'Ujetá vzdálenost:</td>\s*<td><b>(.*?)</b></td>', content)
+        if dist_match:
+            result.append(
+                '<div class="info">Ujetá vzdálenost: <b>' +
+                dist_match.group(1) + '</b></div>')
+        profile_match = re.search(
+            r'Profil cesty:</td>\s*<td>(.*?)\s*</td>', content, re.DOTALL)
+        if profile_match:
+            profile = profile_match.group(1).strip()
+            result.append(
+                '<div class="info">Profil cesty: ' + profile + '</div>')
+        if result:
+            stats['tables_removed'] += 1
+            return '\n'.join(result)
+        return m.group(0)
+
+    html = re.sub(
+        r'<table>\s*<tr>\s*<td>Ujetá vzdálenost:.*?</table>',
+        convert_stats_table,
+        html, flags=re.DOTALL
+    )
+
+    # 6. Remaining bare <table> (text+map) → unwrap
+    def unwrap_bare_table(m):
+        content = m.group(0)
+        if 'class="tab"' in content or 'class="fv"' in content:
+            return content
+
+        rows = re.findall(r'<tr[^>]*>(.*?)</tr>', content, re.DOTALL)
+        if not rows:
+            return content
+
+        result_parts = []
+        for row in rows:
+            cells = re.findall(r'<td[^>]*>(.*?)</td>', row, re.DOTALL)
+
+            text_cells = []
+            img_cells = []
+            gallery_cells = []
+
+            for cell in cells:
+                cell = cell.strip()
+                if not cell:
+                    continue
+                if '<div class="gallery">' in cell:
+                    gallery_cells.append(cell)
+                elif is_image_only_cell(cell):
+                    imgs = extract_images(cell)
+                    if imgs:
+                        cleaned = [clean_img_align(img) for img in imgs]
+                        img_cells.append(
+                            '<div class="img-right">' +
+                            ' '.join(cleaned) + '</div>')
+                else:
+                    text_cells.append(cell)
+
+            # Float images before text (for float layout), galleries after
+            result_parts.extend(img_cells)
+            result_parts.extend(text_cells)
+            result_parts.extend(gallery_cells)
+
+        if result_parts:
+            stats['tables_removed'] += 1
+            return '\n'.join(result_parts)
+        return content
+
+    html = re.sub(
+        r'<table>(.*?)</table>',
+        unwrap_bare_table,
+        html, flags=re.DOTALL
+    )
+
+    # 7. Standalone <img ... align="left/right"> → CSS class
+    def clean_standalone_img_align(m):
+        tag = m.group(0)
+        align_match = re.search(r'align="(left|right)"', tag)
+        if not align_match:
+            return tag
+        align = align_match.group(1)
+        tag = re.sub(r'\s*align="[^"]*"', '', tag)
+        cls = 'img-left' if align == 'left' else 'img-right'
+        tag = add_class(tag, cls)
+        stats['images_cleaned'] += 1
+        return tag
+
+    html = re.sub(
+        r'<img\b[^>]*\balign="[^"]*"[^>]*/?>',
+        clean_standalone_img_align, html
+    )
+
+    # 8. <div align="right"> → inline style
+    html = re.sub(
+        r'<div\s+align="right">',
+        '<div style="text-align: right">', html
+    )
 
     return html
 
@@ -474,6 +675,7 @@ def main():
     print(f'  Files modified: {stats["files"]}')
     print(f'  Images cleaned: {stats["images_cleaned"]}')
     print(f'  Lightbox links added: {stats["lightbox_links"]}')
+    print(f'  Layout tables removed: {stats["tables_removed"]}')
     print(f'  Script tags added: {stats["scripts_added"]}')
 
 
