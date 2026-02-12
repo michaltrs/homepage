@@ -17,7 +17,7 @@ IMAGE_EXTS = re.compile(r'\.(jpe?g|png|gif|webp|svg|bmp)$', re.IGNORECASE)
 LIGHTBOX_SCRIPT = '<script src="/archive/lightbox.js"></script>'
 
 stats = {'files': 0, 'images_cleaned': 0, 'lightbox_links': 0, 'scripts_added': 0,
-         'tables_removed': 0}
+         'tables_removed': 0, 'videos_converted': 0}
 
 
 def is_image_href(href):
@@ -237,6 +237,128 @@ def clean_blog_separator(match):
     return f'<div class="img-center">{inner}</div>'
 
 
+def extract_youtube_id(url):
+    """Extract YouTube video ID from various URL formats."""
+    # /v/VIDEO_ID, /embed/VIDEO_ID, watch?v=VIDEO_ID
+    m = re.search(r'youtube\.com/(?:v|embed)/([a-zA-Z0-9_-]+)', url)
+    if m:
+        return m.group(1)
+    m = re.search(r'youtube\.com/watch\?v=([a-zA-Z0-9_-]+)', url)
+    if m:
+        return m.group(1)
+    return None
+
+
+def convert_youtube_object(match):
+    """Convert YouTube <object>/<embed> Flash to responsive <iframe>."""
+    block = match.group(0)
+    # Try param movie value first, then embed src
+    vid_id = None
+    m = re.search(r'<param\s+name="movie"\s+value="([^"]+)"', block)
+    if m:
+        vid_id = extract_youtube_id(m.group(1))
+    if not vid_id:
+        m = re.search(r'<embed\s[^>]*src="([^"]+)"', block)
+        if m:
+            vid_id = extract_youtube_id(m.group(1))
+    if not vid_id:
+        return block  # Not a YouTube embed, leave alone
+    stats['videos_converted'] += 1
+    return f'<div class="video-responsive"><iframe src="https://www.youtube.com/embed/{vid_id}" allowfullscreen></iframe></div>'
+
+
+def convert_youtube_iframe(match):
+    """Wrap existing YouTube <iframe> in responsive container + https."""
+    tag = match.group(0)
+    m = re.search(r'src="([^"]+)"', tag)
+    if not m:
+        return tag
+    src = m.group(1)
+    vid_id = extract_youtube_id(src)
+    if not vid_id:
+        return tag
+    stats['videos_converted'] += 1
+    return f'<div class="video-responsive"><iframe src="https://www.youtube.com/embed/{vid_id}" allowfullscreen></iframe></div>'
+
+
+def convert_maps_iframe(match):
+    """Wrap Google Maps <iframe> in responsive container."""
+    tag = match.group(0)
+    # Upgrade http to https, remove fixed dimensions
+    src_m = re.search(r'src="([^"]+)"', tag)
+    if not src_m:
+        return tag
+    src = src_m.group(1).replace('http://', 'https://')
+    stats['videos_converted'] += 1
+    return f'<div class="video-responsive"><iframe src="{src}" allowfullscreen></iframe></div>'
+
+
+def convert_dead_embed(match):
+    """Replace dead Flash embeds with placeholder text."""
+    stats['videos_converted'] += 1
+    return '<p><em>(Flash obsah již není dostupný)</em></p>'
+
+
+def process_video_embeds(html):
+    """Convert all video/Flash embeds to modern responsive format."""
+    # 1. YouTube <object>...</object> (old Flash)
+    html = re.sub(
+        r'<object\b[^>]*>(?:(?!</object>).)*?youtube\.com(?:(?!</object>).)*?</object>',
+        convert_youtube_object,
+        html, flags=re.DOTALL
+    )
+
+    # 2. YouTube <iframe> (already modern, just wrap + https)
+    # Skip if already inside .video-responsive
+    html = re.sub(
+        r'(?<!video-responsive">)<iframe\b[^>]*youtube\.com[^>]*>(?:(?!</iframe>).)*?</iframe>',
+        convert_youtube_iframe,
+        html, flags=re.DOTALL
+    )
+
+    # 3. Google Maps <iframe>
+    html = re.sub(
+        r'(?<!video-responsive">)<iframe\b[^>]*maps\.google\.com[^>]*>(?:(?!</iframe>).)*?</iframe>',
+        convert_maps_iframe,
+        html, flags=re.DOTALL
+    )
+
+    # 4. Dead Flash: <object> with non-YouTube src (stream.cz, swatch, brutalbob, etc.)
+    html = re.sub(
+        r'<object\b[^>]*>(?:(?!</object>).)*?(?:stream\.cz|swatch\.com|brutalbob|brightcove)(?:(?!</object>).)*?</object>',
+        convert_dead_embed,
+        html, flags=re.DOTALL
+    )
+
+    # 5. Dead <object> wrapping Windows Media Player (must run before standalone embed rule)
+    html = re.sub(
+        r'<object\b[^>]*(?:x-ms-asf|mplayer)[^>]*>(?:(?!</object>).)*?</object>',
+        convert_dead_embed,
+        html, flags=re.DOTALL
+    )
+
+    # 6. Dead standalone <embed> (brightcove, Windows Media Player, etc.)
+    html = re.sub(
+        r'<embed\b[^>]*(?:brightcove|x-ms-asf|mms://)[^>]*>(?:</embed>)?',
+        convert_dead_embed,
+        html, flags=re.DOTALL
+    )
+
+    # 7. Clean up <center> wrapper around converted content
+    html = re.sub(
+        r'<center>\s*(<div class="video-responsive">.*?</div>)\s*</center>',
+        r'\1',
+        html, flags=re.DOTALL
+    )
+    html = re.sub(
+        r'<center>\s*(<p><em>\(Flash obsah.*?</em></p>)\s*</center>',
+        r'\1',
+        html, flags=re.DOTALL
+    )
+
+    return html
+
+
 def process_blog(html, filepath):
     """Process a blog HTML file."""
     # 1. Replace Blogger table caption containers first (before individual tag cleanup)
@@ -268,6 +390,55 @@ def process_blog(html, filepath):
 
     # 5. Clean remaining standalone <img> tags
     html = re.sub(r'<img\b[^>]*>', clean_blog_standalone_img, html)
+
+    # 6. Convert video/Flash embeds to responsive iframes
+    html = process_video_embeds(html)
+
+    # 7. Remove Picasa "Posted by Picasa" badge divs
+    html = re.sub(
+        r'<div[^>]*>\s*<a\b[^>]*picasa\.google\.com[^>]*>.*?</a>\s*</div>',
+        '',
+        html, flags=re.DOTALL
+    )
+
+    # 8. Convert remaining Blogger photo tables (width:auto) to figure+figcaption
+    def convert_blogger_photo_table(match):
+        block = match.group(0)
+        # Extract float from table style
+        float_dir = None
+        style_m = re.search(r'style="([^"]*)"', block.split('</table>')[0].split('<td')[0])
+        if style_m and 'float' in style_m.group(1):
+            float_dir = extract_float(style_m.group(1))
+        # Extract image (first cell)
+        img_m = re.search(r'(<a\b[^>]*>.*?<img\b[^>]*>.*?</a>|<img\b[^>]*>)', block, re.DOTALL)
+        if not img_m:
+            return block
+        img_html = img_m.group(0)
+        # Extract caption (second cell, if present)
+        caption = ''
+        caption_m = re.search(r'<td[^>]*>(?:(?!</td>).)*?(?:Zdroj|Posted|Album)(?:(?!</td>).)*?</td>', block, re.DOTALL)
+        if caption_m:
+            caption_text = re.sub(r'<td[^>]*>\s*', '', caption_m.group(0))
+            caption_text = re.sub(r'\s*</td>', '', caption_text)
+            caption_text = re.sub(r'font-family:[^;]+;?\s*', '', caption_text)
+            caption_text = re.sub(r'font-size:[^;]+;?\s*', '', caption_text)
+            caption_text = re.sub(r'text-align:[^;]+;?\s*', '', caption_text)
+            caption_text = re.sub(r'\s*style="\s*"', '', caption_text)
+            if caption_text.strip():
+                caption = f'\n<figcaption>{caption_text.strip()}</figcaption>'
+        float_class = f' class="img-{float_dir}"' if float_dir else ''
+        stats['images_cleaned'] += 1
+        return f'<figure{float_class}>{img_html}{caption}\n</figure>'
+
+    html = re.sub(
+        r'<table\b[^>]*style="[^"]*width:\s*auto[^"]*"[^>]*>.*?</table>',
+        convert_blogger_photo_table,
+        html, flags=re.DOTALL
+    )
+
+    # 9. Unwrap <center> tags (keep inner content)
+    html = re.sub(r'<center>\s*(?:<br\s*/?>)?\s*', '', html)
+    html = re.sub(r'\s*</center>', '', html)
 
     return html
 
@@ -500,11 +671,32 @@ def process_cnk(html, filepath):
         '<div style="text-align: right">', html
     )
 
+    # 9. Float first image/link inside .odstavec (map or diary scan)
+    # Pattern: <div class="odstavec"> [whitespace] <a ...><img ...></a> or <img ...>
+    def float_odstavec_first_img(m):
+        prefix = m.group(1)  # <div class="odstavec"> + whitespace
+        tag = m.group(2)     # <a ...> or <img ...>
+        if 'img-right' in tag or 'img-left' in tag:
+            return m.group(0)  # Already has float class
+        tag = add_class(tag, 'img-right')
+        stats['images_cleaned'] += 1
+        return prefix + tag
+
+    html = re.sub(
+        r'(<div\s+class="odstavec">\s*)(<(?:a|img)\b[^>]*>)',
+        float_odstavec_first_img,
+        html
+    )
+
     return html
 
 
 def process_cvut_fel(html, filepath):
     """Process a CVUT FEL HTML file — normalize inline styles to classes."""
+    # Skip Doxygen auto-generated files
+    if '/dokumentace/' in filepath or '/imb-cvut/doc/' in filepath:
+        return html
+
     def clean_fel_img(match):
         tag = match.group(0)
         original = tag
@@ -553,6 +745,38 @@ def process_cvut_fel(html, filepath):
         return tag
 
     html = re.sub(r'<a\b[^>]*href="[^"]*"[^>]*>', add_fel_lightbox, html)
+
+    # Unwrap <center> tags (keep content)
+    html = re.sub(r'<center>\s*', '', html)
+    html = re.sub(r'\s*</center>', '', html)
+
+    # Unwrap <font> tags (keep content)
+    html = re.sub(r'<font\b[^>]*>', '', html)
+    html = re.sub(r'</font>', '', html)
+
+    # Clean deprecated <hr> attributes
+    html = re.sub(r'<hr\s+[^>]*(?:size|width|noshade)[^>]*/?\s*>', '<hr>', html)
+
+    # Remove cellspacing/cellpadding/border from tables (CSS handles this)
+    html = re.sub(r'\s*cellspacing="\d+"', '', html)
+    html = re.sub(r'\s*cellpadding="\d+"', '', html)
+    html = re.sub(r'(<table\b[^>]*)\s*border="\d+"', r'\1', html)
+
+    # Convert align= on p/div/td to inline style
+    def convert_align_attr(m):
+        tag = m.group(0)
+        align_m = re.search(r'align="(\w+)"', tag)
+        if not align_m:
+            return tag
+        align = align_m.group(1).lower()
+        tag = re.sub(r'\s*align="\w+"', '', tag)
+        if 'style="' in tag:
+            tag = re.sub(r'style="', f'style="text-align: {align}; ', tag)
+        else:
+            tag = re.sub(r'(>)', f' style="text-align: {align}">', tag, count=1)
+        return tag
+
+    html = re.sub(r'<(?:p|div|td|th)\b[^>]*\balign="[^"]*"[^>]*>', convert_align_attr, html)
 
     return html
 
@@ -676,6 +900,7 @@ def main():
     print(f'  Images cleaned: {stats["images_cleaned"]}')
     print(f'  Lightbox links added: {stats["lightbox_links"]}')
     print(f'  Layout tables removed: {stats["tables_removed"]}')
+    print(f'  Videos converted: {stats["videos_converted"]}')
     print(f'  Script tags added: {stats["scripts_added"]}')
 
 

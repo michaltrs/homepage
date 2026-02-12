@@ -60,12 +60,24 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Přidán `.gallery` CSS do style.css (flex layout, responsive)
 - [x] Rozšířen skript scripts/fix-blog-styles.py — 33 layout tabulek odstraněno
 
+### P3 — Archive design cleanup ✓
+- [x] Gallery CSS fix — `clear: both`, `.odstavec` margins, float clearing
+- [x] Video/embed responsive — 25 embed konverzí (20 YouTube→iframe, 1 Google Maps, 4 dead Flash→placeholder)
+- [x] Blog cleanup — 5 Picasa badge removals, 3 photo table→figure, center unwrap
+- [x] CNK landing page — 8× `<table class="fv">` → `<div class="card">` + CSS
+- [x] SPŠE bare tables — `class="tab"` přidáno ke 4 datovým tabulkám
+- [x] CVUT-FEL deprecated HTML — `<center>`, `<font>`, `<hr>` attrs, cellspacing/cellpadding, align→CSS (8 souborů, Doxygen přeskočeny)
+- [x] CNK viden stats normalizace — „Ujetá vzdálenost: **X km**" → „vzdálenost: X km | profil cesty"
+- [x] `.video-responsive` CSS wrapper (16:9 aspect ratio, max-width 640px)
+- [x] `.card` CSS (expedition cards na CNK landing)
+- [x] Rozšířen skript scripts/fix-blog-styles.py — video embeds, Picasa badges, Blogger tables, deprecated HTML
+
 ### P2 — Hero stránka — opravy obsahu
 - [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
 - [ ] Pod první sekcí jsou jen 2 tlačítka — přidat i odkaz na Vault
 - [ ] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně
 
-### P3 — Cleanup
+### P3b — Remaining cleanup
 - [ ] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [ ] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
 - [ ] Vytvořit 404 stránku
@@ -74,7 +86,7 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 
 ### Nemigrované (rozhodnout zda vůbec)
 - [ ] Fotogalerie — 15 galerií se stovkami fotek (velký rozsah, možná nahradit odkazem na Google Photos/Flickr)
-- [ ] Video — nahrazeno YouTube linkem (asi OK)
+- [ ] ~~Video — nahrazeno YouTube linkem (asi OK)~~ — hotovo (P3)
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty

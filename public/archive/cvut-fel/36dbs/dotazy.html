@@ -25,7 +25,7 @@ JOIN Osetruje O ON (ZV.dat_nar = O.Zvir_dat_nar AND ZV.jmeno = O.zvir_jmeno)<br>
 JOIN Zamestnanec Z ON (Z.rc = O.zame_rc) <br>
 WHERE (ZV.puvod ='Afrika' AND Z.jmeno = 'Radek' AND Z.prijmeni = 'Juk');</tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
-<p><table summary="Script output" align="center" border="1" width="90%">
+<p><table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th></tr>
 <tr><td>Ko�ka divok�</td><td>Honz�k</td><td>20-APR-00</td></tr>
 <tr><td>Karakal</td><td>Mi��</td><td>22-JUN-83</td></tr>
@@ -44,7 +44,7 @@ Osetruje O<br> JOIN Zamestnanec Z ON (O.zame_rc = Z.rc) <br>WHERE (Z.jmeno =
 </tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th></tr>
 <tr><td>Chvostan b�lol�c�</td><td>Evi�ka</td><td>07-AUG-99</td></tr>
 <tr><td>Irbis</td><td>Fanou�ek</td><td>19-JUN-01</td></tr>
@@ -99,13 +99,13 @@ JOIN zvire ZV ON (ZV.dat_nar = ZP.Zvir_dat_nar AND ZV.jmeno = ZP.zvir_jmeno) <br
 WHERE ZV.vybeh__Pavi_c_pav = 50; </tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">RC</th><th scope="col">FUNKC</th><th scope="col">PRIJMENI</th><th scope="col">JMENO</th></tr>
-<tr><td align="right">7006120011</td><td>z_vet</td><td>Junek</td><td>Karel</td></tr>
-<tr><td align="right">7410050879</td><td>z_vet</td><td>Kron</td><td>David</td></tr>
-<tr><td align="right">7604120436</td><td>z_ose</td><td>Gerk</td><td>Tom�</td></tr>
-<tr><td align="right">7905240255</td><td>z_ose</td><td>Juk</td><td>Radek</td></tr>
-<tr><td align="right">8004160109</td><td>z_udr</td><td>Zubrt</td><td>Michal</td></tr>
+<tr><td style="text-align: right">7006120011</td><td>z_vet</td><td>Junek</td><td>Karel</td></tr>
+<tr><td style="text-align: right">7410050879</td><td>z_vet</td><td>Kron</td><td>David</td></tr>
+<tr><td style="text-align: right">7604120436</td><td>z_ose</td><td>Gerk</td><td>Tom�</td></tr>
+<tr><td style="text-align: right">7905240255</td><td>z_ose</td><td>Juk</td><td>Radek</td></tr>
+<tr><td style="text-align: right">8004160109</td><td>z_udr</td><td>Zubrt</td><td>Michal</td></tr>
 </tbody></table></p>
 Z�skan� odpov�� odpov�d� zadan�mu dotazu.
 <br><br></li>
@@ -116,9 +116,9 @@ Tr�by za vstupenky v obdob� od 4.12.2003 do 13.12.2003
 <br><br><b>SQL:</b><br>
 <tt>SELECT SUM(V.cena) FROM Vstupenky V join Prodava P ON (V.typ = P.Vstu_typ) where datum_prodeje between to_date('2003-12-04','yyyy-mm-dd') AND to_date('2003-12-13','yyyy-mm-dd');</tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
-<p><table summary="Script output" align="center" border="1" width="90%">
+<p><table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">SUM(V.CENA)</th></tr>
-<tr><td align="right">120</td></tr>
+<tr><td style="text-align: right">120</td></tr>
 </tbody></table></p>
 Z�skan� odpov�� odpov�d� zadan�mu dotazu.
 <br><br></li>
@@ -134,7 +134,7 @@ ORDER BY ZP.datum_prohl;
 </tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th><th cope="col">DATUM_PRO</th></tr>
 <tr><td>Levhart persk�</td><td>Eli�ka</td><td>09-FEB-97</td><td>30-DEC-01</td></tr>
 <tr><td>Karakal</td><td>Mi��</td><td>22-JUN-83</td><td>09-OCT-02</td></tr>
@@ -160,7 +160,7 @@ JOIN Vybeh V ON (Z.vybeh__Pavi_c_pav = V.Pavi_c_pav AND Z.vybeh__c_vyb = V.c_vyb
 </tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV_ZVIRETE</th><th scope="col">JMENO</th><th scope="col">PAVILON</th><th scope="col">VYBEH</th></tr>
 <tr><td>Chvostan b�lol�c�</td><td>Evi�ka</td><td>Opice</td><td>malpov� a kosmanov�</td></tr>
 <tr><td>Irbis</td><td>Fanou�ek</td><td>�elmy</td><td>Ko�kovit� z Asie</td></tr>
@@ -211,21 +211,21 @@ Seznam v�ech v�b�h�, u ka�d�ho bude vyps�n maxim�ln� po�et z
 <tt>SELECT V.nazev,V.max_zvirat,count(*) AS akt_zvirat FROM zvire Z <br>JOIN vybeh V ON (Z.vybeh__c_vyb = V.c_vyb AND Z.vybeh__pavi_c_pav = V.pavi_c_pav) <br>group by V.c_vyb,V.pavi_c_pav,V.nazev,V.max_zvirat <br>order by UPPER(V.nazev);</tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">MAX_ZVIRAT</th><th scope="col">AKT_ZVIRAT</th></tr>
-<tr><td>Drobn� �elmy</td><td align="right">6</td><td align="right">3</td></tr>
-<tr><td>Hadi</td><td align="right">10</td><td align="right">3</td></tr>
-<tr><td>Hlodavci</td><td align="right">20</td><td align="right">2</td></tr>
-<tr><td>je�t��i</td><td align="right">20</td><td align="right">2</td></tr>
-<tr><td>ko�kodanov�</td><td align="right">5</td><td align="right">3</td></tr>
-<tr><td>Ko�kovit� z Afriky</td><td align="right">10</td><td align="right">3</td></tr>
-<tr><td>Ko�kovit� z Ameriky</td><td align="right">5</td><td align="right">2</td></tr>
-<tr><td>Ko�kovit� z Asie</td><td align="right">7</td><td align="right">5</td></tr>
-<tr><td>Kunovit�</td><td align="right">10</td><td align="right">5</td></tr>
-<tr><td>Lichokopytn�ci</td><td align="right">15</td><td align="right">3</td></tr>
-<tr><td>malpov� a kosmanov�</td><td align="right">5</td><td align="right">3</td></tr>
-<tr><td>Medv�di</td><td align="right">4</td><td align="right">2</td></tr>
-<tr><td>Medv�dci</td><td align="right">4</td><td align="right">2</td></tr>
+<tr><td>Drobn� �elmy</td><td style="text-align: right">6</td><td style="text-align: right">3</td></tr>
+<tr><td>Hadi</td><td style="text-align: right">10</td><td style="text-align: right">3</td></tr>
+<tr><td>Hlodavci</td><td style="text-align: right">20</td><td style="text-align: right">2</td></tr>
+<tr><td>je�t��i</td><td style="text-align: right">20</td><td style="text-align: right">2</td></tr>
+<tr><td>ko�kodanov�</td><td style="text-align: right">5</td><td style="text-align: right">3</td></tr>
+<tr><td>Ko�kovit� z Afriky</td><td style="text-align: right">10</td><td style="text-align: right">3</td></tr>
+<tr><td>Ko�kovit� z Ameriky</td><td style="text-align: right">5</td><td style="text-align: right">2</td></tr>
+<tr><td>Ko�kovit� z Asie</td><td style="text-align: right">7</td><td style="text-align: right">5</td></tr>
+<tr><td>Kunovit�</td><td style="text-align: right">10</td><td style="text-align: right">5</td></tr>
+<tr><td>Lichokopytn�ci</td><td style="text-align: right">15</td><td style="text-align: right">3</td></tr>
+<tr><td>malpov� a kosmanov�</td><td style="text-align: right">5</td><td style="text-align: right">3</td></tr>
+<tr><td>Medv�di</td><td style="text-align: right">4</td><td style="text-align: right">2</td></tr>
+<tr><td>Medv�dci</td><td style="text-align: right">4</td><td style="text-align: right">2</td></tr>
 </tbody></table></p>
 Z�skan� odpov�� odpov�d� zadan�mu dotazu.
 <br><br></li>
@@ -237,13 +237,13 @@ Vyber zv��ata, kter� maj� stejnou zemi p�vodu jako Serval.
 <tt>SELECT Z.* FROM Zvire Z WHERE puvod = ( SELECT puvod FROM Zvire WHERE nazev = 'Serval');</tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">VYBEH__C_VYB</th>
 <th scope="col">VYBEH__PAVI_C_PAV</th><th scope="col">DAT_NAR</th><th scope="col">JMENO</th><th scope="col">NAZEV</th><th scope="col">FREK_KRMENI</th><th scope="col">PUVOD</th><th scope="col">POTRAVA</th></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>22-JUN-83</td><td>Mi��</td><td>Karakal</td><td align="right">1</td><td>Afrika</td><td>zv��ata do velikosti gazel</td></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>20-APR-00</td><td>Honz�k</td><td>Ko�ka divok�</td><td align="right">2</td><td>Afrika</td><td>drobn� zv��ata, hlodavce</td></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>09-NOV-86</td><td>Lad�k</td><td>Serval</td><td align="right">2</td><td>Afrika</td><td>drobn� zv��ata, pt�ky</td></tr>
-<tr><td align="right">4</td><td align="right">10</td><td>13-MAY-00</td><td>Tereza</td><td>Mangusta ��han�</td><td align="right">2</td><td>Afrika</td><td>p�ev�n� �ivo�i�n�</td></tr>
+<tr><td style="text-align: right">1</td><td style="text-align: right">10</td><td>22-JUN-83</td><td>Mi��</td><td>Karakal</td><td style="text-align: right">1</td><td>Afrika</td><td>zv��ata do velikosti gazel</td></tr>
+<tr><td style="text-align: right">1</td><td style="text-align: right">10</td><td>20-APR-00</td><td>Honz�k</td><td>Ko�ka divok�</td><td style="text-align: right">2</td><td>Afrika</td><td>drobn� zv��ata, hlodavce</td></tr>
+<tr><td style="text-align: right">1</td><td style="text-align: right">10</td><td>09-NOV-86</td><td>Lad�k</td><td>Serval</td><td style="text-align: right">2</td><td>Afrika</td><td>drobn� zv��ata, pt�ky</td></tr>
+<tr><td style="text-align: right">4</td><td style="text-align: right">10</td><td>13-MAY-00</td><td>Tereza</td><td>Mangusta ��han�</td><td style="text-align: right">2</td><td>Afrika</td><td>p�ev�n� �ivo�i�n�</td></tr>
 </tbody></table></p>
 Z�skan� odpov�� odpov�d� zadan�mu dotazu.
 <br><br></li>
@@ -258,14 +258,14 @@ MINUS <br>
 </tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">C_VYB</th><th scope="col">C_PAV</th></tr>
-<tr><td>Drobn� �elmy</td><td align="right">4</td><td align="right">10</td></tr>
-<tr><td>Hadi</td><td align="right">2</td><td align="right">50</td></tr>
-<tr><td>Ko�kovit� z Afriky</td><td align="right">1</td><td align="right">10</td></tr>
-<tr><td>Ko�kovit� z Asie</td><td align="right">2</td><td align="right">10</td></tr>
-<tr><td>Medv�di</td><td align="right">1</td><td align="right">20</td></tr>
-<tr><td>ko�kodanov�</td><td align="right">2</td><td align="right">30</td></tr>
+<tr><td>Drobn� �elmy</td><td style="text-align: right">4</td><td style="text-align: right">10</td></tr>
+<tr><td>Hadi</td><td style="text-align: right">2</td><td style="text-align: right">50</td></tr>
+<tr><td>Ko�kovit� z Afriky</td><td style="text-align: right">1</td><td style="text-align: right">10</td></tr>
+<tr><td>Ko�kovit� z Asie</td><td style="text-align: right">2</td><td style="text-align: right">10</td></tr>
+<tr><td>Medv�di</td><td style="text-align: right">1</td><td style="text-align: right">20</td></tr>
+<tr><td>ko�kodanov�</td><td style="text-align: right">2</td><td style="text-align: right">30</td></tr>
 </tbody></table></p>
 Z�skan� odpov�� odpov�d� zadan�mu dotazu.
 <br><br></li>
@@ -277,25 +277,25 @@ V�echna zv��ata mlad�� ne� 4 roky.
 <tt>SELECT * FROM Zvire WHERE dat_nar > to_date('2000-12-27','yyyy-mm-dd');</tt>
 <br><br><b>V�sledek zpracov�n� dotazu:</b><br>
 <p>
-<table summary="Script output" align="center" border="1" width="90%">
+<table summary="Script output" align="center"  width="90%">
 <tbody>
 <tr><th scope="col">VYBEH__C_VYB</th><th scope="col">VYBEH__PAVI_C_PAV</th><th scope="col">DAT_NAR</th><th scope="col">JMENO</th><th scope="col">NAZEV</th><th scope="col">FREK_KRMENI</th><th scope="col">PUVOD</th><th scope="col">POTRAVA</th>
 </tr>
-<tr><td align="right">2</td><td align="right">10</td><td>19-JUN-01</td><td>Fanou�ek</td><td>Irbis</td><td align="right">1</td><td>st�edn� Asie</td><td>hor�t� kopytn�ci a jin� men�� savci</td>
+<tr><td style="text-align: right">2</td><td style="text-align: right">10</td><td>19-JUN-01</td><td>Fanou�ek</td><td>Irbis</td><td style="text-align: right">1</td><td>st�edn� Asie</td><td>hor�t� kopytn�ci a jin� men�� savci</td>
 </tr>
-<tr><td align="right">5</td><td align="right">10</td><td>15-JAN-03</td><td>Al�k</td><td>Vydra mal�</td><td align="right">3</td><td>jihov�chodn� Asie</td><td>kor��e, m�k��e, ryby</td>
-</tr>
-<tr>
-<td align="right">2</td><td align="right">30</td><td>01-SEP-01</td><td>Lucinka</td><td>Makak tmav�</td><td align="right">4</td><td>ostrov Sulawesi</td><td>rostlinn�</td>
+<tr><td style="text-align: right">5</td><td style="text-align: right">10</td><td>15-JAN-03</td><td>Al�k</td><td>Vydra mal�</td><td style="text-align: right">3</td><td>jihov�chodn� Asie</td><td>kor��e, m�k��e, ryby</td>
 </tr>
 <tr>
-<td align="right">2</td><td align="right">40</td><td>18-SEP-01</td><td>Verunka</td><td>Psoun preriov�</td><td align="right">5</td><td>Severn� Amerika</td><td>rostlinn�</td>
+<td style="text-align: right">2</td><td style="text-align: right">30</td><td>01-SEP-01</td><td>Lucinka</td><td>Makak tmav�</td><td style="text-align: right">4</td><td>ostrov Sulawesi</td><td>rostlinn�</td>
 </tr>
 <tr>
-<td align="right">1</td><td align="right">50</td><td>19-AUG-01</td><td>Pep�no</td><td>Korovec jedovat�</td><td align="right">2</td><td>St�edn� Amerika</td><td>hlodavci, hmyz, pt��ata, vejce</td>
+<td style="text-align: right">2</td><td style="text-align: right">40</td><td>18-SEP-01</td><td>Verunka</td><td>Psoun preriov�</td><td style="text-align: right">5</td><td>Severn� Amerika</td><td>rostlinn�</td>
 </tr>
 <tr>
-<td align="right">2</td><td align="right">50</td><td>17-AUG-02</td><td>Rudolf</td><td>Zmije obecn�</td><td align="right">3</td><td>Evropa</td><td>drobn� savci, je�t�rky</td>
+<td style="text-align: right">1</td><td style="text-align: right">50</td><td>19-AUG-01</td><td>Pep�no</td><td>Korovec jedovat�</td><td style="text-align: right">2</td><td>St�edn� Amerika</td><td>hlodavci, hmyz, pt��ata, vejce</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td><td style="text-align: right">50</td><td>17-AUG-02</td><td>Rudolf</td><td>Zmije obecn�</td><td style="text-align: right">3</td><td>Evropa</td><td>drobn� savci, je�t�rky</td>
 </tr>
 </tbody></table>
 </p>
