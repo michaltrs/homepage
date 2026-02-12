@@ -44,6 +44,11 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] Sjednotit styling napříč všemi kategoriemi (blog, cnk, cvut-fel, spse-v-uzlabine)
 - [ ] Vylepšit `public/archive/style.css` — typografie, spacing, mobilní zobrazení
 
+### P2 — Hero stránka — opravy obsahu
+- [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
+- [ ] Pod první sekcí jsou jen 2 tlačítka — přidat i odkaz na Vault
+- [ ] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně
+
 ### P3 — Cleanup
 - [ ] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [ ] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
