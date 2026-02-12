@@ -90,6 +90,13 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] 6 foto placeholderů v PersonalSection (potřeba skutečné fotky)
 - [ ] Professional foto/headshot (zatím SVG placeholder)
 
+### P5 — Vault gap 2013–2026: research sociálních sítí
+- [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
+- [ ] Research LinkedIn — kariérní milníky, pozice, projekty
+- [ ] Research Instagram — fotky z cest a událostí
+- [ ] Research Strava — významné cyklo/běžecké výkony, statistiky
+- [ ] Na základě researche doplnit vault entries pro období 2013–2026
+
 ### Nemigrované (rozhodnout zda vůbec)
 - [ ] Fotogalerie — 15 galerií se stovkami fotek (velký rozsah, možná nahradit odkazem na Google Photos/Flickr)
 - [ ] ~~Video — nahrazeno YouTube linkem (asi OK)~~ — hotovo (P3)
