@@ -7,48 +7,48 @@
    <title>36PAA - ulohy (Michal Trs)</title>
 </head>
 <body>
-   <h1>36PAA - Problém vážené splnitelnosti booleovské formule - simulované ochlazování</h1>
+   <h1>36PAA - Problï¿½m vï¿½enï¿½ splnitelnosti booleovskï¿½ formule - simulovanï¿½ ochlazovï¿½nï¿½</h1>
 
    <div id="main">
-      <h2>Zadání</h2>
+      <h2>Zadï¿½nï¿½</h2>
       <p>
-         Je dána booleovská formule <span
-         style="font-style: italic;">F</span> promìnných <span
+         Je dï¿½na booleovskï¿½ formule <span
+         style="font-style: italic;">F</span> promï¿½nnï¿½ch <span
          style="font-style: italic;">X</span>=(<span style="font-style: italic;">x</span><sub>1</sub>,
 
          <span style="font-style: italic;">x</span><sub>2</sub>, ... , <span
          style="font-style: italic;">x<sub>n</sub></span>) v
-         konjunktivní normální formì (tj. souèin souètù).
-         Dále jsou dány celoèíselné kladné
-         váhy <span style="font-style: italic;">W</span>=(<span
+         konjunktivnï¿½ normï¿½lnï¿½ formï¿½ (tj. souï¿½in souï¿½tï¿½).
+         Dï¿½le jsou dï¿½ny celoï¿½ï¿½selnï¿½ kladnï¿½
+         vï¿½hy <span style="font-style: italic;">W</span>=(<span
          style="font-style: italic;">w</span><sub>1</sub>, <span
          style="font-style: italic;">w</span><sub>2</sub>, ... , <span
-         style="font-style: italic;">w<sub>n</sub></span>).&nbsp; Najdìte
-         ohodnocení <span style="font-style: italic;">Y</span>=(<span
+         style="font-style: italic;">w<sub>n</sub></span>).&nbsp; Najdï¿½te
+         ohodnocenï¿½ <span style="font-style: italic;">Y</span>=(<span
          style="font-style: italic;">y</span><sub>1</sub>, <span
          style="font-style: italic;">y</span><sub>2</sub>, ... , <span
-         style="font-style: italic;">y<sub>n</sub></span>) promìnných <span
+         style="font-style: italic;">y<sub>n</sub></span>) promï¿½nnï¿½ch <span
          style="font-style: italic;">x</span><sub>1</sub>, <span
          style="font-style: italic;">x</span><sub>2</sub>, ... , <span
          style="font-style: italic;">x<sub>n </sub></span>tak, aby <span
          style="font-style: italic;">F</span>(<span style="font-style: italic;">Y</span>)=1
-         a souèet vah promìnných, které jsou ohodnoceny
-         jednièkou,&nbsp; byl maximální. <br>
+         a souï¿½et vah promï¿½nnï¿½ch, kterï¿½ jsou ohodnoceny
+         jedniï¿½kou,&nbsp; byl maximï¿½lnï¿½. <br>
 
          <br>
-         <b>Je pøípustné se omezit na formule, v nichž má
-         každá formule právì 3 literály (problém 3
+         <b>Je pï¿½ï¿½pustnï¿½ se omezit na formule, v nichï¿½ mï¿½
+         kaï¿½dï¿½ formule prï¿½vï¿½ 3 literï¿½ly (problï¿½m 3
          SAT).</b> Takto
-         omezený problém je stejnì tìžký, ale možná
-         se lépe programuje a lépe se posuzuje obtížnost
+         omezenï¿½ problï¿½m je stejnï¿½ tï¿½kï¿½, ale moï¿½nï¿½
+         se lï¿½pe programuje a lï¿½pe se posuzuje obtï¿½nost
          instance (viz Selmanova prezentace v odkazech).
       </p>
 
       
       <h2>Popis algoritmu</h2>
          <p>
-         Z pokroèilých iterativních metod jsem si vybral algoritmus simulované ochlazování.
-         Je popsán "vývojovými diagramy" na následujících obrázcích.
+         Z pokroï¿½ilï¿½ch iterativnï¿½ch metod jsem si vybral algoritmus simulovanï¿½ ochlazovï¿½nï¿½.
+         Je popsï¿½n "vï¿½vojovï¿½mi diagramy" na nï¿½sledujï¿½cï¿½ch obrï¿½zcï¿½ch.
          </p>
 
          <table><tr>
@@ -57,100 +57,100 @@
          </tr></table>
          
          <p>
-         Pokusím se algoritmus popsat slovnì. Jedná se o 2 vnoøené cykly. Na zaèátku je nastaveno
-         nìjaké øešení a poèáteèní teplota, která se ve venkovním cyklu postupnì snižuje.
-         Teplotou je dána ochota algoritmu pøijmout horší øešení. Tím se mùže algoritmus vymanit
-         z lokálního minima. Ve vnitøním cyklu se hledá nové øešení. To je popsáno na obrázku jako
-         funkce "try". Náhodnì vygenerujeme nové øešení (oproti úloze "Batoh" pøijímáme i øešení, kdy
-         je formule nesplnìná). Pokud je lepší než doposud nalezené, toto øešení pøijmeme.
-         Pokud je horší tak jej pøijmeme s urèitou pravdìpodobností, která je dána
-         aktuální teplotou a velikostí zhoršení ceny. Algoritmus konèí pokud se teplota sníží na úroveò
-         teploty tuhnutí. Pro správnou funkci algoritmu je velice dùležité nastavit parametry
-         (poèáteèní teplota, teplota tuhnutí, rychlost tuhnutí, velikost equilibria).
+         Pokusï¿½m se algoritmus popsat slovnï¿½. Jednï¿½ se o 2 vnoï¿½enï¿½ cykly. Na zaï¿½ï¿½tku je nastaveno
+         nï¿½jakï¿½ ï¿½eï¿½enï¿½ a poï¿½ï¿½teï¿½nï¿½ teplota, kterï¿½ se ve venkovnï¿½m cyklu postupnï¿½ sniï¿½uje.
+         Teplotou je dï¿½na ochota algoritmu pï¿½ijmout horï¿½ï¿½ ï¿½eï¿½enï¿½. Tï¿½m se mï¿½ï¿½e algoritmus vymanit
+         z lokï¿½lnï¿½ho minima. Ve vnitï¿½nï¿½m cyklu se hledï¿½ novï¿½ ï¿½eï¿½enï¿½. To je popsï¿½no na obrï¿½zku jako
+         funkce "try". Nï¿½hodnï¿½ vygenerujeme novï¿½ ï¿½eï¿½enï¿½ (oproti ï¿½loze "Batoh" pï¿½ijï¿½mï¿½me i ï¿½eï¿½enï¿½, kdy
+         je formule nesplnï¿½nï¿½). Pokud je lepï¿½ï¿½ neï¿½ doposud nalezenï¿½, toto ï¿½eï¿½enï¿½ pï¿½ijmeme.
+         Pokud je horï¿½ï¿½ tak jej pï¿½ijmeme s urï¿½itou pravdï¿½podobnostï¿½, kterï¿½ je dï¿½na
+         aktuï¿½lnï¿½ teplotou a velikostï¿½ zhorï¿½enï¿½ ceny. Algoritmus konï¿½ï¿½ pokud se teplota snï¿½ï¿½ na ï¿½roveï¿½
+         teploty tuhnutï¿½. Pro sprï¿½vnou funkci algoritmu je velice dï¿½leï¿½itï¿½ nastavit parametry
+         (poï¿½ï¿½teï¿½nï¿½ teplota, teplota tuhnutï¿½, rychlost tuhnutï¿½, velikost equilibria).
          </p>
          
 
       <h2>Implementace</h2>
          
          
-         <h3>Formát vstupního souboru</h3>
+         <h3>Formï¿½t vstupnï¿½ho souboru</h3>
          <p>
-            Formát vstupního souboru jsem pøevzal od Martina Prchlíka. Oproti DIMACS CNF formátu obsahuje
-            váhy promìnných a nejlepší øešení dodané BruteForcem. Popis formátu (øádkù):
+            Formï¿½t vstupnï¿½ho souboru jsem pï¿½evzal od Martina Prchlï¿½ka. Oproti DIMACS CNF formï¿½tu obsahuje
+            vï¿½hy promï¿½nnï¿½ch a nejlepï¿½ï¿½ ï¿½eï¿½enï¿½ dodanï¿½ BruteForcem. Popis formï¿½tu (ï¿½ï¿½dkï¿½):
             <ul>
-               <li><b>1.</b> - prázdný øádek</li>
-               <li><b>2.</b> - správné øešení</li>
-               <li><b>3.</b> - poèet_promìnných poèet_klausulí poèet_promìnných_v_klausuli</li>
-               <li><b>4 - n.</b> - jednotlivé klausule (èíslo je index promìnné, èíslováno od 1, pokud je èíslo záporné znamená negovanou promìnnou</li>
-               <li><b>n+1</b> - váhy promìnných</li>
+               <li><b>1.</b> - prï¿½zdnï¿½ ï¿½ï¿½dek</li>
+               <li><b>2.</b> - sprï¿½vnï¿½ ï¿½eï¿½enï¿½</li>
+               <li><b>3.</b> - poï¿½et_promï¿½nnï¿½ch poï¿½et_klausulï¿½ poï¿½et_promï¿½nnï¿½ch_v_klausuli</li>
+               <li><b>4 - n.</b> - jednotlivï¿½ klausule (ï¿½ï¿½slo je index promï¿½nnï¿½, ï¿½ï¿½slovï¿½no od 1, pokud je ï¿½ï¿½slo zï¿½pornï¿½ znamenï¿½ negovanou promï¿½nnou</li>
+               <li><b>n+1</b> - vï¿½hy promï¿½nnï¿½ch</li>
             </ul>
          <p>
          
          
-         <h3>Zdrojové kódy (C#)</h3>
+         <h3>Zdrojovï¿½ kï¿½dy (C#)</h3>
             <ul>
-               <li><a href="source/MPFormatInputReader.cs">MPFormatInputReader.cs</a> - Reader vstupního formátu, vrací tøídu SAT</li>
-               <li><a href="source/Program.cs">Program.cs</a> - obalující kód pro experimenty, mìøení èasu a chyb</li>
-               <li><a href="source/SAT.cs">SAT.cs</a> - tøída reprezentující data formule, váhy, metody pro vyhodnocení splnitelnosti a ohodnocení stavu</li>
-               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Algoritmus simulované ochlazování, v constructoru oèekává tøídu SAT a parametry simulovaného ochlazování</li>
+               <li><a href="source/MPFormatInputReader.cs">MPFormatInputReader.cs</a> - Reader vstupnï¿½ho formï¿½tu, vracï¿½ tï¿½ï¿½du SAT</li>
+               <li><a href="source/Program.cs">Program.cs</a> - obalujï¿½cï¿½ kï¿½d pro experimenty, mï¿½ï¿½enï¿½ ï¿½asu a chyb</li>
+               <li><a href="source/SAT.cs">SAT.cs</a> - tï¿½ï¿½da reprezentujï¿½cï¿½ data formule, vï¿½hy, metody pro vyhodnocenï¿½ splnitelnosti a ohodnocenï¿½ stavu</li>
+               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Algoritmus simulovanï¿½ ochlazovï¿½nï¿½, v constructoru oï¿½ekï¿½vï¿½ tï¿½ï¿½du SAT a parametry simulovanï¿½ho ochlazovï¿½nï¿½</li>
             </ul>
             
             
-         <h3>Ohodnocovací funkce <i>getGrant</i></h3>
+         <h3>Ohodnocovacï¿½ funkce <i>getGrant</i></h3>
          <p>
-            Návrh této funkce je velice dùležitý pro správnou funkci celého algoritmu. Jsou na ní kladeny tyto požadavky:
+            Nï¿½vrh tï¿½to funkce je velice dï¿½leï¿½itï¿½ pro sprï¿½vnou funkci celï¿½ho algoritmu. Jsou na nï¿½ kladeny tyto poï¿½adavky:
             <ul>
-               <li>Zvýhodòovat promìnné s vìtší váhou</li>
-               <li>Znevýhodòovat nesplnìné klausule</li>
+               <li>Zvï¿½hodï¿½ovat promï¿½nnï¿½ s vï¿½tï¿½ï¿½ vï¿½hou</li>
+               <li>Znevï¿½hodï¿½ovat nesplnï¿½nï¿½ klausule</li>
             </ul>
-            Implementoval jsem ji tak, že seète váhy promìnných nastavených na <i>true</i> a od nich odeète maximální váhu promìnné pro každou nesplnìnou klausuli.
-            Z toho vyplívá, že pokud je formule splnìná vrací souèet vah promìnných.
+            Implementoval jsem ji tak, ï¿½e seï¿½te vï¿½hy promï¿½nnï¿½ch nastavenï¿½ch na <i>true</i> a od nich odeï¿½te maximï¿½lnï¿½ vï¿½hu promï¿½nnï¿½ pro kaï¿½dou nesplnï¿½nou klausuli.
+            Z toho vyplï¿½vï¿½, ï¿½e pokud je formule splnï¿½nï¿½ vracï¿½ souï¿½et vah promï¿½nnï¿½ch.
          </p>
                
 
-      <h2>Namìøené hodnoty a výsledky</h2>
+      <h2>Namï¿½ï¿½enï¿½ hodnoty a vï¿½sledky</h2>
          <p>
-            Aby bylo možné správnì nastavit parametry algoritmu je nutné experimentovat.
-            Pøi experimentech jsem sledoval graf prùchodu stavovým prostorem, èasovou nároènost a relativní chybu.
-            Pro výpoèet relativní chyby jsem použil hodnoty ze vstupního souboru.
-            Z dùvodu èasové nároènosti mám k dispozici data pro 20 promìnných a 50, 75 a 90 klausulí.
-            Experimenty jsou shrnuty v následujících tabulkách a grafech.<br/><br/>
-            Pro pøehlednost jsem použil tyto zkratky:<br/><br/>
+            Aby bylo moï¿½nï¿½ sprï¿½vnï¿½ nastavit parametry algoritmu je nutnï¿½ experimentovat.
+            Pï¿½i experimentech jsem sledoval graf prï¿½chodu stavovï¿½m prostorem, ï¿½asovou nï¿½roï¿½nost a relativnï¿½ chybu.
+            Pro vï¿½poï¿½et relativnï¿½ chyby jsem pouï¿½il hodnoty ze vstupnï¿½ho souboru.
+            Z dï¿½vodu ï¿½asovï¿½ nï¿½roï¿½nosti mï¿½m k dispozici data pro 20 promï¿½nnï¿½ch a 50, 75 a 90 klausulï¿½.
+            Experimenty jsou shrnuty v nï¿½sledujï¿½cï¿½ch tabulkï¿½ch a grafech.<br/><br/>
+            Pro pï¿½ehlednost jsem pouï¿½il tyto zkratky:<br/><br/>
             <code>
-               T0 = poèáteèní teplota<br/>
-               Tf = teplota tuhnutí<br/>
-               dT = zmìna teploty<br/>
+               T0 = poï¿½ï¿½teï¿½nï¿½ teplota<br/>
+               Tf = teplota tuhnutï¿½<br/>
+               dT = zmï¿½na teploty<br/>
                equ = equilibrium<br/>
-               NF = øešení nenalezeno<br/>
-               time = èas v ms<br/>
-               Avg (AvgErr) = prùmìrná relativní chyba výsledku z <b>k</b> mìøení<br/>
-               Best (BestErr) = nejnižší relativní chyba vybraná z <b>k</b> mìøení
+               NF = ï¿½eï¿½enï¿½ nenalezeno<br/>
+               time = ï¿½as v ms<br/>
+               Avg (AvgErr) = prï¿½mï¿½rnï¿½ relativnï¿½ chyba vï¿½sledku z <b>k</b> mï¿½ï¿½enï¿½<br/>
+               Best (BestErr) = nejniï¿½ï¿½ï¿½ relativnï¿½ chyba vybranï¿½ z <b>k</b> mï¿½ï¿½enï¿½
             </code>
          </p>
 
-         <p>Pokud není uvedeno jinak, jsou nastaveny toto hodnoty: T0_k = 0.1,Tf = 1,dT = 0.9, equ_k = 1.
-         Algoritmus byl na každé instanci spuštìn 5x a výsledná relativní chyba a èas je prùmìr z výsledkù algoritmu. Takto bylo postupováno pro každou instanci (50 instancí pro každou velikost problému).</p>
+         <p>Pokud nenï¿½ uvedeno jinak, jsou nastaveny toto hodnoty: T0_k = 0.1,Tf = 1,dT = 0.9, equ_k = 1.
+         Algoritmus byl na kaï¿½dï¿½ instanci spuï¿½tï¿½n 5x a vï¿½slednï¿½ relativnï¿½ chyba a ï¿½as je prï¿½mï¿½r z vï¿½sledkï¿½ algoritmu. Takto bylo postupovï¿½no pro kaï¿½dou instanci (50 instancï¿½ pro kaï¿½dou velikost problï¿½mu).</p>
          <p>
-            Teplota tuhnutí (Tf) a rychlost zmìny (dT) jsou zadány absolutnì. Naproti tomu poèáteèní teplota (T0) a velikost equilibria (equ) jsou vztaženy k velikosti instance (mìníme pouze multiplikativní konstantu) takto:<br/><br/>
+            Teplota tuhnutï¿½ (Tf) a rychlost zmï¿½ny (dT) jsou zadï¿½ny absolutnï¿½. Naproti tomu poï¿½ï¿½teï¿½nï¿½ teplota (T0) a velikost equilibria (equ) jsou vztaï¿½eny k velikosti instance (mï¿½nï¿½me pouze multiplikativnï¿½ konstantu) takto:<br/><br/>
             <code>
                T0 = T0_k * var_count * maxW;<br/>
                equ = equ_k * var_count;<br/><br/>
             </code>
-            kde <code>var_count</code> je poèet promìnných a <code>maxW</code> je maximální váha promìnné.
+            kde <code>var_count</code> je poï¿½et promï¿½nnï¿½ch a <code>maxW</code> je maximï¿½lnï¿½ vï¿½ha promï¿½nnï¿½.
             
             
          </p>
-         <p>Mìøil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance pøi napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+         <p>Mï¿½ï¿½il jsem na NTB s procesorem Centino 1.4GHz, nastavenï¿½ max Performance pï¿½i napï¿½jenï¿½ z adaptï¿½ru. Pouï¿½itï¿½ OS: Windows XP SP2 s .net Framework 2.</p>
 
 
-      <h3>Nastavení rychlosti ochlazování</h3>
+      <h3>Nastavenï¿½ rychlosti ochlazovï¿½nï¿½</h3>
       <p>
-      Pøi tomto experimentu jsem mìnil dT od 0.5 do 0.995
+      Pï¿½i tomto experimentu jsem mï¿½nil dT od 0.5 do 0.995
       </p>
       
-      <h4>Tabulka è.1</h4>
+      <h4>Tabulka ï¿½.1</h4>
       <table>
-         <tr><th rowspan="2">dT</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th rowspan="2">dT</th><th colspan="4">50 klausulï¿½</th><th colspan="4">75 klausulï¿½</th><th colspan="4">90 klausulï¿½</th></tr>
          <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
          <tr><td>0,995</td><td>0,00%</td><td>223,7</td><td>1,70%</td><td>0,20%</td><td>0,00%</td><td>275,9</td><td>2,90%</td><td>0,20%</td><td>0,80%</td><td>316,2</td><td>1,90%</td><td>0,80%</td></tr>
          <tr><td>0,945</td><td>0,00%</td><td>17,3</td><td>4,40%</td><td>0,60%</td><td>0,40%</td><td>25,7</td><td>4,20%</td><td>1,80%</td><td>4,80%</td><td>27,7</td><td>1,50%</td><td>0,50%</td></tr>
@@ -168,13 +168,13 @@
          <tr><td>0,511</td><td>1,60%</td><td>1,5</td><td>10,10%</td><td>10,60%</td><td>10,80%</td><td>1,9</td><td>2,30%</td><td>9,00%</td><td>12,40%</td><td>2,4</td><td>1,00%</td><td>3,00%</td></tr>
       </table>
       
-      <h4>Grafy è.1</h4>
+      <h4>Grafy ï¿½.1</h4>
       <table>
          <tr>
-            <td><a href="grafy/Err-dt.html">relativní chyba</a></td>
-            <td><a href="grafy/nf-dt.html"># nenalezených stavù</a></td>
-            <td><a href="grafy/t-dt.html">èasové složitost</a></td>
-            <td><a href="grafy/pruchod-dt.html">prùchod stavovým prostorem</a></td>
+            <td><a href="grafy/Err-dt.html">relativnï¿½ chyba</a></td>
+            <td><a href="grafy/nf-dt.html"># nenalezenï¿½ch stavï¿½</a></td>
+            <td><a href="grafy/t-dt.html">ï¿½asovï¿½ sloï¿½itost</a></td>
+            <td><a href="grafy/pruchod-dt.html">prï¿½chod stavovï¿½m prostorem</a></td>
          </tr>
          <tr>
             <td><a href="grafy/Err-dt.html"><img src="grafy/small/Err-dt.png"></a></td>
@@ -185,14 +185,14 @@
       </table>
 
       
-      <h3>Nastavení velikosti equilibria</h3>
+      <h3>Nastavenï¿½ velikosti equilibria</h3>
 
-      Pøi tomto experimentu jsem mìnil equ_k od 1 do 10. Pouze pøipomenu, že velikost
-      equilibria je vztažená k velikosti instance a to takto: <code>equ = equ_k * var_count</code>.
+      Pï¿½i tomto experimentu jsem mï¿½nil equ_k od 1 do 10. Pouze pï¿½ipomenu, ï¿½e velikost
+      equilibria je vztaï¿½enï¿½ k velikosti instance a to takto: <code>equ = equ_k * var_count</code>.
 
-      <h4>Tabulka è.2</h4>
+      <h4>Tabulka ï¿½.2</h4>
       <table>
-         <tr><th rowspan="2">equ_k</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th rowspan="2">equ_k</th><th colspan="4">50 klausulï¿½</th><th colspan="4">75 klausulï¿½</th><th colspan="4">90 klausulï¿½</th></tr>
          <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
          <tr><td>1</td><td>0,00%</td><td>10,9</td><td>4,60%</td><td>0,50%</td><td>1,20%</td><td>13,1</td><td>3,30%</td><td>1,70%</td><td>6,00%</td><td>15,2</td><td>1,50%</td><td>0,90%</td></tr>
          <tr><td>2</td><td>0,00%</td><td>19,5</td><td>3,40%</td><td>0,20%</td><td>0,00%</td><td>26,2</td><td>4,50%</td><td>3,00%</td><td>2,40%</td><td>30,1</td><td>2,00%</td><td>2,10%</td></tr>
@@ -206,12 +206,12 @@
          <tr><td>10</td><td>0,00%</td><td>97,9</td><td>2,00%</td><td>0,20%</td><td>0,40%</td><td>132,6</td><td>3,40%</td><td>0,80%</td><td>2,40%</td><td>157,5</td><td>2,00%</td><td>0,50%</td></tr>
       </table>
       
-      <h4>Grafy è.2</h4>
+      <h4>Grafy ï¿½.2</h4>
       <table>
          <tr>
-            <td><a href="grafy/Err-equ.html">relativní chyba</a></td>
-            <td><a href="grafy/nf-equ.html"># nenalezených stavù</a></td>
-            <td><a href="grafy/pruchod-equ.html">prùchod stavovým prostorem</a></td>
+            <td><a href="grafy/Err-equ.html">relativnï¿½ chyba</a></td>
+            <td><a href="grafy/nf-equ.html"># nenalezenï¿½ch stavï¿½</a></td>
+            <td><a href="grafy/pruchod-equ.html">prï¿½chod stavovï¿½m prostorem</a></td>
          </tr>
          <tr>
             <td><a href="grafy/Err-equ.html"><img src="grafy/small/Err-equ.png"></a></td>
@@ -221,13 +221,13 @@
       </table>
 
 
-      <h3>Nastavení teploty tuhnutí</h3>
+      <h3>Nastavenï¿½ teploty tuhnutï¿½</h3>
 
-      Pøi tomto experimentu jsem mìnil Tf od 1 do 10.
+      Pï¿½i tomto experimentu jsem mï¿½nil Tf od 1 do 10.
        
-      <h4>Tabulka è.3</h4>
+      <h4>Tabulka ï¿½.3</h4>
       <table>
-         <tr><th rowspan="2">Tf</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th rowspan="2">Tf</th><th colspan="4">50 klausulï¿½</th><th colspan="4">75 klausulï¿½</th><th colspan="4">90 klausulï¿½</th></tr>
          <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
          <tr><td>1</td><td>0,00%</td><td>10,5</td><td>4,50%</td><td>0,90%</td><td>1,20%</td><td>13,6</td><td>4,00%</td><td>1,30%</td><td>5,20%</td><td>15,8</td><td>1,50%</td><td>1,20%</td></tr>
          <tr><td>2</td><td>0,00%</td><td>8,6</td><td>5,60%</td><td>1,00%</td><td>1,60%</td><td>13</td><td>3,30%</td><td>2,30%</td><td>5,20%</td><td>13,3</td><td>1,80%</td><td>1,70%</td></tr>
@@ -241,18 +241,18 @@
          <tr><td>10</td><td>0,40%</td><td>5,6</td><td>6,60%</td><td>1,40%</td><td>2,00%</td><td>8,4</td><td>3,80%</td><td>1,50%</td><td>5,60%</td><td>9,2</td><td>1,40%</td><td>3,20%</td></tr>
       </table>
       
-      <h4>Graf è.3: Závislost relativní chyby na teplotì tuhnutí</h4>
+      <h4>Graf ï¿½.3: Zï¿½vislost relativnï¿½ chyby na teplotï¿½ tuhnutï¿½</h4>
       <p><img src="grafy/Err-tf.png"/></p>
 
 
-      <h3>Nastavení poèáteèní teploty</h3>
+      <h3>Nastavenï¿½ poï¿½ï¿½teï¿½nï¿½ teploty</h3>
       
-      Pøi tomto experimentu jsem mìnil T0 od 0,1 do 1. Pouze pøipomenu, že velikost
-      poèáteèní teploty je vztažena k velikosti instance a to takto: <code>T0 = T0_k * var_count * maxW</code>.
+      Pï¿½i tomto experimentu jsem mï¿½nil T0 od 0,1 do 1. Pouze pï¿½ipomenu, ï¿½e velikost
+      poï¿½ï¿½teï¿½nï¿½ teploty je vztaï¿½ena k velikosti instance a to takto: <code>T0 = T0_k * var_count * maxW</code>.
 
-      <h4>Tabulka è.4</h4>
+      <h4>Tabulka ï¿½.4</h4>
       <table>
-         <tr><th rowspan="2">T0_k</th><th colspan="4">50 klausulí</th><th colspan="4">75 klausulí</th><th colspan="4">90 klausulí</th></tr>
+         <tr><th rowspan="2">T0_k</th><th colspan="4">50 klausulï¿½</th><th colspan="4">75 klausulï¿½</th><th colspan="4">90 klausulï¿½</th></tr>
          <tr><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th><th>NF</th><th>time</th><th>AvgErr</th><th>BestErr</th></tr>
          <tr><td>0,1</td><td>0,00%</td><td>9,9</td><td>4,90%</td><td>1,00%</td><td>1,20%</td><td>13</td><td>4,40%</td><td>2,00%</td><td>4,40%</td><td>15,1</td><td>1,30%</td><td>0,80%</td></tr>
          <tr><td>0,2</td><td>0,00%</td><td>11</td><td>4,80%</td><td>0,40%</td><td>0,40%</td><td>15,1</td><td>3,60%</td><td>1,30%</td><td>5,60%</td><td>17</td><td>1,10%</td><td>2,80%</td></tr>
@@ -266,12 +266,12 @@
          <tr><td>1</td><td>0,00%</td><td>13,6</td><td>5,00%</td><td>0,40%</td><td>1,20%</td><td>18,5</td><td>3,90%</td><td>2,60%</td><td>5,20%</td><td>21,1</td><td>1,50%</td><td>1,80%</td></tr>
       </table>
 
-      <h4>Grafy è.4</h4>
+      <h4>Grafy ï¿½.4</h4>
       <table>
          <tr>
-            <td><a href="grafy/Err-t0.html">relativní chyba</a></td>
-            <td><a href="grafy/nf-t0.html"># nenalezených stavù</a></td>
-            <td><a href="grafy/pruchod-t0.html">prùchod stavovým prostorem</a></td>
+            <td><a href="grafy/Err-t0.html">relativnï¿½ chyba</a></td>
+            <td><a href="grafy/nf-t0.html"># nenalezenï¿½ch stavï¿½</a></td>
+            <td><a href="grafy/pruchod-t0.html">prï¿½chod stavovï¿½m prostorem</a></td>
          </tr>
          <tr>
             <td><a href="grafy/Err-t0.html"><img src="grafy/small/Err-t0.png"></a></td>
@@ -281,46 +281,47 @@
       </table>
 
 
-      <h3>Sledování poètu nalezených øešení a relativní chyby na poètu spuštìní algoritmu</h3>
+      <h3>Sledovï¿½nï¿½ poï¿½tu nalezenï¿½ch ï¿½eï¿½enï¿½ a relativnï¿½ chyby na poï¿½tu spuï¿½tï¿½nï¿½ algoritmu</h3>
 
-      Jelikož algoritmus simulované ochlazování je randomizovaný, dává pøi každém spuštìní jiné výsledky.
-      Pokud chceme zlepšit výsledky, spustíme algoritmus vícekrát a z výsledkù vybereme to nejlepší.
+      Jelikoï¿½ algoritmus simulovanï¿½ ochlazovï¿½nï¿½ je randomizovanï¿½, dï¿½vï¿½ pï¿½i kaï¿½dï¿½m spuï¿½tï¿½nï¿½ jinï¿½ vï¿½sledky.
+      Pokud chceme zlepï¿½it vï¿½sledky, spustï¿½me algoritmus vï¿½cekrï¿½t a z vï¿½sledkï¿½ vybereme to nejlepï¿½ï¿½.
       
-      <h4>Graf è.5: Závislost relativní chyby na poètu spuštìní algoritmu</h4>
+      <h4>Graf ï¿½.5: Zï¿½vislost relativnï¿½ chyby na poï¿½tu spuï¿½tï¿½nï¿½ algoritmu</h4>
       <p><img src="grafy/Err-repeat.png"/></p>
       
-      <h4>Graf è.6: Závislost # nenalezených øešení na poètu spuštìní algoritmu</h4>
+      <h4>Graf ï¿½.6: Zï¿½vislost # nenalezenï¿½ch ï¿½eï¿½enï¿½ na poï¿½tu spuï¿½tï¿½nï¿½ algoritmu</h4>
       <p><img src="grafy/nf-repeat.png"/></p>
 
 
-      <h2>Závìr</h2>
-         Algoritmus simulované ochlazování je pomìrnì snadný na implementaci.
-         Jako nejdùležitìjší krok vidím ve správném navrhnutí ohodnocovací funkce, tak aby algoritmus nutila ke správnému øešení.<br/> Vztažení parametrù k poètu promìnných a maximální váze se ukázalo správné. Pro instance, které byly k dispozici (20/50, 20/75, 20/91 - poèet promìnných / poèet klausulí), se ukázalo toto nastavení jako optimální:
+      <h2>Zï¿½vï¿½r</h2>
+         Algoritmus simulovanï¿½ ochlazovï¿½nï¿½ je pomï¿½rnï¿½ snadnï¿½ na implementaci.
+         Jako nejdï¿½leï¿½itï¿½jï¿½ï¿½ krok vidï¿½m ve sprï¿½vnï¿½m navrhnutï¿½ ohodnocovacï¿½ funkce, tak aby algoritmus nutila ke sprï¿½vnï¿½mu ï¿½eï¿½enï¿½.<br/> Vztaï¿½enï¿½ parametrï¿½ k poï¿½tu promï¿½nnï¿½ch a maximï¿½lnï¿½ vï¿½ze se ukï¿½zalo sprï¿½vnï¿½. Pro instance, kterï¿½ byly k dispozici (20/50, 20/75, 20/91 - poï¿½et promï¿½nnï¿½ch / poï¿½et klausulï¿½), se ukï¿½zalo toto nastavenï¿½ jako optimï¿½lnï¿½:
 <ul>
-   <li>Poèáteèní teplota T0 = 0,1 * var_count * maxW;</li>
-   <li>Teplota tuhnutí Tf = 1</li>
-   <li>Rychlost ochlazování dT = 0,9</li>
+   <li>Poï¿½ï¿½teï¿½nï¿½ teplota T0 = 0,1 * var_count * maxW;</li>
+   <li>Teplota tuhnutï¿½ Tf = 1</li>
+   <li>Rychlost ochlazovï¿½nï¿½ dT = 0,9</li>
    <li>Velikost equilibria equ = 1 * var_count;</li>
 </ul>
 
-   Pro tyto hodnoty se nepodaøilo nalézt øešení maximálnì ve 14% pøípadù a chyba oproti nejlepšímu øešení dodaného ze vstupu byla 2%. K tìmto výsledkùm velkou mìrou pøispívá opakování výpoètu každé instance 5x.<br/>
+   Pro tyto hodnoty se nepodaï¿½ilo nalï¿½zt ï¿½eï¿½enï¿½ maximï¿½lnï¿½ ve 14% pï¿½ï¿½padï¿½ a chyba oproti nejlepï¿½ï¿½mu ï¿½eï¿½enï¿½ dodanï¿½ho ze vstupu byla 2%. K tï¿½mto vï¿½sledkï¿½m velkou mï¿½rou pï¿½ispï¿½vï¿½ opakovï¿½nï¿½ vï¿½poï¿½tu kaï¿½dï¿½ instance 5x.<br/>
          
-         U tohoto algoritmu (stejnì jako u dynamického programování) dopøedu známe poèet iterací cyklu, tudíž mùžeme odhadnout èasovou nároènost. Proto u nìkterých mìøení chybí èasová závislost (chápavý ètenáø ji z popisu algoritmu snadno odvodí).
+         U tohoto algoritmu (stejnï¿½ jako u dynamickï¿½ho programovï¿½nï¿½) dopï¿½edu znï¿½me poï¿½et iteracï¿½ cyklu, tudï¿½ mï¿½ï¿½eme odhadnout ï¿½asovou nï¿½roï¿½nost. Proto u nï¿½kterï¿½ch mï¿½ï¿½enï¿½ chybï¿½ ï¿½asovï¿½ zï¿½vislost (chï¿½pavï¿½ ï¿½tenï¿½ï¿½ ji z popisu algoritmu snadno odvodï¿½).
          
          
-         Dále z provedených experimentù mùžeme udìlat tyto závìry:
+         Dï¿½le z provedenï¿½ch experimentï¿½ mï¿½ï¿½eme udï¿½lat tyto zï¿½vï¿½ry:
          <ul>
-         <li>Èím blíže dT k 1 tím menší relativní chyba, ale vìtší èasová nároènost.</li>
-         <li>Poèáteèní teplotu je vhodné volit jako funkci velikosti instance.</li>
-         <li>Teplotu tuhnutí je nejlepší "vykoukat" z grafù pro závislost ceny na poètu prozkoumaných stavù. Pokud se cena nemìní, mìlo by dojít k zamrazení. To mùžeme pøímo ošetøit v programu a nemusíme tento parametr nastavovat.</li>
-         <li>Velikost equilibria, èím vìtší tím menší relativní chyba, ale vìtší èasová nároènost.</li>
-         <li>Zvýšení poètu opakování výpoètu jedné instance zvyšuje procento nalezených øešení a snižuje chybu výsledku. Èasovou nároènost lineárnì zvyšuje.</li>
-         <li>Pro vìtší poèet klausulí je obtížnìjší nalézt øešení</li>
+         <li>ï¿½ï¿½m blï¿½e dT k 1 tï¿½m menï¿½ï¿½ relativnï¿½ chyba, ale vï¿½tï¿½ï¿½ ï¿½asovï¿½ nï¿½roï¿½nost.</li>
+         <li>Poï¿½ï¿½teï¿½nï¿½ teplotu je vhodnï¿½ volit jako funkci velikosti instance.</li>
+         <li>Teplotu tuhnutï¿½ je nejlepï¿½ï¿½ "vykoukat" z grafï¿½ pro zï¿½vislost ceny na poï¿½tu prozkoumanï¿½ch stavï¿½. Pokud se cena nemï¿½nï¿½, mï¿½lo by dojï¿½t k zamrazenï¿½. To mï¿½ï¿½eme pï¿½ï¿½mo oï¿½etï¿½it v programu a nemusï¿½me tento parametr nastavovat.</li>
+         <li>Velikost equilibria, ï¿½ï¿½m vï¿½tï¿½ï¿½ tï¿½m menï¿½ï¿½ relativnï¿½ chyba, ale vï¿½tï¿½ï¿½ ï¿½asovï¿½ nï¿½roï¿½nost.</li>
+         <li>Zvï¿½ï¿½enï¿½ poï¿½tu opakovï¿½nï¿½ vï¿½poï¿½tu jednï¿½ instance zvyï¿½uje procento nalezenï¿½ch ï¿½eï¿½enï¿½ a sniï¿½uje chybu vï¿½sledku. ï¿½asovou nï¿½roï¿½nost lineï¿½rnï¿½ zvyï¿½uje.</li>
+         <li>Pro vï¿½tï¿½ï¿½ poï¿½et klausulï¿½ je obtï¿½nï¿½jï¿½ï¿½ nalï¿½zt ï¿½eï¿½enï¿½</li>
          </ul>
 
 
    </div>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

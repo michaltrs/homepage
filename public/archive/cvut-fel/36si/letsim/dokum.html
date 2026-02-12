@@ -2,57 +2,57 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-		<title>Letsim - Letecký simulátor</title>
+		<title>Letsim - Leteckďż˝ simulďż˝tor</title>
 		<link rel="Stylesheet" type="text/css" media="all" href="style.css">
 	</head>
 	<body>
 		<a name="zacatek"></a>
 		<h2 class="cap">Dokumentace projektu</h2>
-		<p align="center" style='text-align:center'><a href="files/celkova.ppt" class="menu">Stáhnout prezentaci celého projektu<!--</a>-->
-			| <a href="#na" class="menu">Návrh architektury</a> | <a href="#rd" class="menu">Reprezentace 
-				dat</a> | <a href="#rd" class="menu">Plán realizace</a> | <a href="#up" class="menu">
-				Uživatelské prostředí</a>
+		<p align="center" style='text-align:center'><a href="files/celkova.ppt" class="menu">Stďż˝hnout prezentaci celďż˝ho projektu<!--</a>-->
+			| <a href="#na" class="menu">Nďż˝vrh architektury</a> | <a href="#rd" class="menu">Reprezentace 
+				dat</a> | <a href="#rd" class="menu">Plďż˝n realizace</a> | <a href="#up" class="menu">
+				Uďż˝ivatelskďż˝ prostďż˝edďż˝</a>
 			<hr width="100%">
 		</p>
-		<h3><a name="na"></a>Návrh architektury</h3>
+		<h3><a name="na"></a>Nďż˝vrh architektury</h3>
 		<img src="images/arch.png" alt="architektura">
 		<ul>
 			<li>
 				<h4>LETSIM Server</h4>
-				Aplikace instalovaná na linuxovém serveru. Komunikuje s databází a mapovými 
-				podklady, které zapouzdřuje a dále je poskytuje stanicím. Port na kterém bude 
-				aplikace komunikovat s Klienty a Managerem se nastavuje při instalaci. 
-				Nastavení je možné nadále měni přímo pomocí konfiguračních souborů nebo pomocí 
+				Aplikace instalovanďż˝ na linuxovďż˝m serveru. Komunikuje s databďż˝zďż˝ a mapovďż˝mi 
+				podklady, kterďż˝ zapouzdďż˝uje a dďż˝le je poskytuje stanicďż˝m. Port na kterďż˝m bude 
+				aplikace komunikovat s Klienty a Managerem se nastavuje pďż˝i instalaci. 
+				Nastavenďż˝ je moďż˝nďż˝ nadďż˝le mďż˝ni pďż˝ďż˝mo pomocďż˝ konfiguraďż˝nďż˝ch souborďż˝ nebo pomocďż˝ 
 				aplikace LETSIM Manager.
 				<br>
 			</li>
 			<li>
 				<h4>LETSIM Manager</h4>
-				Aplikace sloužící pro veškerou správu systému (stanic, serveru, vzájemné 
-				komunikace, ...). Aplikaci je možno instalovat jak na disk vybrané stanice 
-				(pokud je pro instruktora vyhrazena), nebo (doporučeno) na síťový disk a poté 
-				je dostupná ze všech stanic. Aplikace poskytuje různé úrovně zabezpečení pro 
-				ochranu přístupu. Autorizace je možná pomocí uživatelského jména a hesla, nebo 
-				pomocí čipové karty. Aplikace komunikuje se serverem a stanicemi na jiném 
-				portu, než po kterém probíhá předávání dat mezi stanicemi a serverem.
+				Aplikace slouďż˝ďż˝cďż˝ pro veďż˝kerou sprďż˝vu systďż˝mu (stanic, serveru, vzďż˝jemnďż˝ 
+				komunikace, ...). Aplikaci je moďż˝no instalovat jak na disk vybranďż˝ stanice 
+				(pokud je pro instruktora vyhrazena), nebo (doporuďż˝eno) na sďż˝ovďż˝ disk a potďż˝ 
+				je dostupnďż˝ ze vďż˝ech stanic. Aplikace poskytuje rďż˝znďż˝ ďż˝rovnďż˝ zabezpeďż˝enďż˝ pro 
+				ochranu pďż˝ďż˝stupu. Autorizace je moďż˝nďż˝ pomocďż˝ uďż˝ivatelskďż˝ho jmďż˝na a hesla, nebo 
+				pomocďż˝ ďż˝ipovďż˝ karty. Aplikace komunikuje se serverem a stanicemi na jinďż˝m 
+				portu, neďż˝ po kterďż˝m probďż˝hďż˝ pďż˝edďż˝vďż˝nďż˝ dat mezi stanicemi a serverem.
 				<br>
 			</li>
 			<li>
 				<h4>LETSIM Client</h4>
-				Software pro vlastní zobrazování 3D simulace letu a zobrazování výsledků. 
-				Mapové podklady jsou primárně nahrávány ze serveru (diskových polích), ale pro 
-				plynulejší chod aplikace a ušetření přenosového pásma jsou data ukládány do 
-				vyrovnávací paměti ve stanicích.
+				Software pro vlastnďż˝ zobrazovďż˝nďż˝ 3D simulace letu a zobrazovďż˝nďż˝ vďż˝sledkďż˝. 
+				Mapovďż˝ podklady jsou primďż˝rnďż˝ nahrďż˝vďż˝ny ze serveru (diskovďż˝ch polďż˝ch), ale pro 
+				plynulejďż˝ďż˝ chod aplikace a uďż˝etďż˝enďż˝ pďż˝enosovďż˝ho pďż˝sma jsou data uklďż˝dďż˝ny do 
+				vyrovnďż˝vacďż˝ pamďż˝ti ve stanicďż˝ch.
 				<br>
 			</li>
 		</ul>
-		<p><a href="#zacatek">Zpět na začátek</a></p>
+		<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 		<h3><a name="rd"></a>Reprezentace dat</h3>
-		Datový model, je už navržen ve 3. normální formě a u vztahu byla provedena 
-		dekompozice na nové entity. Takže každé entitě v Datovém modelu odpovídá právě 
-		jedna tabulka, jejíž prvky (i s datovými typy) jsou uvedeny v entitách. Z toho 
-		důvodu zde nebudu znova tabulky uvádět, ale uvedu zde pouze SQL skript pro 
-		generování těchto tabulek.<br>
+		Datovďż˝ model, je uďż˝ navrďż˝en ve 3. normďż˝lnďż˝ formďż˝ a u vztahu byla provedena 
+		dekompozice na novďż˝ entity. Takďż˝e kaďż˝dďż˝ entitďż˝ v Datovďż˝m modelu odpovďż˝dďż˝ prďż˝vďż˝ 
+		jedna tabulka, jejďż˝ prvky (i s datovďż˝mi typy) jsou uvedeny v entitďż˝ch. Z toho 
+		dďż˝vodu zde nebudu znova tabulky uvďż˝dďż˝t, ale uvedu zde pouze SQL skript pro 
+		generovďż˝nďż˝ tďż˝chto tabulek.<br>
 		<br>
 		<table border="0">
 			<tr>
@@ -349,66 +349,66 @@
 				<td colspan="2" class="SQL">);</td>
 			</tr>
 		</table>
-		SQL skript pro generování tabulek <a href="files/sql.sql">zde</a>
-		<p><a href="#zacatek">Zpět na začátek</a></p>
-		<h3><a name="rd"></a>Plán realizace</h3>
-		<p>Pro zvětšení klikněte na obrázek.<br>
-			<a href="images/cast2.png"><img border="0" src="images/cast2_resize.png" alt="plán realizace"></a><br>
+		SQL skript pro generovďż˝nďż˝ tabulek <a href="files/sql.sql">zde</a>
+		<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
+		<h3><a name="rd"></a>Plďż˝n realizace</h3>
+		<p>Pro zvďż˝tďż˝enďż˝ kliknďż˝te na obrďż˝zek.<br>
+			<a target="_blank" class="lightbox" href="images/cast2.png"><img border="0" src="images/cast2_resize.png" alt="plďż˝n realizace"></a><br>
 			<br>
-			<a href="files/letsim.mpp">Soubor MS Project</a> ke stažení
+			<a href="files/letsim.mpp">Soubor MS Project</a> ke staďż˝enďż˝
 		</p>
 		<p>
-			Realizace bude probíhat ve třech hlavních větvích paralelně. Přesný časový 
-			harmonogram viz. obrázek výše.<br>
+			Realizace bude probďż˝hat ve tďż˝ech hlavnďż˝ch vďż˝tvďż˝ch paralelnďż˝. Pďż˝esnďż˝ ďż˝asovďż˝ 
+			harmonogram viz. obrďż˝zek vďż˝ďż˝e.<br>
 			<ul>
 				<li>
-					První část týmu (především grafici) bude hlavně zpracovávat dodané mapové 
-					podklady, připravovat podklady pro tvorbu GUI, modelovat kokpity letadel a 
-					modelovat exteriéry letadel. K modelování objektů a vytváření a úpravě textur 
-					budou použity programy 3D studio max a PhotoShop.
+					Prvnďż˝ ďż˝ďż˝st tďż˝mu (pďż˝edevďż˝ďż˝m grafici) bude hlavnďż˝ zpracovďż˝vat dodanďż˝ mapovďż˝ 
+					podklady, pďż˝ipravovat podklady pro tvorbu GUI, modelovat kokpity letadel a 
+					modelovat exteriďż˝ry letadel. K modelovďż˝nďż˝ objektďż˝ a vytvďż˝ďż˝enďż˝ a ďż˝pravďż˝ textur 
+					budou pouďż˝ity programy 3D studio max a PhotoShop.
 				</li>
 				<li>
-					Druhá část týmu (programátoři) se bude zabývat tvorbou assemblies pro síťovou 
-					komunikaci. To obnáší:
+					Druhďż˝ ďż˝ďż˝st tďż˝mu (programďż˝toďż˝i) se bude zabďż˝vat tvorbou assemblies pro sďż˝ovou 
+					komunikaci. To obnďż˝ďż˝:
 					<ul>
 						<li>
-							Aplikace, která poběží na serveru s operačním systémem Linux. Aplikace bude 
-							naprogramována v jednom z jazyků platformy .NET (s největší pravděpodobností 
-							C#). Běh na OS Linux zajistí CLR implementace <a href="http://www.mono-project.com" target="_blank">
-								Mono</a>. Komunikace s databází FireBird bude probíhat přes ADO.NET. 
-							Implementace v prostředí .NET Framework zajistí, že v případě změny procesoru 
-							nebo operačního systému nebude třeba aplikaci upravovat a dojde k automatické 
+							Aplikace, kterďż˝ pobďż˝ďż˝ na serveru s operaďż˝nďż˝m systďż˝mem Linux. Aplikace bude 
+							naprogramovďż˝na v jednom z jazykďż˝ platformy .NET (s nejvďż˝tďż˝ďż˝ pravdďż˝podobnostďż˝ 
+							C#). Bďż˝h na OS Linux zajistďż˝ CLR implementace <a href="http://www.mono-project.com" target="_blank">
+								Mono</a>. Komunikace s databďż˝zďż˝ FireBird bude probďż˝hat pďż˝es ADO.NET. 
+							Implementace v prostďż˝edďż˝ .NET Framework zajistďż˝, ďż˝e v pďż˝ďż˝padďż˝ zmďż˝ny procesoru 
+							nebo operaďż˝nďż˝ho systďż˝mu nebude tďż˝eba aplikaci upravovat a dojde k automatickďż˝ 
 							optimalizaci.
 						</li>
 						<li>
-							Assembly pro komunikaci, které bude použita v aplikacích, které poběží na 
-							klientských stanicích s operačním systémem Windows XP. Assembly bude opět 
-							vytvořena na platformě .NET.
+							Assembly pro komunikaci, kterďż˝ bude pouďż˝ita v aplikacďż˝ch, kterďż˝ pobďż˝ďż˝ na 
+							klientskďż˝ch stanicďż˝ch s operaďż˝nďż˝m systďż˝mem Windows XP. Assembly bude opďż˝t 
+							vytvoďż˝ena na platformďż˝ .NET.
 						</li>
 					</ul>
 				</li>
 				<li>
-					Třetí část týmu bude realizovat aplikace pro klientské stanice, tedy program 
-					pro instruktory a program pro vlastní simulaci pro piloty.<br>
-					3D grafický engine bude implementován na platformě .NET s využitím rozhraní 
+					Tďż˝etďż˝ ďż˝ďż˝st tďż˝mu bude realizovat aplikace pro klientskďż˝ stanice, tedy program 
+					pro instruktory a program pro vlastnďż˝ simulaci pro piloty.<br>
+					3D grafickďż˝ engine bude implementovďż˝n na platformďż˝ .NET s vyuďż˝itďż˝m rozhranďż˝ 
 					Managed DirectX.<br>
-					Po dokončení modulů pro komunikaci dojde ke sloučení druhé a třetí části týmu, 
-					kdy druhá část týmu bude spolupracovat se třetí částí týmu na integraci 
-					komunikačních assemblies do klientských aplikací.
+					Po dokonďż˝enďż˝ modulďż˝ pro komunikaci dojde ke slouďż˝enďż˝ druhďż˝ a tďż˝etďż˝ ďż˝ďż˝sti tďż˝mu, 
+					kdy druhďż˝ ďż˝ďż˝st tďż˝mu bude spolupracovat se tďż˝etďż˝ ďż˝ďż˝stďż˝ tďż˝mu na integraci 
+					komunikaďż˝nďż˝ch assemblies do klientskďż˝ch aplikacďż˝.
 				</li>
 			</ul>
 		</p>
-		<p><a href="#zacatek">Zpět na začátek</a></p>
-		<h3><a name="up"></a>Uživatelské prostředí</h3>
-		<p><b>Přihlašovací okno do aplikace LETSIM Manager</b>
+		<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
+		<h3><a name="up"></a>Uďż˝ivatelskďż˝ prostďż˝edďż˝</h3>
+		<p><b>Pďż˝ihlaďż˝ovacďż˝ okno do aplikace LETSIM Manager</b>
 			<ul>
 				<li>
-					Přihlašovací okno<br>
+					Pďż˝ihlaďż˝ovacďż˝ okno<br>
 					<img src="images/GUI/ServerLogIn.png" alt="LogIn">
 				</li>
 			</ul>
 		</p>
-		<p><b>Aplikace LETSIM Manager - Administrator (může být i instruktor)</b>
+		<p><b>Aplikace LETSIM Manager - Administrator (mďż˝ďż˝e bďż˝t i instruktor)</b>
 			<ul>
 				<li>
 					Hlavni okno programu na serveru<br>
@@ -431,42 +431,43 @@
 					<img src="images/GUI/InstruktorHlavni.png" alt="Hlavni">
 				</li>
 				<li>
-					Okno pro správu simulací<br>
+					Okno pro sprďż˝vu simulacďż˝<br>
 					<img src="images/GUI/InstruktorSimulace.png" alt="Simulace">
 				</li>
 				<li>
-					Okno pro správu pilotů<br>
+					Okno pro sprďż˝vu pilotďż˝<br>
 					<img src="images/GUI/InstruktorPiloti.png" alt="Piloti">
 				</li>
 			</ul>
 		</p>
-		<p><b>clientská část aplikace - pro piloty</b>
+		<p><b>clientskďż˝ ďż˝ďż˝st aplikace - pro piloty</b>
 			<ul>
 				<li>
-					Přihlašovací okno<br>
+					Pďż˝ihlaďż˝ovacďż˝ okno<br>
 					<img src="images/GUI/ClientLogIn.png" alt="LogIn">
 				</li>
 			</ul>
 		</p>
-		<p><b>Prostředí pro pilota</b>
+		<p><b>Prostďż˝edďż˝ pro pilota</b>
 			<ul>
 				<li>
 					Hlavni okno programu pilota<br>
 					<img src="images/GUI/PilotHlavni.png" alt="Hlavni">
 				</li>
 				<li>
-					Okno pro výběr simulace<br>
+					Okno pro vďż˝bďż˝r simulace<br>
 					<img src="images/GUI/PilotSimulace.png" alt="Simulace">
 				</li>
 				<li>
-					Okno pro prohlížení záznamů<br>
-					<img src="images/GUI/PilotZaznamy.png" alt="Záznamy">
+					Okno pro prohlďż˝enďż˝ zďż˝znamďż˝<br>
+					<img src="images/GUI/PilotZaznamy.png" alt="Zďż˝znamy">
 				</li>
 				<li>
-					Samotná simulace (ilustrativní obrázek)<br>
+					Samotnďż˝ simulace (ilustrativnďż˝ obrďż˝zek)<br>
 					<img src="images/GUI/kokpit.jpg" alt="Kokpit">
 				</li>
 			</ul>
 		</p>
-		<p><a href="#zacatek">Zpět na začátek</a></p>
-	</body>
+		<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
+	<script src="/archive/lightbox.js"></script>
+</body>

@@ -7,20 +7,20 @@
    <title>36PAA - ulohy (Michal Trs)</title>
 </head>
 <body>
-   <h1>36PAA - Batoh øešený metodou simulované ochlazování (pokroèilá iterativní metoda)</h1>
+   <h1>36PAA - Batoh ï¿½eï¿½enï¿½ metodou simulovanï¿½ ochlazovï¿½nï¿½ (pokroï¿½ilï¿½ iterativnï¿½ metoda)</h1>
 
    <div id="main">
-      <h2>Zadání</h2>
+      <h2>Zadï¿½nï¿½</h2>
          <ul>
-            <li>Zvolte si heuristiku, kterou budete øešit problém vážené splnitelnosti booleovské formule (simulované ochlazování, simulovaná evoluce, tabu prohledávání)</li>
-            <li>Tuto heuristiku použijte pro øešení problému batohu. Mùžete použít dostupné instance problému (<a href="http://service.felk.cvut.cz/courses/36PAA/knapsolv.html">zde</a>), anebo si vygenerujte své instance pomocí <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">generátoru</a>. Používejte instance s vìtším poètem vìcí (>30).</li>
-            <li>Hlavním cílem domácí práce je seznámit se s danou heuristikou, zejména se zpùsobem, jakým se nastavují její parametry (rozvrh ochlazování, selekèní tlak, tabu lhùta...) a modifikace (zjištìní poèáteèní teploty, mechanismus selekce, tabu atributy...). Není-li Vám cokoli jasné, prosíme ptejte se na cvièeních.</li>
-            <li>Problém batohu není pøíliš obtížný, vìtšinou budete mít k dispozici globální maxima (exaktní øešení) z pøedchozích prací, napøíklad z dynamického programování.</li>
+            <li>Zvolte si heuristiku, kterou budete ï¿½eï¿½it problï¿½m vï¿½enï¿½ splnitelnosti booleovskï¿½ formule (simulovanï¿½ ochlazovï¿½nï¿½, simulovanï¿½ evoluce, tabu prohledï¿½vï¿½nï¿½)</li>
+            <li>Tuto heuristiku pouï¿½ijte pro ï¿½eï¿½enï¿½ problï¿½mu batohu. Mï¿½ï¿½ete pouï¿½ï¿½t dostupnï¿½ instance problï¿½mu (<a href="http://service.felk.cvut.cz/courses/36PAA/knapsolv.html">zde</a>), anebo si vygenerujte svï¿½ instance pomocï¿½ <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">generï¿½toru</a>. Pouï¿½ï¿½vejte instance s vï¿½tï¿½ï¿½m poï¿½tem vï¿½cï¿½ (>30).</li>
+            <li>Hlavnï¿½m cï¿½lem domï¿½cï¿½ prï¿½ce je seznï¿½mit se s danou heuristikou, zejmï¿½na se zpï¿½sobem, jakï¿½m se nastavujï¿½ jejï¿½ parametry (rozvrh ochlazovï¿½nï¿½, selekï¿½nï¿½ tlak, tabu lhï¿½ta...) a modifikace (zjiï¿½tï¿½nï¿½ poï¿½ï¿½teï¿½nï¿½ teploty, mechanismus selekce, tabu atributy...). Nenï¿½-li Vï¿½m cokoli jasnï¿½, prosï¿½me ptejte se na cviï¿½enï¿½ch.</li>
+            <li>Problï¿½m batohu nenï¿½ pï¿½ï¿½liï¿½ obtï¿½nï¿½, vï¿½tï¿½inou budete mï¿½t k dispozici globï¿½lnï¿½ maxima (exaktnï¿½ ï¿½eï¿½enï¿½) z pï¿½edchozï¿½ch pracï¿½, napï¿½ï¿½klad z dynamickï¿½ho programovï¿½nï¿½.</li>
          </ul>
 
       <h2>Implementace</h2>
          <p>
-         Z pokroèilých iterativních metod jsem si vybral algoritmus simulované ochlazování. Je popsán "vývojovými diagramy" na následujících obrázcích.
+         Z pokroï¿½ilï¿½ch iterativnï¿½ch metod jsem si vybral algoritmus simulovanï¿½ ochlazovï¿½nï¿½. Je popsï¿½n "vï¿½vojovï¿½mi diagramy" na nï¿½sledujï¿½cï¿½ch obrï¿½zcï¿½ch.
          </p>
 
          <table><tr>
@@ -28,43 +28,43 @@
             <td><img src="algoritmus/try.png"/></td>
          </tr></table>
          
-         Pokusím se algoritmus popsat slovnì. Jedná se o 2 vnoøené cykly. Na zaèátku je nastaveno nìjaké øešení a poèáteèní teplota, která se ve venkovním cyklu postupnì snižuje. Teplotou je dána ochota algoritmu pøijmout horší øešení. Tím se mùže algoritmus vymanit z lokálního minima. Ve vnitøním cyklu se hledá nové øešení. To je popsáno na obrázku jako funkce "try". Náhodnì vygenerujeme nové pøípustné øešení. Pokud je lepší než doposud nalezené, toto øešení pøijmeme. Pokud je horší tak jej pøijmeme s urèitou pravdìpodobností, která je dána aktuální teplotou a velikostí zhoršení ceny. Algoritmus konèí pokud se teplota sníží na úroveò teploty tuhnutí. Pro správnou funkci algoritmu je velice dùležité nastavit parametry (poèáteèní teplota, teplota tuhnutí, rychlost tuhnutí, velikost equilibria).
+         Pokusï¿½m se algoritmus popsat slovnï¿½. Jednï¿½ se o 2 vnoï¿½enï¿½ cykly. Na zaï¿½ï¿½tku je nastaveno nï¿½jakï¿½ ï¿½eï¿½enï¿½ a poï¿½ï¿½teï¿½nï¿½ teplota, kterï¿½ se ve venkovnï¿½m cyklu postupnï¿½ sniï¿½uje. Teplotou je dï¿½na ochota algoritmu pï¿½ijmout horï¿½ï¿½ ï¿½eï¿½enï¿½. Tï¿½m se mï¿½ï¿½e algoritmus vymanit z lokï¿½lnï¿½ho minima. Ve vnitï¿½nï¿½m cyklu se hledï¿½ novï¿½ ï¿½eï¿½enï¿½. To je popsï¿½no na obrï¿½zku jako funkce "try". Nï¿½hodnï¿½ vygenerujeme novï¿½ pï¿½ï¿½pustnï¿½ ï¿½eï¿½enï¿½. Pokud je lepï¿½ï¿½ neï¿½ doposud nalezenï¿½, toto ï¿½eï¿½enï¿½ pï¿½ijmeme. Pokud je horï¿½ï¿½ tak jej pï¿½ijmeme s urï¿½itou pravdï¿½podobnostï¿½, kterï¿½ je dï¿½na aktuï¿½lnï¿½ teplotou a velikostï¿½ zhorï¿½enï¿½ ceny. Algoritmus konï¿½ï¿½ pokud se teplota snï¿½ï¿½ na ï¿½roveï¿½ teploty tuhnutï¿½. Pro sprï¿½vnou funkci algoritmu je velice dï¿½leï¿½itï¿½ nastavit parametry (poï¿½ï¿½teï¿½nï¿½ teplota, teplota tuhnutï¿½, rychlost tuhnutï¿½, velikost equilibria).
          
-         <h3>Zdrojové kódy</h3>
+         <h3>Zdrojovï¿½ kï¿½dy</h3>
             <ul>
-               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Implementace algoritmu simulovaného ochlazování</li>
-               <li><a href="source/Batoh-SimAnneal.zip">Batoh-SimAnneal.zip</a></li> - Kód z minulých úloh použit pro testování (Greedy Proof, Dynamické programování)
+               <li><a href="source/SimAnneal.cs">SimAnneal.cs</a> - Implementace algoritmu simulovanï¿½ho ochlazovï¿½nï¿½</li>
+               <li><a href="source/Batoh-SimAnneal.zip">Batoh-SimAnneal.zip</a></li> - Kï¿½d z minulï¿½ch ï¿½loh pouï¿½it pro testovï¿½nï¿½ (Greedy Proof, Dynamickï¿½ programovï¿½nï¿½)
             </ul>
                
 
-      <h2>Namìøené hodnoty a výsledky</h2>
+      <h2>Namï¿½ï¿½enï¿½ hodnoty a vï¿½sledky</h2>
          <p>
-            Aby bylo možné správnì nastavit parametry algoritmu je nutné experimentovat. Pøi experimentech jsem sledoval èasovou nároènost a relativní chybu. Pro výpoèet globálního maxima (pro výpoèet relativní chyby) jsem použil døíve implementované <a href="../batoh2/">dynamické programování</a>. Algoritmus jsem srovnával s Greedy Proof (metodou nejrychlejšího vzestupu). Experimenty jsou shrnuty v následujících tabulkách a grafech.<br/>
-            Pro pøehlednost jsem použil tyto zkratky:
+            Aby bylo moï¿½nï¿½ sprï¿½vnï¿½ nastavit parametry algoritmu je nutnï¿½ experimentovat. Pï¿½i experimentech jsem sledoval ï¿½asovou nï¿½roï¿½nost a relativnï¿½ chybu. Pro vï¿½poï¿½et globï¿½lnï¿½ho maxima (pro vï¿½poï¿½et relativnï¿½ chyby) jsem pouï¿½il dï¿½ï¿½ve implementovanï¿½ <a href="../batoh2/">dynamickï¿½ programovï¿½nï¿½</a>. Algoritmus jsem srovnï¿½val s Greedy Proof (metodou nejrychlejï¿½ï¿½ho vzestupu). Experimenty jsou shrnuty v nï¿½sledujï¿½cï¿½ch tabulkï¿½ch a grafech.<br/>
+            Pro pï¿½ehlednost jsem pouï¿½il tyto zkratky:
          </p>
          <p><code>
-            SA = Simulated Annealing = simulované ochlazování<br/>
-            GP = Greedy Proof = metoda nejrychlejšího vzestupu<br/>
-            triv = použito triviální øešení pro inicializaci SA<br/>
-            init GP = použito GA pro inicializaci SA<br/>
-            T0 = poèáteèní teplota<br/>
-            Tf = teplota tuhnutí<br/>
-            dT = zmìna teploty<br/>
+            SA = Simulated Annealing = simulovanï¿½ ochlazovï¿½nï¿½<br/>
+            GP = Greedy Proof = metoda nejrychlejï¿½ï¿½ho vzestupu<br/>
+            triv = pouï¿½ito triviï¿½lnï¿½ ï¿½eï¿½enï¿½ pro inicializaci SA<br/>
+            init GP = pouï¿½ito GA pro inicializaci SA<br/>
+            T0 = poï¿½ï¿½teï¿½nï¿½ teplota<br/>
+            Tf = teplota tuhnutï¿½<br/>
+            dT = zmï¿½na teploty<br/>
             equ = equilibrium<br/>
          </code></p>
          
-         <p>Pokud není uvedeno jinak, experimentoval jsem na instancích o velikosti n = 40. SA bylo na každé instanci spuštìno 20x a výsledná relativní chyba a èas je prùmìr z výsledù algoritmu.</p>
-         <p>Mìøil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance pøi napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+         <p>Pokud nenï¿½ uvedeno jinak, experimentoval jsem na instancï¿½ch o velikosti n = 40. SA bylo na kaï¿½dï¿½ instanci spuï¿½tï¿½no 20x a vï¿½slednï¿½ relativnï¿½ chyba a ï¿½as je prï¿½mï¿½r z vï¿½sledï¿½ algoritmu.</p>
+         <p>Mï¿½ï¿½il jsem na NTB s procesorem Centino 1.4GHz, nastavenï¿½ max Performance pï¿½i napï¿½jenï¿½ z adaptï¿½ru. Pouï¿½itï¿½ OS: Windows XP SP2 s .net Framework 2.</p>
 
 
 
          
-      <h3>Nastavení zmìny teploty</h3>
+      <h3>Nastavenï¿½ zmï¿½ny teploty</h3>
       
-      Pøi tomto experimentu jsem nastavil T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, equ = n a mìnil dT v rozmezí 0,8 - 0,999.
+      Pï¿½i tomto experimentu jsem nastavil T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, equ = n a mï¿½nil dT v rozmezï¿½ 0,8 - 0,999.
       
       <table>
-         <tr><th rowspan="2">dT</th><th colspan="3">relativní chyba</th><th colspan="3">èas</th></tr>
+         <tr><th rowspan="2">dT</th><th colspan="3">relativnï¿½ chyba</th><th colspan="3">ï¿½as</th></tr>
          <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
          <tr><td>0,999</td><td rowspan="8">0,15%</td><td>0,12%</td><td>0,02%</td><td rowspan="8">0,0625</td><td>278,731</td><td>642,995</td></tr>
          <tr><td>0,995</td><td>0,42%</td><td>0,07%</td><td>58,154</td><td>128,795</td></tr>
@@ -76,19 +76,19 @@
          <tr><td>0,8</td><td>5,50%</td><td>0,15%</td><td>1,271</td><td>2,944</td></tr>
       </table>
 
-      <h4>Graf: Závislost relativní chyby na zmìnì rychlosti ochlazování</h4>
+      <h4>Graf: Zï¿½vislost relativnï¿½ chyby na zmï¿½nï¿½ rychlosti ochlazovï¿½nï¿½</h4>
       <p><img src="grafy/err_dt.png"/></p>
       
-      <h4>Graf: Závislost èasové složitosti na zmìnì rychlosti ochlazování</h4>
+      <h4>Graf: Zï¿½vislost ï¿½asovï¿½ sloï¿½itosti na zmï¿½nï¿½ rychlosti ochlazovï¿½nï¿½</h4>
       <p><img src="grafy/cas_dt.png"/></p>
 
       
-      <h3>Nastavení velikosti equilibria</h3>
+      <h3>Nastavenï¿½ velikosti equilibria</h3>
 
-      Nastavení: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, dT = 0,9 a 0,98, mìnil jsem equ v intervalu n / 5 až n * 5
+      Nastavenï¿½: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), Tf = 10, dT = 0,9 a 0,98, mï¿½nil jsem equ v intervalu n / 5 aï¿½ n * 5
 
       <table>
-         <tr><th rowspan="3">equ</th><th colspan="5">relativní chyba</th><th colspan="5">èas</th></tr>
+         <tr><th rowspan="3">equ</th><th colspan="5">relativnï¿½ chyba</th><th colspan="5">ï¿½as</th></tr>
          <tr><th rowspan="2">GP</th><th colspan="2">SA triv</th><th colspan="2">SA init GP</th><th rowspan="2">GP</th><th colspan="2">SA triv</th><th colspan="2">SA init GP</th></tr>
          <tr><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th><th>dT = 0,98</th><th>dT = 0,9</th></tr>
          <tr><td>200</td><td rowspan="9">0,15%</td><td>0,34%</td><td>1,16%</td><td>0,07%</td><td>0,12%</td><td rowspan="9">0,0625</td><td>65,663</td><td>13,23</td><td>153,191</td><td>30,184</td></tr>
@@ -102,19 +102,19 @@
          <tr><td>8</td><td>3,45%</td><td>12,09%</td><td>0,15%</td><td>0,15%</td><td>2,724</td><td>0,581</td><td>6,239</td><td>1,312</td></tr>
       </table>
       
-      <h4>Graf: Závislost relativní chyby na velikosti equilibria</h4>
+      <h4>Graf: Zï¿½vislost relativnï¿½ chyby na velikosti equilibria</h4>
       <p><img src="grafy/err_equ.png"/></p>
 
-      <h4>Graf: Závislost èasové složitosti na velikosti equilibria</h4>
+      <h4>Graf: Zï¿½vislost ï¿½asovï¿½ sloï¿½itosti na velikosti equilibria</h4>
       <p><img src="grafy/cas_equ.png"/></p>
 
 
-      <h3>Nastavení teploty tuhnutí</h3>
+      <h3>Nastavenï¿½ teploty tuhnutï¿½</h3>
 
-      Nastavení: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), dT = 0,98, equ = n, mìnil jsem Tf v intervalu 1 až 10.
+      Nastavenï¿½: T0 = (M * suma_cen_veci) / (n * suma_vah_veci), dT = 0,98, equ = n, mï¿½nil jsem Tf v intervalu 1 aï¿½ 10.
 
       <table>
-         <tr><th rowspan="2">Tf</th><th colspan="3">relativní chyba</th><th colspan="3">èas</th></tr>
+         <tr><th rowspan="2">Tf</th><th colspan="3">relativnï¿½ chyba</th><th colspan="3">ï¿½as</th></tr>
          <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
          <tr><td>1</td><td rowspan="6">0,15%</td><td>0,94%</td><td>0,12%</td><td rowspan="6">0,0625</td><td>27,539</td><td>30,604</td></tr>
          <tr><td>2</td><td>0,94%</td><td>0,12%</td><td>23,254</td><td>25,857</td></tr>
@@ -124,19 +124,19 @@
          <tr><td>10</td><td>1,08%</td><td>0,13%</td><td>13,229</td><td>14,521</td></tr>
       </table>
 
-      <h4>Graf: Závislost relativní chyby na teplotì tuhnutí</h4>
+      <h4>Graf: Zï¿½vislost relativnï¿½ chyby na teplotï¿½ tuhnutï¿½</h4>
       <p><img src="grafy/err_tf.png"/></p>
 
-      <h4>Graf: Závislost èasové složitosti na teplotì tuhnutí</h4>
+      <h4>Graf: Zï¿½vislost ï¿½asovï¿½ sloï¿½itosti na teplotï¿½ tuhnutï¿½</h4>
       <p><img src="grafy/cas_tf.png"/></p>
 
 
-      <h3>Nastavení poèáteèní teploty</h3>
+      <h3>Nastavenï¿½ poï¿½ï¿½teï¿½nï¿½ teploty</h3>
       
-      Nastavení: Tf = 1, dT = 0,98, equ = n, mìnil jsem T0 v intervalu 35 až 200
+      Nastavenï¿½: Tf = 1, dT = 0,98, equ = n, mï¿½nil jsem T0 v intervalu 35 aï¿½ 200
       
       <table>
-         <tr><th rowspan="2">T0</th><th colspan="3">relativní chyba</th><th colspan="3">èas</th></tr>
+         <tr><th rowspan="2">T0</th><th colspan="3">relativnï¿½ chyba</th><th colspan="3">ï¿½as</th></tr>
          <tr><th>GP</th><th>SA triv</th><th>SA init GP</th><th>GP</th><th>SA triv</th><th>SA init GP</th></tr>
          <tr><td>200</td><td rowspan="10">0,15%</td><td>0,98%</td><td>0,12%</td><td rowspan="10">0,0625</td><td>32,928</td><td>34,81</td></tr>
          <tr><td>150</td><td>0,95%</td><td>0,12%</td><td>32,247</td><td>32,547</td></tr>
@@ -150,23 +150,23 @@
          <tr><td>35</td><td>2,25%</td><td>0,12%</td><td>22,381</td><td>27,239</td></tr>
       </table>
 
-      <h4>Graf: Závislost relativní chyby na poèáteèní teplotì</h4>
+      <h4>Graf: Zï¿½vislost relativnï¿½ chyby na poï¿½ï¿½teï¿½nï¿½ teplotï¿½</h4>
       <p><img src="grafy/err_t0.png"/></p>
 
-      <h4>Graf: Závislost èasové složitosti na poèáteèní teplotì</h4>
+      <h4>Graf: Zï¿½vislost ï¿½asovï¿½ sloï¿½itosti na poï¿½ï¿½teï¿½nï¿½ teplotï¿½</h4>
       <p><img src="grafy/cas_t0.png"/></p>
 
 
-      <h3>Závislost relativní chyby na velikosti instance</h3>
-      Jen tak pro zajímavost, srovnání prùmìrné relativní chyby pro rùznì velké instance.
-      Nastavení parametrù: dT = 0,98, Tf = 5, equ = n, T0 = 67,31
+      <h3>Zï¿½vislost relativnï¿½ chyby na velikosti instance</h3>
+      Jen tak pro zajï¿½mavost, srovnï¿½nï¿½ prï¿½mï¿½rnï¿½ relativnï¿½ chyby pro rï¿½znï¿½ velkï¿½ instance.
+      Nastavenï¿½ parametrï¿½: dT = 0,98, Tf = 5, equ = n, T0 = 67,31
       
-      <h4>Graf: Závislost relativní chyby na velikosti instance</h4>
+      <h4>Graf: Zï¿½vislost relativnï¿½ chyby na velikosti instance</h4>
       <p><img src="grafy/err_n.png"/></p>
 
       
-      <h2>Ukázky prùchodu algoritmu stavovým prostorem</h2>
-      Na následujících grafech je zobrazena velikost ceny v závislosti na prozkoumaných stavech pro rùzné parametry. Pro zvìtšení kliknìte na prosím na graf.
+      <h2>Ukï¿½zky prï¿½chodu algoritmu stavovï¿½m prostorem</h2>
+      Na nï¿½sledujï¿½cï¿½ch grafech je zobrazena velikost ceny v zï¿½vislosti na prozkoumanï¿½ch stavech pro rï¿½znï¿½ parametry. Pro zvï¿½tï¿½enï¿½ kliknï¿½te na prosï¿½m na graf.
       
 
       <table>
@@ -175,8 +175,8 @@
             <td>triv, dT = 0,8, Tf = 5, equ = n, T0 = 67,31</td>
          </tr>
          <tr>
-            <td><a href="grafy/gp_080_5_n.png"><img src="grafy/small/gp_080_5_n.png"/></a></td>
-            <td><a href="grafy/sam_080_5_n.png"><img src="grafy/small/sam_080_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/gp_080_5_n.png"><img src="grafy/small/gp_080_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/sam_080_5_n.png"><img src="grafy/small/sam_080_5_n.png"/></a></td>
             
          </tr>
          <tr>
@@ -184,43 +184,44 @@
                <td>triv, dT = 0,9, Tf = 5, equ = n, T0 = 67,31</td>
          </tr>
          <tr>
-            <td><a href="grafy/gp_090_5_n.png"><img src="grafy/small/gp_090_5_n.png"/></a></td>
-            <td><a href="grafy/sam_090_5_n.png"><img src="grafy/small/sam_090_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/gp_090_5_n.png"><img src="grafy/small/gp_090_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/sam_090_5_n.png"><img src="grafy/small/sam_090_5_n.png"/></a></td>
          </tr>
          <tr>
             <td>init GP, dT = 0,98, Tf = 5, equ = n, T0 = 67,31</td>
             <td>triv, dT = 0,98, Tf = 5, equ = n, T0 = 67,31</td>
          </tr>
          <tr>
-            <td><a href="grafy/gp_098_5_n.png"><img src="grafy/small/gp_098_5_n.png"/></a></td>
-            <td><a href="grafy/sam_098_5_n.png"><img src="grafy/small/sam_098_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/gp_098_5_n.png"><img src="grafy/small/gp_098_5_n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/sam_098_5_n.png"><img src="grafy/small/sam_098_5_n.png"/></a></td>
          </tr>
          <tr>
             <td>init GP, dT = 0,98, Tf = 5, equ = n / 5, T0 = 67,31</td>
             <td>init GP, dT = 0,98, Tf = 5, equ = 5 * n, T0 = 67,31</td>
          </tr>
          <tr>
-            <td><a href="grafy/gp_098_5_n5.png"><img src="grafy/small/gp_098_5_n5.png"/></a></td>
-            <td><a href="grafy/gp_098_5_5n.png"><img src="grafy/small/gp_098_5_5n.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/gp_098_5_n5.png"><img src="grafy/small/gp_098_5_n5.png"/></a></td>
+            <td><a target="_blank" class="lightbox" href="grafy/gp_098_5_5n.png"><img src="grafy/small/gp_098_5_5n.png"/></a></td>
          </tr>
       </table>
       
 
 
-      <h2>Závìr</h2>
-         Algoritmus simulované ochlazování je pomìrnì snadný na implementaci. Z experimentù mùžeme øíct, že je èasovì nároènìjší než hladový algoritmus a pøi inicializaci triviální konfiguraci dává prùmìrnì horší výsledky. Pokud inicializujeme SA hodnotou získanou GP algoritmem, v prùmìru vždy dojde ke zlepšení relativní chyby. Protože algoritmus si pomatuje nejlepší øešení, nemùže nikdy vyjít horší výsledek než u GP.<br/>
-         U tohoto algoritmu (stejnì jako u dynamického programování) dopøedu známe poèet iterací cyklu, tudíž mùžeme odhadnout èasovou nároènost. Proto je na první pohled trochu divné, øádovì rozdílný èas pøi inicializaci triviálním øešením a øešením dodaným GP algoritmem. Skrytá èasová závislost je v generování nového stavu. Ten generujeme tak, že zmìníme bit na náhodné pozici v souèasné konfiguraci, ale výsledná konfigurace musí být pøípustným øešením. Proto pokud vyjdeme z triviální konfigurace je velká pravdìpodobnost, že nový stav vygenerujeme na 1. pokus. U již nalezeného øešení napø. algoritmem GP opakujeme generování pomìrnì dlouho, než dostaneme pøípustnou konfiguraci.<br/>
-         Dále z provedených experimentù mùžeme udìlat tyto závìry:
+      <h2>Zï¿½vï¿½r</h2>
+         Algoritmus simulovanï¿½ ochlazovï¿½nï¿½ je pomï¿½rnï¿½ snadnï¿½ na implementaci. Z experimentï¿½ mï¿½ï¿½eme ï¿½ï¿½ct, ï¿½e je ï¿½asovï¿½ nï¿½roï¿½nï¿½jï¿½ï¿½ neï¿½ hladovï¿½ algoritmus a pï¿½i inicializaci triviï¿½lnï¿½ konfiguraci dï¿½vï¿½ prï¿½mï¿½rnï¿½ horï¿½ï¿½ vï¿½sledky. Pokud inicializujeme SA hodnotou zï¿½skanou GP algoritmem, v prï¿½mï¿½ru vï¿½dy dojde ke zlepï¿½enï¿½ relativnï¿½ chyby. Protoï¿½e algoritmus si pomatuje nejlepï¿½ï¿½ ï¿½eï¿½enï¿½, nemï¿½ï¿½e nikdy vyjï¿½t horï¿½ï¿½ vï¿½sledek neï¿½ u GP.<br/>
+         U tohoto algoritmu (stejnï¿½ jako u dynamickï¿½ho programovï¿½nï¿½) dopï¿½edu znï¿½me poï¿½et iteracï¿½ cyklu, tudï¿½ mï¿½ï¿½eme odhadnout ï¿½asovou nï¿½roï¿½nost. Proto je na prvnï¿½ pohled trochu divnï¿½, ï¿½ï¿½dovï¿½ rozdï¿½lnï¿½ ï¿½as pï¿½i inicializaci triviï¿½lnï¿½m ï¿½eï¿½enï¿½m a ï¿½eï¿½enï¿½m dodanï¿½m GP algoritmem. Skrytï¿½ ï¿½asovï¿½ zï¿½vislost je v generovï¿½nï¿½ novï¿½ho stavu. Ten generujeme tak, ï¿½e zmï¿½nï¿½me bit na nï¿½hodnï¿½ pozici v souï¿½asnï¿½ konfiguraci, ale vï¿½slednï¿½ konfigurace musï¿½ bï¿½t pï¿½ï¿½pustnï¿½m ï¿½eï¿½enï¿½m. Proto pokud vyjdeme z triviï¿½lnï¿½ konfigurace je velkï¿½ pravdï¿½podobnost, ï¿½e novï¿½ stav vygenerujeme na 1. pokus. U jiï¿½ nalezenï¿½ho ï¿½eï¿½enï¿½ napï¿½. algoritmem GP opakujeme generovï¿½nï¿½ pomï¿½rnï¿½ dlouho, neï¿½ dostaneme pï¿½ï¿½pustnou konfiguraci.<br/>
+         Dï¿½le z provedenï¿½ch experimentï¿½ mï¿½ï¿½eme udï¿½lat tyto zï¿½vï¿½ry:
          <ul>
-         <li>Èím blíže dT k 1 tím menší relativní chyba, ale vìtší èasová nároènost.</li>
-         <li>Poèáteèní teplotu je vhodné volit jako funkci velikosti instance. V experimentu dává nejlepší výsledky n * 2. Na dostuduj jsem našel tento vztah: M * suma(ceny) / (N * suma(váhy)), který dává podobné výsledky.</li>
-         <li>Teplotu tuhnutí je nejlepší "vykoukat" z grafù pro závislost ceny na poètu prozkoumaných stavù. Pokud se cena nemìní, mìlo by dojít k zamrazení. To mùžeme pøímo ošetøit v programu a nemusíme tento parametr nastavovat.</li>
-         <li>Velikost equilibria, èím vìtší tím menší relativní chyba, ale vìtší èasová nároènost.</li>
+         <li>ï¿½ï¿½m blï¿½e dT k 1 tï¿½m menï¿½ï¿½ relativnï¿½ chyba, ale vï¿½tï¿½ï¿½ ï¿½asovï¿½ nï¿½roï¿½nost.</li>
+         <li>Poï¿½ï¿½teï¿½nï¿½ teplotu je vhodnï¿½ volit jako funkci velikosti instance. V experimentu dï¿½vï¿½ nejlepï¿½ï¿½ vï¿½sledky n * 2. Na dostuduj jsem naï¿½el tento vztah: M * suma(ceny) / (N * suma(vï¿½hy)), kterï¿½ dï¿½vï¿½ podobnï¿½ vï¿½sledky.</li>
+         <li>Teplotu tuhnutï¿½ je nejlepï¿½ï¿½ "vykoukat" z grafï¿½ pro zï¿½vislost ceny na poï¿½tu prozkoumanï¿½ch stavï¿½. Pokud se cena nemï¿½nï¿½, mï¿½lo by dojï¿½t k zamrazenï¿½. To mï¿½ï¿½eme pï¿½ï¿½mo oï¿½etï¿½it v programu a nemusï¿½me tento parametr nastavovat.</li>
+         <li>Velikost equilibria, ï¿½ï¿½m vï¿½tï¿½ï¿½ tï¿½m menï¿½ï¿½ relativnï¿½ chyba, ale vï¿½tï¿½ï¿½ ï¿½asovï¿½ nï¿½roï¿½nost.</li>
          </ul>
 
 
    </div>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

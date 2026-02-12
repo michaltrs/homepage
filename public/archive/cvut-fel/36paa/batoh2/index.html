@@ -10,50 +10,50 @@
    <h1>36PAA - Batoh 2</h1>
 
    <div id="main">
-      <h2>Zadání</h2>
+      <h2>Zadï¿½nï¿½</h2>
       <ul>
-         <li>Naprogramujte øešení 0/1 problému batohu metodou vìtví a hranic (B&B) tak, aby omezujícím faktorem byla hodnota optimalizaèního kritéria. Tj. pouijte oøezávání shora (pøekroèení kapacity batohu) i zdola (stávající øešení nemùe bıt lepší ne nejlepší dosud nalezené)</li>
-         <li>Naprogramujte øešení 0/1 problému batohu nebo alespoò 0/1 exaktního problému batohu bez cen metodou dynamického programování.</li>
-         <li>Naprogramujte øešení 0/1 problému batohu heuristikou podle pomìru cena/hmotnost s testem nejcennìjší vìci.</li>
+         <li>Naprogramujte ï¿½eï¿½enï¿½ 0/1 problï¿½mu batohu metodou vï¿½tvï¿½ a hranic (B&B) tak, aby omezujï¿½cï¿½m faktorem byla hodnota optimalizaï¿½nï¿½ho kritï¿½ria. Tj. pouï¿½ijte oï¿½ezï¿½vï¿½nï¿½ shora (pï¿½ekroï¿½enï¿½ kapacity batohu) i zdola (stï¿½vajï¿½cï¿½ ï¿½eï¿½enï¿½ nemï¿½ï¿½e bï¿½t lepï¿½ï¿½ neï¿½ nejlepï¿½ï¿½ dosud nalezenï¿½)</li>
+         <li>Naprogramujte ï¿½eï¿½enï¿½ 0/1 problï¿½mu batohu nebo alespoï¿½ 0/1 exaktnï¿½ho problï¿½mu batohu bez cen metodou dynamickï¿½ho programovï¿½nï¿½.</li>
+         <li>Naprogramujte ï¿½eï¿½enï¿½ 0/1 problï¿½mu batohu heuristikou podle pomï¿½ru cena/hmotnost s testem nejcennï¿½jï¿½ï¿½ vï¿½ci.</li>
       </ul>
 
-      <h2>Definice problému</h2>
+      <h2>Definice problï¿½mu</h2>
       <ul>
-         <li>Je dáno:
+         <li>Je dï¿½no:
          <ul>
-            <li>celé èíslo n (poèet vìcí)</li>
-            <li>celé èíslo M (kapacita batohu)</li>
-            <li>koneèná mnoina V={v1, v2, ... ,vn} (hmotnosti vìcí)</li>
-            <li>koneèná mnoina C={c1, c2, ... ,cn} (ceny vìcí)</li>
+            <li>celï¿½ ï¿½ï¿½slo n (poï¿½et vï¿½cï¿½)</li>
+            <li>celï¿½ ï¿½ï¿½slo M (kapacita batohu)</li>
+            <li>koneï¿½nï¿½ mnoï¿½ina V={v1, v2, ... ,vn} (hmotnosti vï¿½cï¿½)</li>
+            <li>koneï¿½nï¿½ mnoï¿½ina C={c1, c2, ... ,cn} (ceny vï¿½cï¿½)</li>
          </ul></li>
 
-         <li>Zkonstruujte mnoinu X={x1, x2, ... ,xn}, kde kadé xi je 0 nebo 1, tak, aby
+         <li>Zkonstruujte mnoï¿½inu X={x1, x2, ... ,xn}, kde kaï¿½dï¿½ xi je 0 nebo 1, tak, aby
          <ul>
-            <li><b>platilo:</b> v1x1+v2x2 + ... + vnxn <= M (batoh nebyl pøetíen).</li>
-            <li><b>vıraz</b> c1x1+c2x2 + ... + cnxn nabıval maximální hodnoty pro všechny takové mnoiny (cena vìcí v batohu byla maximální).</li>
+            <li><b>platilo:</b> v1x1+v2x2 + ... + vnxn <= M (batoh nebyl pï¿½etï¿½en).</li>
+            <li><b>vï¿½raz</b> c1x1+c2x2 + ... + cnxn nabï¿½val maximï¿½lnï¿½ hodnoty pro vï¿½echny takovï¿½ mnoï¿½iny (cena vï¿½cï¿½ v batohu byla maximï¿½lnï¿½).</li>
          </ul></li>
       </ul>
 
 
 
       <h2>Implementace</h2>
-      Úlohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Název souboru se vstupními daty je první argument a je povinnı. Druhı argument je nepovinnı a udává poèet opakování vıpoètu jedné instance (Dùleité pouze pøi mìøení èasu).<br/>Maximálnì jsem recykloval úlohu "batoh 1" (virtuální tøída batoh a tøídu program, kde je implementováno mìøení èasu)<ul>
-         <li><a href="source/Batoh.cs">Batoh.cs</a> - Virtuální tøída, má implementovanou metody pro ètení vstupního souboru a virtuální metodu Compute().</li>
-         <li><a href="source/Program.cs">Program.cs</a> - Volá metodu Compute() a mìøí èas.</li>
-         <li><a href="source/GreedyProofMod.cs">GreedyProofMod.cs</a> - Kombinovaná heuristika, rozšíøení jednoduché heuristiky (batoh 1) o test nejcennìjší vìci. Naleznu nejcennìjší vìc a pokud je její cena lepší ne vısledek jednoduché heuristiky (GreedyProof) oznaèím ji za vısledek.</li>
-         <li><a href="source/Dyn.cs">Dyn.cs</a> - Dynamické programování dekompozicí podle kapacity batohu. (algoritmus pro vyplnìní 2D pole - slide cv.3)</li>
-         <li><a href="source/BB.cs">BB.cs</a> - Metoda vìtví a hranic. Vychází z BruteForce - DFS (batoh 1), které je implementováno rekurzivnì s oøezáváním nepøípustnıch stavù (pøekroèení kapacity batohu). Je pøidáno oøezání neperspektivních stavù po nalezení øešení (pokud expandováním souèasného stavu nemùu dostat lepší øešení, ne které je nalezeno, tento stav dále neexpanduji)</li>
+      ï¿½lohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Nï¿½zev souboru se vstupnï¿½mi daty je prvnï¿½ argument a je povinnï¿½. Druhï¿½ argument je nepovinnï¿½ a udï¿½vï¿½ poï¿½et opakovï¿½nï¿½ vï¿½poï¿½tu jednï¿½ instance (Dï¿½leï¿½itï¿½ pouze pï¿½i mï¿½ï¿½enï¿½ ï¿½asu).<br/>Maximï¿½lnï¿½ jsem recykloval ï¿½lohu "batoh 1" (virtuï¿½lnï¿½ tï¿½ï¿½da batoh a tï¿½ï¿½du program, kde je implementovï¿½no mï¿½ï¿½enï¿½ ï¿½asu)<ul>
+         <li><a href="source/Batoh.cs">Batoh.cs</a> - Virtuï¿½lnï¿½ tï¿½ï¿½da, mï¿½ implementovanou metody pro ï¿½tenï¿½ vstupnï¿½ho souboru a virtuï¿½lnï¿½ metodu Compute().</li>
+         <li><a href="source/Program.cs">Program.cs</a> - Volï¿½ metodu Compute() a mï¿½ï¿½ï¿½ ï¿½as.</li>
+         <li><a href="source/GreedyProofMod.cs">GreedyProofMod.cs</a> - Kombinovanï¿½ heuristika, rozï¿½ï¿½ï¿½enï¿½ jednoduchï¿½ heuristiky (batoh 1) o test nejcennï¿½jï¿½ï¿½ vï¿½ci. Naleznu nejcennï¿½jï¿½ï¿½ vï¿½c a pokud je jejï¿½ cena lepï¿½ï¿½ neï¿½ vï¿½sledek jednoduchï¿½ heuristiky (GreedyProof) oznaï¿½ï¿½m ji za vï¿½sledek.</li>
+         <li><a href="source/Dyn.cs">Dyn.cs</a> - Dynamickï¿½ programovï¿½nï¿½ dekompozicï¿½ podle kapacity batohu. (algoritmus pro vyplnï¿½nï¿½ 2D pole - slide cv.3)</li>
+         <li><a href="source/BB.cs">BB.cs</a> - Metoda vï¿½tvï¿½ a hranic. Vychï¿½zï¿½ z BruteForce - DFS (batoh 1), kterï¿½ je implementovï¿½no rekurzivnï¿½ s oï¿½ezï¿½vï¿½nï¿½m nepï¿½ï¿½pustnï¿½ch stavï¿½ (pï¿½ekroï¿½enï¿½ kapacity batohu). Je pï¿½idï¿½no oï¿½ezï¿½nï¿½ neperspektivnï¿½ch stavï¿½ po nalezenï¿½ ï¿½eï¿½enï¿½ (pokud expandovï¿½nï¿½m souï¿½asnï¿½ho stavu nemï¿½ï¿½u dostat lepï¿½ï¿½ ï¿½eï¿½enï¿½, neï¿½ kterï¿½ je nalezeno, tento stav dï¿½le neexpanduji)</li>
       </ul>
 
 
-      <h2>Namìøené hodnoty a vısledky</h2>
-      <p>Mìøil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance pøi napájení z adaptéru. Pouitı OS: Windows XP SP2 s .net Framework 2.</p>
+      <h2>Namï¿½ï¿½enï¿½ hodnoty a vï¿½sledky</h2>
+      <p>Mï¿½ï¿½il jsem na NTB s procesorem Centino 1.4GHz, nastavenï¿½ max Performance pï¿½i napï¿½jenï¿½ z adaptï¿½ru. Pouï¿½itï¿½ OS: Windows XP SP2 s .net Framework 2.</p>
 
-      <h3>Tabulka: Srovnání vıpoèetních èasù</h3>
-      <p>Protoe rozlišení èítaèe (Environment.TickCount) je 16 ms, je nutné instance spoèítat vícekrát a vıslednı èas získat vydìlením poètem opakování. Poèet opakování jsem nastavoval experimentálnì, tak aby bylo rozlišení èasu dostateèné).</p>
+      <h3>Tabulka: Srovnï¿½nï¿½ vï¿½poï¿½etnï¿½ch ï¿½asï¿½</h3>
+      <p>Protoï¿½e rozliï¿½enï¿½ ï¿½ï¿½taï¿½e (Environment.TickCount) je 16 ms, je nutnï¿½ instance spoï¿½ï¿½tat vï¿½cekrï¿½t a vï¿½slednï¿½ ï¿½as zï¿½skat vydï¿½lenï¿½m poï¿½tem opakovï¿½nï¿½. Poï¿½et opakovï¿½nï¿½ jsem nastavoval experimentï¿½lnï¿½, tak aby bylo rozliï¿½enï¿½ ï¿½asu dostateï¿½nï¿½).</p>
 
       <table>
-         <tr><th>n</th><th>hrubá síla [ms]</th><th>heuristika [ms]</th><th> kombinovaná heuristika [ms]</th><th>Dynamické programování [ms]</th><th>B&B [ms]</th></tr>
+         <tr><th>n</th><th>hrubï¿½ sï¿½la [ms]</th><th>heuristika [ms]</th><th> kombinovanï¿½ heuristika [ms]</th><th>Dynamickï¿½ programovï¿½nï¿½ [ms]</th><th>B&B [ms]</th></tr>
          <tr><td>4</td><td>0,008</td><td>0,007</td><td>0,007</td><td>0,027</td><td>0,007</td></tr>
          <tr><td>10</td><td>0,044</td><td>0,015</td><td>0,014</td><td>0,063</td><td>0,033</td></tr>
          <tr><td>15</td><td>1,230</td><td>0,021</td><td>0,020</td><td>0,168</td><td>0,13</td></tr>
@@ -64,38 +64,39 @@
          <tr><td>30</td><td>38723,10</td><td>0,041</td><td>0,039</td><td>0,626</td><td>3371,26</td></tr>
       </table>
 
-      <h3>Tabulka: Prùmìrná chyba heuristik</h3>
+      <h3>Tabulka: Prï¿½mï¿½rnï¿½ chyba heuristik</h3>
       <table>
          <tr><th>n</th><td>4</td><td>10</td><td>15</td><td>20</td><td>22</td><td>25</td><td>27</td><td>30</td></tr>
-         <tr><th>jednoduchá heuristika</th><td>2,17%</td><td>1,29%</td><td>0,48%</td><td>0,60%</td><td>0,69%</td><td>0,50%</td><td>0,50%</td><td>0,49%</td></tr>
-         <tr><th>kombinovaná heuristika</th><td>1,33%</td><td>1,10%</td><td>0,31%</td><td>0,43%</td><td>0,54%</td><td>0,42%</td><td>0,29%</td><td>0,38%</td></tr>
+         <tr><th>jednoduchï¿½ heuristika</th><td>2,17%</td><td>1,29%</td><td>0,48%</td><td>0,60%</td><td>0,69%</td><td>0,50%</td><td>0,50%</td><td>0,49%</td></tr>
+         <tr><th>kombinovanï¿½ heuristika</th><td>1,33%</td><td>1,10%</td><td>0,31%</td><td>0,43%</td><td>0,54%</td><td>0,42%</td><td>0,29%</td><td>0,38%</td></tr>
       </table>
 
-      <h3>Tabulka: Maximální chyba heuristik</h3>
+      <h3>Tabulka: Maximï¿½lnï¿½ chyba heuristik</h3>
       <table>
          <tr><th>n</th><td>4</td><td>10</td><td>15</td><td>20</td><td>22</td><td>25</td><td>27</td><td>30</td></tr>
-         <tr><th>jednoduchá heuristika</th><td>36,36%</td><td>11,48%</td><td>8,54%</td><td>8,43%</td><td>7,23%</td><td>3,68%</td><td>10,60%</td><td>5,51%</td></tr>
-         <tr><th>kombinovaná heuristika</th><td>24,75%</td><td>11,48%</td><td>2,77%</td><td>4,08%</td><td>3,02%</td><td>2,59%</td><td>1,85%</td><td>1,75%</td></tr>
+         <tr><th>jednoduchï¿½ heuristika</th><td>36,36%</td><td>11,48%</td><td>8,54%</td><td>8,43%</td><td>7,23%</td><td>3,68%</td><td>10,60%</td><td>5,51%</td></tr>
+         <tr><th>kombinovanï¿½ heuristika</th><td>24,75%</td><td>11,48%</td><td>2,77%</td><td>4,08%</td><td>3,02%</td><td>2,59%</td><td>1,85%</td><td>1,75%</td></tr>
       </table>
 
 
-      <h3>Graf: Èasová závislost</h3>
-      <p><img src="grafy/slozitost.png" alt="èasová sloitost"/></p>
+      <h3>Graf: ï¿½asovï¿½ zï¿½vislost</h3>
+      <p><img src="grafy/slozitost.png" alt="ï¿½asovï¿½ sloï¿½itost"/></p>
 
-      <h3>Graf: Závislost prùmìrné chyby na velikosti instance</h3>
-      <p><img src="grafy/pr_chyba.png" alt="Závislost prùmìrné chyby na velikosti instance"/></p>
+      <h3>Graf: Zï¿½vislost prï¿½mï¿½rnï¿½ chyby na velikosti instance</h3>
+      <p><img src="grafy/pr_chyba.png" alt="Zï¿½vislost prï¿½mï¿½rnï¿½ chyby na velikosti instance"/></p>
 
-      <h3>Graf: Závislost maximální chyby na velikosti instance</h3>
-      <p><img src="grafy/max_chyba.png" alt="Závislost maximální chyby na velikosti instance"/></p>
+      <h3>Graf: Zï¿½vislost maximï¿½lnï¿½ chyby na velikosti instance</h3>
+      <p><img src="grafy/max_chyba.png" alt="Zï¿½vislost maximï¿½lnï¿½ chyby na velikosti instance"/></p>
 
 
-      <h2>Závìr</h2>
+      <h2>Zï¿½vï¿½r</h2>
       <p>
-         Oproti "jednoduchım" metodám øešení, pouitıch v úloze batoh 1, je z grafù dobøe patrné velké sníení èasové nároènosti. Metoda vìtví a hranic (B&B) pøináší zlepšení o jeden øád oproti DFS. Pøitom se jedná o pøidání jedné podmínky.<br/>Ještì mnohem lepších vısledkù dosahuje metoda dynamického programovaní. Sice v porovnání s heuristikou (greedyProof) je o øád pomalejší, ale oproti ní poskytuje vdy optimální øešení. Pouze si musíme uvìdomit pamìovou sloitost, která je dána 2D polem, v tomto pøípadì M.n. Pøidáním testu nejcennìjší vìci do heuristiky se sníila prùmìrná a maximální chyba.
+         Oproti "jednoduchï¿½m" metodï¿½m ï¿½eï¿½enï¿½, pouï¿½itï¿½ch v ï¿½loze batoh 1, je z grafï¿½ dobï¿½e patrnï¿½ velkï¿½ snï¿½enï¿½ ï¿½asovï¿½ nï¿½roï¿½nosti. Metoda vï¿½tvï¿½ a hranic (B&B) pï¿½inï¿½ï¿½ zlepï¿½enï¿½ o jeden ï¿½ï¿½d oproti DFS. Pï¿½itom se jednï¿½ o pï¿½idï¿½nï¿½ jednï¿½ podmï¿½nky.<br/>Jeï¿½tï¿½ mnohem lepï¿½ï¿½ch vï¿½sledkï¿½ dosahuje metoda dynamickï¿½ho programovanï¿½. Sice v porovnï¿½nï¿½ s heuristikou (greedyProof) je o ï¿½ï¿½d pomalejï¿½ï¿½, ale oproti nï¿½ poskytuje vï¿½dy optimï¿½lnï¿½ ï¿½eï¿½enï¿½. Pouze si musï¿½me uvï¿½domit pamï¿½ovou sloï¿½itost, kterï¿½ je dï¿½na 2D polem, v tomto pï¿½ï¿½padï¿½ M.n. Pï¿½idï¿½nï¿½m testu nejcennï¿½jï¿½ï¿½ vï¿½ci do heuristiky se snï¿½ila prï¿½mï¿½rnï¿½ a maximï¿½lnï¿½ chyba.
       </p>
 
    </div>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

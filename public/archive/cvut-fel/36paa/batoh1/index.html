@@ -10,57 +10,57 @@
    <h1>36PAA - Batoh 1</h1>
 
    <div id="main">
-      <h2>Zadání</h2>
+      <h2>Zadï¿½nï¿½</h2>
       <ul>
-         <li>Naprogramujte øešení 0/1 problému batohu hrubou silou. Na zkušebních datech pozorujte závislost výpoèetního èasu na n.</li>
-         <li>Naprogramujte øešení 0/1 problému batohu heuristikou podle pomìru cena/váha. Pozorujte
+         <li>Naprogramujte ï¿½eï¿½enï¿½ 0/1 problï¿½mu batohu hrubou silou. Na zkuï¿½ebnï¿½ch datech pozorujte zï¿½vislost vï¿½poï¿½etnï¿½ho ï¿½asu na n.</li>
+         <li>Naprogramujte ï¿½eï¿½enï¿½ 0/1 problï¿½mu batohu heuristikou podle pomï¿½ru cena/vï¿½ha. Pozorujte
          <ul>
-            <li>závislost výpoèetního èasu na n. Grafy jsou vítány (i pro exaktní metodu).</li>
-            <li>prùmìrné zhoršení proti exaktní metodì</li>
-            <li>maximální relativní chybu. Absolutní chyba nic neøíká!</li>
+            <li>zï¿½vislost vï¿½poï¿½etnï¿½ho ï¿½asu na n. Grafy jsou vï¿½tï¿½ny (i pro exaktnï¿½ metodu).</li>
+            <li>prï¿½mï¿½rnï¿½ zhorï¿½enï¿½ proti exaktnï¿½ metodï¿½</li>
+            <li>maximï¿½lnï¿½ relativnï¿½ chybu. Absolutnï¿½ chyba nic neï¿½ï¿½kï¿½!</li>
          </ul></li>
       </ul>
 
-      <h2>Definice problému</h2>
+      <h2>Definice problï¿½mu</h2>
       <ul>
-         <li>Je dáno:
+         <li>Je dï¿½no:
          <ul>
-            <li>celé èíslo n (poèet vìcí)</li>
-            <li>celé èíslo M (kapacita batohu)</li>
-            <li>koneèná množina V={v1, v2, ... ,vn } (hmotnosti vìcí)</li>
-            <li>koneèná množina C={c1, c2, ... ,cn } (ceny vìcí)</li>
+            <li>celï¿½ ï¿½ï¿½slo n (poï¿½et vï¿½cï¿½)</li>
+            <li>celï¿½ ï¿½ï¿½slo M (kapacita batohu)</li>
+            <li>koneï¿½nï¿½ mnoï¿½ina V={v1, v2, ... ,vn } (hmotnosti vï¿½cï¿½)</li>
+            <li>koneï¿½nï¿½ mnoï¿½ina C={c1, c2, ... ,cn } (ceny vï¿½cï¿½)</li>
          </ul></li>
 
-         <li>Zkonstruujte množinu X={x1, x2, ... ,xn }, kde každé xi je 0 nebo 1, tak, aby
+         <li>Zkonstruujte mnoï¿½inu X={x1, x2, ... ,xn }, kde kaï¿½dï¿½ xi je 0 nebo 1, tak, aby
          <ul>
-            <li><b>platilo:</b> v1x1+v2x2 + ... + vnxn <= M (batoh nebyl pøetížen).</li>
-            <li><b>výraz</b> c1x1+c2x2 + ... + cnxn nabýval maximální hodnoty pro všechny takové množiny (cena vìcí v batohu byla maximální).</li>
+            <li><b>platilo:</b> v1x1+v2x2 + ... + vnxn <= M (batoh nebyl pï¿½etï¿½en).</li>
+            <li><b>vï¿½raz</b> c1x1+c2x2 + ... + cnxn nabï¿½val maximï¿½lnï¿½ hodnoty pro vï¿½echny takovï¿½ mnoï¿½iny (cena vï¿½cï¿½ v batohu byla maximï¿½lnï¿½).</li>
          </ul></li>
       </ul>
 
       <h2>Implementace</h2>
-      Úlohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Data naèítá ze standardního vstup a výsledky vypisuje na stdandardní výstup. Øešení jsem rozdìlil do 4 tøíd.
+      ï¿½lohu jsem implementoval v Jazyce C# jako konzolovou aplikaci. Data naï¿½ï¿½tï¿½ ze standardnï¿½ho vstup a vï¿½sledky vypisuje na stdandardnï¿½ vï¿½stup. ï¿½eï¿½enï¿½ jsem rozdï¿½lil do 4 tï¿½ï¿½d.
       <ul>
-         <li><a href="source/Batoh.cs">Batoh.cs</a> - Virtuální tøída, má implementované metody pro naèítání ze standardního vstupu, výpis na standardní výstup a virtuální metodu Compute().</li>
-         <li><a href="source/BruteForce.cs">BruteForce.cs</a> - Øešení hrubou silou, implementováno rekurzivnì.</li>
-         <li><a href="source/GreedyProof.cs">GreedyProof.cs</a> - Jednoduchá heuristika, nejprve vypoète pomìr cena/váha a nastaví pomocné pole s indexy, které pøedstavují poøadí ve kterém budou prvky do batohu pøidávány (od nejlepšího pomìru).</li>
-         <li><a href="source/Program.cs">Program.cs</a> - Naète vstupní data a volá metodu Compute() a mìøí èas.</li>
+         <li><a href="source/Batoh.cs">Batoh.cs</a> - Virtuï¿½lnï¿½ tï¿½ï¿½da, mï¿½ implementovanï¿½ metody pro naï¿½ï¿½tï¿½nï¿½ ze standardnï¿½ho vstupu, vï¿½pis na standardnï¿½ vï¿½stup a virtuï¿½lnï¿½ metodu Compute().</li>
+         <li><a href="source/BruteForce.cs">BruteForce.cs</a> - ï¿½eï¿½enï¿½ hrubou silou, implementovï¿½no rekurzivnï¿½.</li>
+         <li><a href="source/GreedyProof.cs">GreedyProof.cs</a> - Jednoduchï¿½ heuristika, nejprve vypoï¿½te pomï¿½r cena/vï¿½ha a nastavï¿½ pomocnï¿½ pole s indexy, kterï¿½ pï¿½edstavujï¿½ poï¿½adï¿½ ve kterï¿½m budou prvky do batohu pï¿½idï¿½vï¿½ny (od nejlepï¿½ï¿½ho pomï¿½ru).</li>
+         <li><a href="source/Program.cs">Program.cs</a> - Naï¿½te vstupnï¿½ data a volï¿½ metodu Compute() a mï¿½ï¿½ï¿½ ï¿½as.</li>
       </ul>
 
       <h3>Parametry programu</h3>
       <ul>
-         <li><b>-g</b> jednoduchá heuristika (GreedyProof), jinak hrubá síla (BruteForce).</li>
-         <li><b>-t:<i>count</i></b> Pro mìøení èasu, každou instanci opakuje <i>count</i>-krát.</li>
+         <li><b>-g</b> jednoduchï¿½ heuristika (GreedyProof), jinak hrubï¿½ sï¿½la (BruteForce).</li>
+         <li><b>-t:<i>count</i></b> Pro mï¿½ï¿½enï¿½ ï¿½asu, kaï¿½dou instanci opakuje <i>count</i>-krï¿½t.</li>
       </ul>
 
 
-      <h2>Namìøené hodnoty a výsledky</h2>
-      <p>Mìøil jsem na NTB s procesorem Centino 1.4GHz, nastavení max Performance pøi napájení z adaptéru. Použitý OS: Windows XP SP2 s .net Framework 2.</p>
+      <h2>Namï¿½ï¿½enï¿½ hodnoty a vï¿½sledky</h2>
+      <p>Mï¿½ï¿½il jsem na NTB s procesorem Centino 1.4GHz, nastavenï¿½ max Performance pï¿½i napï¿½jenï¿½ z adaptï¿½ru. Pouï¿½itï¿½ OS: Windows XP SP2 s .net Framework 2.</p>
 
-      <h3>Tabulka výsledkù mìøení</h3>
-      <p>Protože rozlišení èítaèe (Environment.TickCount) je 16 ms, je nutné instance spoèítat vícekrát a výsledný èas získat vydìlením poètem opakování. Pro mìøení èasové složitosti hrubé síly jsem experimentálnì nastavoval poèet opakovaní od 100 000 (pro n = 4) do 1 (pro n = 30). Pro mìøení heuristiky jsem nastavil 100 000 opakování pro každou instanci problému.</p>
+      <h3>Tabulka vï¿½sledkï¿½ mï¿½ï¿½enï¿½</h3>
+      <p>Protoï¿½e rozliï¿½enï¿½ ï¿½ï¿½taï¿½e (Environment.TickCount) je 16 ms, je nutnï¿½ instance spoï¿½ï¿½tat vï¿½cekrï¿½t a vï¿½slednï¿½ ï¿½as zï¿½skat vydï¿½lenï¿½m poï¿½tem opakovï¿½nï¿½. Pro mï¿½ï¿½enï¿½ ï¿½asovï¿½ sloï¿½itosti hrubï¿½ sï¿½ly jsem experimentï¿½lnï¿½ nastavoval poï¿½et opakovanï¿½ od 100 000 (pro n = 4) do 1 (pro n = 30). Pro mï¿½ï¿½enï¿½ heuristiky jsem nastavil 100 000 opakovï¿½nï¿½ pro kaï¿½dou instanci problï¿½mu.</p>
       <table>
-         <tr><th>n</th><th>hrubá síla [ms]</th><th>heuristika [ms]</th><th>ID<sub>max. chyby</sub></th><th>prum. zhoršení</th><th>max. chyba</th></tr>
+         <tr><th>n</th><th>hrubï¿½ sï¿½la [ms]</th><th>heuristika [ms]</th><th>ID<sub>max. chyby</sub></th><th>prum. zhorï¿½enï¿½</th><th>max. chyba</th></tr>
          <tr><td>4</td><td>0,0075</td><td>0,0071</td><td>9037</td><td>2,17%</td><td>36,36%</td></tr>
          <tr><td>10</td><td>0,044</td><td>0,015</td><td>9080</td><td>1,73%</td><td>11,48%</td></tr>
          <tr><td>15</td><td>1,229</td><td>0,021</td><td>9126</td><td>1,32%</td><td>8,54%</td></tr>
@@ -71,22 +71,23 @@
          <tr><td>30</td><td>38723,1</td><td>0,041</td><td>9380</td><td>0,85%</td><td>5,51%</td></tr>
       </table>
 
-      <h3>Graf: Èasová závislost</h3>
-      <p><img src="grafy/slozitost.png" alt="èasová složitost"/></p>
+      <h3>Graf: ï¿½asovï¿½ zï¿½vislost</h3>
+      <p><img src="grafy/slozitost.png" alt="ï¿½asovï¿½ sloï¿½itost"/></p>
       
-      <h3>Graf: Závislost prùmìrné chyby na velikosti instance</h3>
-      <p><img src="grafy/pr_chyba.png" alt="Závislost prùmìrné chyby na velikosti instance"/></p>
+      <h3>Graf: Zï¿½vislost prï¿½mï¿½rnï¿½ chyby na velikosti instance</h3>
+      <p><img src="grafy/pr_chyba.png" alt="Zï¿½vislost prï¿½mï¿½rnï¿½ chyby na velikosti instance"/></p>
       
-      <h3>Graf: Závislost maximální chyby na velikosti instance</h3>
-      <p><img src="grafy/max_chyba.png" alt="Závislost maximální chyby na velikosti instance"/></p>
+      <h3>Graf: Zï¿½vislost maximï¿½lnï¿½ chyby na velikosti instance</h3>
+      <p><img src="grafy/max_chyba.png" alt="Zï¿½vislost maximï¿½lnï¿½ chyby na velikosti instance"/></p>
 
 
-      <h2>Závìr</h2>
+      <h2>Zï¿½vï¿½r</h2>
       <p>
-         Øešení hrubou silou dává sice nejlepší možné øešení, ale daní za prohledání celého stavového prostoru je neúnosná (exponenciální) èasová složitost. Pøekvapující jsou pomìrnì dobré výsledky jednoduché heuristiky. Èasová závislost je lineární (obsahuje velkou multiplikativní konstantu, takže pro malá n se neprojeví složitost øazení n.log(n)) a dosahuje prùmìrné chyby v nejhorším pøípadì 2,17% pro zadané instance. Z grafu je dobøe patrné, že prùmìrná relativní chyba s velikostí instance klesá.
+         ï¿½eï¿½enï¿½ hrubou silou dï¿½vï¿½ sice nejlepï¿½ï¿½ moï¿½nï¿½ ï¿½eï¿½enï¿½, ale danï¿½ za prohledï¿½nï¿½ celï¿½ho stavovï¿½ho prostoru je neï¿½nosnï¿½ (exponenciï¿½lnï¿½) ï¿½asovï¿½ sloï¿½itost. Pï¿½ekvapujï¿½cï¿½ jsou pomï¿½rnï¿½ dobrï¿½ vï¿½sledky jednoduchï¿½ heuristiky. ï¿½asovï¿½ zï¿½vislost je lineï¿½rnï¿½ (obsahuje velkou multiplikativnï¿½ konstantu, takï¿½e pro malï¿½ n se neprojevï¿½ sloï¿½itost ï¿½azenï¿½ n.log(n)) a dosahuje prï¿½mï¿½rnï¿½ chyby v nejhorï¿½ï¿½m pï¿½ï¿½padï¿½ 2,17% pro zadanï¿½ instance. Z grafu je dobï¿½e patrnï¿½, ï¿½e prï¿½mï¿½rnï¿½ relativnï¿½ chyba s velikostï¿½ instance klesï¿½.
       </p>
 
    </div>
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

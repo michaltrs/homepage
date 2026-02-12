@@ -7,31 +7,31 @@
    <title>36PAA - ulohy (Michal Trs)</title>
 </head>
 <body>
-   <h1>36PAA - Experimentální hodnocení algoritmù pro øešení problému batohu</h1>
+   <h1>36PAA - Experimentï¿½lnï¿½ hodnocenï¿½ algoritmï¿½ pro ï¿½eï¿½enï¿½ problï¿½mu batohu</h1>
 
    <div id="main">
-      <h2>Zadání</h2>
+      <h2>Zadï¿½nï¿½</h2>
       <ul>
-         <li>Prozkoumejte citlivost metod øešení problému batohu na parametry instancí generovaných generátorem náhodných instancí. Máte-li podezøení na další závislosti, modifikujte zdrojový tvar generátoru.</li>
-         <li>Na základì zjištìní navrhnìte a proveïte experimentální vyhodnocení kvality øešení a výpoèetní nároènosti.</li>
-         <li>Pokud možno, prezentujte algoritmy jako body v ploše, jejíž souøadnice jsou výše uvedená kritéria.</li>
+         <li>Prozkoumejte citlivost metod ï¿½eï¿½enï¿½ problï¿½mu batohu na parametry instancï¿½ generovanï¿½ch generï¿½torem nï¿½hodnï¿½ch instancï¿½. Mï¿½te-li podezï¿½enï¿½ na dalï¿½ï¿½ zï¿½vislosti, modifikujte zdrojovï¿½ tvar generï¿½toru.</li>
+         <li>Na zï¿½kladï¿½ zjiï¿½tï¿½nï¿½ navrhnï¿½te a proveï¿½te experimentï¿½lnï¿½ vyhodnocenï¿½ kvality ï¿½eï¿½enï¿½ a vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti.</li>
+         <li>Pokud moï¿½no, prezentujte algoritmy jako body v ploï¿½e, jejï¿½ souï¿½adnice jsou vï¿½ï¿½e uvedenï¿½ kritï¿½ria.</li>
       </ul>
       
       
       <h2>Postup experimentu</h2>
       <p>
-         Nejprve jsem sjednotil úlohy <a href="../batoh1">Batoh 1</a> a <a href="../batoh2">Batoh 2</a> do jediného <a href="source/Batoh-experiment.zip">projektu</a>. Pøidal jsem druhý výstup do kterého se ukládají prùmìrné hodnoty poètu operací v pøípadì exaktních metod a relativních chyb v pøípadì heuristik. <br/>Pro generování instancí jsem použil <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">Webový generátor instancí problému batohu</a>. V pøedešlých úlohách jsme porovnávali výpoèetní nároènost algoritmù v závislosti na velikosti instance. Proto jsem se soustøedil na získání závislosti výpoèetní nároènosti a chyby v závislosti na pomìrné kapacitì batohu a granularitì vkládaných vìcí. Pro experimenty jsem použil toto nastavení (pokud není uvedeno jinak):<br/>
-         <tt>Velikost instance: 20, Poèet instancí: 50, Maximální váha vìci: 100, Maximální cena vìci: 250</tt>
+         Nejprve jsem sjednotil ï¿½lohy <a href="../batoh1">Batoh 1</a> a <a href="../batoh2">Batoh 2</a> do jedinï¿½ho <a href="source/Batoh-experiment.zip">projektu</a>. Pï¿½idal jsem druhï¿½ vï¿½stup do kterï¿½ho se uklï¿½dajï¿½ prï¿½mï¿½rnï¿½ hodnoty poï¿½tu operacï¿½ v pï¿½ï¿½padï¿½ exaktnï¿½ch metod a relativnï¿½ch chyb v pï¿½ï¿½padï¿½ heuristik. <br/>Pro generovï¿½nï¿½ instancï¿½ jsem pouï¿½il <a href="http://service.felk.cvut.cz/courses/36PAA/wknapgen.html">Webovï¿½ generï¿½tor instancï¿½ problï¿½mu batohu</a>. V pï¿½edeï¿½lï¿½ch ï¿½lohï¿½ch jsme porovnï¿½vali vï¿½poï¿½etnï¿½ nï¿½roï¿½nost algoritmï¿½ v zï¿½vislosti na velikosti instance. Proto jsem se soustï¿½edil na zï¿½skï¿½nï¿½ zï¿½vislosti vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti a chyby v zï¿½vislosti na pomï¿½rnï¿½ kapacitï¿½ batohu a granularitï¿½ vklï¿½danï¿½ch vï¿½cï¿½. Pro experimenty jsem pouï¿½il toto nastavenï¿½ (pokud nenï¿½ uvedeno jinak):<br/>
+         <tt>Velikost instance: 20, Poï¿½et instancï¿½: 50, Maximï¿½lnï¿½ vï¿½ha vï¿½ci: 100, Maximï¿½lnï¿½ cena vï¿½ci: 250</tt>
       </p>
 
 
-      <h2>Namìøené hodnoty a výsledky</h2>
-      <p>V tabulce a grafech jsou zobrazeny prùmìrné hodnoty.</p>
+      <h2>Namï¿½ï¿½enï¿½ hodnoty a vï¿½sledky</h2>
+      <p>V tabulce a grafech jsou zobrazeny prï¿½mï¿½rnï¿½ hodnoty.</p>
       
-      <h3>Tabulka: Závislost výpoèetní nároènosti na kapacitì batohu (pro velikost instance = 15)</h3>
+      <h3>Tabulka: Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na kapacitï¿½ batohu (pro velikost instance = 15)</h3>
 
       <table>
-         <tr><th>pomìr sumární váhy ke kapacitì batohu / algoritmus</th><th>BF</th><th>B&B</th><th>Dynamické prog.</th><th>GP</th></tr>
+         <tr><th>pomï¿½r sumï¿½rnï¿½ vï¿½hy ke kapacitï¿½ batohu / algoritmus</th><th>BF</th><th>B&B</th><th>Dynamickï¿½ prog.</th><th>GP</th></tr>
             <tr><td>0,1</td><td>345,5</td><td>304,2</td><td>1137</td><td>15</td></tr>
             <tr><td>0,2</td><td>1817,4</td><td>1131,3</td><td>2238</td><td>15</td></tr>
             <tr><td>0,3</td><td>5932,9</td><td>2566,1</td><td>3606</td><td>15</td></tr>
@@ -43,49 +43,50 @@
             <tr><td>0,9</td><td>32760,5</td><td>285,5</td><td>10243,5</td><td>15</td></tr>
       </table>
       
-      <p>Dle mého názoru nemá praktický význam zde uvádìt veškeré namìøené hodnoty. Daleko lepší vypovídající hodnotu mají grafy, které následují. <br/>Za zmínku pouze stojí porovnání výpoèetní složitosti Hrubé síly (BF) s ostatními algoritmy.</p>
+      <p>Dle mï¿½ho nï¿½zoru nemï¿½ praktickï¿½ vï¿½znam zde uvï¿½dï¿½t veï¿½kerï¿½ namï¿½ï¿½enï¿½ hodnoty. Daleko lepï¿½ï¿½ vypovï¿½dajï¿½cï¿½ hodnotu majï¿½ grafy, kterï¿½ nï¿½sledujï¿½. <br/>Za zmï¿½nku pouze stojï¿½ porovnï¿½nï¿½ vï¿½poï¿½etnï¿½ sloï¿½itosti Hrubï¿½ sï¿½ly (BF) s ostatnï¿½mi algoritmy.</p>
 
 
 
 
-      <h3>Graf 1: Závislost výpoèetní nároènosti na kapacitì batohu (pro velikost instance = 15)</h3>
-      Nastavení generátoru: <tt>Velikost instance: 15, Poèet instancí: 10, Maximální váha vìci: 100, Maximální cena vìci: 100</tt>
-      <p><img src="grafy/slozitost-pomer_vah.png" alt="Závislost výpoèetní nároènosti na kapacitì batohu"/></p>
+      <h3>Graf 1: Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na kapacitï¿½ batohu (pro velikost instance = 15)</h3>
+      Nastavenï¿½ generï¿½toru: <tt>Velikost instance: 15, Poï¿½et instancï¿½: 10, Maximï¿½lnï¿½ vï¿½ha vï¿½ci: 100, Maximï¿½lnï¿½ cena vï¿½ci: 100</tt>
+      <p><img src="grafy/slozitost-pomer_vah.png" alt="Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na kapacitï¿½ batohu"/></p>
       
-      <h3>Graf 2: Závislost výpoèetní nároènosti na kapacitì batohu (pro velikost instance = 20)</h3>
-      <p><img src="grafy/slozitost-pomer_vah-20.png" alt="Závislost výpoèetní nároènosti na kapacitì batohu"/></p>
+      <h3>Graf 2: Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na kapacitï¿½ batohu (pro velikost instance = 20)</h3>
+      <p><img src="grafy/slozitost-pomer_vah-20.png" alt="Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na kapacitï¿½ batohu"/></p>
       
-      <h3>Graf 3: Závislost výpoèetní nároènosti na granulritì instance (pøevaha malých vìcí)</h3>
-      <p>Charakter granularity nastaven na "Více malých vìcí".</p>
-      <p><img src="grafy/slozitost-granularita-maly.png" alt="Závislost výpoèetní nároènosti na granulritì instance (pøevaha malých vìcí)"/></p>
+      <h3>Graf 3: Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na granulritï¿½ instance (pï¿½evaha malï¿½ch vï¿½cï¿½)</h3>
+      <p>Charakter granularity nastaven na "Vï¿½ce malï¿½ch vï¿½cï¿½".</p>
+      <p><img src="grafy/slozitost-granularita-maly.png" alt="Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na granulritï¿½ instance (pï¿½evaha malï¿½ch vï¿½cï¿½)"/></p>
       
-      <h3>Graf 4: Závislost výpoèetní nároènosti na granulritì instance (pøevaha velkých vìcí)</h3>
-      <p>Charakter granularity nastaven na "Více velkých vìcí".</p>
-      <p><img src="grafy/slozitost-granularita-velky.png" alt="Závislost výpoèetní nároènosti na granulritì instance (pøevaha velkých vìcí)"/></p>
+      <h3>Graf 4: Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na granulritï¿½ instance (pï¿½evaha velkï¿½ch vï¿½cï¿½)</h3>
+      <p>Charakter granularity nastaven na "Vï¿½ce velkï¿½ch vï¿½cï¿½".</p>
+      <p><img src="grafy/slozitost-granularita-velky.png" alt="Zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti na granulritï¿½ instance (pï¿½evaha velkï¿½ch vï¿½cï¿½)"/></p>
       
-      <h3>Graf 5: Závislost relativní chyby na kapacitì batohu (pro velikost instance = 15)</h3>
-      <tt>Velikost instance: 15, Poèet instancí: 10, Maximální váha vìci: 100, Maximální cena vìci: 100</tt>
-      <p><img src="grafy/chyba-pomer_vah.png" alt="Závislost relativní chyby na kapacitì batohu (pro velikost instance = 15)"/></p>
+      <h3>Graf 5: Zï¿½vislost relativnï¿½ chyby na kapacitï¿½ batohu (pro velikost instance = 15)</h3>
+      <tt>Velikost instance: 15, Poï¿½et instancï¿½: 10, Maximï¿½lnï¿½ vï¿½ha vï¿½ci: 100, Maximï¿½lnï¿½ cena vï¿½ci: 100</tt>
+      <p><img src="grafy/chyba-pomer_vah.png" alt="Zï¿½vislost relativnï¿½ chyby na kapacitï¿½ batohu (pro velikost instance = 15)"/></p>
       
-      <h3>Graf 6: Závislost relativní chyby na kapacitì batohu (pro velikost instance = 20)</h3>
-      <p><img src="grafy/chyba-pomer_vah-20.png" alt="Závislost relativní chyby na kapacitì batohu (pro velikost instance = 20)"/></p>
+      <h3>Graf 6: Zï¿½vislost relativnï¿½ chyby na kapacitï¿½ batohu (pro velikost instance = 20)</h3>
+      <p><img src="grafy/chyba-pomer_vah-20.png" alt="Zï¿½vislost relativnï¿½ chyby na kapacitï¿½ batohu (pro velikost instance = 20)"/></p>
       
-      <h3>Graf 7: Závislost relativní chyby na granularitì instance</h3>
+      <h3>Graf 7: Zï¿½vislost relativnï¿½ chyby na granularitï¿½ instance</h3>
       <p><img src="grafy/chyba-granularita.png" alt=""/></p>
       
       
       
 
 
-      <h2>Závìr</h2>
+      <h2>Zï¿½vï¿½r</h2>
       <p>
-         Z grafu 1 a 2 je dobøe patrné, že algoritmus vìtví a hranic (B&B) dosahuje nejhorší výpoèetní nároènosti pokud je pomìr sumární váhy ke kapacitì batohu roven 0,3 až 0,5.
-         Dále je patrná lineární závislost výpoèetní nároènosti dynamického programovaní. Ta je vypoètena jako rozmìr pole, tj. kapacita x poèet vìcí. Poèet vìcí je konstantní, ale mìní se kapacita batohu, címž je ovlivnìno mìøení. Pokud by generátor zachoval kapacitu konstantní, byla by i závislost konstantní.<br/>
-         Chyba heuristiky se zmenšuje s rostoucím pomìrem sumární váhy ke kapacitì batohu. Naproti tomu o závislosti chyby heuristiky na granularitì nemùžeme z provedeného experimentu nic usoudit, hodnoty jsou témìø náhodné.
+         Z grafu 1 a 2 je dobï¿½e patrnï¿½, ï¿½e algoritmus vï¿½tvï¿½ a hranic (B&B) dosahuje nejhorï¿½ï¿½ vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti pokud je pomï¿½r sumï¿½rnï¿½ vï¿½hy ke kapacitï¿½ batohu roven 0,3 aï¿½ 0,5.
+         Dï¿½le je patrnï¿½ lineï¿½rnï¿½ zï¿½vislost vï¿½poï¿½etnï¿½ nï¿½roï¿½nosti dynamickï¿½ho programovanï¿½. Ta je vypoï¿½tena jako rozmï¿½r pole, tj. kapacita x poï¿½et vï¿½cï¿½. Poï¿½et vï¿½cï¿½ je konstantnï¿½, ale mï¿½nï¿½ se kapacita batohu, cï¿½mï¿½ je ovlivnï¿½no mï¿½ï¿½enï¿½. Pokud by generï¿½tor zachoval kapacitu konstantnï¿½, byla by i zï¿½vislost konstantnï¿½.<br/>
+         Chyba heuristiky se zmenï¿½uje s rostoucï¿½m pomï¿½rem sumï¿½rnï¿½ vï¿½hy ke kapacitï¿½ batohu. Naproti tomu o zï¿½vislosti chyby heuristiky na granularitï¿½ nemï¿½ï¿½eme z provedenï¿½ho experimentu nic usoudit, hodnoty jsou tï¿½mï¿½ï¿½ nï¿½hodnï¿½.
       </p>
 
    </div>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

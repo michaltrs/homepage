@@ -25,3 +25,32 @@ th { text-align: left; vertical-align: top; padding: 6px 12px; font-weight: bold
 /* Footer */
 .footer { margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8em; color: #777; }
 .footer a { color: #999; }
+
+/* Image classes */
+.img-left { float: left; margin: 0 1em 1em 0; max-width: 500px; }
+.img-right { float: right; margin: 0 0 1em 1em; max-width: 500px; }
+.img-center { display: block; margin: 1em auto; max-width: 500px; }
+.img-inline { display: inline; max-width: 150px; vertical-align: top; margin: 4px; }
+
+/* Clear floats */
+.content::after { content: ""; display: table; clear: both; }
+
+/* Lightbox */
+.lightbox { cursor: pointer; }
+.lightbox-overlay {
+  display: none; position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+  z-index: 1000; justify-content: center; align-items: center;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img { max-width: 95vw; max-height: 95vh; object-fit: contain; }
+
+/* Responsive — stack floats on mobile */
+@media (max-width: 600px) {
+  .img-left, .img-right {
+    float: none;
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+  }
+}

@@ -2,21 +2,21 @@
 
 <html>
 <head>
-	<title>DBS - semestrální práce - Michal Trs (dotazy)</title>
+	<title>DBS - semestrï¿½lnï¿½ prï¿½ce - Michal Trs (dotazy)</title>
 </head>
 
 <body>
 <div style="text-align: center;">
-<h3>Semestrální práce z pøedmìtu databázové systémy:</h3>
+<h3>Semestrï¿½lnï¿½ prï¿½ce z pï¿½edmï¿½tu databï¿½zovï¿½ systï¿½my:</h3>
 </div>
-<h1 style="text-align: center;">ZOOLOGICKÁ ZAHRADA</h1>
+<h1 style="text-align: center;">ZOOLOGICKï¿½ ZAHRADA</h1>
 
-10 dotazù nad databází. Dotazy jsou formulovány slovnì a v SQL
+10 dotazï¿½ nad databï¿½zï¿½. Dotazy jsou formulovï¿½ny slovnï¿½ a v SQL
 <ol>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech zvíøat, která jsou z Afriky a ošetøuje je Radek Juk.
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech zvï¿½ï¿½at, kterï¿½ jsou z Afriky a oï¿½etï¿½uje je Radek Juk.
 <br><br><b>SQL:</b><br>
 <tt>
 SELECT ZV.nazev,ZV.jmeno,ZV.dat_nar <br>
@@ -24,67 +24,67 @@ FROM Zvire ZV <br>
 JOIN Osetruje O ON (ZV.dat_nar = O.Zvir_dat_nar AND ZV.jmeno = O.zvir_jmeno)<br>
 JOIN Zamestnanec Z ON (Z.rc = O.zame_rc) <br>
 WHERE (ZV.puvod ='Afrika' AND Z.jmeno = 'Radek' AND Z.prijmeni = 'Juk');</tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p><table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th></tr>
-<tr><td>Koèka divoká</td><td>Honzík</td><td>20-APR-00</td></tr>
-<tr><td>Karakal</td><td>Mišá</td><td>22-JUN-83</td></tr>
+<tr><td>Koï¿½ka divokï¿½</td><td>Honzï¿½k</td><td>20-APR-00</td></tr>
+<tr><td>Karakal</td><td>Miï¿½ï¿½</td><td>22-JUN-83</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech zvíøat, která neošetøuje Petra Nová
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech zvï¿½ï¿½at, kterï¿½ neoï¿½etï¿½uje Petra Novï¿½
 <br><br><b>SQL:</b><br>
 <tt>SELECT nazev, jmeno, dat_nar FROM zvire WHERE dat_nar NOT IN (<br> SELECT O.Zvir_dat_nar FROM
 Osetruje O<br> JOIN Zamestnanec Z ON (O.zame_rc = Z.rc) <br>WHERE (Z.jmeno =
-'Petra' AND Z.prijmeni = 'Nová')
+'Petra' AND Z.prijmeni = 'Novï¿½')
 )<br> order by zvire.nazev;
 </tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th></tr>
-<tr><td>Chvostan bìlolící</td><td>Evièka</td><td>07-AUG-99</td></tr>
-<tr><td>Irbis</td><td>Fanoušek</td><td>19-JUN-01</td></tr>
+<tr><td>Chvostan bï¿½lolï¿½cï¿½</td><td>Eviï¿½ka</td><td>07-AUG-99</td></tr>
+<tr><td>Irbis</td><td>Fanouï¿½ek</td><td>19-JUN-01</td></tr>
 <tr><td>Kalimiko</td><td>Filip</td><td>28-APR-97</td></tr>
-<tr><td>Kapybara</td><td>Petøík</td><td>20-MAY-84</td></tr>
-<tr><td>Karakal</td><td>Mišá</td><td>22-JUN-83</td></tr>
-<tr><td>Kobra èínská</td><td>Emil</td><td>01-APR-98</td></tr>
+<tr><td>Kapybara</td><td>Petï¿½ï¿½k</td><td>20-MAY-84</td></tr>
+<tr><td>Karakal</td><td>Miï¿½ï¿½</td><td>22-JUN-83</td></tr>
+<tr><td>Kobra ï¿½ï¿½nskï¿½</td><td>Emil</td><td>01-APR-98</td></tr>
 <tr><td>Kolonok</td><td>Karla</td><td>21-DEC-81</td></tr>
-<tr><td>Korovec jedovatý</td><td>Pepíno</td><td>19-AUG-01</td></tr>
-<tr><td>Kosman bìloèelý</td><td>Pája</td><td>15-AUG-00</td></tr>
-<tr><td>Koèka bažinná</td><td>Zuzanka</td><td>19-JUL-84</td></tr>
-<tr><td>Koèka divoká</td><td>Honzík</td><td>20-APR-00</td></tr>
-<tr><td>Koèkodan Campbellùv</td><td>Ruda</td><td>19-MAY-80</td></tr>
-<tr><td>Krajta ostrovní</td><td>Radka</td><td>09-JAN-00</td></tr>
-<tr><td>Krokodýl èelnatý</td><td>Tereza</td><td>10-JUL-98</td></tr>
-<tr><td>Kùò domácí</td><td>Alice</td><td>25-AUG-00</td></tr>
-<tr><td>Levhart cejlonský</td><td>Janièka</td><td>03-JUN-95</td></tr>
-<tr><td>Makak tmavý</td><td>Lucinka</td><td>01-SEP-01</td></tr>
-<tr><td>Mangabej èerný</td><td>Pavlík</td><td>09-AUG-00</td></tr>
-<tr><td>Mangusta žíhaná</td><td>Tereza</td><td>13-MAY-00</td></tr>
-<tr><td>Medvìd malajský</td><td>Bruèík</td><td>16-SEP-89</td></tr>
-<tr><td>Medvìd malajský</td><td>Pinïa</td><td>10-JAN-92</td></tr>
-<tr><td>Mýval severní</td><td>Mišák</td><td>15-APR-82</td></tr>
-<tr><td>Mýval severní</td><td>Zuzík</td><td>11-JUL-80</td></tr>
-<tr><td>Psoun preriový</td><td>Verunka</td><td>18-SEP-01</td></tr>
-<tr><td>Skunk pruhovaný</td><td>Romana</td><td>08-JUL-87</td></tr>
-<tr><td>Tapír jihoamerický</td><td>Lukáš</td><td>20-JAN-98</td></tr>
-<tr><td>Tchoøík skvrnitý</td><td>Kajík</td><td>15-APR-86</td></tr>
-<tr><td>Vydra malá</td><td>Bobík</td><td>10-SEP-00</td></tr>
-<tr><td>Vydra malá</td><td>Alík</td><td>15-JAN-03</td></tr>
-<tr><td>Vydra malá</td><td>Kajík</td><td>12-OCT-98</td></tr>
-<tr><td>Zebra damarská</td><td>Tonièka</td><td>09-MAR-91</td></tr>
-<tr><td>Zmije obecná</td><td>Rudolf</td><td>17-AUG-02</td></tr>
+<tr><td>Korovec jedovatï¿½</td><td>Pepï¿½no</td><td>19-AUG-01</td></tr>
+<tr><td>Kosman bï¿½loï¿½elï¿½</td><td>Pï¿½ja</td><td>15-AUG-00</td></tr>
+<tr><td>Koï¿½ka baï¿½innï¿½</td><td>Zuzanka</td><td>19-JUL-84</td></tr>
+<tr><td>Koï¿½ka divokï¿½</td><td>Honzï¿½k</td><td>20-APR-00</td></tr>
+<tr><td>Koï¿½kodan Campbellï¿½v</td><td>Ruda</td><td>19-MAY-80</td></tr>
+<tr><td>Krajta ostrovnï¿½</td><td>Radka</td><td>09-JAN-00</td></tr>
+<tr><td>Krokodï¿½l ï¿½elnatï¿½</td><td>Tereza</td><td>10-JUL-98</td></tr>
+<tr><td>Kï¿½ï¿½ domï¿½cï¿½</td><td>Alice</td><td>25-AUG-00</td></tr>
+<tr><td>Levhart cejlonskï¿½</td><td>Janiï¿½ka</td><td>03-JUN-95</td></tr>
+<tr><td>Makak tmavï¿½</td><td>Lucinka</td><td>01-SEP-01</td></tr>
+<tr><td>Mangabej ï¿½ernï¿½</td><td>Pavlï¿½k</td><td>09-AUG-00</td></tr>
+<tr><td>Mangusta ï¿½ï¿½hanï¿½</td><td>Tereza</td><td>13-MAY-00</td></tr>
+<tr><td>Medvï¿½d malajskï¿½</td><td>Bruï¿½ï¿½k</td><td>16-SEP-89</td></tr>
+<tr><td>Medvï¿½d malajskï¿½</td><td>Pinï¿½a</td><td>10-JAN-92</td></tr>
+<tr><td>Mï¿½val severnï¿½</td><td>Miï¿½ï¿½k</td><td>15-APR-82</td></tr>
+<tr><td>Mï¿½val severnï¿½</td><td>Zuzï¿½k</td><td>11-JUL-80</td></tr>
+<tr><td>Psoun preriovï¿½</td><td>Verunka</td><td>18-SEP-01</td></tr>
+<tr><td>Skunk pruhovanï¿½</td><td>Romana</td><td>08-JUL-87</td></tr>
+<tr><td>Tapï¿½r jihoamerickï¿½</td><td>Lukï¿½</td><td>20-JAN-98</td></tr>
+<tr><td>Tchoï¿½ï¿½k skvrnitï¿½</td><td>Kajï¿½k</td><td>15-APR-86</td></tr>
+<tr><td>Vydra malï¿½</td><td>Bobï¿½k</td><td>10-SEP-00</td></tr>
+<tr><td>Vydra malï¿½</td><td>Alï¿½k</td><td>15-JAN-03</td></tr>
+<tr><td>Vydra malï¿½</td><td>Kajï¿½k</td><td>12-OCT-98</td></tr>
+<tr><td>Zebra damarskï¿½</td><td>Toniï¿½ka</td><td>09-MAR-91</td></tr>
+<tr><td>Zmije obecnï¿½</td><td>Rudolf</td><td>17-AUG-02</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech zamìstnancù, kteøí pracují, nebo pracovali v pavilonu 50
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech zamï¿½stnancï¿½, kteï¿½ï¿½ pracujï¿½, nebo pracovali v pavilonu 50
 <br><br><b>SQL:</b><br>
 <tt>SELECT Z.* FROM zamestnanec Z<br> JOIN udrzuje U ON (Z.rc = U.Zame_rc) <br>JOIN pavilon P on (P.c_pav = U.Pavi_c_pav) where P.c_pav = 50<br>
 UNION<br>
@@ -97,214 +97,215 @@ SELECT Z.* FROM zamestnanec Z <br>
 JOIN zdr_prohlidka ZP ON (Z.rc = ZP.Zame_rc) <br>
 JOIN zvire ZV ON (ZV.dat_nar = ZP.Zvir_dat_nar AND ZV.jmeno = ZP.zvir_jmeno) <br>
 WHERE ZV.vybeh__Pavi_c_pav = 50; </tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">RC</th><th scope="col">FUNKC</th><th scope="col">PRIJMENI</th><th scope="col">JMENO</th></tr>
 <tr><td align="right">7006120011</td><td>z_vet</td><td>Junek</td><td>Karel</td></tr>
 <tr><td align="right">7410050879</td><td>z_vet</td><td>Kron</td><td>David</td></tr>
-<tr><td align="right">7604120436</td><td>z_ose</td><td>Gerk</td><td>Tomáš</td></tr>
+<tr><td align="right">7604120436</td><td>z_ose</td><td>Gerk</td><td>Tomï¿½</td></tr>
 <tr><td align="right">7905240255</td><td>z_ose</td><td>Juk</td><td>Radek</td></tr>
 <tr><td align="right">8004160109</td><td>z_udr</td><td>Zubrt</td><td>Michal</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Tržby za vstupenky v období od 4.12.2003 do 13.12.2003
+<b>Slovnï¿½ formulace:</b><br>
+Trï¿½by za vstupenky v obdobï¿½ od 4.12.2003 do 13.12.2003
 <br><br><b>SQL:</b><br>
 <tt>SELECT SUM(V.cena) FROM Vstupenky V join Prodava P ON (V.typ = P.Vstu_typ) where datum_prodeje between to_date('2003-12-04','yyyy-mm-dd') AND to_date('2003-12-13','yyyy-mm-dd');</tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p><table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">SUM(V.CENA)</th></tr>
 <tr><td align="right">120</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech zvíøat, která byla naposledy prohlédnuta od lékaøe pøed více než jeden a pùl rokem.
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech zvï¿½ï¿½at, kterï¿½ byla naposledy prohlï¿½dnuta od lï¿½kaï¿½e pï¿½ed vï¿½ce neï¿½ jeden a pï¿½l rokem.
 <br><br><b>SQL:</b><br>
 <tt>SELECT DISTINCT Z.nazev,Z.jmeno,Z.dat_nar,ZP.datum_prohl <br>
 FROM Zvire Z join zdr_prohlidka ZP ON (Z.dat_nar = ZP.Zvir_dat_nar AND Z.jmeno = ZP.Zvir_jmeno) <br>
 WHERE ZP.datum_prohl < to_date('2003-06-22','yyyy-mm-dd')<br>
 ORDER BY ZP.datum_prohl;
 </tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">JMENO</th><th scope="col">DAT_NAR</th><th cope="col">DATUM_PRO</th></tr>
-<tr><td>Levhart perský</td><td>Eliška</td><td>09-FEB-97</td><td>30-DEC-01</td></tr>
-<tr><td>Karakal</td><td>Mišá</td><td>22-JUN-83</td><td>09-OCT-02</td></tr>
-<tr><td>Kobra èínská</td><td>Emil</td><td>01-APR-98</td><td>16-NOV-02</td></tr>
-<tr><td>Skunk pruhovaný</td><td>Romana</td><td>08-JUL-87</td><td>26-DEC-02</td></tr>
-<tr><td>Korovec jedovatý</td><td>Pepíno</td><td>19-AUG-01</td><td>05-JAN-03</td></tr>
-<tr><td>Medvìd malajský</td><td>Pinïa</td><td>10-JAN-92</td><td>19-FEB-03</td></tr>
-<tr><td>Irbis</td><td>Fanoušek</td><td>19-JUN-01</td><td>18-APR-03</td></tr>
-<tr><td>Koèka bažinná</td><td>Zuzanka</td><td>19-JUL-84</td><td>14-MAY-03</td></tr>
-<tr><td>Koèka divoká</td><td>Honzík</td><td>20-APR-00</td><td>02-JUN-03</td></tr>
-<tr><td>Rys èervený</td><td>Monika</td><td>02-DEC-80</td><td>12-JUN-03</td></tr>
+<tr><td>Levhart perskï¿½</td><td>Eliï¿½ka</td><td>09-FEB-97</td><td>30-DEC-01</td></tr>
+<tr><td>Karakal</td><td>Miï¿½ï¿½</td><td>22-JUN-83</td><td>09-OCT-02</td></tr>
+<tr><td>Kobra ï¿½ï¿½nskï¿½</td><td>Emil</td><td>01-APR-98</td><td>16-NOV-02</td></tr>
+<tr><td>Skunk pruhovanï¿½</td><td>Romana</td><td>08-JUL-87</td><td>26-DEC-02</td></tr>
+<tr><td>Korovec jedovatï¿½</td><td>Pepï¿½no</td><td>19-AUG-01</td><td>05-JAN-03</td></tr>
+<tr><td>Medvï¿½d malajskï¿½</td><td>Pinï¿½a</td><td>10-JAN-92</td><td>19-FEB-03</td></tr>
+<tr><td>Irbis</td><td>Fanouï¿½ek</td><td>19-JUN-01</td><td>18-APR-03</td></tr>
+<tr><td>Koï¿½ka baï¿½innï¿½</td><td>Zuzanka</td><td>19-JUL-84</td><td>14-MAY-03</td></tr>
+<tr><td>Koï¿½ka divokï¿½</td><td>Honzï¿½k</td><td>20-APR-00</td><td>02-JUN-03</td></tr>
+<tr><td>Rys ï¿½ervenï¿½</td><td>Monika</td><td>02-DEC-80</td><td>12-JUN-03</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech zvíøat ze všech pavilonù, bude u nich uvedeno jejich jméno, název a název pavilonu a výbìhu kde jsou umístìný.
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech zvï¿½ï¿½at ze vï¿½ech pavilonï¿½, bude u nich uvedeno jejich jmï¿½no, nï¿½zev a nï¿½zev pavilonu a vï¿½bï¿½hu kde jsou umï¿½stï¿½nï¿½.
 <br><br><b>SQL:</b><br>
 <tt>SELECT Z.nazev AS nazev_zvirete, Z.jmeno, P.nazev AS pavilon, V.nazev as vybeh<br> FROM Zvire Z<br>
 JOIN Pavilon P ON (Z.vybeh__Pavi_c_pav = P.c_pav)<br>
 JOIN Vybeh V ON (Z.vybeh__Pavi_c_pav = V.Pavi_c_pav AND Z.vybeh__c_vyb = V.c_vyb)<br> ORDER BY Z.nazev, Z.jmeno;
 </tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV_ZVIRETE</th><th scope="col">JMENO</th><th scope="col">PAVILON</th><th scope="col">VYBEH</th></tr>
-<tr><td>Chvostan bìlolící</td><td>Evièka</td><td>Opice</td><td>malpové a kosmanové</td></tr>
-<tr><td>Irbis</td><td>Fanoušek</td><td>Šelmy</td><td>Koèkovité z Asie</td></tr>
-<tr><td>Kalimiko</td><td>Filip</td><td>Opice</td><td>malpové a kosmanové</td></tr>
-<tr><td>Kapybara</td><td>Petøík</td><td>Lichokopytníci a hlodavci</td><td>Hlodavci</td></tr>
-<tr><td>Karakal</td><td>Mišá</td><td>Šelmy</td><td>Koèkovité z Afriky</td></tr>
-<tr><td>Kobra èínská</td><td>Emil</td><td>Plaz</td><td>Hadi</td></tr>
-<tr><td>Kolonok</td><td>Karla</td><td>Šelmy</td><td>Drobné šelmy</td></tr>
-<tr><td>Kolonok</td><td>Petr</td><td>Šelmy</td><td>Drobné šelmy</td></tr>
-<tr><td>Korovec jedovatý</td><td>Pepíno</td><td>Plaz</td><td>ještìøi</td></tr>
-<tr><td>Kosman bìloèelý</td><td>Pája</td><td>Opice</td><td>malpové a kosmanové</td></tr>
-<tr><td>Koèka bažinná</td><td>Zuzanka</td><td>Šelmy</td><td>Koèkovité z Asie</td></tr>
-<tr><td>Koèka divoká</td><td>Honzík</td><td>Šelmy</td><td>Koèkovité z Afriky</td></tr>
-<tr><td>Koèkodan Campbellùv</td><td>Ruda</td><td>Opice</td><td>koèkodanové</td></tr>
-<tr><td>Krajta ostrovní</td><td>Radka</td><td>Plaz</td><td>Hadi</td></tr>
-<tr><td>Krokodýl èelnatý</td><td>Tereza</td><td>Plaz</td><td>ještìøi</td></tr>
-<tr><td>Kùò domácí</td><td>Alice</td><td>Lichokopytníci a hlodavci</td><td>Lichokopytníci</td></tr>
-<tr><td>Levhart cejlonský</td><td>Janièka</td><td>Šelmy</td><td>Koèkovité z Asie</td></tr>
-<tr><td>Levhart perský</td><td>Eliška</td><td>Šelmy</td><td>Koèkovité z Asie</td></tr>
-<tr><td>Makak tmavý</td><td>Lucinka</td><td>Opice</td><td>koèkodanové</td></tr>
-<tr><td>Mangabej èerný</td><td>Pavlík</td><td>Opice</td><td>koèkodanové</td></tr>
-<tr><td>Mangusta Žíhaná</td><td>Tereza</td><td>Šelmy</td><td>Drobné šelmy</td></tr>
-<tr><td>Margay</td><td>Pepík</td><td>Šelmy</td><td>Koèkovité z Ameriky</td></tr>
-<tr><td>Medvìd malajský</td><td>Bruèík</td><td>Medvìdi</td><td>Medvìdi</td></tr>
-<tr><td>Medvìd malajský</td><td>Pinïa</td><td>Medvìdi</td><td>Medvìdi</td></tr>
-<tr><td>Mýval severní</td><td>Mišák</td><td>Medvìdi</td><td>Medvídci</td></tr>
-<tr><td>Mýval severní</td><td>Zuzík</td><td>Medvìdi</td><td>Medvídci</td></tr>
-<tr><td>Psoun preriový</td><td>Verunka</td><td>Lichokopytníci a hlodavci</td><td>Hlodavci</td></tr>
-<tr><td>Rys èervený</td><td>Monika</td><td>Šelmy</td><td>Koèkovité z Ameriky</td></tr>
-<tr><td>Serval</td><td>Ladík</td><td>Šelmy</td><td>Koèkovité z Afriky</td></tr>
-<tr><td>Skunk pruhovaný</td><td>Romana</td><td>Šelmy</td><td>Kunovité</td></tr>
-<tr><td>Tapír jihoamerický</td><td>Lukáš</td><td>Lichokopytníci a hlodavci</td><td>Lichokopytníci</td></tr>
-<tr><td>Tchoøík skvrnitý</td><td>Kajík</td><td>Šelmy</td><td>Kunovité</td></tr>
-<tr><td>Tygr sumaterský</td><td>Tom</td><td>Šelmy</td><td>Koèkovité z Asie</td></tr>
-<tr><td>Vydra malá</td><td>Alík</td><td>Šelmy</td><td>Kunovité</td></tr>
-<tr><td>Vydra malá</td><td>Bobík</td><td>Šelmy</td><td>Kunovité</td></tr>
-<tr><td>Vydra malá</td><td>Kajík</td><td>Šelmy</td><td>Kunovité</td></tr>
-<tr><td>Zebra damarská</td><td>Tonièka</td><td>Lichokopytníci a hlodavci</td><td>Lichokopytníci</td></tr>
-<tr><td>Zmije obecná</td><td>Rudolf</td><td>Plaz</td><td>Hadi</td></tr>
+<tr><td>Chvostan bï¿½lolï¿½cï¿½</td><td>Eviï¿½ka</td><td>Opice</td><td>malpovï¿½ a kosmanovï¿½</td></tr>
+<tr><td>Irbis</td><td>Fanouï¿½ek</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Asie</td></tr>
+<tr><td>Kalimiko</td><td>Filip</td><td>Opice</td><td>malpovï¿½ a kosmanovï¿½</td></tr>
+<tr><td>Kapybara</td><td>Petï¿½ï¿½k</td><td>Lichokopytnï¿½ci a hlodavci</td><td>Hlodavci</td></tr>
+<tr><td>Karakal</td><td>Miï¿½ï¿½</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Afriky</td></tr>
+<tr><td>Kobra ï¿½ï¿½nskï¿½</td><td>Emil</td><td>Plaz</td><td>Hadi</td></tr>
+<tr><td>Kolonok</td><td>Karla</td><td>ï¿½elmy</td><td>Drobnï¿½ ï¿½elmy</td></tr>
+<tr><td>Kolonok</td><td>Petr</td><td>ï¿½elmy</td><td>Drobnï¿½ ï¿½elmy</td></tr>
+<tr><td>Korovec jedovatï¿½</td><td>Pepï¿½no</td><td>Plaz</td><td>jeï¿½tï¿½ï¿½i</td></tr>
+<tr><td>Kosman bï¿½loï¿½elï¿½</td><td>Pï¿½ja</td><td>Opice</td><td>malpovï¿½ a kosmanovï¿½</td></tr>
+<tr><td>Koï¿½ka baï¿½innï¿½</td><td>Zuzanka</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Asie</td></tr>
+<tr><td>Koï¿½ka divokï¿½</td><td>Honzï¿½k</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Afriky</td></tr>
+<tr><td>Koï¿½kodan Campbellï¿½v</td><td>Ruda</td><td>Opice</td><td>koï¿½kodanovï¿½</td></tr>
+<tr><td>Krajta ostrovnï¿½</td><td>Radka</td><td>Plaz</td><td>Hadi</td></tr>
+<tr><td>Krokodï¿½l ï¿½elnatï¿½</td><td>Tereza</td><td>Plaz</td><td>jeï¿½tï¿½ï¿½i</td></tr>
+<tr><td>Kï¿½ï¿½ domï¿½cï¿½</td><td>Alice</td><td>Lichokopytnï¿½ci a hlodavci</td><td>Lichokopytnï¿½ci</td></tr>
+<tr><td>Levhart cejlonskï¿½</td><td>Janiï¿½ka</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Asie</td></tr>
+<tr><td>Levhart perskï¿½</td><td>Eliï¿½ka</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Asie</td></tr>
+<tr><td>Makak tmavï¿½</td><td>Lucinka</td><td>Opice</td><td>koï¿½kodanovï¿½</td></tr>
+<tr><td>Mangabej ï¿½ernï¿½</td><td>Pavlï¿½k</td><td>Opice</td><td>koï¿½kodanovï¿½</td></tr>
+<tr><td>Mangusta ï¿½ï¿½hanï¿½</td><td>Tereza</td><td>ï¿½elmy</td><td>Drobnï¿½ ï¿½elmy</td></tr>
+<tr><td>Margay</td><td>Pepï¿½k</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Ameriky</td></tr>
+<tr><td>Medvï¿½d malajskï¿½</td><td>Bruï¿½ï¿½k</td><td>Medvï¿½di</td><td>Medvï¿½di</td></tr>
+<tr><td>Medvï¿½d malajskï¿½</td><td>Pinï¿½a</td><td>Medvï¿½di</td><td>Medvï¿½di</td></tr>
+<tr><td>Mï¿½val severnï¿½</td><td>Miï¿½ï¿½k</td><td>Medvï¿½di</td><td>Medvï¿½dci</td></tr>
+<tr><td>Mï¿½val severnï¿½</td><td>Zuzï¿½k</td><td>Medvï¿½di</td><td>Medvï¿½dci</td></tr>
+<tr><td>Psoun preriovï¿½</td><td>Verunka</td><td>Lichokopytnï¿½ci a hlodavci</td><td>Hlodavci</td></tr>
+<tr><td>Rys ï¿½ervenï¿½</td><td>Monika</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Ameriky</td></tr>
+<tr><td>Serval</td><td>Ladï¿½k</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Afriky</td></tr>
+<tr><td>Skunk pruhovanï¿½</td><td>Romana</td><td>ï¿½elmy</td><td>Kunovitï¿½</td></tr>
+<tr><td>Tapï¿½r jihoamerickï¿½</td><td>Lukï¿½</td><td>Lichokopytnï¿½ci a hlodavci</td><td>Lichokopytnï¿½ci</td></tr>
+<tr><td>Tchoï¿½ï¿½k skvrnitï¿½</td><td>Kajï¿½k</td><td>ï¿½elmy</td><td>Kunovitï¿½</td></tr>
+<tr><td>Tygr sumaterskï¿½</td><td>Tom</td><td>ï¿½elmy</td><td>Koï¿½kovitï¿½ z Asie</td></tr>
+<tr><td>Vydra malï¿½</td><td>Alï¿½k</td><td>ï¿½elmy</td><td>Kunovitï¿½</td></tr>
+<tr><td>Vydra malï¿½</td><td>Bobï¿½k</td><td>ï¿½elmy</td><td>Kunovitï¿½</td></tr>
+<tr><td>Vydra malï¿½</td><td>Kajï¿½k</td><td>ï¿½elmy</td><td>Kunovitï¿½</td></tr>
+<tr><td>Zebra damarskï¿½</td><td>Toniï¿½ka</td><td>Lichokopytnï¿½ci a hlodavci</td><td>Lichokopytnï¿½ci</td></tr>
+<tr><td>Zmije obecnï¿½</td><td>Rudolf</td><td>Plaz</td><td>Hadi</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech výbìhù, u každého bude vypsán maximální poèet zvíøat a poèet zvíøat v nìm právì umístìných.
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech vï¿½bï¿½hï¿½, u kaï¿½dï¿½ho bude vypsï¿½n maximï¿½lnï¿½ poï¿½et zvï¿½ï¿½at a poï¿½et zvï¿½ï¿½at v nï¿½m prï¿½vï¿½ umï¿½stï¿½nï¿½ch.
 <br><br><b>SQL:</b><br>
 <tt>SELECT V.nazev,V.max_zvirat,count(*) AS akt_zvirat FROM zvire Z <br>JOIN vybeh V ON (Z.vybeh__c_vyb = V.c_vyb AND Z.vybeh__pavi_c_pav = V.pavi_c_pav) <br>group by V.c_vyb,V.pavi_c_pav,V.nazev,V.max_zvirat <br>order by UPPER(V.nazev);</tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">MAX_ZVIRAT</th><th scope="col">AKT_ZVIRAT</th></tr>
-<tr><td>Drobné šelmy</td><td align="right">6</td><td align="right">3</td></tr>
+<tr><td>Drobnï¿½ ï¿½elmy</td><td align="right">6</td><td align="right">3</td></tr>
 <tr><td>Hadi</td><td align="right">10</td><td align="right">3</td></tr>
 <tr><td>Hlodavci</td><td align="right">20</td><td align="right">2</td></tr>
-<tr><td>ještìøi</td><td align="right">20</td><td align="right">2</td></tr>
-<tr><td>koèkodanové</td><td align="right">5</td><td align="right">3</td></tr>
-<tr><td>Koèkovité z Afriky</td><td align="right">10</td><td align="right">3</td></tr>
-<tr><td>Koèkovité z Ameriky</td><td align="right">5</td><td align="right">2</td></tr>
-<tr><td>Koèkovité z Asie</td><td align="right">7</td><td align="right">5</td></tr>
-<tr><td>Kunovité</td><td align="right">10</td><td align="right">5</td></tr>
-<tr><td>Lichokopytníci</td><td align="right">15</td><td align="right">3</td></tr>
-<tr><td>malpové a kosmanové</td><td align="right">5</td><td align="right">3</td></tr>
-<tr><td>Medvìdi</td><td align="right">4</td><td align="right">2</td></tr>
-<tr><td>Medvídci</td><td align="right">4</td><td align="right">2</td></tr>
+<tr><td>jeï¿½tï¿½ï¿½i</td><td align="right">20</td><td align="right">2</td></tr>
+<tr><td>koï¿½kodanovï¿½</td><td align="right">5</td><td align="right">3</td></tr>
+<tr><td>Koï¿½kovitï¿½ z Afriky</td><td align="right">10</td><td align="right">3</td></tr>
+<tr><td>Koï¿½kovitï¿½ z Ameriky</td><td align="right">5</td><td align="right">2</td></tr>
+<tr><td>Koï¿½kovitï¿½ z Asie</td><td align="right">7</td><td align="right">5</td></tr>
+<tr><td>Kunovitï¿½</td><td align="right">10</td><td align="right">5</td></tr>
+<tr><td>Lichokopytnï¿½ci</td><td align="right">15</td><td align="right">3</td></tr>
+<tr><td>malpovï¿½ a kosmanovï¿½</td><td align="right">5</td><td align="right">3</td></tr>
+<tr><td>Medvï¿½di</td><td align="right">4</td><td align="right">2</td></tr>
+<tr><td>Medvï¿½dci</td><td align="right">4</td><td align="right">2</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Vyber zvíøata, která mají stejnou zemi pùvodu jako Serval.
+<b>Slovnï¿½ formulace:</b><br>
+Vyber zvï¿½ï¿½ata, kterï¿½ majï¿½ stejnou zemi pï¿½vodu jako Serval.
 <br><br><b>SQL:</b><br>
 <tt>SELECT Z.* FROM Zvire Z WHERE puvod = ( SELECT puvod FROM Zvire WHERE nazev = 'Serval');</tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">VYBEH__C_VYB</th>
 <th scope="col">VYBEH__PAVI_C_PAV</th><th scope="col">DAT_NAR</th><th scope="col">JMENO</th><th scope="col">NAZEV</th><th scope="col">FREK_KRMENI</th><th scope="col">PUVOD</th><th scope="col">POTRAVA</th></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>22-JUN-83</td><td>Mišá</td><td>Karakal</td><td align="right">1</td><td>Afrika</td><td>zvíøata do velikosti gazel</td></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>20-APR-00</td><td>Honzík</td><td>Koèka divoká</td><td align="right">2</td><td>Afrika</td><td>drobná zvíøata, hlodavce</td></tr>
-<tr><td align="right">1</td><td align="right">10</td><td>09-NOV-86</td><td>Ladík</td><td>Serval</td><td align="right">2</td><td>Afrika</td><td>drobná zvíøata, ptáky</td></tr>
-<tr><td align="right">4</td><td align="right">10</td><td>13-MAY-00</td><td>Tereza</td><td>Mangusta Žíhaná</td><td align="right">2</td><td>Afrika</td><td>pøevážnì živoèišná</td></tr>
+<tr><td align="right">1</td><td align="right">10</td><td>22-JUN-83</td><td>Miï¿½ï¿½</td><td>Karakal</td><td align="right">1</td><td>Afrika</td><td>zvï¿½ï¿½ata do velikosti gazel</td></tr>
+<tr><td align="right">1</td><td align="right">10</td><td>20-APR-00</td><td>Honzï¿½k</td><td>Koï¿½ka divokï¿½</td><td align="right">2</td><td>Afrika</td><td>drobnï¿½ zvï¿½ï¿½ata, hlodavce</td></tr>
+<tr><td align="right">1</td><td align="right">10</td><td>09-NOV-86</td><td>Ladï¿½k</td><td>Serval</td><td align="right">2</td><td>Afrika</td><td>drobnï¿½ zvï¿½ï¿½ata, ptï¿½ky</td></tr>
+<tr><td align="right">4</td><td align="right">10</td><td>13-MAY-00</td><td>Tereza</td><td>Mangusta ï¿½ï¿½hanï¿½</td><td align="right">2</td><td>Afrika</td><td>pï¿½evï¿½nï¿½ ï¿½ivoï¿½iï¿½nï¿½</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Seznam všech výbìhù, kde nejsou umístìna zvíøata pocházejí z Ameriky
+<b>Slovnï¿½ formulace:</b><br>
+Seznam vï¿½ech vï¿½bï¿½hï¿½, kde nejsou umï¿½stï¿½na zvï¿½ï¿½ata pochï¿½zejï¿½ z Ameriky
 <br><br><b>SQL:</b><br>
 <tt>(select nazev,c_vyb,pavi_c_pav AS c_pav from Vybeh) <br>
 MINUS <br>
 (select nazev,c_vyb,pavi_c_pav AS c_pav from Vybeh V <br>where EXISTS (select * from Zvire where (puvod like '%Amerika%') AND (Zvire.vybeh__c_vyb = V.c_vyb) AND (Zvire.vybeh__pavi_c_pav = V.pavi_c_pav) ) ) order by nazev;
 </tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody><tr><th scope="col">NAZEV</th><th scope="col">C_VYB</th><th scope="col">C_PAV</th></tr>
-<tr><td>Drobné šelmy</td><td align="right">4</td><td align="right">10</td></tr>
+<tr><td>Drobnï¿½ ï¿½elmy</td><td align="right">4</td><td align="right">10</td></tr>
 <tr><td>Hadi</td><td align="right">2</td><td align="right">50</td></tr>
-<tr><td>Koèkovité z Afriky</td><td align="right">1</td><td align="right">10</td></tr>
-<tr><td>Koèkovité z Asie</td><td align="right">2</td><td align="right">10</td></tr>
-<tr><td>Medvìdi</td><td align="right">1</td><td align="right">20</td></tr>
-<tr><td>koèkodanové</td><td align="right">2</td><td align="right">30</td></tr>
+<tr><td>Koï¿½kovitï¿½ z Afriky</td><td align="right">1</td><td align="right">10</td></tr>
+<tr><td>Koï¿½kovitï¿½ z Asie</td><td align="right">2</td><td align="right">10</td></tr>
+<tr><td>Medvï¿½di</td><td align="right">1</td><td align="right">20</td></tr>
+<tr><td>koï¿½kodanovï¿½</td><td align="right">2</td><td align="right">30</td></tr>
 </tbody></table></p>
-Získaná odpovìï odpovídá zadanému dotazu.
+Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 <li>
-<b>Slovní formulace:</b><br>
-Všechna zvíøata mladší než 4 roky.
+<b>Slovnï¿½ formulace:</b><br>
+Vï¿½echna zvï¿½ï¿½ata mladï¿½ï¿½ neï¿½ 4 roky.
 <br><br><b>SQL:</b><br>
 <tt>SELECT * FROM Zvire WHERE dat_nar > to_date('2000-12-27','yyyy-mm-dd');</tt>
-<br><br><b>Výsledek zpracování dotazu:</b><br>
+<br><br><b>Vï¿½sledek zpracovï¿½nï¿½ dotazu:</b><br>
 <p>
 <table summary="Script output" align="center" border="1" width="90%">
 <tbody>
 <tr><th scope="col">VYBEH__C_VYB</th><th scope="col">VYBEH__PAVI_C_PAV</th><th scope="col">DAT_NAR</th><th scope="col">JMENO</th><th scope="col">NAZEV</th><th scope="col">FREK_KRMENI</th><th scope="col">PUVOD</th><th scope="col">POTRAVA</th>
 </tr>
-<tr><td align="right">2</td><td align="right">10</td><td>19-JUN-01</td><td>Fanoušek</td><td>Irbis</td><td align="right">1</td><td>støední Asie</td><td>horští kopytníci a jiní menší savci</td>
+<tr><td align="right">2</td><td align="right">10</td><td>19-JUN-01</td><td>Fanouï¿½ek</td><td>Irbis</td><td align="right">1</td><td>stï¿½ednï¿½ Asie</td><td>horï¿½tï¿½ kopytnï¿½ci a jinï¿½ menï¿½ï¿½ savci</td>
 </tr>
-<tr><td align="right">5</td><td align="right">10</td><td>15-JAN-03</td><td>Alík</td><td>Vydra malá</td><td align="right">3</td><td>jihovýchodní Asie</td><td>korýše, mìkýše, ryby</td>
-</tr>
-<tr>
-<td align="right">2</td><td align="right">30</td><td>01-SEP-01</td><td>Lucinka</td><td>Makak tmavý</td><td align="right">4</td><td>ostrov Sulawesi</td><td>rostlinná</td>
+<tr><td align="right">5</td><td align="right">10</td><td>15-JAN-03</td><td>Alï¿½k</td><td>Vydra malï¿½</td><td align="right">3</td><td>jihovï¿½chodnï¿½ Asie</td><td>korï¿½ï¿½e, mï¿½kï¿½ï¿½e, ryby</td>
 </tr>
 <tr>
-<td align="right">2</td><td align="right">40</td><td>18-SEP-01</td><td>Verunka</td><td>Psoun preriový</td><td align="right">5</td><td>Severní Amerika</td><td>rostlinná</td>
+<td align="right">2</td><td align="right">30</td><td>01-SEP-01</td><td>Lucinka</td><td>Makak tmavï¿½</td><td align="right">4</td><td>ostrov Sulawesi</td><td>rostlinnï¿½</td>
 </tr>
 <tr>
-<td align="right">1</td><td align="right">50</td><td>19-AUG-01</td><td>Pepíno</td><td>Korovec jedovatý</td><td align="right">2</td><td>Støední Amerika</td><td>hlodavci, hmyz, ptáèata, vejce</td>
+<td align="right">2</td><td align="right">40</td><td>18-SEP-01</td><td>Verunka</td><td>Psoun preriovï¿½</td><td align="right">5</td><td>Severnï¿½ Amerika</td><td>rostlinnï¿½</td>
 </tr>
 <tr>
-<td align="right">2</td><td align="right">50</td><td>17-AUG-02</td><td>Rudolf</td><td>Zmije obecná</td><td align="right">3</td><td>Evropa</td><td>drobní savci, ještìrky</td>
+<td align="right">1</td><td align="right">50</td><td>19-AUG-01</td><td>Pepï¿½no</td><td>Korovec jedovatï¿½</td><td align="right">2</td><td>Stï¿½ednï¿½ Amerika</td><td>hlodavci, hmyz, ptï¿½ï¿½ata, vejce</td>
+</tr>
+<tr>
+<td align="right">2</td><td align="right">50</td><td>17-AUG-02</td><td>Rudolf</td><td>Zmije obecnï¿½</td><td align="right">3</td><td>Evropa</td><td>drobnï¿½ savci, jeï¿½tï¿½rky</td>
 </tr>
 </tbody></table>
 </p>
- Získaná odpovìï odpovídá zadanému dotazu.
+ Zï¿½skanï¿½ odpovï¿½ï¿½ odpovï¿½dï¿½ zadanï¿½mu dotazu.
 <br><br></li>
 
 
 </ol>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

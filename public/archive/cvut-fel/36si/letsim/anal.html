@@ -2,125 +2,126 @@
 <html>
 <head>
   <meta http-equiv=Content-Type content="text/html; charset=windows-1250">
-  <title>Letsim - Letecký simulátor</title>
+  <title>Letsim - Leteckďż˝ simulďż˝tor</title>
   <link rel=Stylesheet type="text/css" media=all href=style.css>
 </head>
 
 <body>
 
 <a name=zacatek></a>
-<h2 class="cap">Analytická studie</h2>
+<h2 class="cap">Analytickďż˝ studie</h2>
 
 <p align=center style='text-align:center'>
-  <a href="files/analickastudie.ppt" class="menu">Stáhnout prezentaci</a> |
-  <a href="#datm" class="menu">Datový model</a> | 
-  <a href="#pdm" class="menu">Popis datového modelu</a> | 
-  <a href="#fm" class="menu">Funkční model</a> | 
-  <a href="#scen" class="menu">Scénáře použití</a> | 
-  <a href="#dynm" class="menu">Dynamický model</a> |
-  <a href="#up" class="menu">Uživatelská příručka</a> | 
-  <a href="#at" class="menu">Akceptační test</a>
+  <a href="files/analickastudie.ppt" class="menu">Stďż˝hnout prezentaci</a> |
+  <a href="#datm" class="menu">Datovďż˝ model</a> | 
+  <a href="#pdm" class="menu">Popis datovďż˝ho modelu</a> | 
+  <a href="#fm" class="menu">Funkďż˝nďż˝ model</a> | 
+  <a href="#scen" class="menu">Scďż˝nďż˝ďż˝e pouďż˝itďż˝</a> | 
+  <a href="#dynm" class="menu">Dynamickďż˝ model</a> |
+  <a href="#up" class="menu">Uďż˝ivatelskďż˝ pďż˝ďż˝ruďż˝ka</a> | 
+  <a href="#at" class="menu">Akceptaďż˝nďż˝ test</a>
 
   <hr width="100%">
 </p>
 
 
-<h3><a name="datm"></a>Datový model</h3>
-<img alt="Datový model" border="0" width="1138" height="749" src="images/datmodel.png"><br>
-Datový model ve formátu XML je ke stažení <a href="files/datmodel.xml">zde</a>.
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<h3><a name="datm"></a>Datovďż˝ model</h3>
+<img alt="Datovďż˝ model" border="0" width="1138" height="749" src="images/datmodel.png"><br>
+Datovďż˝ model ve formďż˝tu XML je ke staďż˝enďż˝ <a href="files/datmodel.xml">zde</a>.
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
 
 
-<h3><a name="pdm"></a>Popis datového modelu</h3>
-<p>Tento projekt není projekt typu "informační systém", jak požadavky na zpracování analytické části dokumentace v tomto předmětu evidentně předpokládají. Proto nemá většího smyslu vytvářet nesmyslný datový model pro tento projekt. Pro demonstaci toho, že danou problematiku ovládáme je zde uveden tento datový model.</p>
-<p>Tento datový model slouží k evidenci osob. Každá z těchto osob může získat oprávnění k pilotáží a k instruktáži (vždy od jednoto typu opravnění k pilotáži, resp. instruktáži, maximálně jedno - vyjádřeno relacemi typu 1:1 a 1:N). Dále je zde evidence uskutečněných cvičných letů formu zprávy. Cvičného letu se účastní právě jeden instruktor a libovolný počet pilotů. Tím, že se každý pilot může zúčastnit libovolného počtu cvičných letů a každého cvičného letu se může zúčastnit libovolný počet pilotů, vzniká vztah typu N:M, jehož dekompozicí vznikla tabulka "Opravneni k pilotazi_has_Protokol z cvicneho letu".</p>
-<p>Datový model byl vytvořen v programu <i>DB Designer 4</i> firmy <a href="http://www.fabforce.net" target="_blank">fabFORCE</a>.</p>
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<h3><a name="pdm"></a>Popis datovďż˝ho modelu</h3>
+<p>Tento projekt nenďż˝ projekt typu "informaďż˝nďż˝ systďż˝m", jak poďż˝adavky na zpracovďż˝nďż˝ analytickďż˝ ďż˝ďż˝sti dokumentace v tomto pďż˝edmďż˝tu evidentnďż˝ pďż˝edpoklďż˝dajďż˝. Proto nemďż˝ vďż˝tďż˝ďż˝ho smyslu vytvďż˝ďż˝et nesmyslnďż˝ datovďż˝ model pro tento projekt. Pro demonstaci toho, ďż˝e danou problematiku ovlďż˝dďż˝me je zde uveden tento datovďż˝ model.</p>
+<p>Tento datovďż˝ model slouďż˝ďż˝ k evidenci osob. Kaďż˝dďż˝ z tďż˝chto osob mďż˝ďż˝e zďż˝skat oprďż˝vnďż˝nďż˝ k pilotďż˝ďż˝ a k instruktďż˝i (vďż˝dy od jednoto typu opravnďż˝nďż˝ k pilotďż˝i, resp. instruktďż˝i, maximďż˝lnďż˝ jedno - vyjďż˝dďż˝eno relacemi typu 1:1 a 1:N). Dďż˝le je zde evidence uskuteďż˝nďż˝nďż˝ch cviďż˝nďż˝ch letďż˝ formu zprďż˝vy. Cviďż˝nďż˝ho letu se ďż˝ďż˝astnďż˝ prďż˝vďż˝ jeden instruktor a libovolnďż˝ poďż˝et pilotďż˝. Tďż˝m, ďż˝e se kaďż˝dďż˝ pilot mďż˝ďż˝e zďż˝ďż˝astnit libovolnďż˝ho poďż˝tu cviďż˝nďż˝ch letďż˝ a kaďż˝dďż˝ho cviďż˝nďż˝ho letu se mďż˝ďż˝e zďż˝ďż˝astnit libovolnďż˝ poďż˝et pilotďż˝, vznikďż˝ vztah typu N:M, jehoďż˝ dekompozicďż˝ vznikla tabulka "Opravneni k pilotazi_has_Protokol z cvicneho letu".</p>
+<p>Datovďż˝ model byl vytvoďż˝en v programu <i>DB Designer 4</i> firmy <a href="http://www.fabforce.net" target="_blank">fabFORCE</a>.</p>
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
 
 
-<h3><a name="fm"></a>Funkční model</h3>
+<h3><a name="fm"></a>Funkďż˝nďż˝ model</h3>
 
 <img src="images/vysv.png" alt="DFD notace"><br><br><br>
 <img src="images/admin.png" alt="DFD Administratora"><br><br><br>
 <img src="images/instruktor.png" alt="DFD Intruktora"><br><br><br>
 <img src="images/pilot.png" alt="DFD Pilota"><br>
 
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
-<h3><a name="scen"></a>Scénaře použití</h3>
-<p>Vzhledem ke specifikčnosti celého projektu, se dá scénař použití přirovnat k dynamickému
-modelu jednotlivých uživatelů. </p>
+<h3><a name="scen"></a>Scďż˝naďż˝e pouďż˝itďż˝</h3>
+<p>Vzhledem ke specifikďż˝nosti celďż˝ho projektu, se dďż˝ scďż˝naďż˝ pouďż˝itďż˝ pďż˝irovnat k dynamickďż˝mu
+modelu jednotlivďż˝ch uďż˝ivatelďż˝. </p>
 
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
-<h3><a name="dynm"></a>Dynamický model</h3>
+<h3><a name="dynm"></a>Dynamickďż˝ model</h3>
 <p>Administrator:<br>
-	<img src="images/admin.gif" alt="Stavový diagram pro Administrátora">
+	<img src="images/admin.gif" alt="Stavovďż˝ diagram pro Administrďż˝tora">
 </p>
 <p>Instruktor:<br>
-	<img src="images/instruktor.gif" alt="Stavový diagram pro Instruktora">
+	<img src="images/instruktor.gif" alt="Stavovďż˝ diagram pro Instruktora">
 </p>
 <p>Pilot:<br>
-	<img src="images/pilot.gif" alt="Stavový diagram pro Pilota">
+	<img src="images/pilot.gif" alt="Stavovďż˝ diagram pro Pilota">
 </p>
-Ve formatu Microsoft Word 2003 ke stažení <a href="files/dynmodel.doc">zde</a>.
+Ve formatu Microsoft Word 2003 ke staďż˝enďż˝ <a href="files/dynmodel.doc">zde</a>.
 
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
 
 
-<h3><a name="up"></a>Uživatelská příručka</h3>
+<h3><a name="up"></a>Uďż˝ivatelskďż˝ pďż˝ďż˝ruďż˝ka</h3>
 <img src="images/userguide.png" alt="uzivatelska prirucka" border="1"><br><br>
-Uživatelská příručka ve formátu PDF ke stažení <a href="files/userguide.pdf">zde</a>.<br>
-Dokument je ve verzi 0.1 a bude doplněn po návrhu grafického prostředí.
-<p><a href="#zacatek">Zpět na začátek</a></p>
+Uďż˝ivatelskďż˝ pďż˝ďż˝ruďż˝ka ve formďż˝tu PDF ke staďż˝enďż˝ <a href="files/userguide.pdf">zde</a>.<br>
+Dokument je ve verzi 0.1 a bude doplnďż˝n po nďż˝vrhu grafickďż˝ho prostďż˝edďż˝.
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
 
 
-<h3><a name="at"></a>Akceptační test</h3>
-<p><b>Administrátor</b></p>
+<h3><a name="at"></a>Akceptaďż˝nďż˝ test</h3>
+<p><b>Administrďż˝tor</b></p>
     <ul>
-      <li>přihlášení </li><ul><li>otestovat, zda-li je administrátor korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, kde má přístup</li></ul>
-            <li>přidání map </li><ul><li>otestovat, jsou-li mapy nahrány do databáze správně, jsou-li správně zobrazovány, ukončení přidávání</li></ul>
-            <li>odebrání map </li><ul><li>otestovat, jsou-li korektně odebrány z databáze, jestli při odebírání map,nezůstávají přebytečná data v databázi, ukončení odebírání</li></ul>
-            <li>editace map</li><ul><li>otestovat, zda-li je editovaná mapa správně nahrána z databáze, je-li uložena správně do databáze a je-li správně zobrazena, ukončení editace</li></ul>
-            <li>přídání letadel </li><ul><li>otestovat, jsou-li letadla nahrány do databáze správně, jsou-li správně zobrazovány, ukončení přidávání</li></ul>
-            <li>odebrání letadel </li><ul><li>otestovat, jsou-li korektně odebrány z databáze. jestli při odebírání letadel , nezůstávají přebytečná data v databázi, ukončení odebírání</li></ul>
-           <li>editace letadla </li><ul><li>otestovat, zda-li je editovaná letadla správně nahrána z databáze, jsou-li uložena správně do databáze a jsou-li správně zobrazena, ukončení editace</li></ul>
-           <li>odhlášení</li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+      <li>pďż˝ihlďż˝enďż˝ </li><ul><li>otestovat, zda-li je administrďż˝tor korektnďż˝ pďż˝ihlďż˝en do systďż˝mu, jsou-li pro nďż˝ho pďż˝ďż˝stupnďż˝ vďż˝echna menu, kde mďż˝ pďż˝ďż˝stup</li></ul>
+            <li>pďż˝idďż˝nďż˝ map </li><ul><li>otestovat, jsou-li mapy nahrďż˝ny do databďż˝ze sprďż˝vnďż˝, jsou-li sprďż˝vnďż˝zobrazovďż˝ny, ukonďż˝enďż˝ pďż˝idďż˝vďż˝nďż˝</li></ul>
+            <li>odebrďż˝nďż˝ map </li><ul><li>otestovat, jsou-li korektnďż˝ odebrďż˝ny zďż˝databďż˝ze, jestli pďż˝i odebďż˝rďż˝nďż˝ map,nezďż˝stďż˝vajďż˝ pďż˝ebyteďż˝nďż˝ data vďż˝databďż˝zi, ukonďż˝enďż˝ odebďż˝rďż˝nďż˝</li></ul>
+            <li>editace map</li><ul><li>otestovat, zda-li je editovanďż˝ mapa sprďż˝vnďż˝ nahrďż˝na zďż˝databďż˝ze, je-liďż˝uloďż˝ena sprďż˝vnďż˝ do databďż˝ze a je-li sprďż˝vnďż˝ zobrazena, ukonďż˝enďż˝ editace</li></ul>
+            <li>pďż˝ďż˝dďż˝nďż˝ letadel </li><ul><li>otestovat, jsou-li letadla nahrďż˝ny do databďż˝ze sprďż˝vnďż˝, jsou-li sprďż˝vnďż˝ zobrazovďż˝ny, ukonďż˝enďż˝ pďż˝idďż˝vďż˝nďż˝</li></ul>
+            <li>odebrďż˝nďż˝ letadel </li><ul><li>otestovat, jsou-li korektnďż˝ odebrďż˝ny zďż˝databďż˝ze. jestli pďż˝i odebďż˝rďż˝nďż˝ďż˝letadel ,ďż˝nezďż˝stďż˝vajďż˝ pďż˝ebyteďż˝nďż˝ data vďż˝databďż˝zi, ukonďż˝enďż˝ odebďż˝rďż˝nďż˝</li></ul>
+           <li>editace letadla </li><ul><li>otestovat, zda-li je editovanďż˝ letadla sprďż˝vnďż˝ nahrďż˝na zďż˝databďż˝ze, jsou-li uloďż˝ena sprďż˝vnďż˝ do databďż˝ze a jsou-li sprďż˝vnďż˝ zobrazena, ukonďż˝enďż˝ editace</li></ul>
+           <li>odhlďż˝enďż˝</li><ul><li>otestovat, zda-li je korektnďż˝ odhlďż˝en, zda-li se vďż˝echna data uloďż˝ila</li></ul>
         </ul>
 
 &nbsp
 <p><b>Instruktor</b></p>
             <ul>
-               <li>přihlášení </li><ul><li>otestovat, zda-li je instruktor korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, ke kterým má mít přístup</li></ul>
-        	   <li>přídání simulace </li><ul><li>otestovat, jsou-li všechna data simulace správně nahrána do databáze, je-li správně zobrazována, ukončení přidávání</li></ul>
-         	   <li>odebírání simulace </li><ul><li>otestovat, jsou-li všechna data správně odebrány z databáze, nezůstávají-li přebytečná data v databázi při odebírání, ukončení odebírání</li></ul>
-	   <li>editace simulace </li><ul><li>otestovat, zda-li je editovaná simulace správně nahrána z databáze, je-li uložena správně do databáze a je-li správně zobrazena</li></ul>
-               <li>přidělování pilotů </li><ul><li>otestovat, zda-li je pilot korektně přiřazen k simulaci, není-li přiřazen k více simulacím v jednu dobu, přeřazování pilotů k jiné simulaci</li></ul>
-              <li>přídělování úkolů </li><ul><li>otestovat, jestli jsou úkoly správně přiřazeny pilotům a k simulaci, zda-li se dá přiřadit úkol k více simulacím, více ukolů k jedné simulaci, přeřazování úkolů</li></ul>
-               <li>simulace poruch </li><ul><li>otestovat, zda-li jsou poruchy správně implementovány, správně  zobrazovány, správně uloženy, správně odebrány</li></ul>
-                <li>přídávání pilotů </li><ul><li>otestovat, jsou-li všechna data o pilotovi správně nahrána do databáze </li></ul>
-                <li>editace pilotů </li><ul><li>otestovat, zda-li je editovaný pilot správně nahrán z databáze, je-li uložen správně do databáze a je-li správně zobrazen</li></ul>
-               <li>statistiky</li><ul><li>otestovat, zda-li jsou zobrazeny správné statistiky k pilotovi vzhledem k výběru simulace</li></ul>
-                <li>odhlášení </li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+               <li>pďż˝ihlďż˝enďż˝ </li><ul><li>otestovat, zda-li je instruktor korektnďż˝ pďż˝ihlďż˝en do systďż˝mu, jsou-li pro nďż˝ho pďż˝ďż˝stupnďż˝ vďż˝echna menu, ke kterďż˝m mďż˝ mďż˝t pďż˝ďż˝stup</li></ul>
+        	   <li>pďż˝ďż˝dďż˝nďż˝ simulace </li><ul><li>otestovat, jsou-li vďż˝echna data simulace sprďż˝vnďż˝ nahrďż˝na do databďż˝ze, je-li sprďż˝vnďż˝ zobrazovďż˝na, ukonďż˝enďż˝ pďż˝idďż˝vďż˝nďż˝</li></ul>
+         	   <li>odebďż˝rďż˝nďż˝ simulace </li><ul><li>otestovat, jsou-li vďż˝echna data sprďż˝vnďż˝ odebrďż˝ny zďż˝databďż˝ze, nezďż˝stďż˝vajďż˝-li pďż˝ebyteďż˝nďż˝ data vďż˝databďż˝zi pďż˝i odebďż˝rďż˝nďż˝, ukonďż˝enďż˝ odebďż˝rďż˝nďż˝</li></ul>
+	   <li>editace simulace </li><ul><li>otestovat, zda-li je editovanďż˝ simulace sprďż˝vnďż˝ nahrďż˝na zďż˝databďż˝ze, je-li uloďż˝ena sprďż˝vnďż˝ do databďż˝ze a je-li sprďż˝vnďż˝ zobrazena</li></ul>
+               <li>pďż˝idďż˝lovďż˝nďż˝ pilotďż˝ </li><ul><li>otestovat, zda-li je pilot korektnďż˝ pďż˝iďż˝azen kďż˝simulaci, nenďż˝-li pďż˝iďż˝azenďż˝kďż˝vďż˝ce simulacďż˝m vďż˝jednu dobu, pďż˝eďż˝azovďż˝nďż˝ pilotďż˝ kďż˝jinďż˝ simulaci</li></ul>
+              <li>pďż˝ďż˝dďż˝lovďż˝nďż˝ ďż˝kolďż˝ </li><ul><li>otestovat, jestli jsou ďż˝koly sprďż˝vnďż˝ pďż˝iďż˝azeny pilotďż˝m a kďż˝simulaci, zda-li se dďż˝ pďż˝iďż˝adit ďż˝kol kďż˝vďż˝ce simulacďż˝m, vďż˝ce ukolďż˝ kďż˝jednďż˝ simulaci, pďż˝eďż˝azovďż˝nďż˝ ďż˝kolďż˝</li></ul>
+               <li>simulace poruch </li><ul><li>otestovat, zda-li jsou poruchy sprďż˝vnďż˝ implementovďż˝ny, sprďż˝vně  zobrazovďż˝ny, sprďż˝vnďż˝ uloďż˝eny, sprďż˝vnďż˝ odebrďż˝ny</li></ul>
+                <li>pďż˝ďż˝dďż˝vďż˝nďż˝ pilotďż˝ </li><ul><li>otestovat, jsou-li vďż˝echna data o pilotovi sprďż˝vnďż˝ nahrďż˝na do databďż˝ze </li></ul>
+                <li>editace pilotďż˝ </li><ul><li>otestovat, zda-li je editovanďż˝ pilot sprďż˝vnďż˝ nahrďż˝n zďż˝databďż˝ze, je-li uloďż˝en sprďż˝vnďż˝ do databďż˝ze a je-li sprďż˝vnďż˝ zobrazen</li></ul>
+               <li>statistiky</li><ul><li>otestovat, zda-li jsou zobrazeny sprďż˝vnďż˝ statistiky kďż˝pilotovi vzhledem kďż˝vďż˝bďż˝ru simulace</li></ul>
+                <li>odhlďż˝enďż˝ </li><ul><li>otestovat, zda-li je korektnďż˝ odhlďż˝en, zda-li se vďż˝echna data uloďż˝ila</li></ul>
             </ul>
 
 &nbsp
 <p><b>Pilot</b></p>
    <ul>
-    <li>přihlášení :</li><ul><li>otestovat, zda-li je pilot korektně přihlášen do systému, jsou-li pro něho přístupná všechna menu, ke kterým má mít přístup</li></ul>
-    <li>výběr simulace </li><ul><li>otestovat, jsou-li pilotovi zobrazeny správné simulace (kde je přiřazen), má-li do všech simulací přístup, správnost načtení vybrané simulace</li></ul>
-    <li>průběh simulace </li><ul><li>otestovat správnost simulace (reakce letadla na ovládání, komunikace pilotů, správnost zobrazení dat, správnost integračnosti dat), ukončení simulace</li></ul>
-    <li>statistiky</li><ul><li>otestovat, zda-li má pilot přístup pouze ke svým statistikám, jsou-li správně zobrazeny, ukončení prohlížení</li></ul>
-    <li>odhlášení</li><ul><li>otestovat, zda-li je korektně odhlášen, zda-li se všechna data uložila</li></ul>
+    <li>pďż˝ihlďż˝enďż˝ :</li><ul><li>otestovat, zda-li je pilot korektnďż˝ pďż˝ihlďż˝en do systďż˝mu, jsou-li pro nďż˝ho pďż˝ďż˝stupnďż˝ vďż˝echna menu, ke kterďż˝m mďż˝ mďż˝t pďż˝ďż˝stup</li></ul>
+    <li>vďż˝bďż˝r simulace </li><ul><li>otestovat, jsou-li pilotovi zobrazeny sprďż˝vnďż˝ simulace (kde je pďż˝iďż˝azen),ďż˝mďż˝-li do vďż˝ech simulacďż˝ pďż˝ďż˝stup, sprďż˝vnost naďż˝tenďż˝ vybranďż˝ simulace</li></ul>
+    <li>prďż˝bďż˝h simulace </li><ul><li>otestovat sprďż˝vnost simulace (reakce letadla na ovlďż˝dďż˝nďż˝, komunikace pilotďż˝, sprďż˝vnost zobrazenďż˝ dat, sprďż˝vnost integraďż˝nosti dat), ukonďż˝enďż˝ simulace</li></ul>
+    <li>statistiky</li><ul><li>otestovat, zda-li mďż˝ pilot pďż˝ďż˝stup pouze ke svďż˝m statistikďż˝m, jsou-li sprďż˝vnďż˝ zobrazeny, ukonďż˝enďż˝ prohlďż˝enďż˝</li></ul>
+    <li>odhlďż˝enďż˝</li><ul><li>otestovat, zda-li je korektnďż˝ odhlďż˝en, zda-li se vďż˝echna data uloďż˝ila</li></ul>
    </ul>
 
 
-<p><a href="#zacatek">Zpět na začátek</a></p>
+<p><a href="#zacatek">Zpďż˝t na zaďż˝ďż˝tek</a></p>
 
 
+<script src="/archive/lightbox.js"></script>
 </body>
 </html>

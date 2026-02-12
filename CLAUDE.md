@@ -38,11 +38,14 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Vault entry opraven: 2009-maroko link
 - Konvence cest: `/archive/cnk/{rok}-{nazev}/` (např. 2009-maroko, 2006-pyreneje, 2007-turecko, 2008-dolomiti, vrcholy)
 
-### P2 — Formátování archive stránek
-- [ ] Lepší zarovnání obrázků v textu (float, marginy, responzivita)
-- [ ] Rozhodnout velikost obrázků — miniatury vs. plná velikost, max-width
-- [ ] Sjednotit styling napříč všemi kategoriemi (blog, cnk, cvut-fel, spse-v-uzlabine)
-- [ ] Vylepšit `public/archive/style.css` — typografie, spacing, mobilní zobrazení
+### P2 — Formátování archive stránek ✓
+- [x] Lepší zarovnání obrázků v textu (float, marginy, responzivita) — CSS třídy .img-left/.img-right/.img-center
+- [x] Rozhodnout velikost obrázků — max-width: 500px, na mobilu 100%
+- [x] Sjednotit styling napříč všemi kategoriemi (blog, cnk, cvut-fel, spse-v-uzlabine)
+- [x] Vylepšit `public/archive/style.css` — image classes, lightbox overlay, mobile breakpoint
+- [x] Lightbox pro obrázky s větší verzí (public/archive/lightbox.js)
+- [x] Blogger table wrappers nahrazeny za `<figure>` s `<figcaption>`
+- [x] Migrační skript: scripts/fix-blog-styles.py (238 souborů zpracováno)
 
 ### P2 — Hero stránka — opravy obsahu
 - [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
