@@ -72,6 +72,12 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] `.card` CSS (expedition cards na CNK landing)
 - [x] Rozšířen skript scripts/fix-blog-styles.py — video embeds, Picasa badges, Blogger tables, deprecated HTML
 
+### P4 — Konzistence nadpisů a CSS cleanup ✓
+- [x] Odstranit duplicitní `<h1>` z 11 CNK archive stránek (řádek 15, duplicát h1 v header divu)
+- [x] Změnit `<h1>Deníček cesty...</h1>` → `<h2>` v 5 CNK souborech (sekční nadpis, ne titulek)
+- [x] Přidat `.tab` CSS do `public/archive/style.css` (chyběla definice pro 12 souborů)
+- [x] Audit CSS — žádné nepoužité třídy k odstranění (`.lightbox-overlay` dynamická, `.content` 84×, `.img-inline` 7×)
+
 ### P2 — Hero stránka — opravy obsahu
 - [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
 - [ ] Pod první sekcí jsou jen 2 tlačítka — přidat i odkaz na Vault
