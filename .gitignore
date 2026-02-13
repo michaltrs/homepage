@@ -3,3 +3,4 @@ node_modules
 dist
 .astro
 .vscode
+scripts/validation-report.json

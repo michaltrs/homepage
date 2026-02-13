@@ -90,13 +90,15 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] 6 foto placeholderů v PersonalSection (potřeba skutečné fotky)
 - [ ] Professional foto/headshot (zatím SVG placeholder)
 
-### P4b — Archive: validace obsahu a odkazů
-- [ ] Ověřit že všechny embed obrázky se načítají (žádné broken images) — všechny kategorie (blog, cnk, cvut-fel, spse-v-uzlabine)
-- [ ] Ověřit že všechny embed videa fungují (YouTube iframes, ne dead Flash/placeholder)
-- [ ] Konkrétně zkontrolovat video z USA národních parků (2011-08-09 entries) — pravděpodobně chybí
-- [ ] Opravit nalezené broken obrázky a videa
-- [ ] Zkontrolovat všechny externí odkazy ve všech archive stránkách — najít 404 a generické/přesměrované stránky
-- [ ] Mrtvé odkazy nahradit vysvětlením (např. „Stránka již neexistuje — propadla se do propadliště digitálních dějin.") nebo odebrat
+### P4b — Archive: validace obsahu a odkazů ✓
+- [x] Ověřit že všechny embed obrázky se načítají (žádné broken images) — 9 broken → 0 (imb-cvut cesty opraveny, silvretta panorama nahrazeno)
+- [x] Ověřit že všechny embed videa fungují (YouTube iframes, ne dead Flash/placeholder) — 19 YouTube embeds OK, 0 broken
+- [x] Konkrétně zkontrolovat video z USA národních parků (2011-08-09 entries) — doplněn YouTube embed (vBWIuTHdDqI)
+- [x] Opravit nalezené broken obrázky a videa
+- [x] Zkontrolovat všechny externí odkazy ve všech archive stránkách — 361 URL zkontrolováno (122 živých, 142 přesměrovaných, 97 mrtvých)
+- [x] Mrtvé odkazy nahradit `<span class="dead-link">` — 79 nahrazení v 56 souborech, `.dead-link` CSS přidáno
+- [x] Validační skript: `scripts/validate-archive.py` (238 HTML, report + link-history.md)
+- [x] `link-history.md` — kompletní seznam 289 externích odkazů seskupený po stránkách
 
 ### P4c — Archive: obtékání obrázků a videí
 - [ ] Projít všechny archive stránky (blog, cnk, cvut-fel, spse-v-uzlabine) a vylepšit obtékání obrázků textem
