@@ -1,7 +1,6 @@
 ---
 title: "Turecko 2007 - plánovaná trasa"
 pubDate: 2007-05-30T21:52:00.000Z
-updated: 2010-09-15T21:42:06.111Z
 link: "/archive/blog/turecko-2007-planovana-trasa.html"
 category: "cnk"
 isMilestone: false

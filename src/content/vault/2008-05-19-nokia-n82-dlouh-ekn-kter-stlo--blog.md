@@ -1,7 +1,6 @@
 ---
 title: "Nokia N82, dlouhé čekání které stálo za to"
 pubDate: 2008-05-19T21:33:00.012Z
-updated: 2010-06-15T18:17:33.912Z
 link: "/archive/blog/nokia-n82-dlouhe-cekani-ktere-stalo-za-to.html"
 category: "blog"
 isMilestone: false

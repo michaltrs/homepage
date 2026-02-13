@@ -1,7 +1,6 @@
 ---
 title: "Fotky, fotky a zas fotky"
 pubDate: 2008-01-04T13:23:00.000Z
-updated: 2008-01-04T14:18:09.270Z
 link: "/archive/blog/fotky-fotky-a-zas-fotky.html"
 category: "cvut-fel"
 isMilestone: false

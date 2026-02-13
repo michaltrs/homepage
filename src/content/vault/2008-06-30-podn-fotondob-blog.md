@@ -1,7 +1,6 @@
 ---
 title: "Pořádné fotonádobí"
 pubDate: 2008-06-30T19:12:00.002Z
-updated: 2008-06-30T19:40:41.835Z
 link: "/archive/blog/podn-fotondob.html"
 category: "blog"
 isMilestone: false

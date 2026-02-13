@@ -1,7 +1,6 @@
 ---
 title: "15 minut mediální přízně"
 pubDate: 2009-01-21T19:27:00.007Z
-updated: 2009-01-21T22:53:06.853Z
 link: "/archive/blog/15-minut-medialni-prizne.html"
 category: "blog"
 isMilestone: false

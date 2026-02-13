@@ -1,7 +1,6 @@
 ---
 title: "Příběh květiny z IKEA"
 pubDate: 2009-06-02T20:05:00.007Z
-updated: 2010-06-15T18:08:00.660Z
 link: "/archive/blog/pribeh-kvetiny-z-ikea.html"
 category: "blog"
 isMilestone: false

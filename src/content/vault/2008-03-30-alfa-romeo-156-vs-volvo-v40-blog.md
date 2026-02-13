@@ -1,7 +1,6 @@
 ---
 title: "Alfa Romeo 156 vs. Volvo V40"
 pubDate: 2008-03-30T12:14:00.009Z
-updated: 2011-09-11T16:22:53.286Z
 link: "/archive/blog/alfa-romeo-156-vs-volvo-v40.html"
 category: "blog"
 isMilestone: false

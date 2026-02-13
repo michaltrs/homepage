@@ -1,7 +1,6 @@
 ---
 title: "El Caminito del Rey"
 pubDate: 2008-05-12T08:08:00.004Z
-updated: 2008-05-12T08:26:32.604Z
 link: "/archive/blog/el-caminito-del-rey.html"
 category: "blog"
 isMilestone: false

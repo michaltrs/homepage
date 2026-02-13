@@ -1,7 +1,6 @@
 ---
 title: "Val Thorens 2011, jet znovu?"
 pubDate: 2011-03-02T22:26:00.001Z
-updated: 2011-03-02T22:27:42.542Z
 link: "/archive/blog/val-thorens-2011-jet-znovu.html"
 category: "blog"
 isMilestone: false

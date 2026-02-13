@@ -1,7 +1,6 @@
 ---
 title: "Národní parky USA - z Los Angeles do Moab (1. týden)"
 pubDate: 2011-08-09T20:26:00.000Z
-updated: 2011-08-09T20:26:59.930Z
 link: "/archive/blog/narodni-parky-usa-z-los-angeles-do-moab-1-tyden.html"
 category: "blog"
 isMilestone: false

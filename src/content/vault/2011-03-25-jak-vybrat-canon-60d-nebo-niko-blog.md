@@ -1,7 +1,6 @@
 ---
 title: "Jaký vybrat? Canon 60D, nebo Nikon D7000"
 pubDate: 2011-03-25T20:15:00.003Z
-updated: 2011-03-25T20:34:21.925Z
 link: "/archive/blog/jaky-vybrat-canon-60d-nebo-nikon-d7000.html"
 category: "blog"
 isMilestone: false

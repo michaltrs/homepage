@@ -1,7 +1,6 @@
 ---
 title: "Škola smyku - součást autoškoly"
 pubDate: 2011-11-05T22:28:00.000Z
-updated: 2011-11-05T23:16:35.960Z
 link: "/archive/blog/skola-smyku-soucast-autoskoly.html"
 category: "cvut-fel"
 isMilestone: false

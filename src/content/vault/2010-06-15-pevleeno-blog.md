@@ -1,7 +1,6 @@
 ---
 title: "Převlečeno"
 pubDate: 2010-06-15T18:02:00.003Z
-updated: 2010-06-15T22:58:53.144Z
 link: "/archive/blog/prevleceno.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "PF MMXI"
 pubDate: 2010-12-31T16:12:00.000Z
-updated: 2010-12-31T16:12:26.034Z
 link: "/archive/blog/pf-mmxi.html"
 category: "blog"
 isMilestone: false

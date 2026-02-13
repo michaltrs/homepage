@@ -1,7 +1,6 @@
 ---
 title: "Tam kde žijí raci"
 pubDate: 2008-10-13T16:00:00.010Z
-updated: 2008-10-13T16:00:00.427Z
 link: "/archive/blog/tam-kde-ij-raci.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Road trip Irsko 2007"
 pubDate: 2007-10-07T15:00:00.002Z
-updated: 2010-09-15T21:46:16.611Z
 link: "/archive/blog/road-trip-irsko-2007.html"
 category: "cnk"
 isMilestone: false

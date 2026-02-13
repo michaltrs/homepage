@@ -1,7 +1,6 @@
 ---
 title: "KPŽ Ještěd 2010 poprvé"
 pubDate: 2010-08-17T22:03:00.009Z
-updated: 2010-09-15T21:36:57.837Z
 link: "/archive/blog/kpz-jested-2010-poprve.html"
 category: "blog"
 isMilestone: false

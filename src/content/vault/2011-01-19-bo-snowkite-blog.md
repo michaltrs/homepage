@@ -1,7 +1,6 @@
 ---
 title: "Boží snowkite"
 pubDate: 2011-01-19T23:01:00.001Z
-updated: 2011-03-02T22:29:31.191Z
 link: "/archive/blog/bozi-snowkite.html"
 category: "blog"
 isMilestone: false

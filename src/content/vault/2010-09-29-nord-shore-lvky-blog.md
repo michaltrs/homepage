@@ -1,7 +1,6 @@
 ---
 title: "Nord Shore lávky"
 pubDate: 2010-09-29T22:44:00.004Z
-updated: 2010-10-05T08:12:16.037Z
 link: "/archive/blog/nord-shore-lavky.html"
 category: "blog"
 isMilestone: false

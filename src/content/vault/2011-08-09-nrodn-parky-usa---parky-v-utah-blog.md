@@ -1,7 +1,6 @@
 ---
 title: "Národní parky USA - parky v Utahu a zpět do Las Vegas (2. týden)"
 pubDate: 2011-08-09T20:28:00.000Z
-updated: 2011-08-09T20:28:22.214Z
 link: "/archive/blog/narodni-parky-usa-parky-v-utahu-a-zpet-do-las-vegas-2-tyden.html"
 category: "blog"
 isMilestone: false

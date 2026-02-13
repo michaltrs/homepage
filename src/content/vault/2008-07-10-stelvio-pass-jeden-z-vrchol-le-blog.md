@@ -1,7 +1,6 @@
 ---
 title: "Stelvio Pass, jeden z vrcholů letošních kol"
 pubDate: 2008-07-10T20:21:00.002Z
-updated: 2010-09-15T21:41:15.890Z
 link: "/archive/blog/stelvio-pass-jeden-z-vrcholu-letosnich-kol.html"
 category: "cnk"
 isMilestone: false

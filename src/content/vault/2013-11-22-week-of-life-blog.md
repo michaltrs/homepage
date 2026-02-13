@@ -1,7 +1,6 @@
 ---
 title: "Week of Life"
 pubDate: 2013-11-22T23:20:00.000Z
-updated: 2013-11-22T23:20:35.065Z
 link: "/archive/blog/week-of-life.html"
 category: "blog"
 isMilestone: true

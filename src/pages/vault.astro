@@ -41,7 +41,7 @@ const categoryNodeMap = {
 
 <Layout title="The Vault | Michal Trs Architektura vzpomínek">
   <main class="max-w-4xl mx-auto px-6 py-20">
-    <header class="mb-16 text-center">
+    <header class="mb-16 text-center" data-animate>
       <h1 class="text-4xl md:text-6xl font-extrabold text-charcoal mb-4 font-outfit">The Vault</h1>
       <p class="text-xl text-charcoal/60 mb-10">Digitální historie, archivy a vzpomínky z let 2006–2013.</p>
       
@@ -91,14 +91,6 @@ const categoryNodeMap = {
       </div>
     </div>
 
-    <div class="mt-20 text-center flex flex-col sm:flex-row items-center justify-center gap-6">
-      <a href="/#professional" class="text-charcoal/40 hover:text-sky-blue transition-colors font-bold uppercase tracking-widest text-xs">
-        ← Profesní cesta
-      </a>
-      <a href="/#personal" class="text-charcoal/40 hover:text-joy-yellow transition-colors font-bold uppercase tracking-widest text-xs">
-        Osobní radosti →
-      </a>
-    </div>
   </main>
 </Layout>
 
@@ -107,7 +99,19 @@ const categoryNodeMap = {
     const buttons = document.querySelectorAll('.filter-btn');
     const entries = document.querySelectorAll('.timeline-entry');
 
-    function applyFilter(filter: string) {
+    function applyFilter(filter: string, updateUrl = false) {
+      // Update URL
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.hash = '';
+        if (filter === 'all') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', filter);
+        }
+        history.replaceState(null, '', url.toString());
+      }
+
       // Update button states
       buttons.forEach(btn => {
         const btnFilter = btn.getAttribute('data-filter');
@@ -172,7 +176,7 @@ const categoryNodeMap = {
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
-        if (filter) applyFilter(filter);
+        if (filter) applyFilter(filter, true);
       });
     });
 

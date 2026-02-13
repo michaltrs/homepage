@@ -1,7 +1,6 @@
 ---
 title: "London Trip 2009"
 pubDate: 2009-04-27T20:59:00.020Z
-updated: 2011-05-02T07:46:58.971Z
 link: "/archive/blog/london-trip-2009.html"
 category: "blog"
 isMilestone: false

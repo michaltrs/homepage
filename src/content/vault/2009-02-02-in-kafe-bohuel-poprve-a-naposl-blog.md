@@ -1,7 +1,6 @@
 ---
 title: "Iné Kafe, bohužel poprve a naposled"
 pubDate: 2009-02-02T22:01:00.003Z
-updated: 2009-02-03T00:17:06.200Z
 link: "/archive/blog/ine-kafe-bohuzel-poprve-a-naposled.html"
 category: "blog"
 isMilestone: false

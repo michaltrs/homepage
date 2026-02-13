@@ -1,7 +1,6 @@
 ---
 title: "Zažít Prahu jinak"
 pubDate: 2010-09-14T21:47:00.001Z
-updated: 2010-09-15T21:31:03.225Z
 link: "/archive/blog/zazit-prahu-jinak.html"
 category: "cnk"
 isMilestone: false

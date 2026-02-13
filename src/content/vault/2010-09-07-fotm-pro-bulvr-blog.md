@@ -1,7 +1,6 @@
 ---
 title: "Fotím pro bulvár"
 pubDate: 2010-09-07T20:43:00.002Z
-updated: 2010-09-08T08:16:10.876Z
 link: "/archive/blog/fotim-pro-bulvar.html"
 category: "blog"
 isMilestone: false

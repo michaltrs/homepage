@@ -1,7 +1,6 @@
 ---
 title: "Zažít singltrek, můžu se ženit"
 pubDate: 2010-06-16T00:19:00.031Z
-updated: 2010-09-15T21:36:57.838Z
 link: "/archive/blog/zazit-singltrek-muzu-se-zenit.html"
 category: "blog"
 isMilestone: false

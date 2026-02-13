@@ -1,7 +1,6 @@
 ---
 title: "Ischgl 2010, MTB radovánky"
 pubDate: 2010-08-28T11:26:00.008Z
-updated: 2010-09-15T21:39:10.768Z
 link: "/archive/blog/ischgl-2010-mtb-radovanky.html"
 category: "blog"
 isMilestone: false

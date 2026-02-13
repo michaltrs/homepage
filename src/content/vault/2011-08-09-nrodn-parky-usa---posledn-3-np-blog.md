@@ -1,7 +1,6 @@
 ---
 title: "Národní parky USA - poslední 3 NP v Kalifornii, SF a cesta po pobřeží do LA (3. týden)"
 pubDate: 2011-08-09T20:28:00.004Z
-updated: 2011-08-09T20:54:57.984Z
 link: "/archive/blog/narodni-parky-usa-posledni-3-np-v-kalifornii-sf-a-cesta-po-pobrezi-do-la-3-tyden.html"
 category: "blog"
 isMilestone: false

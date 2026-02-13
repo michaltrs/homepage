@@ -1,7 +1,6 @@
 ---
 title: "Moje (staro)nová Kona Kula"
 pubDate: 2009-03-18T22:11:00.009Z
-updated: 2010-10-11T22:01:57.919Z
 link: "/archive/blog/moje-staronova-kona-kula.html"
 category: "blog"
 isMilestone: false

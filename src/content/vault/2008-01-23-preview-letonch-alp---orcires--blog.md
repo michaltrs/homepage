@@ -1,7 +1,6 @@
 ---
 title: "Preview letošních alp - Orcières 1850, Francie"
 pubDate: 2008-01-23T07:30:00.001Z
-updated: 2010-09-15T21:45:18.697Z
 link: "/archive/blog/preview-letosnich-alp-orcieres-1850-francie.html"
 category: "blog"
 isMilestone: false

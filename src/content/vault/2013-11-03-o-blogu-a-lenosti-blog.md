@@ -1,7 +1,6 @@
 ---
 title: "O blogu a lenosti"
 pubDate: 2013-11-03T15:59:00.001Z
-updated: 2013-11-03T15:59:21.034Z
 link: "/archive/blog/o-blogu-a-lenosti.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Proč to vlastně dělám..."
 pubDate: 2007-06-18T21:34:00.002Z
-updated: 2007-09-19T22:47:21.866Z
 link: "/archive/blog/proc-to-vlastne-delam.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Vzpomínam na Whistler, teším se na Moab"
 pubDate: 2010-11-21T12:55:00.008Z
-updated: 2010-11-29T00:01:57.617Z
 link: "/archive/blog/vzpominam-na-whistler-tesim-se-na-moab.html"
 category: "cnk"
 isMilestone: false

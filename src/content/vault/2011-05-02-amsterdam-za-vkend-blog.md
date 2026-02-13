@@ -1,7 +1,6 @@
 ---
 title: "Amsterdam za víkend"
 pubDate: 2011-05-02T07:45:00.001Z
-updated: 2011-05-02T07:46:17.884Z
 link: "/archive/blog/amsterdam-za-vikend.html"
 category: "blog"
 isMilestone: false

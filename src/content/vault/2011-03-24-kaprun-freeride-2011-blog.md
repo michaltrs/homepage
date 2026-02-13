@@ -1,7 +1,6 @@
 ---
 title: "Kaprun freeride 2011"
 pubDate: 2011-03-24T10:36:00.000Z
-updated: 2011-03-24T10:36:42.108Z
 link: "/archive/blog/kaprun-freeride-2011.html"
 category: "blog"
 isMilestone: false

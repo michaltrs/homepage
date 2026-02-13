@@ -1,7 +1,6 @@
 ---
 title: "Tak a jsme mediální mrd*y..."
 pubDate: 2007-09-11T21:28:00.000Z
-updated: 2007-09-11T21:31:40.685Z
 link: "/archive/blog/tak-a-jsme-medialni-mrdy.html"
 category: "blog"
 isMilestone: false

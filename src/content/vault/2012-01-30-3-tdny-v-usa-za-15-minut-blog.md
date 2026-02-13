@@ -1,7 +1,6 @@
 ---
 title: "3 týdny v USA za 15 minut"
 pubDate: 2012-01-30T22:38:00.000Z
-updated: 2012-01-30T22:44:49.394Z
 link: "/archive/blog/3-tydny-v-usa-za-15-minut.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Scandinavia trip"
 pubDate: 2008-11-20T18:12:00.018Z
-updated: 2011-05-02T07:47:36.782Z
 link: "/archive/blog/scandinavia-trip.html"
 category: "blog"
 isMilestone: false

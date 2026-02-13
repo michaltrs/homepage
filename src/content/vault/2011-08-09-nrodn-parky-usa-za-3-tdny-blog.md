@@ -1,7 +1,6 @@
 ---
 title: "Národní parky USA za 3 týdny"
 pubDate: 2011-08-09T20:29:00.001Z
-updated: 2012-01-30T22:44:26.955Z
 link: "/archive/blog/narodni-parky-usa-za-3-tydny.html"
 category: "cnk"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Kolem Světa 2008 v KD Ládví"
 pubDate: 2008-11-23T02:02:00.006Z
-updated: 2008-11-23T22:03:56.755Z
 link: "/archive/blog/kolem-sveta-2008-v-kd-ladvi.html"
 category: "cnk"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Vzpomínka na Turecko"
 pubDate: 2008-04-12T22:18:00.002Z
-updated: 2010-09-15T21:41:15.892Z
 link: "/archive/blog/vzpomnka-na-turecko.html"
 category: "cnk"
 isMilestone: false

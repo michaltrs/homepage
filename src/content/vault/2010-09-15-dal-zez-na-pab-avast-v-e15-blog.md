@@ -1,7 +1,6 @@
 ---
 title: "Další zářez na pažbě Avast! v E15"
 pubDate: 2010-09-15T21:19:00.003Z
-updated: 2011-01-29T21:51:31.848Z
 link: "/archive/blog/dalsi-zarez-na-pazbe-avast-v-e15.html"
 category: "blog"
 isMilestone: false

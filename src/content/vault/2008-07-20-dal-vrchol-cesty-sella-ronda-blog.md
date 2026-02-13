@@ -1,7 +1,6 @@
 ---
 title: "Další vrchol cesty: Sella Ronda"
 pubDate: 2008-07-20T18:58:00.002Z
-updated: 2010-09-15T21:41:15.889Z
 link: "/archive/blog/dal-vrchol-cesty-sella-ronda.html"
 category: "blog"
 isMilestone: false

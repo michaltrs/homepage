@@ -1,7 +1,6 @@
 ---
 title: "Jak složit patrovou postel"
 pubDate: 2009-09-01T12:53:00.014Z
-updated: 2010-09-15T21:26:03.708Z
 link: "/archive/blog/jak-slozit-patrovou-postel.html"
 category: "blog"
 isMilestone: false

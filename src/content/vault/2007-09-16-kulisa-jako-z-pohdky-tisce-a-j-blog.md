@@ -1,7 +1,6 @@
 ---
 title: "Kulisa jako z pohádky Tisíce a jedné noci"
 pubDate: 2007-09-16T15:00:00.000Z
-updated: 2010-09-15T21:37:18.579Z
 link: "/archive/blog/kulisa-jako-z-pohadky-tisice-a-jedne-noci.html"
 category: "cnk"
 isMilestone: false

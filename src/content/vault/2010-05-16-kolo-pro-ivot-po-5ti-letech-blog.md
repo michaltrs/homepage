@@ -1,7 +1,6 @@
 ---
 title: "Kolo pro život po 5ti letech"
 pubDate: 2010-05-16T21:21:00.003Z
-updated: 2010-09-15T21:36:57.839Z
 link: "/archive/blog/kolo-pro-zivot-po-5ti-letech.html"
 category: "cnk"
 isMilestone: false

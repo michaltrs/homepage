@@ -1,7 +1,6 @@
 ---
 title: "Canon EOS 400D + EF-S 17-85 IS, hodně radosti za dost peněz"
 pubDate: 2007-09-19T20:52:00.001Z
-updated: 2011-03-31T12:51:11.944Z
 link: "/archive/blog/canon-eos-400d-ef-s-17-85-is-hodne-radosti-za-dost-penez.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Biková MAXichata"
 pubDate: 2008-10-10T21:31:00.004Z
-updated: 2010-09-15T21:36:57.840Z
 link: "/archive/blog/bikov-maxichata.html"
 category: "blog"
 isMilestone: false

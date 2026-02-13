@@ -1,7 +1,6 @@
 ---
 title: "Praha cyklistické opravdu funguje"
 pubDate: 2007-11-28T16:37:00.000Z
-updated: 2007-12-07T12:34:16.143Z
 link: "/archive/blog/praha-cyklisticke-opravdu-funguje.html"
 category: "cnk"
 isMilestone: false

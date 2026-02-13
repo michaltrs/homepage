@@ -1,7 +1,6 @@
 ---
 title: "Odlet zítra"
 pubDate: 2008-08-08T11:49:00.003Z
-updated: 2010-09-15T21:42:06.110Z
 link: "/archive/blog/odlet-ztra.html"
 category: "blog"
 isMilestone: false

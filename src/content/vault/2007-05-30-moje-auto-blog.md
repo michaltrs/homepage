@@ -1,7 +1,6 @@
 ---
 title: "Moje auto"
 pubDate: 2007-05-30T22:22:00.000Z
-updated: 2007-05-30T22:23:17.912Z
 link: "/archive/blog/moje-auto.html"
 category: "blog"
 isMilestone: false

@@ -1,7 +1,6 @@
 ---
 title: "Praha Stověžatá"
 pubDate: 2008-07-22T17:39:00.002Z
-updated: 2008-07-22T18:20:57.421Z
 link: "/archive/blog/praha-stovat.html"
 category: "blog"
 isMilestone: false

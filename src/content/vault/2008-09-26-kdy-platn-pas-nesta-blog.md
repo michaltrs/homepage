@@ -1,7 +1,6 @@
 ---
 title: "Když platný pas nestačí..."
 pubDate: 2008-09-26T04:10:00.003Z
-updated: 2008-09-27T23:11:21.960Z
 link: "/archive/blog/kdyz-platny-pas-nestaci.html"
 category: "blog"
 isMilestone: false

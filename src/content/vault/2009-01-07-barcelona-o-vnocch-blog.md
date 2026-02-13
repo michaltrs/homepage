@@ -1,7 +1,6 @@
 ---
 title: "Barcelona o Vánocích"
 pubDate: 2009-01-07T23:02:00.022Z
-updated: 2010-06-15T18:11:47.266Z
 link: "/archive/blog/barcelona-o-vanocich.html"
 category: "cvut-fel"
 isMilestone: false

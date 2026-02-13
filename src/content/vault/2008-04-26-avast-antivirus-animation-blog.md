@@ -1,7 +1,6 @@
 ---
 title: "Avast! antivirus animation"
 pubDate: 2008-04-26T21:26:00.003Z
-updated: 2010-09-15T21:21:39.335Z
 link: "/archive/blog/avast-antivirus-animation.html"
 category: "blog"
 isMilestone: false

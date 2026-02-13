@@ -1,7 +1,6 @@
 ---
 title: "Eda, ochránce virtuálního soukromí"
 pubDate: 2008-06-01T08:34:00.006Z
-updated: 2010-09-15T21:27:28.100Z
 link: "/archive/blog/eda-ochrnce-virtulnho-soukrom.html"
 category: "blog"
 isMilestone: false

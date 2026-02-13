@@ -1,7 +1,6 @@
 ---
 title: "Going west (stěhování)"
 pubDate: 2007-10-24T08:48:00.001Z
-updated: 2007-11-26T07:31:14.473Z
 link: "/archive/blog/going-west-sthovn.html"
 category: "blog"
 isMilestone: false

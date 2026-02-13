@@ -1,7 +1,6 @@
 ---
 title: "Tamron 18-270mm F/3.5-6.3 Di II VC PZD"
 pubDate: 2011-05-05T10:54:00.003Z
-updated: 2011-05-05T22:54:08.431Z
 link: "/archive/blog/tamron-18-270mm-f35-63-di-ii-vc-pzd.html"
 category: "blog"
 isMilestone: false

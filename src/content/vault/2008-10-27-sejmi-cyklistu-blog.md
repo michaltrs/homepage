@@ -1,7 +1,6 @@
 ---
 title: "Sejmi cyklistu"
 pubDate: 2008-10-27T15:18:00.006Z
-updated: 2008-11-02T19:41:33.037Z
 link: "/archive/blog/sejmi-cyklistu.html"
 category: "cnk"
 isMilestone: false

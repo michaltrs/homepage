@@ -1,7 +1,6 @@
 ---
 title: "Nejhorší je Řecko"
 pubDate: 2007-11-23T12:38:00.000Z
-updated: 2010-09-15T21:37:18.578Z
 link: "/archive/blog/nejhor-je-ecko.html"
 category: "cnk"
 isMilestone: false

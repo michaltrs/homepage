@@ -1,7 +1,6 @@
 ---
 title: "WEBTIP TÝŽDŇA"
 pubDate: 2007-09-27T12:20:00.001Z
-updated: 2007-09-27T13:00:37.368Z
 link: "/archive/blog/webtip-tda.html"
 category: "cnk"
 isMilestone: false

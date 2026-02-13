@@ -1,7 +1,6 @@
 ---
 title: "Fotky z víkendu"
 pubDate: 2008-07-22T20:38:00.004Z
-updated: 2008-07-22T20:57:30.249Z
 link: "/archive/blog/fotky-z-vkendu.html"
 category: "blog"
 isMilestone: false

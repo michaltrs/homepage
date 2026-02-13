@@ -1,7 +1,6 @@
 ---
 title: "Dobytí Řípu"
 pubDate: 2008-09-15T18:20:00.007Z
-updated: 2011-01-29T22:11:39.196Z
 link: "/archive/blog/dobyt-pu.html"
 category: "cnk"
 isMilestone: false

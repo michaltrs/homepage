@@ -1,7 +1,6 @@
 ---
 title: "Za tátou na jihu"
 pubDate: 2008-09-21T22:59:00.002Z
-updated: 2008-09-21T23:12:35.058Z
 link: "/archive/blog/za-ttou-na-jihu.html"
 category: "blog"
 isMilestone: false

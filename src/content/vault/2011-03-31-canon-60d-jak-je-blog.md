@@ -1,7 +1,6 @@
 ---
 title: "Canon 60D, jaký je?"
 pubDate: 2011-03-31T12:50:00.004Z
-updated: 2011-04-12T21:48:46.540Z
 link: "/archive/blog/canon-60d-jaky-je.html"
 category: "blog"
 isMilestone: false

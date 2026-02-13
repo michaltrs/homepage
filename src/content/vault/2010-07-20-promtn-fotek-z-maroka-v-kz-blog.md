@@ -1,7 +1,6 @@
 ---
 title: "Promítání fotek z Maroka v KZ"
 pubDate: 2010-07-20T14:10:00.004Z
-updated: 2010-09-15T21:47:50.379Z
 link: "/archive/blog/promitani-fotek-z-maroka-v-kz.html"
 category: "cnk"
 isMilestone: false

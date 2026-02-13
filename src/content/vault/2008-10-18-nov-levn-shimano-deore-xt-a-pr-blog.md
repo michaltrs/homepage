@@ -1,7 +1,6 @@
 ---
 title: "Nové (levné) Shimano Deore XT a prasklý rám na mé Koně"
 pubDate: 2008-10-18T23:18:00.013Z
-updated: 2010-09-15T21:31:44.299Z
 link: "/archive/blog/nove-levne-shimano-deore-xt-a-praskly-ram-na-me-kone.html"
 category: "blog"
 isMilestone: false

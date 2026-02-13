@@ -1,7 +1,6 @@
 ---
 title: "Brambora jak kráva..."
 pubDate: 2007-09-21T20:04:00.000Z
-updated: 2007-11-23T13:50:17.030Z
 link: "/archive/blog/brambora-jak-krava.html"
 category: "blog"
 isMilestone: false

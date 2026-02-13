@@ -1,7 +1,6 @@
 ---
 title: "Padající listí, reparátek jistí..."
 pubDate: 2007-11-13T14:37:00.000Z
-updated: 2007-11-19T15:05:13.773Z
 link: "/archive/blog/padajc-list-repartek-jist.html"
 category: "cvut-fel"
 isMilestone: false
