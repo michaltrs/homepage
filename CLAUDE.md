@@ -106,6 +106,10 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] CSS: `figure { margin: 0; }` reset + `figcaption` styling (font-size, color, text-align)
 - [x] CNK neklasifikované obrázky → `class="img-right"` float (2007-turecko: 10 img, 2006-pyreneje: 9 img)
 
+### P4d — Screenshoty původního webu do Vault
+- [ ] Udělat screenshoty klíčových sekcí původního webu (www-2008-20/)
+- [ ] Přidat je jako vault entries do roku 2013 (zachytit jak web vypadal)
+
 ### P5 — Vault gap 2013–2026: research sociálních sítí
 - [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
 - [ ] Research LinkedIn — kariérní milníky, pozice, projekty
