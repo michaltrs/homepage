@@ -84,11 +84,25 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně — DOM refs přesunuty do init()
 
 ### P3b — Remaining cleanup
-- [ ] Odstranit `updated:` field z 78 blog entries (není ve schema)
-- [ ] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
-- [ ] Vytvořit 404 stránku
+- [x] Odstranit `updated:` field z 78 blog entries (není ve schema)
+- [x] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
+- [x] Vytvořit 404 stránku
 - [ ] 6 foto placeholderů v PersonalSection (potřeba skutečné fotky)
 - [ ] Professional foto/headshot (zatím SVG placeholder)
+
+### P4b — Archive: validace obsahu a odkazů
+- [ ] Ověřit že všechny embed obrázky se načítají (žádné broken images) — všechny kategorie (blog, cnk, cvut-fel, spse-v-uzlabine)
+- [ ] Ověřit že všechny embed videa fungují (YouTube iframes, ne dead Flash/placeholder)
+- [ ] Konkrétně zkontrolovat video z USA národních parků (2011-08-09 entries) — pravděpodobně chybí
+- [ ] Opravit nalezené broken obrázky a videa
+- [ ] Zkontrolovat všechny externí odkazy ve všech archive stránkách — najít 404 a generické/přesměrované stránky
+- [ ] Mrtvé odkazy nahradit vysvětlením (např. „Stránka již neexistuje — propadla se do propadliště digitálních dějin.") nebo odebrat
+
+### P4c — Archive: obtékání obrázků a videí
+- [ ] Projít všechny archive stránky (blog, cnk, cvut-fel, spse-v-uzlabine) a vylepšit obtékání obrázků textem
+- [ ] Zkontrolovat a opravit responsivitu obrázků (float, marginy, clearing)
+- [ ] Vylepšit umístění a obtékání embedded videí
+- [ ] Ověřit konzistenci napříč kategoriemi
 
 ### P5 — Vault gap 2013–2026: research sociálních sítí
 - [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
