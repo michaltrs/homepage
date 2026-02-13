@@ -78,10 +78,10 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Přidat `.tab` CSS do `public/archive/style.css` (chyběla definice pro 12 souborů)
 - [x] Audit CSS — žádné nepoužité třídy k odstranění (`.lightbox-overlay` dynamická, `.content` 84×, `.img-inline` 7×)
 
-### P2 — Hero stránka — opravy obsahu
-- [ ] Text „Vítejte na palubě" je dětinský — vymyslet lepší headline
-- [ ] Pod první sekcí jsou jen 2 tlačítka — přidat i odkaz na Vault
-- [ ] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně
+### P2 — Hero stránka — opravy obsahu ✓
+- [x] Text „Vítejte na palubě" je dětinský — nahrazeno „CTO · MTB rider · otec 3 dětí · Praha"
+- [x] Pod první sekcí jsou jen 2 tlačítka — přidán terciární odkaz na The Vault
+- [x] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně — DOM refs přesunuty do init()
 
 ### P3b — Remaining cleanup
 - [ ] Odstranit `updated:` field z 78 blog entries (není ve schema)

@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-joy-yellow: #FFD700;
-  --color-sky-blue: #00BFFF;
+  --color-joy-yellow: #EAB308;
+  --color-sky-blue: #0EA5E9;
   --color-charcoal: #333333;
-  --color-soft-bg: #FAFAFA;
-  
+  --color-soft-bg: #F5F5F5;
+
   --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
 }
 
@@ -19,9 +19,41 @@
   .glass-card {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
   }
-  
+
   .btn-primary {
     @apply px-6 py-3 bg-sky-blue text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-md;
   }
 }
 
+/* Scroll animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate-stagger] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+[data-animate-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(2) { transition-delay: 80ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+[data-animate-stagger].is-visible > *:nth-child(n+7) { transition-delay: 480ms; opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

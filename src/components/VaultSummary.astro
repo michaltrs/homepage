@@ -16,7 +16,7 @@ const timelinePoints = [
 
 <section id="history-summary" class="py-24 px-6 bg-soft-bg/50 border-t border-charcoal/5">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
+    <div class="text-center mb-16" data-animate>
       <h2 class="text-charcoal/40 font-bold tracking-widest uppercase text-sm mb-4">
         Timeline & Legacy
       </h2>
@@ -34,7 +34,7 @@ const timelinePoints = [
       <!-- Timeline line -->
       <div class="absolute top-6 left-0 right-0 h-0.5 bg-charcoal/10 hidden md:block"></div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4" data-animate-stagger>
         {timelinePoints.map((point) => (
           <a href={`/vault?category=${point.id}`} class="group relative flex flex-col items-center text-center">
             <!-- Node -->
@@ -50,7 +50,7 @@ const timelinePoints = [
       </div>
     </div>
 
-    <div class="text-center z-20 relative">
+    <div class="text-center z-20 relative" data-animate>
       <a href="/vault" class="inline-flex items-center gap-3 px-8 py-4 bg-charcoal text-white rounded-full font-bold hover:bg-sky-blue transition-all group shadow-xl hover:shadow-sky-blue/20">
         Prozkoumat celý archiv (The Vault)
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>

@@ -103,74 +103,72 @@ const categoryNodeMap = {
 </Layout>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const entries = document.querySelectorAll('.timeline-entry');
-
-  function applyFilter(filter: string) {
-    // Update button states
-    buttons.forEach(btn => {
-      const btnFilter = btn.getAttribute('data-filter');
-      if (btnFilter === filter) {
-        btn.classList.add('active', 'bg-charcoal', 'text-white', 'border-charcoal');
-        btn.classList.remove('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
-      } else {
-        btn.classList.remove('active', 'bg-charcoal', 'text-white', 'border-charcoal');
-        btn.classList.add('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
-      }
-    });
-
-    // Filter entries
-    entries.forEach(entry => {
-      const entryCat = entry.getAttribute('data-category');
-      const htmlEntry = entry as HTMLElement;
-      
-      if (filter === 'all' || entryCat === filter) {
-        htmlEntry.style.display = 'flex';
-        // Force reflow for transform animation
-        htmlEntry.offsetHeight; 
-        htmlEntry.style.opacity = '1';
-        htmlEntry.style.transform = 'translateY(0)';
-      } else {
-        htmlEntry.style.opacity = '0';
-        htmlEntry.style.transform = 'translateY(20px)';
-        // Hide after transition
-        setTimeout(() => {
-          if (htmlEntry.style.opacity === '0') {
-            htmlEntry.style.display = 'none';
-          }
-        }, 300);
-      }
-    });
-  }
-
-  function handleDeepLink() {
-    const hash = decodeURIComponent(window.location.hash.substring(1));
-    const params = new URLSearchParams(window.location.search);
-    const categoryParam = params.get('category');
-
-    if (hash) {
-      console.log('Handling deep link for hash:', hash);
-      const target = document.getElementById(hash);
-      if (target) {
-        const category = target.getAttribute('data-category');
-        if (category) applyFilter(category);
-        
-        setTimeout(() => {
-          console.log('Scrolling to:', hash);
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          const card = target.querySelector('.timeline-card');
-          if (card) {
-            card.classList.add('highlight-card');
-            setTimeout(() => card.classList.remove('highlight-card'), 3000);
-          }
-        }, 500);
-      }
-    } else if (categoryParam) {
-      applyFilter(categoryParam);
-    }
-  }
-
   function init() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const entries = document.querySelectorAll('.timeline-entry');
+
+    function applyFilter(filter: string) {
+      // Update button states
+      buttons.forEach(btn => {
+        const btnFilter = btn.getAttribute('data-filter');
+        if (btnFilter === filter) {
+          btn.classList.add('active', 'bg-charcoal', 'text-white', 'border-charcoal');
+          btn.classList.remove('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
+        } else {
+          btn.classList.remove('active', 'bg-charcoal', 'text-white', 'border-charcoal');
+          btn.classList.add('bg-transparent', 'text-charcoal/70', 'border-charcoal/20');
+        }
+      });
+
+      // Filter entries
+      entries.forEach(entry => {
+        const entryCat = entry.getAttribute('data-category');
+        const htmlEntry = entry as HTMLElement;
+
+        if (filter === 'all' || entryCat === filter) {
+          htmlEntry.style.display = 'flex';
+          // Force reflow for transform animation
+          htmlEntry.offsetHeight;
+          htmlEntry.style.opacity = '1';
+          htmlEntry.style.transform = 'translateY(0)';
+        } else {
+          htmlEntry.style.opacity = '0';
+          htmlEntry.style.transform = 'translateY(20px)';
+          // Hide after transition
+          setTimeout(() => {
+            if (htmlEntry.style.opacity === '0') {
+              htmlEntry.style.display = 'none';
+            }
+          }, 300);
+        }
+      });
+    }
+
+    function handleDeepLink() {
+      const hash = decodeURIComponent(window.location.hash.substring(1));
+      const params = new URLSearchParams(window.location.search);
+      const categoryParam = params.get('category');
+
+      if (hash) {
+        const target = document.getElementById(hash);
+        if (target) {
+          const category = target.getAttribute('data-category');
+          if (category) applyFilter(category);
+
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const card = target.querySelector('.timeline-card');
+            if (card) {
+              card.classList.add('highlight-card');
+              setTimeout(() => card.classList.remove('highlight-card'), 3000);
+            }
+          }, 500);
+        }
+      } else if (categoryParam) {
+        applyFilter(categoryParam);
+      }
+    }
+
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
