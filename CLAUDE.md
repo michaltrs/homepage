@@ -100,11 +100,11 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Validační skript: `scripts/validate-archive.py` (238 HTML, report + link-history.md)
 - [x] `link-history.md` — kompletní seznam 289 externích odkazů seskupený po stránkách
 
-### P4c — Archive: obtékání obrázků a videí
-- [ ] Projít všechny archive stránky (blog, cnk, cvut-fel, spse-v-uzlabine) a vylepšit obtékání obrázků textem
-- [ ] Zkontrolovat a opravit responsivitu obrázků (float, marginy, clearing)
-- [ ] Vylepšit umístění a obtékání embedded videí
-- [ ] Ověřit konzistenci napříč kategoriemi
+### P4c — Archive: obtékání obrázků a videí ✓
+- [x] Odstranit `class="img-center"` z `<img>` uvnitř `<figure>` — 7 souborů, 22 instancí (figure už má správnou třídu)
+- [x] Přidat `class="img-center"` k 2 `<figure>` bez třídy (london-trip, whistler)
+- [x] CSS: `figure { margin: 0; }` reset + `figcaption` styling (font-size, color, text-align)
+- [x] CNK neklasifikované obrázky → `class="img-right"` float (2007-turecko: 10 img, 2006-pyreneje: 9 img)
 
 ### P5 — Vault gap 2013–2026: research sociálních sítí
 - [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
