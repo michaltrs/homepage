@@ -11,6 +11,14 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 
 ## Plán práce
 
+### P0 — Hero stránka: revize textu a ikon ✓
+- [x] Hero subtitle: "CTO" → "CTO @ Auris One"
+- [x] Auris One: 2023→2024, "Pioneer v oblasti AI-first" → "Osvobozujeme lékaře od administrativy"
+- [x] Avast: 2005–2023→2006–2024, "lokálního startupu" → "garážovky"
+- [x] Pivovar: "Němý Medvěd Brewery" → "Pivovar Němý Medvěd", nový text + CTA Brloh Mělník
+- [x] Pivovar ikona: shield → beer SVG, přidán podcast link (10 let pivovaru)
+- [x] Movember ikona: dollar sign → knír SVG podle Movember favicon
+
 ### P1 — Quick wins ✓
 - [x] Opravit Lorem ipsum v Hero.astro (subtitle)
 - [x] Vytvořit favicon.svg (Layout.astro ho linkuje ale soubor neexistuje)
