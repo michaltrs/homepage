@@ -87,8 +87,8 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [x] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
 - [x] Vytvořit 404 stránku
-- [ ] 6 foto placeholderů v PersonalSection (potřeba skutečné fotky)
-- [ ] Professional foto/headshot (zatím SVG placeholder)
+- [x] 6 foto placeholderů v PersonalSection — skutečné fotky (MTB alpy, Blinduro, sunset, party, pivovar, lyže)
+- [x] Professional foto/headshot — B&W portrét v ProfessionalSection
 
 ### P4b — Archive: validace obsahu a odkazů ✓
 - [x] Ověřit že všechny embed obrázky se načítají (žádné broken images) — 9 broken → 0 (imb-cvut cesty opraveny, silvretta panorama nahrazeno)

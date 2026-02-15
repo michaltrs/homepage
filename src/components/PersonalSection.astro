@@ -15,12 +15,19 @@
       </p>
     </div>
 
-    <!-- Photo Grid Placeholder -->
+    <!-- Photo Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full mb-20" data-animate-stagger>
-      {[1, 2, 3, 4, 5, 6].map((i) => (
+      {[
+        { src: "/assets/photos/personal-1-mtb-alps.jpg", alt: "MTB na alpském singletracku" },
+        { src: "/assets/photos/personal-2-blinduro.jpg", alt: "Blinduro MTB závod" },
+        { src: "/assets/photos/personal-3-sunset.jpg", alt: "Západ slunce nad ledovcem" },
+        { src: "/assets/photos/personal-4-party.jpg", alt: "Narozeninová oslava s přáteli" },
+        { src: "/assets/photos/personal-5-brewery.jpg", alt: "Pivovar Němý Medvěd" },
+        { src: "/assets/photos/personal-6-skis.jpg", alt: "Skialpové lyže" },
+      ].map((photo) => (
         <div class="aspect-[4/3] bg-charcoal/5 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 relative group">
+           <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover" loading="lazy" />
            <div class="absolute inset-0 bg-joy-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-           <div class="w-full h-full flex items-center justify-center text-charcoal/10 font-bold italic">MTB / Mountains {i}</div>
         </div>
       ))}
     </div>
