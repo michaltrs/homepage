@@ -87,8 +87,10 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [x] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
 - [x] Vytvořit 404 stránku
-- [x] 6 foto placeholderů v PersonalSection — skutečné fotky (MTB alpy, Blinduro, sunset, party, pivovar, lyže)
+- [x] 6 foto placeholderů v PersonalSection — skutečné fotky (MTB alpy, Blinduro, sunset, party, rodina na vrcholu, skialpový sjezd)
 - [x] Professional foto/headshot — B&W portrét v ProfessionalSection
+- [x] Vyměněny 2 slabé fotky: pivovar → rodinné selfie na vrcholu, lyže flat lay → skialpový sjezd v prašanu
+- [x] Strava iframe widget (samé nuly) → link card v řadě s Brewery a Movember (3+3 layout)
 
 ### P4b — Archive: validace obsahu a odkazů ✓
 - [x] Ověřit že všechny embed obrázky se načítají (žádné broken images) — 9 broken → 0 (imb-cvut cesty opraveny, silvretta panorama nahrazeno)

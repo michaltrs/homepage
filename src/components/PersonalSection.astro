@@ -22,8 +22,8 @@
         { src: "/assets/photos/personal-2-blinduro.jpg", alt: "Blinduro MTB závod" },
         { src: "/assets/photos/personal-3-sunset.jpg", alt: "Západ slunce nad ledovcem" },
         { src: "/assets/photos/personal-4-party.jpg", alt: "Narozeninová oslava s přáteli" },
-        { src: "/assets/photos/personal-5-brewery.jpg", alt: "Pivovar Němý Medvěd" },
-        { src: "/assets/photos/personal-6-skis.jpg", alt: "Skialpové lyže" },
+        { src: "/assets/photos/personal-5-family.jpg", alt: "Rodina na horském vrcholu při západu slunce" },
+        { src: "/assets/photos/personal-6-skis.jpg", alt: "Skialpový sjezd v prašanu" },
       ].map((photo) => (
         <div class="aspect-[4/3] bg-charcoal/5 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 relative group">
            <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover" loading="lazy" />
@@ -68,26 +68,8 @@
       </a>
     </div>
 
-    <!-- Strava Activity -->
-    <div class="w-full mb-12" data-animate>
-      <div class="p-8 bg-white rounded-3xl border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
-          </div>
-          <div>
-            <h4 class="text-xl font-bold">Strava</h4>
-            <p class="text-sm text-charcoal/50">Týdenní aktivita</p>
-          </div>
-        </div>
-        <div class="flex justify-center">
-          <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/1105660/activity-summary/47b6d4e5ecb79cd35f7cd9306fb3da7de80809c1"></iframe>
-        </div>
-      </div>
-    </div>
-
     <!-- Community & Passions -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full" data-animate-stagger>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full" data-animate-stagger>
       <div class="p-8 bg-white rounded-3xl border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 bg-joy-yellow/20 rounded-xl flex items-center justify-center text-charcoal mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -118,6 +100,17 @@
           </a>
         </div>
       </div>
+
+      <a href="https://www.strava.com/athletes/1105660" target="_blank" class="p-8 bg-white rounded-3xl border border-charcoal/5 shadow-sm hover:shadow-md transition-all group">
+        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+        </div>
+        <h4 class="text-2xl font-bold mb-3">Strava</h4>
+        <p class="text-charcoal/60 mb-6 leading-relaxed">
+          Outdoor je moje terapie. MTB, gravel, BMX, skialp, běžky, hiking a někdy jen procházky po lese.
+        </p>
+        <span class="font-bold text-orange-500">Zobrazit profil →</span>
+      </a>
 
     </div>
 
