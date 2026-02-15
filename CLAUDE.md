@@ -22,10 +22,6 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Vybrat lepší Vault items na Hero page (VaultSummary) — 4 milníky (SPŠE, CNK, ČVUT, Blog)
 - [x] Implementace sociálních odkazů (YouTube, Instagram, Facebook, LinkedIn, Strava, Podcast)
 
-### P1 — Vault gap 2013–2026 (odloženo)
-- [ ] Vyřešit co s Vault od roku 2013 do současnosti — 13 let prázdného období
-- [ ] Rozhodnout: doplnit zpětně klíčové milníky? Přidat novou kategorii? Napojit na aktuální obsah?
-
 ### P2 — Blog image fix ✓
 - [x] Zkopírovat 90 obrázků + 1 KMZ z www-2008-20 → public/assets/migrated/
 - [x] Opravit 65 blog archive HTML souborů (uploaded_images, cross-refs, CNK linky, picasaweb, ggpht, onblur)
@@ -83,7 +79,7 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Pod první sekcí jsou jen 2 tlačítka — přidán terciární odkaz na The Vault
 - [x] Odkazy z timeline (VaultSummary) nefiltrují ve Vault správně — DOM refs přesunuty do init()
 
-### P3b — Remaining cleanup
+### P3b — Remaining cleanup ✓
 - [x] Odstranit `updated:` field z 78 blog entries (není ve schema)
 - [x] Vyřešit 49 entries s prázdným `link: ""` (kosmetické)
 - [x] Vytvořit 404 stránku
@@ -125,6 +121,29 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] Research Instagram — fotky z cest a událostí
 - [ ] Research Strava — významné cyklo/běžecké výkony, statistiky
 - [ ] Na základě researche doplnit vault entries pro období 2013–2026
+
+### P6 — SEO & Open Graph
+- [ ] Open Graph meta tagy (`og:title`, `og:image`, `og:description`) v Layout.astro
+- [ ] Twitter Card meta tagy (`twitter:card`, `twitter:image`)
+- [ ] OG image — vytvořit 1200×630 náhledový obrázek pro sdílení
+- [ ] robots.txt v public/
+- [ ] Ověřit sitemap.xml výstup
+
+### P7 — Analytics
+- [ ] Vybrat analytics řešení (Google Analytics / Plausible / Umami)
+- [ ] Implementovat tracking script v Layout.astro
+- [ ] Cookie consent banner (pokud GDPR vyžaduje)
+
+### P8 — Deployment: GitHub → FTP pipni.cz
+- [ ] GitHub Actions workflow pro automatický deploy na FTP
+- [ ] FTP credentials jako GitHub Secrets
+- [ ] Otestovat deploy pipeline (push → build → upload)
+
+### P9 — Responzivní testování & polish
+- [ ] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky)
+- [ ] Otestovat tablet
+- [ ] Favicon ve více formátech (apple-touch-icon, favicon.ico, manifest)
+- [ ] Optimalizace archive obrázků na WebP (nebo Astro `<Image>` kde možné)
 
 ### Nemigrované (rozhodnout zda vůbec)
 - [ ] Fotogalerie — 15 galerií se stovkami fotek (velký rozsah, možná nahradit odkazem na Google Photos/Flickr)
