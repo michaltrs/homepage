@@ -1,6 +1,7 @@
 ---
 title: "Původní web michaltrs.net — jak vypadal"
 pubDate: 2013-12-31T00:00:00.000Z
+link: "/archive/puvodni-web-2008.html"
 category: "news"
 isMilestone: true
 description: "Screenshoty původního webu michaltrs.net a blogu blog.michaltrs.net, který fungoval od roku 2008 do roku 2013. PHP, ručně psaný CSS, Blogger, Picasa, TOPlist counter a Creative Commons licence."
