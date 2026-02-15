@@ -106,7 +106,14 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] CSS: `figure { margin: 0; }` reset + `figcaption` styling (font-size, color, text-align)
 - [x] CNK neklasifikované obrázky → `class="img-right"` float (2007-turecko: 10 img, 2006-pyreneje: 9 img)
 
-### P4d — Screenshoty původního webu do Vault
+### P4d — Migrace Blogger CDN obrázků na lokální hosting ✓
+- [x] Stáhnout všechny obrázky z `blogger.googleusercontent.com` do `public/assets/migrated/blog/` — 90 obrázků
+- [x] Aktualizovat HTML reference ve 27 blog archive souborech na lokální cesty — 93 referencí
+- [x] Opravit `<a href="#">` na lightbox linky u 5 migrovaných obrázků
+- [x] Migrační skript: `scripts/migrate-blogger-images.py`
+- [x] Ověřeno: 0 zbývajících Blogger URL v archivu
+
+### P4e — Screenshoty původního webu do Vault
 - [ ] Udělat screenshoty klíčových sekcí původního webu (www-2008-20/)
 - [ ] Přidat je jako vault entries do roku 2013 (zachytit jak web vypadal)
 
