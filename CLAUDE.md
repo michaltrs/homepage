@@ -117,19 +117,34 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Přidány jako vault entry (2013-12-31, milestone) s popisem každé sekce
 - [x] Uloženo v `public/assets/screenshots/` (6 JPG, celkem 1.7MB)
 
-### P5 — Vault gap 2013–2026: research sociálních sítí
-- [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
-- [ ] Research LinkedIn — kariérní milníky, pozice, projekty
-- [ ] Research Instagram — fotky z cest a událostí
-- [ ] Research Strava — významné cyklo/běžecké výkony, statistiky
-- [ ] Na základě researche doplnit vault entries pro období 2013–2026
+### P5 — Vault gap 2013–2026: otevřená otázka
+**Dilema:** 13 let prázdna ve Vault. Od roku 2013 žádné entries — ale život se nezastavil, jen se přesunul na sociální sítě (Facebook, Instagram, Strava, YouTube).
 
-### P6 — SEO & Open Graph
-- [ ] Open Graph meta tagy (`og:title`, `og:image`, `og:description`) v Layout.astro
-- [ ] Twitter Card meta tagy (`twitter:card`, `twitter:image`)
-- [ ] OG image — vytvořit 1200×630 náhledový obrázek pro sdílení
-- [ ] robots.txt v public/
-- [ ] Ověřit sitemap.xml výstup
+**Varianta A — Nechat jak je:**
+- Vault končí v 2013, screenshoty původního webu tvoří přirozený závěr éry
+- Na homepage už jsou odkazy na všechny socky — kdo chce, najde si tam aktuální obsah
+- Zpětné doplňování 13 let z FB/IG je obrovská práce s nejistým výsledkem
+
+**Varianta B — Pár klíčových milníků:**
+- Doplnit jen 5–10 ručně vybraných milníků (kariérní změny, velké cesty, rodina)
+- Vault by měl plynulejší přechod do současnosti
+- Zdroje: LinkedIn (kariéra), Facebook/IG (osobní), Strava (sport)
+
+**Varianta C — "Éra sociálních sítí" entry:**
+- Jeden vault entry (~2014) konstatující přesun na sociální sítě
+- S odkazy na profily — funguje jako bridge mezi starým webem a současností
+- Minimální práce, čistý narativ
+
+**Rozhodnutí:** TBD — zatím odloženo, P6/P8/P9 mají vyšší prioritu pro launch
+
+### P6 — SEO & Open Graph ✓
+- [x] Open Graph meta tagy (`og:type`, `og:url`, `og:title`, `og:description`, `og:image`, `og:locale`) v Layout.astro
+- [x] Twitter Card meta tagy (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`)
+- [x] OG image — 1200×630 JPG s headshotem, jménem a tagline (public/og-image.jpg)
+- [x] robots.txt v public/ s odkazem na sitemap
+- [x] Sitemap ověřena — 2 URL (/, /vault/)
+- [x] Canonical URL na každé stránce
+- [x] Vylepšen výchozí description
 
 ### P7 — Analytics ✓
 - [x] Vybrat analytics řešení — Google Analytics 4 (G-GGVHEVQ5R4, převzato z www-2008-20)

@@ -6,12 +6,16 @@ import Navigation from '../components/Navigation.astro';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { 
-  title = "Michal Trs | Joy is in your own hands", 
-  description = "Personal brand focus on CTO leadership, AI, and the philosophy of personal responsibility for joy." 
+const {
+  title = "Michal Trs | Joy is in your own hands",
+  description = "CTO @ Auris One · MTB rider · otec 3 dětí. Engineering, leadership a osobní zodpovědnost za vlastní radost.",
+  ogImage = "/og-image.jpg"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <html lang='cs'>
   <head>
@@ -21,7 +25,22 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="cs_CZ" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
