@@ -27,6 +27,25 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     
+    <!-- GA4: loaded only after cookie consent -->
+    <script is:inline>
+      window.gaLoaded = false;
+      function loadGA() {
+        if (window.gaLoaded) return;
+        window.gaLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-GGVHEVQ5R4';
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-GGVHEVQ5R4');
+      }
+      if (localStorage.getItem('cookie-consent') === 'accepted') loadGA();
+    </script>
+
     <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
@@ -48,6 +67,37 @@ const {
       }
       initScrollAnimations();
       document.addEventListener('astro:after-swap', initScrollAnimations);
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-charcoal text-white hidden">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-sm">
+        <p class="flex-1">Tento web používá cookies pro Google Analytics. Pomáhá mi to pochopit, jak web používáte.</p>
+        <div class="flex gap-3 shrink-0">
+          <button id="cookie-reject" class="px-4 py-2 rounded-lg border border-white/30 hover:bg-white/10 transition-colors">Odmítnout</button>
+          <button id="cookie-accept" class="px-4 py-2 rounded-lg bg-joy-yellow text-charcoal font-bold hover:bg-joy-yellow/90 transition-colors">Přijmout</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function initCookieBanner() {
+        var consent = localStorage.getItem('cookie-consent');
+        var banner = document.getElementById('cookie-banner');
+        if (!banner || consent) return;
+        banner.classList.remove('hidden');
+        document.getElementById('cookie-accept')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'accepted');
+          banner.classList.add('hidden');
+          loadGA();
+        });
+        document.getElementById('cookie-reject')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'rejected');
+          banner.classList.add('hidden');
+        });
+      }
+      initCookieBanner();
+      document.addEventListener('astro:after-swap', initCookieBanner);
     </script>
 
     <footer class="mt-auto py-12 px-6 border-t border-charcoal/5 text-center bg-white">

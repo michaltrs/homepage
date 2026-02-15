@@ -129,10 +129,10 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] robots.txt v public/
 - [ ] Ověřit sitemap.xml výstup
 
-### P7 — Analytics
-- [ ] Vybrat analytics řešení (Google Analytics / Plausible / Umami)
-- [ ] Implementovat tracking script v Layout.astro
-- [ ] Cookie consent banner (pokud GDPR vyžaduje)
+### P7 — Analytics ✓
+- [x] Vybrat analytics řešení — Google Analytics 4 (G-GGVHEVQ5R4, převzato z www-2008-20)
+- [x] Implementovat tracking script v Layout.astro — GA se načte až po cookie consent
+- [x] Cookie consent banner — fixní spodní lišta, Přijmout/Odmítnout, localStorage pamatuje volbu
 
 ### P8 — Deployment: GitHub → FTP pipni.cz
 - [ ] GitHub Actions workflow pro automatický deploy na FTP
