@@ -111,9 +111,11 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Migrační skript: `scripts/migrate-blogger-images.py`
 - [x] Ověřeno: 0 zbývajících Blogger URL v archivu
 
-### P4e — Screenshoty původního webu do Vault
-- [ ] Udělat screenshoty klíčových sekcí původního webu (www-2008-20/)
-- [ ] Přidat je jako vault entries do roku 2013 (zachytit jak web vypadal)
+### P4e — Screenshoty původního webu do Vault ✓
+- [x] Udělat screenshoty klíčových sekcí původního webu — 6 stránek (homepage, fotky, cnk, cvut-fel, spse, blog)
+- [x] Screenshoty pořízeny z živého webu michaltrs.net a blog.michaltrs.net pomocí Playwright
+- [x] Přidány jako vault entry (2013-12-31, milestone) s popisem každé sekce
+- [x] Uloženo v `public/assets/screenshots/` (6 JPG, celkem 1.7MB)
 
 ### P5 — Vault gap 2013–2026: research sociálních sítí
 - [ ] Research Facebook — významné události, fotky, milníky k doplnění do timeline
