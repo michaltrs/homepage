@@ -146,15 +146,20 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Cookie consent banner — fixní spodní lišta, Přijmout/Odmítnout, localStorage pamatuje volbu
 
 ### P8 — Deployment: GitHub → FTP pipni.cz
-- [ ] GitHub Actions workflow pro automatický deploy na FTP
-- [ ] FTP credentials jako GitHub Secrets
+- [x] GitHub Actions workflow pro automatický deploy na FTP (`.github/workflows/deploy.yml`)
+- [x] `.htaccess` v public/ — HTTPS redirect + cache headers pro statické assety
+- [ ] FTP credentials jako GitHub Secrets (Michal: `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`)
+- [ ] Smazat obsah www/ na FTP před prvním deployem
+- [ ] SSL certifikát — Let's Encrypt v admin panelu pipni.cz
 - [ ] Otestovat deploy pipeline (push → build → upload)
 
-### P9 — Responzivní testování & polish
-- [ ] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky)
-- [ ] Otestovat tablet
-- [ ] Favicon ve více formátech (apple-touch-icon, favicon.ico, manifest)
-- [ ] Optimalizace archive obrázků na WebP (nebo Astro `<Image>` kde možné)
+### P9 — Responzivní testování & polish ✓
+- [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
+- [x] Otestovat tablet — OK
+- [x] Opravit Vault subtitle (2006–2013 → 2001–2014)
+- [x] Favicon ve více formátech — favicon.ico (16+32), apple-touch-icon.png (180), icon-192/512.png, site.webmanifest
+- [x] Optimalizace archive obrázků — rozhodnuto nemigrovat na WebP (737 obrázků / 105 MB, největší 856 KB, neefektivní)
+- Poznámka: mobilní navigace se láme na 2 řádky (kosmetické, funkční)
 
 ### Nemigrované — rozhodnuto: nemigrovat
 - ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme
