@@ -125,25 +125,11 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Přidány jako vault entry (2013-12-31, milestone) s popisem každé sekce
 - [x] Uloženo v `public/assets/screenshots/` (6 JPG, celkem 1.7MB)
 
-### P5 — Vault gap 2013–2026: otevřená otázka
-**Dilema:** 13 let prázdna ve Vault. Od roku 2013 žádné entries — ale život se nezastavil, jen se přesunul na sociální sítě (Facebook, Instagram, Strava, YouTube).
-
-**Varianta A — Nechat jak je:**
-- Vault končí v 2013, screenshoty původního webu tvoří přirozený závěr éry
-- Na homepage už jsou odkazy na všechny socky — kdo chce, najde si tam aktuální obsah
-- Zpětné doplňování 13 let z FB/IG je obrovská práce s nejistým výsledkem
-
-**Varianta B — Pár klíčových milníků:**
-- Doplnit jen 5–10 ručně vybraných milníků (kariérní změny, velké cesty, rodina)
-- Vault by měl plynulejší přechod do současnosti
-- Zdroje: LinkedIn (kariéra), Facebook/IG (osobní), Strava (sport)
-
-**Varianta C — "Éra sociálních sítí" entry:**
-- Jeden vault entry (~2014) konstatující přesun na sociální sítě
-- S odkazy na profily — funguje jako bridge mezi starým webem a současností
-- Minimální práce, čistý narativ
-
-**Rozhodnutí:** TBD — zatím odloženo, P6/P8/P9 mají vyšší prioritu pro launch
+### P5 — Vault gap 2013–2026 ✓
+- [x] Varianta C zvolena — bridge entry + jeden životní milník
+- [x] 2012: "Teamleader a táta" — první syn + Ondra Vlček udělal teamleadera, obě role naráz (milestone)
+- [x] 2014: "Éra sociálních sítí" — bridge entry s archive stránkou a odkazy na profily
+- [x] Research sociálních sítí odložen na neurčito — launch neblokuje
 
 ### P6 — SEO & Open Graph ✓
 - [x] Open Graph meta tagy (`og:type`, `og:url`, `og:title`, `og:description`, `og:image`, `og:locale`) v Layout.astro
@@ -170,9 +156,9 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [ ] Favicon ve více formátech (apple-touch-icon, favicon.ico, manifest)
 - [ ] Optimalizace archive obrázků na WebP (nebo Astro `<Image>` kde možné)
 
-### Nemigrované (rozhodnout zda vůbec)
-- [ ] Fotogalerie — 15 galerií se stovkami fotek (velký rozsah, možná nahradit odkazem na Google Photos/Flickr)
-- [ ] ~~Video — nahrazeno YouTube linkem (asi OK)~~ — hotovo (P3)
+### Nemigrované — rozhodnuto: nemigrovat
+- ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme
+- ~~Video~~ — nahrazeno YouTube linkem (P3)
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
