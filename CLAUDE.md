@@ -145,13 +145,12 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Implementovat tracking script v Layout.astro — GA se načte až po cookie consent
 - [x] Cookie consent banner — fixní spodní lišta, Přijmout/Odmítnout, localStorage pamatuje volbu
 
-### P8 — Deployment: GitHub → FTP pipni.cz
-- [x] GitHub Actions workflow pro automatický deploy na FTP (`.github/workflows/deploy.yml`)
-- [x] `.htaccess` v public/ — HTTPS redirect + cache headers pro statické assety
-- [ ] FTP credentials jako GitHub Secrets (Michal: `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`)
-- [ ] Smazat obsah www/ na FTP před prvním deployem
-- [ ] SSL certifikát — Let's Encrypt v admin panelu pipni.cz
-- [ ] Otestovat deploy pipeline (push → build → upload)
+### P8 — Deployment: Cloudflare Pages ✓
+- [x] ~~GitHub Actions + FTP pipni.cz~~ — pipni.cz nepodporuje .htaccess, zastaralý TLS
+- [x] Migrace na Cloudflare Pages — automatický build+deploy z GitHub, HTTPS zdarma, globální CDN
+- [x] Produkční URL: `homepage-dbb.pages.dev`
+- [ ] Custom doména `michaltrs.net` — DNS CNAME na Forpsi → Cloudflare Pages
+- [ ] Smazat FTP secrets z GitHub repo settings
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
