@@ -145,12 +145,20 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Implementovat tracking script v Layout.astro — GA se načte až po cookie consent
 - [x] Cookie consent banner — fixní spodní lišta, Přijmout/Odmítnout, localStorage pamatuje volbu
 
-### P8 — Deployment: Cloudflare Pages ✓
+### P8 — Deployment: Cloudflare Pages (deploy funguje, doména čeká)
 - [x] ~~GitHub Actions + FTP pipni.cz~~ — pipni.cz nepodporuje .htaccess, zastaralý TLS
 - [x] Migrace na Cloudflare Pages — automatický build+deploy z GitHub, HTTPS zdarma, globální CDN
 - [x] Produkční URL: `homepage-dbb.pages.dev`
-- [ ] Custom doména `michaltrs.net` — DNS CNAME na Forpsi → Cloudflare Pages
-- [ ] Smazat FTP secrets z GitHub repo settings
+- [x] Cloudflare: doména `michaltrs.net` přidána přes "Connect a domain", Free plán
+
+#### PRIORITA: Zbývající kroky (Michal, ručně)
+1. **Forpsi: obnovit přístup** — vyřešit s podporou Forpsi přihlášení do admin panelu
+2. **Forpsi: změnit nameservery** — v administraci domény `michaltrs.net` přepsat NS záznamy na Cloudflare nameservery (zobrazí je Cloudflare dashboard po přidání domény)
+3. **Počkat na propagaci DNS** — minuty až hodiny, Cloudflare dashboard ukáže stav
+4. **Cloudflare Pages: přidat custom doménu** — Pages → projekt → Custom domains → `michaltrs.net` (půjde až po aktivaci DNS)
+5. **Ověřit HTTPS** — Cloudflare automaticky vystaví certifikát po aktivaci domény
+6. **GitHub: smazat FTP secrets** — `github.com/michaltrs/homepage/settings/secrets/actions` → smazat `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD` (už nejsou potřeba)
+7. **Blogger: zrušit blog.michaltrs.net** — v Google nastavení zrušit přesměrování subdomény
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
