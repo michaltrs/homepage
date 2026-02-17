@@ -170,6 +170,15 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Optimalizace archive obrázků — rozhodnuto nemigrovat na WebP (737 obrázků / 105 MB, největší 856 KB, neefektivní)
 - Poznámka: mobilní navigace se láme na 2 řádky (kosmetické, funkční)
 
+### P10 — Archive: konverze do Astro
+- [ ] Vytvořit `ArchiveLayout.astro` — společný layout s header, footer, navigací, GA4, cookie consent
+- [ ] Konvertovat 240 statických HTML z `public/archive/` na Astro stránky (dynamic routes + `set:html`)
+- [ ] Přesunout archive CSS/JS (style.css, lightbox.js) do Astro layoutu
+- [ ] Aktualizovat 180 odkazů ve vault entries a cross-referencích (`.html` → clean URL)
+- [ ] Odstranit self-referencing linky v archive stránkách (odkazy ukazující samy na sebe)
+- [ ] Ověřit lightbox, YouTube embedy, obrázky, tabulky po konverzi
+- [ ] Sitemap — archive stránky se automaticky zahrnou
+
 ### Nemigrované — rozhodnuto: nemigrovat
 - ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme
 - ~~Video~~ — nahrazeno YouTube linkem (P3)
