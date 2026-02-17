@@ -153,12 +153,13 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 
 #### PRIORITA: Zbývající kroky (Michal, ručně)
 1. **Forpsi: obnovit přístup** — vyřešit s podporou Forpsi přihlášení do admin panelu
-2. **Forpsi: změnit nameservery** — v administraci domény `michaltrs.net` přepsat NS záznamy na Cloudflare nameservery (zobrazí je Cloudflare dashboard po přidání domény)
+2. **Forpsi: změnit nameservery** — přepsat NS záznamy na Cloudflare nameservery (zobrazí Cloudflare dashboard)
 3. **Počkat na propagaci DNS** — minuty až hodiny, Cloudflare dashboard ukáže stav
-4. **Cloudflare Pages: přidat custom doménu** — Pages → projekt → Custom domains → `michaltrs.net` (půjde až po aktivaci DNS)
+4. **Cloudflare Pages: přidat custom doménu** — Pages → projekt → Custom domains → `michaltrs.net`
 5. **Ověřit HTTPS** — Cloudflare automaticky vystaví certifikát po aktivaci domény
-6. **GitHub: smazat FTP secrets** — `github.com/michaltrs/homepage/settings/secrets/actions` → smazat `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD` (už nejsou potřeba)
-7. **Blogger: zrušit blog.michaltrs.net** — v Google nastavení zrušit přesměrování subdomény
+6. **Zrušit pipni.cz hosting** — po ověření že michaltrs.net běží přes Cloudflare
+7. **GitHub: smazat FTP secrets** — `github.com/michaltrs/homepage/settings/secrets/actions` → smazat `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`
+8. ~~**Blogger: zrušit blog.michaltrs.net**~~ ✓
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
