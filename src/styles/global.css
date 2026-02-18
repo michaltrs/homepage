@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Native cross-document view transitions (Chrome 126+, Safari 18.2+) */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+/* Navigation stays in place during transition */
+::view-transition-old(main-nav),
+::view-transition-new(main-nav) {
+  animation: none;
+}
+
 @theme {
   --color-joy-yellow: #EAB308;
   --color-sky-blue: #0EA5E9;

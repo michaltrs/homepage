@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 import Navigation from '../components/Navigation.astro';
 
 interface Props {
@@ -68,30 +67,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       if (localStorage.getItem('cookie-consent') === 'accepted') loadGA();
     </script>
 
-    <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
     <Navigation />
     <slot />
 
     <script>
-      function initScrollAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('[data-animate], [data-animate-stagger]')
-          .forEach(el => observer.observe(el));
-      }
-      initScrollAnimations();
-      document.addEventListener('astro:after-swap', initScrollAnimations);
+      // Scroll-triggered fade-in animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('[data-animate], [data-animate-stagger]')
+        .forEach(el => observer.observe(el));
 
-      // Same-page hash navigation: bypass ClientRouter view transition,
-      // scroll manually and replay CSS animations on the target section.
+      // Same-page hash navigation: replay animations on the target section
       document.addEventListener('click', (e) => {
         const link = (e.target as HTMLElement).closest('a');
         if (!link) return;
@@ -99,21 +93,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           const url = new URL(link.getAttribute('href') || '', location.href);
           if (url.pathname !== location.pathname || !url.hash) return;
 
-          const id = url.hash.substring(1);
-          const target = document.getElementById(id);
+          const target = document.getElementById(url.hash.substring(1));
           if (!target) return;
 
           e.preventDefault();
-          e.stopPropagation();
           history.pushState(null, '', url.hash);
 
-          // Reset animations in target section
           const els = target.querySelectorAll('[data-animate], [data-animate-stagger]');
           els.forEach(el => {
             (el as HTMLElement).style.transition = 'none';
             el.classList.remove('is-visible');
           });
-          target.offsetHeight; // force reflow — hidden state applied instantly
+          target.offsetHeight;
 
           target.scrollIntoView({ behavior: 'smooth' });
 
@@ -124,7 +115,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             });
           });
         } catch {}
-      }, true); // capture phase — runs before ClientRouter
+      });
     </script>
 
     <!-- Cookie Consent Banner -->
@@ -155,7 +146,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         });
       }
       initCookieBanner();
-      document.addEventListener('astro:after-swap', initCookieBanner);
     </script>
 
     <footer class="mt-auto py-12 px-6 border-t border-charcoal/5 text-center bg-white">
