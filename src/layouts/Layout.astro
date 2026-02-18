@@ -75,12 +75,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <slot />
 
     <script>
-      function initScrollAnimations(skipAnimation = false) {
-        const els = document.querySelectorAll('[data-animate], [data-animate-stagger]');
-        if (skipAnimation) {
-          els.forEach(el => el.classList.add('is-visible'));
-          return;
-        }
+      function initScrollAnimations() {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -89,10 +84,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
           });
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(el => observer.observe(el));
+        document.querySelectorAll('[data-animate], [data-animate-stagger]')
+          .forEach(el => observer.observe(el));
       }
       initScrollAnimations();
-      document.addEventListener('astro:after-swap', () => initScrollAnimations(true));
+      document.addEventListener('astro:after-swap', initScrollAnimations);
+
+      // Same-page hash navigation: bypass ClientRouter view transition,
+      // scroll manually and replay CSS animations on the target section.
+      document.addEventListener('click', (e) => {
+        const link = (e.target as HTMLElement).closest('a');
+        if (!link) return;
+        try {
+          const url = new URL(link.getAttribute('href') || '', location.href);
+          if (url.pathname !== location.pathname || !url.hash) return;
+
+          const id = url.hash.substring(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+
+          e.preventDefault();
+          e.stopPropagation();
+          history.pushState(null, '', url.hash);
+
+          // Reset animations in target section
+          const els = target.querySelectorAll('[data-animate], [data-animate-stagger]');
+          els.forEach(el => {
+            (el as HTMLElement).style.transition = 'none';
+            el.classList.remove('is-visible');
+          });
+          target.offsetHeight; // force reflow — hidden state applied instantly
+
+          target.scrollIntoView({ behavior: 'smooth' });
+
+          requestAnimationFrame(() => {
+            els.forEach(el => {
+              (el as HTMLElement).style.transition = '';
+              el.classList.add('is-visible');
+            });
+          });
+        } catch {}
+      }, true); // capture phase — runs before ClientRouter
     </script>
 
     <!-- Cookie Consent Banner -->

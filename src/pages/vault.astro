@@ -96,6 +96,9 @@ const categoryNodeMap = {
 
 <script>
   function init() {
+    // Only run on vault page (listener persists across view transitions)
+    if (!document.getElementById('timeline-container')) return;
+
     const buttons = document.querySelectorAll('.filter-btn');
     const entries = document.querySelectorAll('.timeline-entry');
 
