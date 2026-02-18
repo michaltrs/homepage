@@ -1,7 +1,7 @@
 ---
 title: "Další vrchol cesty: Sella Ronda"
 pubDate: 2008-07-20T18:58:00.002Z
-link: "/archive/blog/dal-vrchol-cesty-sella-ronda.html"
+link: "/archive/blog/dal-vrchol-cesty-sella-ronda/"
 category: "blog"
 isMilestone: false
 description: "Mohlo by se zdát, že po plánovaném přejezdu Stelvio pasu budeme mít \"vrchol\" cesty za sebou. Výškově určitě ano, ale jak jsem psal minule, tak letošní cesta je po Dolomitech a Stelvio pass je vlastně..."

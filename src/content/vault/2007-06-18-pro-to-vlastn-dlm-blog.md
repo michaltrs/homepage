@@ -1,7 +1,7 @@
 ---
 title: "Proč to vlastně dělám..."
 pubDate: 2007-06-18T21:34:00.002Z
-link: "/archive/blog/proc-to-vlastne-delam.html"
+link: "/archive/blog/proc-to-vlastne-delam/"
 category: "blog"
 isMilestone: false
 description: "Si říkám proč to vlastně dělám, proč pořád na stránkách něco měním, vylepšuji/zhoršuji, přidávám a zas ubírám. Po pravdě ani nevím... Vzpomínám si, že své první stránky jsem psal ve Wordu, tomu také..."

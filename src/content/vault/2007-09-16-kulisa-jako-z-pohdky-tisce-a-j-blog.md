@@ -1,7 +1,7 @@
 ---
 title: "Kulisa jako z pohádky Tisíce a jedné noci"
 pubDate: 2007-09-16T15:00:00.000Z
-link: "/archive/blog/kulisa-jako-z-pohadky-tisice-a-jedne-noci.html"
+link: "/archive/blog/kulisa-jako-z-pohadky-tisice-a-jedne-noci/"
 category: "cnk"
 isMilestone: false
 description: "Přesně takovýto nadpis byl u krátké zprávy v časopise Cykloturistika 10/2007. A o čem že ta zpráva je? No přece o nedávném mistrovství Evropy v MTB XC, které se jelo v Tureckém Goreme. V celku..."

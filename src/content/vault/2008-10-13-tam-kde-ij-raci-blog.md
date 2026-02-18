@@ -1,7 +1,7 @@
 ---
 title: "Tam kde žijí raci"
 pubDate: 2008-10-13T16:00:00.010Z
-link: "/archive/blog/tam-kde-ij-raci.html"
+link: "/archive/blog/tam-kde-ij-raci/"
 category: "blog"
 isMilestone: false
 description: "Nechci tu psát o Jinočanech, kde se Zuzkou společně bydlíme a jsme oba raci, ale o rodinném výletu na Vysočinu. V sobotu jsme (celá Zuzirodina) se vydali do vesnice Bílek . Šli jsme údolím říčky..."

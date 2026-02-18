@@ -1,7 +1,7 @@
 ---
 title: "Když platný pas nestačí..."
 pubDate: 2008-09-26T04:10:00.003Z
-link: "/archive/blog/kdyz-platny-pas-nestaci.html"
+link: "/archive/blog/kdyz-platny-pas-nestaci/"
 category: "blog"
 isMilestone: false
 description: "Díky své práci (hodnému zaměstnavateli) jsem měl možnost letět do Kanady na konferenci. Již jsem dostal letenku do Ottawy, byl zaplacený hotel a účast na konferenci. S kolegou jsme ob den koukali do..."

@@ -1,7 +1,7 @@
 ---
 title: "Moje auto"
 pubDate: 2007-05-30T22:22:00.000Z
-link: "/archive/blog/moje-auto.html"
+link: "/archive/blog/moje-auto/"
 category: "blog"
 isMilestone: false
 description: "Tenhle původně Vaškův Seat Ibiza je moje první autíčko. Pro 2 lidi, kteří si potřebují dojet jednou týdně nakoupit, občas si někam zajet je úplně supr. Má sice pár drobných mušek, ale za tu cenu..."

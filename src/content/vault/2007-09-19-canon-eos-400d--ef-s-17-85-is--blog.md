@@ -1,7 +1,7 @@
 ---
 title: "Canon EOS 400D + EF-S 17-85 IS, hodně radosti za dost peněz"
 pubDate: 2007-09-19T20:52:00.001Z
-link: "/archive/blog/canon-eos-400d-ef-s-17-85-is-hodne-radosti-za-dost-penez.html"
+link: "/archive/blog/canon-eos-400d-ef-s-17-85-is-hodne-radosti-za-dost-penez/"
 category: "blog"
 isMilestone: false
 description: "Nejen prací je živ člověk, ale taky si musí dělat radost, že jo? Ne že bych měl radosti ze života nějak málo, to rozhodně ne. Mám nejlepší slečnu, takové moje sluníčko, kolo na kterém je radost..."

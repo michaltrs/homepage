@@ -1,7 +1,7 @@
 ---
 title: "15 minut mediální přízně"
 pubDate: 2009-01-21T19:27:00.007Z
-link: "/archive/blog/15-minut-medialni-prizne.html"
+link: "/archive/blog/15-minut-medialni-prizne/"
 category: "blog"
 isMilestone: false
 description: "Ivánku kamaráde, \"hospodářky\" máme pořešený jak nikdy. Úterý odpoledne, jsme v práci, zvoní telefon a na něm neznámé číslo. Nikdo mi takto přímo nevolá, tak chvíli vyčkávám a poté zvedám sluchátko..."

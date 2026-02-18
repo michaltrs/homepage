@@ -1,7 +1,7 @@
 ---
 title: "Národní parky USA za 3 týdny"
 pubDate: 2011-08-09T20:29:00.001Z
-link: "/archive/blog/narodni-parky-usa-za-3-tydny.html"
+link: "/archive/blog/narodni-parky-usa-za-3-tydny/"
 category: "cnk"
 isMilestone: false
 description: "S mojí ženou Zuzkou jsme strávili 22 květnových dní cestováním po národních parcích (NP) na západním pobřeží USA. Za tyto 3 týdny jsme ujeli 3500 mil po 4 státech (Kalifornie, Arizona, Utah a..."
@@ -12,4 +12,4 @@ S mojí ženou Zuzkou jsme strávili 22 květnových dní cestováním po národ
 <iframe frameborder="0" height="350" marginheight="0" marginwidth="0" scrolling="no" src="http://maps.google.com/maps/ms?msa=0&amp;msid=206285939832226903689.00049ff2b4d723ccaef67&amp;ie=UTF8&amp;t=h&amp;ll=36.244273,-114.499512&amp;spn=6.200957,10.327148&amp;z=6&amp;output=embed" width="470"></iframe><br>
 <small>Zobrazit místo <a href="http://maps.google.com/maps/ms?msa=0&amp;msid=206285939832226903689.00049ff2b4d723ccaef67&amp;ie=UTF8&amp;t=h&amp;ll=36.244273,-114.499512&amp;spn=6.200957,10.327148&amp;z=6&amp;source=embed" style="color: blue; text-align: left;">USA, plan cesty</a> na větší mapě</small><br>
 <br>
-<a href="/archive/blog/narodni-parky-usa-za-3-tydny.html#more">Čtěte dál »</a>
+<a href="/archive/blog/narodni-parky-usa-za-3-tydny/#more">Čtěte dál »</a>

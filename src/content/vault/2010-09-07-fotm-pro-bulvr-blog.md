@@ -1,7 +1,7 @@
 ---
 title: "Fotím pro bulvár"
 pubDate: 2010-09-07T20:43:00.002Z
-link: "/archive/blog/fotim-pro-bulvar.html"
+link: "/archive/blog/fotim-pro-bulvar/"
 category: "blog"
 isMilestone: false
 description: "Dneska za mnou přišel Pavel Baudiš a říká: \"v Blesku je tvá fotka\". Byl jsem v rozpacích... asi ten čtvrteční večírek... to zas bude ostuda... Naštěstí pro mne je vše jinak :-). Poslední dobou je v..."

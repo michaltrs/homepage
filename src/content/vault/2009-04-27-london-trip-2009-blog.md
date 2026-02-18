@@ -1,7 +1,7 @@
 ---
 title: "London Trip 2009"
 pubDate: 2009-04-27T20:59:00.020Z
-link: "/archive/blog/london-trip-2009.html"
+link: "/archive/blog/london-trip-2009/"
 category: "blog"
 isMilestone: false
 description: "📷 [galerie není dostupná] Byl to takový rozlítaný víkend... Kamarád Franta (odborník na levné cestovaní s Ryanair em především) přišel s nápadem letět do Londýna. Nikdy před tím jsme se Zuzkou na..."

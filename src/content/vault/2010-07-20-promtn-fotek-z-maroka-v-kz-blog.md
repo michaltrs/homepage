@@ -1,7 +1,7 @@
 ---
 title: "Promítání fotek z Maroka v KZ"
 pubDate: 2010-07-20T14:10:00.004Z
-link: "/archive/blog/promitani-fotek-z-maroka-v-kz.html"
+link: "/archive/blog/promitani-fotek-z-maroka-v-kz/"
 category: "cnk"
 isMilestone: false
 description: "Fotky z Maroka a pivo český... dovolte mi vás pozvat na promítání fotek z Maroka , kde jsme byli minulý rok na podzim jezdit na kole. Jeli jsme z města Fes přes vysoký Atlas do města Marrakech. Po..."

@@ -1,7 +1,7 @@
 ---
 title: "Week of Life"
 pubDate: 2013-11-22T23:20:00.000Z
-link: "/archive/blog/week-of-life.html"
+link: "/archive/blog/week-of-life/"
 category: "blog"
 isMilestone: true
 description: "\"Život na planetě Zemi očima jejích obyvatel\" je moto projektu weekoflife.com (WOL) o kterém úplně tak psát nechci. Jen krátce o co jde. Jedná se o dokumentární projekt kam přes web nahráváte fotky..."

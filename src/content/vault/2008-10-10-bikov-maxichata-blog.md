@@ -1,7 +1,7 @@
 ---
 title: "Biková MAXichata"
 pubDate: 2008-10-10T21:31:00.004Z
-link: "/archive/blog/bikov-maxichata.html"
+link: "/archive/blog/bikov-maxichata/"
 category: "blog"
 isMilestone: false
 description: "Minulý víkend se sešla partička samých veselých lidí u Maxe na chatě. Sešli jsme se v pátek u táboráku a opékání buřtů. Zábava pokračovala do brzkých ranních hodin a proto se nám do stávání moc..."

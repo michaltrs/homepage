@@ -1,7 +1,7 @@
 ---
 title: "Nord Shore lávky"
 pubDate: 2010-09-29T22:44:00.004Z
-link: "/archive/blog/nord-shore-lavky.html"
+link: "/archive/blog/nord-shore-lavky/"
 category: "blog"
 isMilestone: false
 description: "Díky Avastu jsem na 10 dní v Kanadě ve Vancouveru, kde se koná konference Virus bulletin . Vancouver je nádherné město, centrum je placaté, moderní, na břehu oceánu a je obklopeno nádhernou přírodou..."

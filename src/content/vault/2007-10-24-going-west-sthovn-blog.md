@@ -1,7 +1,7 @@
 ---
 title: "Going west (stěhování)"
 pubDate: 2007-10-24T08:48:00.001Z
-link: "/archive/blog/going-west-sthovn.html"
+link: "/archive/blog/going-west-sthovn/"
 category: "blog"
 isMilestone: false
 description: "A je to tady. O víkendu jsme se přestěhovali z rodinného domku v Kyjích do bytu v Jinočanech . V Kyjích jsem žil od svých 5 let a poslední 2 roky společně se Zuzkou. Dům koupili rodiče téměř před..."

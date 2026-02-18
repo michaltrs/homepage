@@ -1,7 +1,7 @@
 ---
 title: "Kaprun freeride 2011"
 pubDate: 2011-03-24T10:36:00.000Z
-link: "/archive/blog/kaprun-freeride-2011.html"
+link: "/archive/blog/kaprun-freeride-2011/"
 category: "blog"
 isMilestone: false
 description: "Nejlepší hory za posledních pár let! Asi rok nám trvalo, než naše veselá partička našla volný víkend. Nakonec se povedlo a ve čtvrtek po práci jsme vyrazili směr Kaprun, pěkně po dálnici přes..."

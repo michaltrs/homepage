@@ -1,7 +1,7 @@
 ---
 title: "Tak a jsme mediální mrd*y..."
 pubDate: 2007-09-11T21:28:00.000Z
-link: "/archive/blog/tak-a-jsme-medialni-mrdy.html"
+link: "/archive/blog/tak-a-jsme-medialni-mrdy/"
 category: "blog"
 isMilestone: false
 description: "... naštěstí ne ve zlém. Kdybych to na vlastní oči neviděl, tak nikomu nevěřím že je tak snadné si \"zahrát\" v reklamě. Ano moje a Zuzky ZÁDA jsou v reklamním letáku :-). Ptáte se jak na to? Popravdě..."

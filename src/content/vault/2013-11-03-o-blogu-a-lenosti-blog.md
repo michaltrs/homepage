@@ -1,7 +1,7 @@
 ---
 title: "O blogu a lenosti"
 pubDate: 2013-11-03T15:59:00.001Z
-link: "/archive/blog/o-blogu-a-lenosti.html"
+link: "/archive/blog/o-blogu-a-lenosti/"
 category: "blog"
 isMilestone: false
 description: "Od 30.ledna 2012 do dnešního dne je hoodně dlouhá doba... za kterou jsem si na blog ani nevzpomněl. Rodina, práce, kolo, kamarádi, zábava, Facebook, Twiter, ... . Na nic z toho se nechci vymlouvat..."

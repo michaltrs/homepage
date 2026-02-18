@@ -1,7 +1,7 @@
 ---
 title: "Nejhorší je Řecko"
 pubDate: 2007-11-23T12:38:00.000Z
-link: "/archive/blog/nejhor-je-ecko.html"
+link: "/archive/blog/nejhor-je-ecko/"
 category: "cnk"
 isMilestone: false
 description: "Když jsme v létě jezdili na kole po Turecku, nikdy nás nenapadlo, že největší problémy budou při cestě vlakem z Istanbulu do Soluně. Cesta z Istanbulu až na hraniční přechod byla bez problémů a..."

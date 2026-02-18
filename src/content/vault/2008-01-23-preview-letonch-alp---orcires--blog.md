@@ -1,7 +1,7 @@
 ---
 title: "Preview letošních alp - Orcières 1850, Francie"
 pubDate: 2008-01-23T07:30:00.001Z
-link: "/archive/blog/preview-letosnich-alp-orcieres-1850-francie.html"
+link: "/archive/blog/preview-letosnich-alp-orcieres-1850-francie/"
 category: "blog"
 isMilestone: false
 description: "Začátkem března se chystáme do střediska Orcières 1850 ve Francii. Sněhové podmínky (koncem ledna) jsou více než dobré. Ve středisku leží přes metr sněhu a na vrcholcích téměř tři. Bohužel z veselé..."

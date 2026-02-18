@@ -1,7 +1,7 @@
 ---
 title: "Val Thorens 2011, jet znovu?"
 pubDate: 2011-03-02T22:26:00.001Z
-link: "/archive/blog/val-thorens-2011-jet-znovu.html"
+link: "/archive/blog/val-thorens-2011-jet-znovu/"
 category: "blog"
 isMilestone: false
 description: "Určitě ANO! Podle katalogu CK Intertrans jsou v Savojských alpách jen 4 střediska, která mají 5 z 5ti bodů v hodnocení terénů vhodných na freeride. Ano, Val Thorens je jedním z nich :-). Další 3..."

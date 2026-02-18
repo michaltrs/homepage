@@ -1,7 +1,7 @@
 ---
 title: "Převlečeno"
 pubDate: 2010-06-15T18:02:00.003Z
-link: "/archive/blog/prevleceno.html"
+link: "/archive/blog/prevleceno/"
 category: "blog"
 isMilestone: false
 description: "Google / Blogger za mě vyřešil moje skoro rok trvající dilema co s blogem. Dost času jsem strávil experimentování s Wordpress em. U Bloggeru jsem nebyl spokojený se šablonami a výsledným designem. Na..."

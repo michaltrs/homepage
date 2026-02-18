@@ -1,7 +1,7 @@
 ---
 title: "Fotky z víkendu"
 pubDate: 2008-07-22T20:38:00.004Z
-link: "/archive/blog/fotky-z-vkendu.html"
+link: "/archive/blog/fotky-z-vkendu/"
 category: "blog"
 isMilestone: false
 description: "O víkendu jsem byli za tátou v jižních Čechách. Byla to naše první návštěva po jeho přestěhování. Fotky domu a okolí (ale také formule a krátké zastávky na Živohošti) jsem dal na picasaweb , místo na..."

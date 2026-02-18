@@ -1,0 +1,146 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  category: string;
+  sourceLabel?: string;
+}
+
+const { title, subtitle, category, sourceLabel } = Astro.props;
+
+const SOURCE_LABELS: Record<string, string> = {
+  'blog': 'blog.michaltrs.net',
+  'cnk': 'michaltrs.net/cnk/',
+  'cvut-fel': 'michaltrs.net/cvut_fel/',
+  'spse-v-uzlabine': 'michaltrs.net/zleb/',
+};
+
+const label = sourceLabel ?? SOURCE_LABELS[category] ?? '';
+---
+<Layout title={`${title} | Archiv Michal Trs`} description={subtitle}>
+  <main class="archive-page">
+    <div class="archive-nav"><a href="/vault/">&larr; Zpět do The Vault</a></div>
+    <div class="archive-header">
+      <h1>{title}</h1>
+      <p><i>{subtitle}</i></p>
+    </div>
+    <div class="content">
+      <slot />
+    </div>
+    {label && (
+      <div class="archive-source">
+        Archivováno z {label}
+      </div>
+    )}
+  </main>
+
+  <script is:inline src="/archive/lightbox.js"></script>
+</Layout>
+
+<style is:global>
+  /* Archive page container */
+  .archive-page {
+    font-family: sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  /* Navigation */
+  .archive-nav { margin-bottom: 20px; font-size: 0.9em; }
+  .archive-nav a { text-decoration: none; color: #0ea5e9; }
+  .archive-nav a:hover { text-decoration: underline; }
+
+  /* Header */
+  .archive-page .archive-header { border-bottom: 2px solid #eee; margin-bottom: 30px; padding-bottom: 10px; }
+
+  /* Links & images */
+  .archive-page a { color: #0ea5e9; }
+  .archive-page img { max-width: 100%; height: auto; }
+
+  /* Restore defaults stripped by Tailwind Preflight */
+  .archive-page h1 { font-size: 2em; font-weight: bold; margin: 0.67em 0; }
+  .archive-page h2 { font-size: 1.5em; font-weight: bold; color: #444; border-bottom: 1px solid #eee; padding-bottom: 8px; margin: 0.83em 0; }
+  .archive-page h3 { font-size: 1.17em; font-weight: bold; color: #555; margin: 1em 0; }
+  .archive-page ul { padding-left: 20px; list-style-type: disc; margin: 1em 0; }
+  .archive-page ol { padding-left: 20px; list-style-type: decimal; margin: 1em 0; }
+  .archive-page li { margin-bottom: 8px; display: list-item; }
+  .archive-page p { margin: 1em 0; }
+  .archive-page b, .archive-page strong { font-weight: bold; }
+  .archive-page i, .archive-page em { font-style: italic; }
+  .archive-page table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  .archive-page td { padding: 6px 12px; border-bottom: 1px solid #eee; }
+  .archive-page th { text-align: left; vertical-align: top; padding: 6px 12px; font-weight: bold; color: #555; }
+  .archive-page .download-all { background: #f0f0f0; padding: 12px; border-radius: 8px; margin: 16px 0; }
+  .archive-page .info { background: #f8f8f8; padding: 6px 12px; font-size: 0.9em; color: #666; margin: 4px 0; }
+
+  /* Source attribution */
+  .archive-page .archive-source { margin-top: 50px; border-top: 1px solid #eee; padding-top: 16px; font-size: 0.8em; color: #999; }
+
+  /* Image classes */
+  .archive-page .img-left { float: left; margin: 0 1em 1em 0; max-width: 500px; }
+  .archive-page .img-right { float: right; margin: 0 0 1em 1em; max-width: 500px; }
+  .archive-page .img-center { display: block; margin: 1em auto; max-width: 500px; }
+  .archive-page .img-inline { display: inline; max-width: 150px; vertical-align: top; margin: 4px; }
+
+  /* Figure */
+  .archive-page figure { margin: 0; }
+  .archive-page figcaption { font-size: 0.85em; color: #666; margin-top: 4px; text-align: center; }
+
+  /* Clear floats */
+  .archive-page .content::after { content: ""; display: table; clear: both; }
+
+  /* Lightbox */
+  .archive-page .lightbox { cursor: pointer; }
+  .lightbox-overlay {
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+    z-index: 1000; justify-content: center; align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img { max-width: 95vw; max-height: 95vh; object-fit: contain; }
+
+  /* Day/section text block */
+  .archive-page .odstavec { margin: 1em 0; overflow: hidden; }
+  .archive-page .odstavec::after { content: ""; display: table; clear: both; }
+
+  /* Gallery */
+  .archive-page .gallery { display: flex; flex-wrap: wrap; gap: 8px; margin: 1em 0; justify-content: center; clear: both; }
+  .archive-page .gallery a, .archive-page .gallery img { max-height: 180px; width: auto; }
+
+  /* Expedition card */
+  .archive-page .card { background: #fafafa; border: 1px solid #eee; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+  .archive-page .card h3 { margin: 0 0 4px; border: none; padding: 0; }
+  .archive-page .card div { font-size: 0.9em; color: #555; margin: 2px 0; }
+  .archive-page .card span { font-size: 0.85em; color: #777; margin-right: 12px; }
+
+  /* Responsive video embed */
+  .archive-page .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 1em 0; max-width: 640px; }
+  .archive-page .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+  /* Dead links */
+  .archive-page .dead-link { color: #999; text-decoration: line-through; }
+  .archive-page .dead-link small { text-decoration: none; font-style: italic; }
+
+  /* Data tables (.tab) */
+  .archive-page .tab { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+  .archive-page .tab th { background: #f8f8f8; white-space: nowrap; }
+  .archive-page .tab td { border-bottom: 1px solid #eee; }
+  .archive-page .tab tr:last-child td { border-bottom: none; }
+
+  /* Responsive — stack floats on mobile */
+  @media (max-width: 600px) {
+    .archive-page .img-left, .archive-page .img-right {
+      float: none;
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+    }
+    .archive-page .gallery a, .archive-page .gallery img { max-height: 140px; }
+    .archive-page .video-responsive { max-width: 100%; }
+  }
+</style>

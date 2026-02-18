@@ -1,7 +1,7 @@
 ---
 title: "Národní parky USA - parky v Utahu a zpět do Las Vegas (2. týden)"
 pubDate: 2011-08-09T20:28:00.000Z
-link: "/archive/blog/narodni-parky-usa-parky-v-utahu-a-zpet-do-las-vegas-2-tyden.html"
+link: "/archive/blog/narodni-parky-usa-parky-v-utahu-a-zpet-do-las-vegas-2-tyden/"
 category: "blog"
 isMilestone: false
 description: "Druhý ze tří článků (když nepočítám přehled na úvod) o naší cestě po Národních parcích na západním pobřeží USA. Slickrock trail, Moab Konečně Moab a vysněný Slickrock trail! Kola půjčujeme v Chile..."
@@ -20,4 +20,4 @@ Konečně Moab a vysněný Slickrock trail! Kola půjčujeme v <a href="http://w
 </tbody></table>
 Druhý den v Moabu i když máme ještě půjčená kola (moje chyba v plánování), tak je ráno vracíme a vyrážíme do <a href="http://www.nps.gov/cany"><b>Canyonlands NP</b></a> (konkrétně Island in the Sky). Zas úplně něco jiného, dvou-poschoďový kaňon a vy jste na horním okraji. Pohled na White rim je úžasný. Udělali jsme tu několik treků (Green river, Mesa arch, ...). a odpoledne se přesouváme do <a href="http://www.nps.gov/arch/"><b>Arches NP</b></a>. Snažíme se objet vše, ale času je málo. K nejfotogeničtějšímu oblouku Delicious Arch přicházíme proti davu lidí, který jde právě dolů. Je noc a tma jak v ... noci. Cesta za světla čelovek je žůžo dobrodrůžo. Doporučujeme každému pro utužení vztahu :-).<br>
 <br>
-<a href="/archive/blog/narodni-parky-usa-parky-v-utahu-a-zpet-do-las-vegas-2-tyden.html#more">Čtěte dál »</a>
+<a href="/archive/blog/narodni-parky-usa-parky-v-utahu-a-zpet-do-las-vegas-2-tyden/#more">Čtěte dál »</a>

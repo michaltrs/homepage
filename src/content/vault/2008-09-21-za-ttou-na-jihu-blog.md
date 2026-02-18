@@ -1,7 +1,7 @@
 ---
 title: "Za tátou na jihu"
 pubDate: 2008-09-21T22:59:00.002Z
-link: "/archive/blog/za-ttou-na-jihu.html"
+link: "/archive/blog/za-ttou-na-jihu/"
 category: "blog"
 isMilestone: false
 description: "📷 [galerie není dostupná] Právě končící víkend jsme strávili společně se Zuzkou, Eliškou, Ondrou a naší králicí v Jižních Čechách u táty. Přijeli jsme v sobotu až kolem poledne, ale i tak jsme toho..."

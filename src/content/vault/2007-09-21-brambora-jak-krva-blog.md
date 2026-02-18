@@ -1,7 +1,7 @@
 ---
 title: "Brambora jak kráva..."
 pubDate: 2007-09-21T20:04:00.000Z
-link: "/archive/blog/brambora-jak-krava.html"
+link: "/archive/blog/brambora-jak-krava/"
 category: "blog"
 isMilestone: false
 description: "... aneb krátký návod jak uvařit \"Savojskou bramboru\". Nejprve je potřeba vypěstovat pořádnou bramboru jak kráva velkou, aby bylo z čeho vařit. Na fotce je brambora, kterou vypěstoval Zuzitaťka. Jak..."

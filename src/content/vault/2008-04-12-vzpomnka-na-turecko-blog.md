@@ -1,7 +1,7 @@
 ---
 title: "Vzpomínka na Turecko"
 pubDate: 2008-04-12T22:18:00.002Z
-link: "/archive/blog/vzpomnka-na-turecko.html"
+link: "/archive/blog/vzpomnka-na-turecko/"
 category: "cnk"
 isMilestone: false
 description: "Uplynulo 3/4 roku od návratu z kol v Turecku. Měsíc strávený ve východních končinách byl namáhavý, místy dobrodružný, ale hlavně krásný. Proto mě mile překvapilo video na Zimoušových stránkách, které..."

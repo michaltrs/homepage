@@ -1,7 +1,7 @@
 ---
 title: "El Caminito del Rey"
 pubDate: 2008-05-12T08:08:00.004Z
-link: "/archive/blog/el-caminito-del-rey.html"
+link: "/archive/blog/el-caminito-del-rey/"
 category: "blog"
 isMilestone: false
 description: "Augi mi poslal link na záznam přechodu ferraty v Jižním Španělsku. Video jsem si nemohl nechat pro sebe... bez jištění a s kamerou v ruce. Pro zájemce je více informací na wikipedii ."

@@ -1,7 +1,7 @@
 ---
 title: "PF MMXI"
 pubDate: 2010-12-31T16:12:00.000Z
-link: "/archive/blog/pf-mmxi.html"
+link: "/archive/blog/pf-mmxi/"
 category: "blog"
 isMilestone: false
 description: "Do nového roku vám se Zuzkou přejeme ať je pro Vás tak úspěšný jako byl ten stávající pro nás. Samozřejmě ještě k tomu mnoho zdraví, úspěchů a člověka, s kterým se můžete z toho všeho radovat. A co..."

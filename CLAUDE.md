@@ -6,7 +6,7 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 
 - **2 stránky**: index.astro (homepage), vault.astro (timeline archiv)
 - **1 content collection**: vault (195 entries, 5 kategorií: news, blog, cnk, cvut-fel, spse-v-uzlabine)
-- **Archive HTML**: statické stránky v public/archive/ (blog 78, cvut-fel 37, spse-v-uzlabine 8, cnk 11)
+- **Archive Astro pages**: 136 stránek v src/pages/archive/ (blog 78, cvut-fel 37, spse 8, cnk 11, root 2) + 104 nested HTML (Doxygen, projekty) v public/archive/
 - **Migrace hotové**: ČVUT FEL (kompletní), SPŠE (kompletní), Blog (z Bloggeru), News (z RSS), CNK (kompletní)
 
 ## Plán práce
@@ -170,14 +170,16 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Optimalizace archive obrázků — rozhodnuto nemigrovat na WebP (737 obrázků / 105 MB, největší 856 KB, neefektivní)
 - Poznámka: mobilní navigace se láme na 2 řádky (kosmetické, funkční)
 
-### P10 — Archive: konverze do Astro
-- [ ] Vytvořit `ArchiveLayout.astro` — společný layout s header, footer, navigací, GA4, cookie consent
-- [ ] Konvertovat 240 statických HTML z `public/archive/` na Astro stránky (dynamic routes + `set:html`)
-- [ ] Přesunout archive CSS/JS (style.css, lightbox.js) do Astro layoutu
-- [ ] Aktualizovat 180 odkazů ve vault entries a cross-referencích (`.html` → clean URL)
-- [ ] Odstranit self-referencing linky v archive stránkách (odkazy ukazující samy na sebe)
-- [ ] Ověřit lightbox, YouTube embedy, obrázky, tabulky po konverzi
-- [ ] Sitemap — archive stránky se automaticky zahrnou
+### P10 — Archive: konverze do Astro ✓
+- [x] Vytvořit `ArchiveLayout.astro` — společný layout s header, footer, navigací, GA4, cookie consent
+- [x] Konvertovat 136 archive-template HTML z `public/archive/` na Astro stránky v `src/pages/archive/`
+- [x] 104 nested HTML (Doxygen, projekty) zůstává jako statické v `public/archive/` — nemají archive template
+- [x] Přesunout archive CSS/JS (style.css, lightbox.js) do Astro layoutu přes `headContent` slot
+- [x] Aktualizovat 168 odkazů ve vault entries a cross-referencích (`.html` → clean URL)
+- [x] Odstranit 1 self-referencing link (36dbs)
+- [x] Sitemap obsahuje 136 archive URL
+- [x] Build: 139 stránek, 0 chyb
+- [x] Migrační skripty: `scripts/migrate-archive-to-astro.py`, `scripts/fix-archive-links.py`
 
 ### Nemigrované — rozhodnuto: nemigrovat
 - ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme

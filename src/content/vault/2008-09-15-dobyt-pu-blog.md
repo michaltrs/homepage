@@ -1,7 +1,7 @@
 ---
 title: "Dobytí Řípu"
 pubDate: 2008-09-15T18:20:00.007Z
-link: "/archive/blog/dobyt-pu.html"
+link: "/archive/blog/dobyt-pu/"
 category: "cnk"
 isMilestone: false
 description: "Celý týden jsme se těšili na sobotu - na náš dlouho plánovaný výšlap na Ještěd. Přišla sobota, vstáváme kolem osmé. Pro jistotu se koukám na web a zrovna jak na potvoru se tam jede Ještěd Tour..."

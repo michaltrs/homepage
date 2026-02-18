@@ -1,7 +1,7 @@
 ---
 title: "ZOO Praha - test tele-objektivu CANON EF 70-300 4-5.6 IS USM"
 pubDate: 2008-09-27T22:16:00.003Z
-link: "/archive/blog/zoo-praha-test-tele-objektivu-canon-ef-70-300-4-56-is-usm.html"
+link: "/archive/blog/zoo-praha-test-tele-objektivu-canon-ef-70-300-4-56-is-usm/"
 category: "blog"
 isMilestone: false
 description: "📷 [galerie není dostupná] Před 14ti dny jsem investoval do tele-objektivu CANON EF 70-300 4-5.6 IS USM . Rozhodně se bez něj dá žít, ale na druhou stranu proč si nedělat radost. Koupil jsem ve svém..."

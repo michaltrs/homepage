@@ -1,7 +1,7 @@
 ---
 title: "Alfa Romeo 156 vs. Volvo V40"
 pubDate: 2008-03-30T12:14:00.009Z
-link: "/archive/blog/alfa-romeo-156-vs-volvo-v40.html"
+link: "/archive/blog/alfa-romeo-156-vs-volvo-v40/"
 category: "blog"
 isMilestone: false
 description: "Před rokem jsem od kamaráda Vaška koupil své vůbec první auto. Za ten rok jsme si užili spoustu legrace, ale i problémů. Ujelo s námi 6000 km, ale občas nechtělo startovat, teče z něj olej a benzín..."

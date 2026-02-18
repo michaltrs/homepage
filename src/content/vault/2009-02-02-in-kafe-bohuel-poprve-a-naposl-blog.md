@@ -1,7 +1,7 @@
 ---
 title: "Iné Kafe, bohužel poprve a naposled"
 pubDate: 2009-02-02T22:01:00.003Z
-link: "/archive/blog/ine-kafe-bohuzel-poprve-a-naposled.html"
+link: "/archive/blog/ine-kafe-bohuzel-poprve-a-naposled/"
 category: "blog"
 isMilestone: false
 description: "Vše podstatné už napsal Augi , takže jen krátce. Iné Kafe jsem začal poslouchat když už pomalu přestávali hrát, takže až do soboty 31.ledna 2009 jsem je znal jen ze studiových alb. A přišel jsem o..."

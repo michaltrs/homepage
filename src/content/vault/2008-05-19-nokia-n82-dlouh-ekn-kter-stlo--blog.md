@@ -1,7 +1,7 @@
 ---
 title: "Nokia N82, dlouhé čekání které stálo za to"
 pubDate: 2008-05-19T21:33:00.012Z
-link: "/archive/blog/nokia-n82-dlouhe-cekani-ktere-stalo-za-to.html"
+link: "/archive/blog/nokia-n82-dlouhe-cekani-ktere-stalo-za-to/"
 category: "blog"
 isMilestone: false
 description: "Koncem roku 2007 se začaly objevovat zprávy o novém telefonu Nokia N82 . Funkcemi shodná s nejnadupanější Nokií N95, ale zabalená do formátu klasického telefonu. Před půl rokem, kdy jsem si udělal..."
@@ -13,4 +13,4 @@ Před půl rokem, kdy jsem si udělal radost zrcadlovkou <a href="/vault?categor
 PDA jsem od samého začátku degradoval na GPS navigaci a MP3 přehrávač. 3,5&quot; display je pro navigaci v autě dostatečně velký, ale vzhledem ke špatné citlivosti GPS přijímače nic moc použitelného. Jako MP3 přehrávač je PDA poměrně velké a ovládání stylusem není zrovna žádný med...<br>
 Telefonů jsem měl celou řadu, v poslední době spíše lowend / outdoor modely, protože jsem vždy nějakou neopatrností o telefon přišel.<br>
 <br>
-<a href="/archive/blog/nokia-n82-dlouhe-cekani-ktere-stalo-za-to.html#more">Čtěte dál »</a>
+<a href="/archive/blog/nokia-n82-dlouhe-cekani-ktere-stalo-za-to/#more">Čtěte dál »</a>

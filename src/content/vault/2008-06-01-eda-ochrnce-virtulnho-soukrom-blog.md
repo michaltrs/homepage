@@ -1,7 +1,7 @@
 ---
 title: "Eda, ochránce virtuálního soukromí"
 pubDate: 2008-06-01T08:34:00.006Z
-link: "/archive/blog/eda-ochrnce-virtulnho-soukrom.html"
+link: "/archive/blog/eda-ochrnce-virtulnho-soukrom/"
 category: "blog"
 isMilestone: false
 description: "V pátek 30.5.2008 vyšel v Lidových novinách rozhovor s naším šéfem Edou Kučerou. Celý článek najdete na webu LN pod názvem Ochránce virtuálního soukromí . Bohužel neobsahuje fotografii ze \"zákulisí\"..."
