@@ -1,0 +1,32 @@
+# michaltrs.net
+
+Můj osobní web. Astro 5 + Tailwind v4, statický build, nasazeno na Cloudflare Pages.
+
+[![michaltrs.net](https://img.shields.io/website?url=https%3A%2F%2Fmichaltrs.net&label=michaltrs.net)](https://michaltrs.net)
+[![Cloudflare Pages](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://michaltrs.net)
+[![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+
+## O projektu
+
+CTO · MTB rider · otec 3 dětí · Praha. Osobní web s profilem a archivem obsahu z let 2001–2013.
+
+**[→ michaltrs.net](https://michaltrs.net)**
+
+## Architektura
+
+- **Astro 5** + **Tailwind v4**, statický build
+- 2 hlavní stránky: homepage (`/`), archiv The Vault (`/vault/`)
+- 195 vault entries — news, blog, cnk, cvut-fel, spse-v-uzlabine
+- 136 Astro archive stránek + 104 statických HTML (Doxygen, projekty)
+
+## Vývoj
+
+```bash
+npm install
+npm run dev    # localhost:4321
+npm run build  # dist/
+```
+
+## Deployment
+
+Automatický build + deploy přes Cloudflare Pages při push na `main`.

@@ -145,22 +145,15 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] Implementovat tracking script v Layout.astro — GA se načte až po cookie consent
 - [x] Cookie consent banner — fixní spodní lišta, Přijmout/Odmítnout, localStorage pamatuje volbu
 
-### P8 — Deployment: Cloudflare Pages (deploy funguje, doména čeká)
+### P8 — Deployment: Cloudflare Pages ✓
 - [x] ~~pipni.cz nepodporuje .htaccess, zastaralý TLS~~ → migrace na Cloudflare Pages
 - [x] Cloudflare Pages: automatický build+deploy z GitHub, HTTPS zdarma, globální CDN (`homepage-dbb.pages.dev`)
-- [x] Cloudflare: doména `michaltrs.net` přidána přes "Connect a domain", Free plán
-- [x] Dočasný dual deploy: push na main → FTP pipni.cz (GitHub Actions) + Cloudflare Pages (dokud DNS neukazuje na Cloudflare)
+- [x] Cloudflare: doména `michaltrs.net` — NS záznamy přepsány na Cloudflare, DNS propagováno
+- [x] `michaltrs.net` běží na Cloudflare Pages s HTTPS
+- [x] ~~Dočasný dual deploy na pipni.cz~~ — FTP workflow smazán (`.github/workflows/deploy.yml`)
+- [x] ~~**Blogger: zrušit blog.michaltrs.net**~~ ✓
 
-#### PRIORITA: Zbývající kroky (Michal, ručně)
-1. **Forpsi: obnovit přístup** — vyřešit s podporou Forpsi přihlášení do admin panelu
-2. **Forpsi: změnit nameservery** — přepsat NS záznamy na Cloudflare nameservery (zobrazí Cloudflare dashboard)
-3. **Počkat na propagaci DNS** — minuty až hodiny, Cloudflare dashboard ukáže stav
-4. **Cloudflare Pages: přidat custom doménu** — Pages → projekt → Custom domains → `michaltrs.net`
-5. **Ověřit HTTPS** — Cloudflare automaticky vystaví certifikát po aktivaci domény
-6. **Zrušit pipni.cz hosting** — po ověření že michaltrs.net běží přes Cloudflare
-7. **GitHub: smazat FTP workflow** — smazat `.github/workflows/deploy.yml`
-8. **GitHub: smazat FTP secrets** — `github.com/michaltrs/homepage/settings/secrets/actions` → smazat `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`
-8. ~~**Blogger: zrušit blog.michaltrs.net**~~ ✓
+- [x] GitHub: smazat FTP secrets (`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`) ✓
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
