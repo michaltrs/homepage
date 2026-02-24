@@ -3,7 +3,7 @@
 Můj osobní web. Astro 5 + Tailwind v4, statický build, nasazeno na Cloudflare Pages.
 
 [![michaltrs.net](https://img.shields.io/website?url=https%3A%2F%2Fmichaltrs.net&label=michaltrs.net)](https://michaltrs.net)
-[![Cloudflare Pages](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://michaltrs.net)
+[![Cloudflare Pages](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-FF5D01?logo=astro&logoColor=white)](https://astro.build)
 
 ## O projektu
