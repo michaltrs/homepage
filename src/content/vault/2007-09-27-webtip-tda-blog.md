@@ -2,7 +2,7 @@
 title: "WEBTIP TÝŽDŇA"
 pubDate: 2007-09-27T12:20:00.001Z
 link: "/archive/blog/webtip-tda/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Na cestovatelském serveru cestovani.SME.sk se objevil odkaz na moje stránky, což mě velice těší. Konkrétně vede na popis cesty po Pyrenejích z roku 2006."
 ---

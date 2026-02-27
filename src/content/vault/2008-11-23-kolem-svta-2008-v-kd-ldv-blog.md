@@ -2,7 +2,7 @@
 title: "Kolem Světa 2008 v KD Ládví"
 pubDate: 2008-11-23T02:02:00.006Z
 link: "/archive/blog/kolem-sveta-2008-v-kd-ladvi/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Ve dnech 22.-23.11.2008 proběhl v KD Ládví cestovatelský festival s názvem KOLEM SVĚTA . Již v minulosti jsme tam se Zuzkou několikrát byli, takže jsme věděli do čeho jdeme. Program byl velice..."
 ---

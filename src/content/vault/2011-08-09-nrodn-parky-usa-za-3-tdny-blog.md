@@ -2,7 +2,7 @@
 title: "Národní parky USA za 3 týdny"
 pubDate: 2011-08-09T20:29:00.001Z
 link: "/archive/blog/narodni-parky-usa-za-3-tydny/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "S mojí ženou Zuzkou jsme strávili 22 květnových dní cestováním po národních parcích (NP) na západním pobřeží USA. Za tyto 3 týdny jsme ujeli 3500 mil po 4 státech (Kalifornie, Arizona, Utah a..."
 ---

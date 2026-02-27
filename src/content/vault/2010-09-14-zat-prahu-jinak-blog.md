@@ -2,7 +2,7 @@
 title: "Zažít Prahu jinak"
 pubDate: 2010-09-14T21:47:00.001Z
 link: "/archive/blog/zazit-prahu-jinak/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Titulek jsem si tak trochu vypůjčil od auto-matu, který tímto zve na nedělní (25.9.2010) happening v ulicích Prahy . Akce je pořádaná v rámci Evropského týdne mobility 2010 , který toho nabídne..."
 ---

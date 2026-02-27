@@ -2,7 +2,7 @@
 title: "Turecko 2007 - plánovaná trasa"
 pubDate: 2007-05-30T21:52:00.000Z
 link: "/archive/blog/turecko-2007-planovana-trasa/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Pokud to někoho zajíma co budu dělat v létě o prázdninách, tak vizte mapu. Jako každý rok se vydáváme na téměř měsíční putování, tentokrát po Turecku. Bohuže oprti loňsku nejede Zimous , který teď..."
 ---

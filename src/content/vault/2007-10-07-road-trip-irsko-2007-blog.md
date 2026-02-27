@@ -2,7 +2,7 @@
 title: "Road trip Irsko 2007"
 pubDate: 2007-10-07T15:00:00.002Z
 link: "/archive/blog/road-trip-irsko-2007/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Se Zuzkou jsme si udělali výlet na 5 dní do Irska. Navštívit Vlčáka a Máťu (Zuzibrácha), kteří zde skoro 2 roky pracují. Jeden v Limericku, druhý v Corku. Z \"pouhé\" návštěvy se stal jeden velký výlet..."
 ---

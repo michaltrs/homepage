@@ -2,7 +2,7 @@
 title: "Sejmi cyklistu"
 pubDate: 2008-10-27T15:18:00.006Z
 link: "/archive/blog/sejmi-cyklistu/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Při přesouvání školního mail-boxu na GMail jsem narazil na flashovou hru, kterou mi poslal Vlasáč. Hra Dangerous Dave Tredz Game podporuje bikeshop v UK a jde v ní o odpálení cyklisty bejzbolkou co..."
 ---

@@ -2,7 +2,7 @@
 title: "Stelvio Pass, jeden z vrcholů letošních kol"
 pubDate: 2008-07-10T20:21:00.002Z
 link: "/archive/blog/stelvio-pass-jeden-z-vrcholu-letosnich-kol/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Tak jako každý rok i letos se chystáme na kola. Po loňské, téměř měsíční, cestě po Turecku , padla volba na Dolomiti. Poletíme do Benátek, které jsou od Prahy vzdálené pouhých 550km. Cestu si proto..."
 ---

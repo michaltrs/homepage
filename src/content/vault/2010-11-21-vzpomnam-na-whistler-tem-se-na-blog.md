@@ -2,7 +2,7 @@
 title: "Vzpomínam na Whistler, teším se na Moab"
 pubDate: 2010-11-21T12:55:00.008Z
 link: "/archive/blog/vzpominam-na-whistler-tesim-se-na-moab/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Je to skoro dva měsíce od mého návratu z Kanadského Vancouveru, kde jsem mohl být díky Avastu na konferenci Virus Bulletin. Měli jsme několik volných dní, tak jsme je s Milošem vyplnili tím, co..."
 ---

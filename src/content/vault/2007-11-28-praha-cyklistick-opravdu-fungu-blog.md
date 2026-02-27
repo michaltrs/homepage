@@ -2,7 +2,7 @@
 title: "Praha cyklistické opravdu funguje"
 pubDate: 2007-11-28T16:37:00.000Z
 link: "/archive/blog/praha-cyklisticke-opravdu-funguje/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Jsem velice rád, že cyklistika je v Praze brána vážně. Každý týden pod patronací magistrátu zasedá komise, která navrhuje, schvaluje, no prostě funguje. Neustále se staví a otevírají nové cyklostezky..."
 ---

@@ -2,7 +2,7 @@
 title: "Kolo pro život po 5ti letech"
 pubDate: 2010-05-16T21:21:00.003Z
 link: "/archive/blog/kolo-pro-zivot-po-5ti-letech/"
-category: "cnk"
+category: "blog"
 isMilestone: false
 description: "Dokud jsme bydleli v Praze Kyjích, pravidelně jsme s Frantou jezdili na kole do Klánovic (většinou se zastávkou v naší oblíbené hospůdce). Někdy o víkendu tak kolem 100km někde kolem Prahy. Také jsme..."
 ---
