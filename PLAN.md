@@ -154,6 +154,8 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] ~~**Blogger: zrušit blog.michaltrs.net**~~ ✓
 
 - [x] GitHub: smazat FTP secrets (`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`) ✓
+- [x] DNS cleanup: smazat `mail.michaltrs.net` A, starý `dkim._domainkey`, `_acme-challenge` záznamy
+- [ ] **pipni.cz: vypovědět smlouvu** — formulář odeslán 2026-02-27, čeká na potvrzení
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
@@ -177,6 +179,11 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 ### Nemigrované — rozhodnuto: nemigrovat
 - ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme
 - ~~Video~~ — nahrazeno YouTube linkem (P3)
+
+### P11 — Revize kategorizace vault entries
+- [ ] ČVUT FEL — ověřit správné zařazení všech entries
+- [ ] Cesty na kole (CNK) — ověřit správné zařazení všech entries
+- [ ] SPŠE — ověřit správné zařazení všech entries
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
