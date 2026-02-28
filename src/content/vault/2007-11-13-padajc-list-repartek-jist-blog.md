@@ -2,7 +2,7 @@
 title: "Padající listí, reparátek jistí..."
 pubDate: 2007-11-13T14:37:00.000Z
 link: "/archive/blog/padajc-list-repartek-jist/"
-category: "cvut-fel"
+category: "blog"
 isMilestone: false
 description: "Je to skoro 6 let co jsem tuto oblíbenou frázi slyšel naposled. Slyší-li tuto frázi \"Úžlabiňák\" jistě si vzpomene na učitele Fukiho a velice oblíbený předmět technologie. Čas strávený na CVUT FEL se..."
 ---

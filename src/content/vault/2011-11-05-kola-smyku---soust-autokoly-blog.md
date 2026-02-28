@@ -2,7 +2,7 @@
 title: "Škola smyku - součást autoškoly"
 pubDate: 2011-11-05T22:28:00.000Z
 link: "/archive/blog/skola-smyku-soucast-autoskoly/"
-category: "cvut-fel"
+category: "blog"
 isMilestone: false
 description: "Bohužel tomu tak není! Řidičák mám 10 let a ve \"škole smyku\" (bezpečné jízdy) jsem byl poprvé. Začali jsme 2 hodinovou teoretickou částí. Trocha opakování/oživení fyziky jak se auto chová při smyku..."
 ---

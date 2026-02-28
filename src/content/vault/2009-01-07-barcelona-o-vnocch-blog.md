@@ -2,7 +2,7 @@
 title: "Barcelona o Vánocích"
 pubDate: 2009-01-07T23:02:00.022Z
 link: "/archive/blog/barcelona-o-vanocich/"
-category: "cvut-fel"
+category: "blog"
 isMilestone: false
 description: "📷 [galerie není dostupná] Posledních několik let byly Vánoční svátky vždy vyplněné nějakou hutnou semestrálkou nebo podobně nedobrovolnou taškařicí. Letos je vše jinak, školu máme všichni za sebou..."
 ---

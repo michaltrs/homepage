@@ -2,7 +2,7 @@
 title: "Fotky, fotky a zas fotky"
 pubDate: 2008-01-04T13:23:00.000Z
 link: "/archive/blog/fotky-fotky-a-zas-fotky/"
-category: "cvut-fel"
+category: "blog"
 isMilestone: false
 description: "Svátky jsou úspěšně za námi. Sice se nepovedli úplně dle očekávání, ale hlavně že jsme se dočkali nového roku. 23. prosince jsem se probudil se škrábáním v krku a nekončící rýmou. Snažil jsem se to..."
 ---
