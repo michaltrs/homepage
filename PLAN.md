@@ -180,10 +180,10 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - ~~Fotogalerie~~ — 15 galerií se stovkami fotek, nemigrujeme
 - ~~Video~~ — nahrazeno YouTube linkem (P3)
 
-### P11 — Revize kategorizace vault entries
-- [ ] ČVUT FEL — ověřit správné zařazení všech entries
-- [ ] Cesty na kole (CNK) — ověřit správné zařazení všech entries
-- [ ] SPŠE — ověřit správné zařazení všech entries
+### P11 — Revize kategorizace vault entries ✓
+- [x] CNK — 17 blog postů přesunuto do blog (archiv na /archive/blog/)
+- [x] ČVUT FEL — 5 blog postů přesunuto do blog + 1 opraven link (trailing slash) + kategorie blog
+- [x] SPŠE — vše správně zařazeno, beze změn
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
