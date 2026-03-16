@@ -156,6 +156,8 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] GitHub: smazat FTP secrets (`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`) ✓
 - [x] DNS cleanup: smazat `mail.michaltrs.net` A, starý `dkim._domainkey`, `_acme-challenge` záznamy
 - [ ] **pipni.cz: vypovědět smlouvu** — formulář odeslán 2026-02-27, čeká na potvrzení
+- [ ] **Cloudflare: přidat www.michaltrs.net** jako custom domain v Pages → automatický 301 redirect na apex
+- [ ] **Cloudflare: Redirect Rule** pro `blog.michaltrs.net` → `https://michaltrs.net/vault/` (301) — wildcard DNS už funguje, stačí přidat rule
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
