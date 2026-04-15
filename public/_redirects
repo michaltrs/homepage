@@ -1,0 +1,41 @@
+# ČVUT FEL — stará cesta /cvut_fel/ → /archive/cvut-fel/
+/cvut_fel/*  /archive/cvut-fel/:splat  301
+
+# CNK — tečková notace → pomlčková notace
+/cnk/2001.svycarsko/*  /archive/cnk/2001-svycarsko/:splat  301
+/cnk/2001.svycarsko    /archive/cnk/2001-svycarsko/         301
+/cnk/2003.viden/*      /archive/cnk/2003-viden/:splat       301
+/cnk/2003.viden        /archive/cnk/2003-viden/             301
+/cnk/2004.alpy/*       /archive/cnk/2004-alpy/:splat        301
+/cnk/2004.alpy         /archive/cnk/2004-alpy/              301
+/cnk/2005.norsko/*     /archive/cnk/2005-norsko/:splat      301
+/cnk/2005.norsko       /archive/cnk/2005-norsko/            301
+/cnk/2006.pyreneje/*   /archive/cnk/2006-pyreneje/:splat    301
+/cnk/2006.pyreneje     /archive/cnk/2006-pyreneje/          301
+/cnk/2007.turecko/*    /archive/cnk/2007-turecko/:splat     301
+/cnk/2007.turecko      /archive/cnk/2007-turecko/           301
+/cnk/2008.dolomiti/*   /archive/cnk/2008-dolomiti/:splat    301
+/cnk/2008.dolomiti     /archive/cnk/2008-dolomiti/          301
+/cnk/2009.maroko/*     /archive/cnk/2009-maroko/:splat      301
+/cnk/2009.maroko       /archive/cnk/2009-maroko/            301
+/cnk/vrcholy/*         /archive/cnk/vrcholy/:splat          301
+/cnk/vrcholy           /archive/cnk/vrcholy/                301
+/cnk/bike/*            /archive/cnk/bike/:splat             301
+/cnk/bike              /archive/cnk/bike/                   301
+/cnk/*                 /archive/cnk/:splat                  301
+/cnk                   /archive/cnk/                        301
+
+# SPŠE (stará sekce /zleb/) → vault
+/zleb/*  /vault/  301
+/zleb    /vault/  301
+
+# Nemigrované sekce → homepage
+/fotky/*  /  301
+/fotky    /  301
+/video/*  /  301
+/video    /  301
+/cv/*     /  301
+/cv       /  301
+
+# Starý Blogger archiv přes michaltrs.net domain
+/blog/*   /vault/  301

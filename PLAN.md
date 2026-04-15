@@ -156,8 +156,8 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] GitHub: smazat FTP secrets (`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`) ✓
 - [x] DNS cleanup: smazat `mail.michaltrs.net` A, starý `dkim._domainkey`, `_acme-challenge` záznamy
 - [ ] **pipni.cz: vypovědět smlouvu** — formulář odeslán 2026-02-27, čeká na potvrzení
-- [ ] **Cloudflare: přidat www.michaltrs.net** jako custom domain v Pages → automatický 301 redirect na apex
-- [ ] **Cloudflare: Redirect Rule** pro `blog.michaltrs.net` → `https://michaltrs.net/vault/` (301) — wildcard DNS už funguje, stačí přidat rule
+- [x] **Cloudflare: přidat www.michaltrs.net** jako custom domain v Pages → automatický 301 redirect na apex
+- [x] **Cloudflare: Redirect Rule** pro `blog.michaltrs.net` → `https://michaltrs.net/vault/` (301) — viz P12a
 
 ### P9 — Responzivní testování & polish ✓
 - [x] Otestovat mobil (Hero, foto grid, Vault timeline, archive stránky) — OK, vše responzivní
@@ -186,6 +186,32 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 - [x] CNK — 17 blog postů přesunuto do blog (archiv na /archive/blog/)
 - [x] ČVUT FEL — 5 blog postů přesunuto do blog + 1 opraven link (trailing slash) + kategorie blog
 - [x] SPŠE — vše správně zařazeno, beze změn
+
+### P12 — SEO: oprava chyb z Google Search Console
+
+Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6 týdnů.
+
+#### P12a — Opravit 5xx Server Errors (38 stránek, Validation Failed) — KRITICKÉ ✓
+- [x] **Cloudflare: přidat www.michaltrs.net** jako custom domain v Pages (bylo již Active)
+- [x] **Cloudflare: Redirect Rule** `blog.michaltrs.net` → `https://michaltrs.net/vault/` (wildcard pattern, DNS A record 192.0.2.1 proxied)
+  - Příčina: Blogger zrušen, ale redirect rule chybí → Cloudflare wildcard DNS zachytí request ale vrací 5xx
+  - Po opravě by mělo zmizet ~38 stránek 5xx + ~48 canonical duplicit (www/non-www)
+
+#### P12b — Opravit 404 Not Found (49 stránek)
+- [ ] Zjistit konkrétní 404 URL ze Search Console (Coverage → Not found → Examples)
+- [ ] Vytvořit `public/_redirects` s 301 přesměrováními pro staré vzory ze starého PHP webu
+  - Typické vzory: `/fotky/`, staré PHP slugy, Blogger cesty přes michaltrs.net
+- [ ] Po přidání redirects: Validate Fix v Search Console
+
+#### P12c — Crawled not indexed (71 stránek)
+- [ ] Zjistit které stránky Google crawloval ale neindexoval (Search Console → Examples)
+  - Pravděpodobně `public/archive/cvut-fel/` Doxygen soubory (tenký obsah)
+  - Zvážit přidání `noindex` nebo `Disallow` v robots.txt pro Doxygen podadresáře
+
+#### P12d — Validate Fix a re-indexing
+- [ ] Po opravě P12a: v Search Console kliknout "Validate Fix" na Server errors
+- [ ] URL Inspection + Request Indexing pro `/` a `/vault/`
+- [ ] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek)
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
