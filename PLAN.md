@@ -222,6 +222,7 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
 - [x] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
 - [x] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
 - [x] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies` (ověřeno, nebylo již přítomno)
+- [/] P13e — CLS v archivu: Automatizovaný jednorázový skript na doplnění rozměrů u 737 obrázků v src/pages/archive/
 
 ## Známé problémy
 - ~~`fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty~~ — opraveno (již není v dependencies)
