@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /archive/cvut-fel/*/dokumentace/
+Disallow: /archive/cvut-fel/*/doc/
+Disallow: /archive/cvut-fel/*/source/
+Disallow: /archive/cvut-fel/*/bin/
 
 Sitemap: https://michaltrs.net/sitemap-index.xml

@@ -1,4 +1,20 @@
 ---
+import { Image } from 'astro:assets';
+import photo1 from '../assets/photos/personal-1-mtb-alps.jpg';
+import photo2 from '../assets/photos/personal-2-blinduro.jpg';
+import photo3 from '../assets/photos/personal-3-sunset.jpg';
+import photo4 from '../assets/photos/personal-4-party.jpg';
+import photo5 from '../assets/photos/personal-5-family.jpg';
+import photo6 from '../assets/photos/personal-6-skis.jpg';
+
+const photos = [
+  { src: photo1, alt: "MTB na alpském singletracku" },
+  { src: photo2, alt: "Blinduro MTB závod" },
+  { src: photo3, alt: "Západ slunce nad ledovcem" },
+  { src: photo4, alt: "Narozeninová oslava s přáteli" },
+  { src: photo5, alt: "Rodina na horském vrcholu při západu slunce" },
+  { src: photo6, alt: "Skialpový sjezd v prašanu" },
+];
 ---
 <section id="personal" class="relative py-24 px-6 bg-soft-bg overflow-hidden border-t border-charcoal/5">
   <div class="max-w-6xl mx-auto flex flex-col items-center">
@@ -17,16 +33,9 @@
 
     <!-- Photo Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full mb-20" data-animate-stagger>
-      {[
-        { src: "/assets/photos/personal-1-mtb-alps.jpg", alt: "MTB na alpském singletracku" },
-        { src: "/assets/photos/personal-2-blinduro.jpg", alt: "Blinduro MTB závod" },
-        { src: "/assets/photos/personal-3-sunset.jpg", alt: "Západ slunce nad ledovcem" },
-        { src: "/assets/photos/personal-4-party.jpg", alt: "Narozeninová oslava s přáteli" },
-        { src: "/assets/photos/personal-5-family.jpg", alt: "Rodina na horském vrcholu při západu slunce" },
-        { src: "/assets/photos/personal-6-skis.jpg", alt: "Skialpový sjezd v prašanu" },
-      ].map((photo) => (
+      {photos.map((photo) => (
         <div class="aspect-[4/3] bg-charcoal/5 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 relative group">
-           <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover" loading="lazy" />
+           <Image src={photo.src} alt={photo.alt} class="w-full h-full object-cover" width={400} height={300} />
            <div class="absolute inset-0 bg-joy-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
       ))}

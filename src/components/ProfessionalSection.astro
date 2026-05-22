@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import headshotImg from '../assets/photos/headshot.jpg';
 ---
 <section id="professional" class="relative py-24 px-6 bg-white overflow-hidden">
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -37,7 +39,7 @@
     <!-- Headshot -->
     <div class="relative" data-animate>
       <div class="aspect-square bg-sky-blue/5 rounded-3xl overflow-hidden">
-        <img src="/assets/photos/headshot.jpg" alt="Michal Trs" class="w-full h-full object-cover object-top" loading="lazy" />
+        <Image src={headshotImg} alt="Michal Trs" class="w-full h-full object-cover object-top" width={600} height={600} />
       </div>
     </div>
 

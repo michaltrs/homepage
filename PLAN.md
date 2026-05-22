@@ -218,12 +218,12 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
 - [ ] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek)
 
 ### P13 — Audit a optimalizace 2026
-- [ ] P13a — SEO: Úprava robots.txt k zamezení indexace tenkých dokumentačních stránek (ČVUT FEL Doxygen/doc)
-- [ ] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
-- [ ] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
-- [ ] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies`
+- [x] P13a — SEO: Úprava robots.txt k zamezení indexace tenkých dokumentačních stránek (ČVUT FEL Doxygen/doc)
+- [x] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
+- [x] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
+- [x] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies` (ověřeno, nebylo již přítomno)
 
 ## Známé problémy
-- `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
+- ~~`fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty~~ — opraveno (již není v dependencies)
 - ~~Blog archive stránky stále odkazují na externí Blogger/Google image URLs~~ — opraveno (P2)
 - ~~Sitemap plugin nainstalován ale nefunkční (chybí `site`)~~ — opraveno, `site` nastaven

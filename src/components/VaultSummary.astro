@@ -36,7 +36,7 @@ const timelinePoints = [
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4" data-animate-stagger>
         {timelinePoints.map((point) => (
-          <a href={`/vault?category=${point.id}`} class="group relative flex flex-col items-center text-center">
+          <a href={`/vault/?category=${point.id}`} class="group relative flex flex-col items-center text-center">
             <!-- Node -->
             <div class={`w-12 h-12 rounded-full ${point.color} flex items-center justify-center text-white font-bold text-sm mb-4 shadow-md group-hover:scale-110 transition-transform z-10`}>
               {point.count}
