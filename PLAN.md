@@ -197,11 +197,15 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
   - Příčina: Blogger zrušen, ale redirect rule chybí → Cloudflare wildcard DNS zachytí request ale vrací 5xx
   - Po opravě by mělo zmizet ~38 stránek 5xx + ~48 canonical duplicit (www/non-www)
 
-#### P12b — Opravit 404 Not Found (49 stránek)
-- [ ] Zjistit konkrétní 404 URL ze Search Console (Coverage → Not found → Examples)
-- [ ] Vytvořit `public/_redirects` s 301 přesměrováními pro staré vzory ze starého PHP webu
-  - Typické vzory: `/fotky/`, staré PHP slugy, Blogger cesty přes michaltrs.net
-- [ ] Po přidání redirects: Validate Fix v Search Console
+#### P12b — Opravit 404 Not Found (49 stránek) ✓
+- [x] Zjistit konkrétní 404 URL ze Search Console (Coverage → Not found → Examples)
+- [x] Vytvořit `public/_redirects` s 301 přesměrováními pro staré vzory ze starého PHP webu
+  - `/cvut_fel/*` → `/archive/cvut-fel/:splat`
+  - `/cnk/YYYY.nazev/*` → `/archive/cnk/YYYY-nazev/:splat` (tečka→pomlčka, všechny expedice)
+  - `/zleb/*` → `/vault/` (SPŠE v Uzlabině)
+  - `/fotky/`, `/video/`, `/cv/` → `/`
+  - `/blog/*` → `/vault/`
+- [ ] Po deployi na Cloudflare: Validate Fix v Search Console
 
 #### P12c — Crawled not indexed (71 stránek)
 - [ ] Zjistit které stránky Google crawloval ale neindexoval (Search Console → Examples)
@@ -212,6 +216,12 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
 - [ ] Po opravě P12a: v Search Console kliknout "Validate Fix" na Server errors
 - [ ] URL Inspection + Request Indexing pro `/` a `/vault/`
 - [ ] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek)
+
+### P13 — Audit a optimalizace 2026
+- [ ] P13a — SEO: Úprava robots.txt k zamezení indexace tenkých dokumentačních stránek (ČVUT FEL Doxygen/doc)
+- [ ] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
+- [ ] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
+- [ ] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies`
 
 ## Známé problémy
 - `fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty
