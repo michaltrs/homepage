@@ -1,5 +1,11 @@
 # Exact-match pravidla první (výkonnější — Cloudflare nemusí vyhodnocovat splat patterns)
 
+# Root-level a systémové redirecty
+/index.php             /                                    301
+/allnews.php           /vault/                              301
+/news.xml              /vault/                              301
+/sitemap.xml           /sitemap-index.xml                   301
+
 # CNK — tečková notace → pomlčková notace
 /cnk/2001.svycarsko    /archive/cnk/2001-svycarsko/         301
 /cnk/2003.viden        /archive/cnk/2003-viden/             301
@@ -11,20 +17,36 @@
 /cnk/2009.maroko       /archive/cnk/2009-maroko/            301
 /cnk/vrcholy           /archive/cnk/vrcholy/                301
 /cnk/bike              /archive/cnk/bike/                   301
+/cnk/index.php         /archive/cnk/                        301
+/cnk/                  /archive/cnk/                        301
 /cnk                   /archive/cnk/                        301
 
-# SPŠE (stará sekce /zleb/) → vault
-/zleb    /vault/  301
+# ČVUT FEL — přesměrování hlavní sekce na Vault s filtrem
+/cvut_fel/index.php    /vault/?category=cvut-fel            301
+/cvut_fel/             /vault/?category=cvut-fel            301
+/cvut_fel              /vault/?category=cvut-fel            301
+
+# SPŠE Úžlabina — přesměrování hlavní sekce na Vault s filtrem
+/zleb/index.php        /vault/?category=spse-v-uzlabine     301
+/zleb/                 /vault/?category=spse-v-uzlabine     301
+/zleb                  /vault/?category=spse-v-uzlabine     301
+
+# Blog — přesměrování hlavní sekce na Vault s filtrem
+/blog/index.php        /vault/?category=blog                301
+/blog/index.html       /vault/?category=blog                301
+/blog/                 /vault/?category=blog                301
+/blog                  /vault/?category=blog                301
 
 # Nemigrované sekce → homepage
-/fotky   /  301
-/video   /  301
-/cv      /  301
+/fotky                 /                                    301
+/video                 /                                    301
+/cv                    /                                    301
+
 
 # Splat pravidla (pro cesty s podstránkami)
 
 # ČVUT FEL — stará cesta /cvut_fel/ → /archive/cvut-fel/
-/cvut_fel/*  /archive/cvut-fel/:splat  301
+/cvut_fel/*            /archive/cvut-fel/:splat             301
 
 # CNK — tečková notace → pomlčková notace (podstránky)
 /cnk/2001.svycarsko/*  /archive/cnk/2001-svycarsko/:splat  301
@@ -39,11 +61,13 @@
 /cnk/bike/*            /archive/cnk/bike/:splat             301
 /cnk/*                 /archive/cnk/:splat                  301
 
-# SPŠE / nemigrované sekce (podstránky)
-/zleb/*  /vault/  301
-/fotky/* /  301
-/video/* /  301
-/cv/*    /  301
+# SPŠE — stará cesta /zleb/ → /archive/spse-v-uzlabine/
+/zleb/*                /archive/spse-v-uzlabine/:splat      301
+
+# Nemigrované sekce (podstránky)
+/fotky/*               /                                    301
+/video/*               /                                    301
+/cv/*                  /                                    301
 
 # Starý Blogger archiv přes michaltrs.net domain
-/blog/*   /vault/  301
+/blog/*                /vault/?category=blog                301

@@ -1,8 +1,17 @@
 User-agent: *
 Allow: /
-Disallow: /archive/cvut-fel/*/dokumentace/
-Disallow: /archive/cvut-fel/*/doc/
-Disallow: /archive/cvut-fel/*/source/
-Disallow: /archive/cvut-fel/*/bin/
+Disallow: /archive/cvut-fel/36spa/cell/
+Disallow: /archive/cvut-fel/36spa/ulohy/
+Disallow: /archive/cvut-fel/36paa/SAT/
+Disallow: /archive/cvut-fel/36paa/batoh1/
+Disallow: /archive/cvut-fel/36paa/batoh2/
+Disallow: /archive/cvut-fel/36paa/batoh4/
+Disallow: /archive/cvut-fel/36paa/kyble/
+Disallow: /archive/cvut-fel/36paa/experiment/
+Disallow: /archive/cvut-fel/36pob/fpga_bus/
+Disallow: /archive/cvut-fel/36ami/online/
+Disallow: /archive/cvut-fel/36si/letsim/
+Disallow: /archive/cvut-fel/36vb/textovka/
+Disallow: /archive/cvut-fel/36dbs/
 
 Sitemap: https://michaltrs.net/sitemap-index.xml
