@@ -18,6 +18,7 @@ CTO · MTB rider · otec 3 dětí · Praha. Osobní web s profilem a archivem ob
 - 2 hlavní stránky: homepage (`/`), archiv The Vault (`/vault/`)
 - 195 vault entries — news, blog, cnk, cvut-fel, spse-v-uzlabine
 - 136 Astro archive stránek + 104 statických HTML (Doxygen, projekty)
+- **SEO & optimalizace**: konkrétní pravidla v `robots.txt` pro zamezení indexace tenkých dokumentačních stránek (ČVUT FEL Doxygen), sitemap-index.xml a automatický post-build skript injektující `noindex` do legacy HTML souborů bez kanonických tagů.
 
 ## Vývoj
 

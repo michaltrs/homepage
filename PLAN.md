@@ -218,7 +218,7 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
 - [ ] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek)
 
 ### P13 — Audit a optimalizace 2026
-- [x] P13a — SEO: Úprava robots.txt k zamezení indexace tenkých dokumentačních stránek (ČVUT FEL Doxygen/doc)
+- [x] P13a — SEO: Úprava a optimalizace robots.txt (nahrazení divokých karet * konkrétními cestami, odstranění redundantních pravidel pro ČVUT FEL Doxygen/doc)
 - [x] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
 - [x] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
 - [x] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies` (ověřeno, nebylo již přítomno)
