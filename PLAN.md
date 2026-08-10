@@ -1,6 +1,6 @@
 # Projekt: michaltrs-hp-astro
 
-Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze starého PHP webu (www-2008-20/).
+Osobní web Michala Trse. Astro 7 + Tailwind v4, statický build. Migrováno ze starého PHP webu (www-2008-20/).
 
 ## Architektura
 
