@@ -155,7 +155,7 @@ Osobní web Michala Trse. Astro 5 + Tailwind v4, statický build. Migrováno ze 
 
 - [x] GitHub: smazat FTP secrets (`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`) ✓
 - [x] DNS cleanup: smazat `mail.michaltrs.net` A, starý `dkim._domainkey`, `_acme-challenge` záznamy
-- [ ] **pipni.cz: vypovědět smlouvu** — formulář odeslán 2026-02-27, čeká na potvrzení
+- [x] **pipni.cz: vypovědět smlouvu** — formulář odeslán 2026-02-27, potvrzeno supportem 2026-03-06
 - [x] **Cloudflare: přidat www.michaltrs.net** jako custom domain v Pages → automatický 301 redirect na apex
 - [x] **Cloudflare: Redirect Rule** pro `blog.michaltrs.net` → `https://michaltrs.net/vault/` (301) — viz P12a
 
@@ -205,24 +205,28 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
   - `/zleb/*` → `/vault/` (SPŠE v Uzlabině)
   - `/fotky/`, `/video/`, `/cv/` → `/`
   - `/blog/*` → `/vault/`
-- [ ] Po deployi na Cloudflare: Validate Fix v Search Console
+- [x] Po deployi na Cloudflare: Validate Fix v Search Console — spuštěno 2026-08-10
 
-#### P12c — Crawled not indexed (71 stránek)
-- [ ] Zjistit které stránky Google crawloval ale neindexoval (Search Console → Examples)
-  - Pravděpodobně `public/archive/cvut-fel/` Doxygen soubory (tenký obsah)
-  - Zvážit přidání `noindex` nebo `Disallow` v robots.txt pro Doxygen podadresáře
+#### P12c — Crawled not indexed ✓ (vyřešeno/vysvětleno 2026-08-10)
+- [x] Zjistit které stránky Google crawloval ale neindexoval (Search Console → Examples) — pokles ze 71 na 26 stránek, rozbor 26 příkladů:
+  - 15× binární soubory (.kmz, .pdf, .ppt, .txt, .s, skripty bez přípony) — Google je crawluje, ale záměrně needexuje jako web stránky, očekávané chování GSC, ne bug
+  - 2× `36paa/kyble` (dup. s/bez trailing slash) — legacy stránka už má `noindex` (spolu s dalšími 23 legacy soubory se stejnou mojibake vadou v `36spa`, `36paa`, `36si/letsim`, `36vb`, `36dbs`, vše mimo sitemap) — správně vynechána, jen kosmetická vada pro případné návštěvníky
+  - 9× staré URL (`blog.michaltrs.net/*`, `www.michaltrs.net/cv`, `/fotky/`, `news.xml`, starý Blogger feed, `www.michaltrs.net/cvut_fel/...`) — ověřeno curlem, všechny správně 301/308 přesměrovávají na 200; GSC jen ještě nepřeklasifikoval starou crawl data, srovná se samo při dalším crawlování
+  - Žádný kódový zásah nebyl potřeba
 
-#### P12d — Validate Fix a re-indexing
-- [ ] Po opravě P12a: v Search Console kliknout "Validate Fix" na Server errors
-- [ ] URL Inspection + Request Indexing pro `/` a `/vault/`
-- [ ] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek)
+#### P12d — Validate Fix a re-indexing ✓
+- [x] Po opravě P12a: v Search Console kliknout "Validate Fix" na Server errors
+- [x] URL Inspection + Request Indexing pro `/` a `/vault/`
+- [x] Sledovat trend indexovanosti (cíl: zpět na 80+ stránek) — stav 2026-08-10: 154 indexed / 224 not indexed, cíl splněn a překročen
 
 ### P13 — Audit a optimalizace 2026
 - [x] P13a — SEO: Úprava a optimalizace robots.txt (nahrazení divokých karet * konkrétními cestami, odstranění redundantních pravidel pro ČVUT FEL Doxygen/doc)
 - [x] P13b — Sjednocení odkazů: Změna `/vault` na `/vault/` v navigaci, footeru a VaultSummary k eliminaci redirectů
 - [x] P13c — Optimalizace obrázků: Přesun 7 moderních fotografií do `src/assets/photos/` a konverze `<img>` na Astro `<Image />`
 - [x] P13d — Vyčištění package.json: Přesun `fast-xml-parser` z `dependencies` do `devDependencies` (ověřeno, nebylo již přítomno)
-- [/] P13e — CLS v archivu: Automatizovaný jednorázový skript na doplnění rozměrů u 737 obrázků v src/pages/archive/
+- [x] P13e — CLS v archivu: Automatizovaný jednorázový skript na doplnění rozměrů u obrázků v src/pages/archive/ ✓ (dokončeno 2026-08-10)
+  - `scripts/add-img-dimensions.mjs` doplnil 50 zbývajících obrázků, kde `image-size` selhávalo na "Corrupt JPG, exceeded buffer limits" (staré/netypické JPEG markery z fotoaparátu) — přidán fallback na macOS `sips`
+  - Všech 362 `<img>` tagů v archivu má nyní `width`/`height`, build bez chyb
 
 ## Známé problémy
 - ~~`fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty~~ — opraveno (již není v dependencies)

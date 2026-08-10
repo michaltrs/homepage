@@ -1,7 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execFileSync } from 'child_process';
 import sizeOf from 'image-size';
+
+// Fallback for JPEGs that image-size rejects (e.g. nonstandard thumbnail
+// markers from old camera/software JPEG encoders) but macOS decodes fine.
+function sizeOfViaSips(imgPathOnDisk) {
+  const out = execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', imgPathOnDisk], { encoding: 'utf8' });
+  const width = Number(out.match(/pixelWidth:\s*(\d+)/)?.[1]);
+  const height = Number(out.match(/pixelHeight:\s*(\d+)/)?.[1]);
+  if (!width || !height) throw new Error('sips could not determine dimensions');
+  return { width, height };
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -124,10 +135,17 @@ for (const file of astroFiles) {
 
     try {
       // Read file into buffer to avoid compatibility issues with image-size package and Node path string reading
-      const buffer = fs.readFileSync(imgPathOnDisk);
-      const dimensions = sizeOf(buffer);
-      const width = dimensions.width;
-      const height = dimensions.height;
+      let width, height;
+      try {
+        const buffer = fs.readFileSync(imgPathOnDisk);
+        const dimensions = sizeOf(buffer);
+        width = dimensions.width;
+        height = dimensions.height;
+      } catch (imageSizeErr) {
+        const dimensions = sizeOfViaSips(imgPathOnDisk);
+        width = dimensions.width;
+        height = dimensions.height;
+      }
 
       if (!width || !height) {
         console.log(`[WARNING] Could not read dimensions for ${src}`);
