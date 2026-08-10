@@ -16,10 +16,16 @@ const slugify = (text: string) =>
     .replace(/^-+/, '')
     .replace(/-+$/, '');
 
-const entriesWithSlugs = sortedEntries.map(entry => ({
-  ...entry,
-  slug: `${entry.data.pubDate.getFullYear()}-${slugify(entry.data.title)}`
-}));
+const seenSlugs = new Map<string, number>();
+const entriesWithSlugs = sortedEntries.map(entry => {
+  const baseSlug = `${entry.data.pubDate.getFullYear()}-${slugify(entry.data.title)}`;
+  const count = seenSlugs.get(baseSlug) ?? 0;
+  seenSlugs.set(baseSlug, count + 1);
+  return {
+    ...entry,
+    slug: count === 0 ? baseSlug : `${baseSlug}-${count + 1}`
+  };
+});
 
 // Categories for filtering
 const categories = [

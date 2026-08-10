@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node scripts/post-build.mjs",
+    "build": "astro build && node scripts/post-build.mjs && node scripts/validate-html.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -24,6 +24,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "html-validate": "^11.6.2",
     "image-size": "^2.0.2",
     "sharp": "^0.35.3"
   },

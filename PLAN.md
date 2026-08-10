@@ -232,10 +232,12 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
 - [x] P14a — Oprava zdvojeného escapování HTML entit (`&quot;` se zobrazovalo doslovně místo uvozovek) ✓ (dokončeno 2026-08-10)
   - Příčina: `title="...&quot;...&quot;..."` v `src/pages/archive/cvut-fel/36dp.astro:4` se předával do `ArchiveLayout` jako prop a Astro ho při renderu `{title}` znovu escapovalo (`&` → `&amp;`), takže entita zůstala vidět jako text — opraveno na `title='...&quot;...'` (jednoduché uvozovky kolem atributu, doslovné `"` uvnitř)
   - Šíře prošetřeno: naivní grep na `&quot;`/`&amp;`/`&#39;`/`&apos;` napříč `src/` našel 18 souborů, ale skutečný bug byl jen v 36dp.astro. Ostatní nálezy: (a) 16× nepoužívaný markdown body v `src/content/vault/*.md` (jen frontmatter `data` pole se reálně renderují, tělo nikde nečte `.render()`/`.body`) — mrtvý obsah, nic se nezobrazuje; (b) entity přímo v statickém HTML těle `.astro` šablon (`&amp;` v `href=`, `&quot;` v textu) — Astro je vypisuje beze změny, prohlížeč správně dekóduje, není to bug
-- [ ] P14b — Nasadit HTML validátor do buildu, cíl 100% validní HTML
-  - Vybrat nástroj (např. `html-validate`, `w3c-html-validator`/vnu.jar) a zapojit ho jako krok po `astro build` (podobně jako `scripts/post-build.mjs`)
-  - Projít a opravit všechny nahlášené chyby napříč Astro stránkami i legacy statickým archivem v `public/archive/`
-  - Zvážit CI gate, aby build padal na nové HTML chyby do budoucna
+- [x] P14b — Nasadit HTML validátor do buildu, cíl 100% validní HTML ✓ (dokončeno 2026-08-10)
+  - Nástroj: `html-validate` (offline, bez závislosti na síti/w3c.org), preset `html-validate:standard` (spec-validita, bez a11y-lint pravidel navíc)
+  - `scripts/validate-html.mjs` běží jako poslední krok `pnpm build` — validuje jen stránky s `rel="canonical"` (skutečně renderované Astro stránky), build s chybou padá (exit 1)
+  - Scope: rozhodnuto validovat jen živý/indexovaný obsah (139 stránek), ne 105 legacy Doxygen/statických souborů v `public/archive/cvut-fel/**` (noindex, nulová SEO hodnota) — baseline sken ukázal 1716 z 1776 chyb právě tam, opravovat staré Doxygen šablony z roku 2007 nemá smysl
+  - Baseline 60 chyb ve 40 souborech opraveno: `<a name="more">` → `id="more"` (32×, deprecated atribut, Blogger read-more anchor bez reálného využití), `<iframe>` bez `title` → přidán popisný title (21×, YouTube/Google Maps embedy), `<strike>` → `<s>` (2×), duplicitní `id="BLOGGER_PHOTO_ID_"` odstraněn (4×, nevyplněný Blogger placeholder), duplicitní `id` na `/vault/` (2× stejný title "Nové video" v roce 2006 dával stejný slug) — opraveno dedup logikou v `src/pages/vault.astro`
+  - Výsledek: 0 chyb na 139 živých stránkách
 
 ## Známé problémy
 - ~~`fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty~~ — opraveno (již není v dependencies)
