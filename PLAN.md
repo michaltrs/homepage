@@ -228,6 +228,16 @@ Stav ke 2026-04-14: 240 chybných stránek, indexovanost klesla z 81 → 19 za 6
   - `scripts/add-img-dimensions.mjs` doplnil 50 zbývajících obrázků, kde `image-size` selhávalo na "Corrupt JPG, exceeded buffer limits" (staré/netypické JPEG markery z fotoaparátu) — přidán fallback na macOS `sips`
   - Všech 362 `<img>` tagů v archivu má nyní `width`/`height`, build bez chyb
 
+### P14 — Validita HTML a znakové entity
+- [ ] P14a — Oprava zdvojeného escapování HTML entit (`&quot;` se zobrazuje doslovně místo uvozovek)
+  - Konkrétní příklad: `https://michaltrs.net/archive/cvut-fel/36dp/` — titulek "Zpracování protokolu &quot;Packet over Sonet&quot; na FPGA" místo uvozovek
+  - Příčina: `title="...&quot;...&quot;..."` v `src/pages/archive/cvut-fel/36dp.astro:4` se předává do `ArchiveLayout` jako prop a Astro ho při renderu `{title}` znovu escapuje (`&` → `&amp;`), takže entita zůstane vidět jako text
+  - Netýká se jen 36dp — stejný vzor (`&quot;`/`&amp;quot;`/`&#39;`/`&apos;` v textu) nalezen v 17 souborech: `src/content/vault/*.md` (blog entries) a dalších — potřeba projít všechny a nahradit entity skutečnými znaky (`"`, `'`) v datech
+- [ ] P14b — Nasadit HTML validátor do buildu, cíl 100% validní HTML
+  - Vybrat nástroj (např. `html-validate`, `w3c-html-validator`/vnu.jar) a zapojit ho jako krok po `astro build` (podobně jako `scripts/post-build.mjs`)
+  - Projít a opravit všechny nahlášené chyby napříč Astro stránkami i legacy statickým archivem v `public/archive/`
+  - Zvážit CI gate, aby build padal na nové HTML chyby do budoucna
+
 ## Známé problémy
 - ~~`fast-xml-parser` je v dependencies ale potřeba jen pro migrační skripty~~ — opraveno (již není v dependencies)
 - ~~Blog archive stránky stále odkazují na externí Blogger/Google image URLs~~ — opraveno (P2)
